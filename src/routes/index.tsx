@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Trophy, Users, Briefcase, Heart, Zap, Brain, Wrench } from "lucide-react";
 import stockPhoto1 from "@/assets/stock-photos/Images/Stock photo 1.jpg";
 import pattern from "@/assets/pattern.jpg";
-import leadership from "@/assets/leadership.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -185,53 +184,6 @@ function HomePage() {
               <h3 className="mt-6 text-xl font-bold">{f.title}</h3>
               <p className="mt-3 text-foreground/70 leading-relaxed">{f.desc}</p>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* UPCOMING */}
-      <section className="container-x py-24">
-        <div className="flex items-end justify-between flex-wrap gap-4">
-          <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-coral">OUR APPROACH</p>
-            <h2 className="mt-3 text-4xl md:text-5xl font-bold">
-              Be career ready. Not just educated.
-            </h2>
-          </div>
-          <Link to="/practicums" className="btn-outline text-sm">
-            View all
-          </Link>
-        </div>
-        <div className="mt-12 grid md:grid-cols-3 gap-6">
-          {[
-            { age: "14–18", title: "International Youth Leadership Camp", color: "lime" },
-            { age: "19–29", title: "EPOCHA Practicums & Youth Advisory Board", color: "coral" },
-            { age: "19–24", title: "Hanaro Emerging Leadership Practicum", color: "lime" },
-          ].map((p) => (
-            <article
-              key={p.title}
-              className="group rounded-3xl border border-border bg-card overflow-hidden transition-all hover:border-lime"
-            >
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={leadership}
-                  alt=""
-                  loading="lazy"
-                  width={1400}
-                  height={1000}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="p-7">
-                <span
-                  className={`inline-block text-xs px-3 py-1 rounded-full ${p.color === "lime" ? "bg-lime text-ink" : "bg-coral text-cream"}`}
-                >
-                  {p.age} years old
-                </span>
-                <h3 className="mt-4 text-xl font-bold">{p.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">Coming soon (June, 1)</p>
-              </div>
-            </article>
           ))}
         </div>
       </section>
