@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap");
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
@@ -70,30 +70,30 @@
 
 :root {
   --radius: 1rem;
-  /* Brand palette: midnight navy, electric lime, coral, cream */
-  --ink: oklch(0.18 0.06 265);
-  --cream: oklch(0.97 0.015 90);
-  --lime: oklch(0.88 0.22 130);
-  --coral: oklch(0.7 0.2 30);
+  /* Brand palette extracted from logo: deep ink, soft cream, golden yellow, amber orange */
+  --ink: oklch(0.16 0.01 90);
+  --cream: oklch(0.97 0.012 85); /* warm cream background */
+  --lime: oklch(0.78 0.17 85); /* primary — logo yellow */
+  --coral: oklch(0.7 0.18 55); /* accent  — logo amber  */
 
-  --background: var(--ink);
-  --foreground: var(--cream);
-  --card: oklch(0.23 0.05 265);
-  --card-foreground: var(--cream);
-  --popover: oklch(0.23 0.05 265);
-  --popover-foreground: var(--cream);
+  --background: var(--cream);
+  --foreground: var(--ink);
+  --card: oklch(0.99 0.008 85);
+  --card-foreground: var(--ink);
+  --popover: oklch(0.99 0.008 85);
+  --popover-foreground: var(--ink);
   --primary: var(--lime);
   --primary-foreground: var(--ink);
-  --secondary: oklch(0.28 0.05 265);
-  --secondary-foreground: var(--cream);
-  --muted: oklch(0.26 0.04 265);
-  --muted-foreground: oklch(0.75 0.02 265);
+  --secondary: oklch(0.93 0.02 85);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.94 0.015 85);
+  --muted-foreground: oklch(0.45 0.02 85);
   --accent: var(--coral);
-  --accent-foreground: var(--cream);
+  --accent-foreground: var(--ink);
   --destructive: oklch(0.6 0.22 28);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.32 0.05 265);
-  --input: oklch(0.3 0.05 265);
+  --border: oklch(0.88 0.015 85);
+  --input: oklch(0.9 0.015 85);
   --ring: var(--lime);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -157,7 +157,10 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
   }
@@ -178,23 +181,63 @@
   font-weight: 600;
   padding: 0.875rem 1.5rem;
   border-radius: 999px;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 @utility btn-primary {
-  &:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -10px color-mix(in oklab, var(--color-lime) 60%, transparent); }
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -10px color-mix(in oklab, var(--color-lime) 60%, transparent);
+  }
 }
 
 @utility btn-outline {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  border: 1px solid var(--color-cream);
-  color: var(--color-cream);
+  border: 1px solid var(--color-ink);
+  color: var(--color-ink);
   font-weight: 500;
   padding: 0.875rem 1.5rem;
   border-radius: 999px;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
 }
 @utility btn-outline {
-  &:hover { background: var(--color-cream); color: var(--color-ink); }
+  &:hover {
+    background: var(--color-ink);
+    color: var(--color-cream);
+  }
+}
+
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-x 60s linear infinite;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-fade-in {
+  animation: fade-in 0.5s ease-out;
 }
