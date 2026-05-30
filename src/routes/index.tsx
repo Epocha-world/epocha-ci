@@ -438,10 +438,6 @@ function HomePage() {
                   a: "A practicum is a structured, hands-on learning experience; a course or exercise designed to apply theoretical knowledge in a real or simulated practical setting.\n\nEpocha Practicum: A structured learning experience where trainees apply their knowledge to real projects under the coaching, mentoring, and guidance of Epocha professionals and mentor companies.",
                 },
                 {
-                  q: "What will I do during the program?",
-                  a: "Over 4 to 12 weeks, you will work on realistic, tangible projects. Think of it like a filmmaking practicum: you will shadow experts, observe real-world production environments, and take on hands-on tasks to produce a short film or documentary. You are supported the entire time by a mentor company and a professional coach.",
-                },
-                {
                   q: "What industries are involved and why?",
                   a: "Education and Training: To develop future educators and trainers who can shape the next generation of learners.\n\nMarketing and Communications: To build strategic thinking, brand storytelling, and audience engagement skills essential in a digital-first world.\n\nBusiness and Entrepreneurship: To cultivate innovative thinkers and problem-solvers who can launch ventures and drive economic growth.\n\nSocial Enterprises and NGOs: To empower changemakers committed to addressing social and environmental challenges.\n\nCreative Industries: To nurture artistic talent, design thinking, and cultural expression that drives innovation.\n\nSustainability and Environment: To prepare leaders who can tackle climate change and promote sustainable practices.\n\nCultural Entertainment and Tourism: To develop professionals who can create meaningful experiences and preserve cultural heritage.",
                 },
