@@ -487,21 +487,57 @@ function HomePage() {
                     <span>
                       Download PEN Worldwide Fact sheets to learn more.{" "}
                       <a
-                        href="/downloads/PEN-Worldwide-Fact-Sheet-General.pdf"
+                        href="/downloads/2025-PEN-Worldwide-Fact-Sheet-General-English.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-lime underline"
                       >
-                        General Fact Sheet
+                        2025 PEN Worldwide Fact Sheet General English
                       </a>
                       {" · "}
                       <a
-                        href="/downloads/PEN-Worldwide-Fact-Sheet-Skill-Development.pdf"
+                        href="/downloads/2025-PEN-Worldwide-Fact-Sheet-Skill-Development-English.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-lime underline"
                       >
-                        Skill Development Fact Sheet
+                        2025 PEN Worldwide Fact Sheet Skill Development English
+                      </a>
+                      {" · "}
+                      <a
+                        href="/downloads/2025-PEN-Worldwide-Mentor-Company-Flyer-English.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-lime underline"
+                      >
+                        2025 PEN Worldwide Mentor Company Flyer English
+                      </a>
+                      {" · "}
+                      <a
+                        href="/downloads/2025-PEN-Worldwide-PE4Entrepreneurship-One-Pager-English.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-lime underline"
+                      >
+                        2025 PEN Worldwide PE4Entrepreneurship One Pager English
+                      </a>
+                      {" · "}
+                      <a
+                        href="/downloads/PEN-Worldwide-General-Lingo-Short.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-lime underline"
+                      >
+                        PEN Worldwide General Lingo Short
+                      </a>
+                      {" · "}
+                      <a
+                        href="/downloads/PEN-Worldwide-Poster-Vertical.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-lime underline"
+                      >
+                        PEN Worldwide Poster Vertical
                       </a>
                     </span>
                   ),

@@ -269,7 +269,7 @@ function PracticumsPage() {
                     or film in collaboration with The Seagull Films, Korea.
                   </p>
                   <p className="mt-5 text-sm text-coral uppercase font-bold tracking-wider">
-                    Registration period: JUNE 1 TO JULY 10
+                    Registration period: OPEN
                   </p>
                 </div>
               </article>
@@ -300,7 +300,7 @@ function PracticumsPage() {
                 <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-center gap-3">
                     <Calendar className="w-4 h-4 text-coral shrink-0" />
-                    <span>July 20 – August 28</span>
+                    <span>Multiple dates available</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <Clock className="w-4 h-4 text-coral shrink-0" />

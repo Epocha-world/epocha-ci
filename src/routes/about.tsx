@@ -116,7 +116,8 @@ function AboutPage() {
         <div className="max-w-2xl">
           <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">Who we serve</p>
           <h2 className="mt-3 text-4xl md:text-5xl font-bold">
-            Built for youth <span className="text-lime">and</span> industry leaders.
+            Built for <span className="text-lime">youth</span> and{" "}
+            <span className="text-lime">industry leaders</span>.
           </h2>
           <p className="mt-4 text-foreground/70">
             Whether you're a young person ready to lead, an institution investing in talent, or an

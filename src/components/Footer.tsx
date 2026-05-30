@@ -10,7 +10,7 @@ export function Footer() {
       <div className="container-x py-16 grid gap-12 md:grid-cols-12 items-start">
         <div className="md:col-span-5 max-w-md">
           <Link to="/" className="inline-flex items-center" aria-label="EPOCHA home">
-            <img src={logo} alt="EPOCHA logo" className="h-10 md:h-12 w-auto object-contain" />
+            <img src={logo} alt="EPOCHA logo" className="h-10 md:h-20 w-auto object-contain" />
           </Link>
           <p className="mt-3 text-sm text-muted-foreground leading-relaxed text-amber-400">
             A project-based learning hub dedicated to closing the gap between education and
@@ -37,7 +37,7 @@ export function Footer() {
             </li>
           </ul>
         </div>
-        <div className="md:col-span-2">
+        <div className="md:col-span-3">
           <h4 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
             Practicums
           </h4>
@@ -59,7 +59,7 @@ export function Footer() {
             </li>
           </ul>
         </div>
-        <div className="md:col-span-3">
+        <div className="md:col-span-2">
           <h4 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Connect</h4>
           <ul className="space-y-2 text-sm">
             <li>
