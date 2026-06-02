@@ -138,7 +138,7 @@ function HomePage() {
                 age: "19–29",
                 title: "Hanaro Leadership Practicum",
                 desc: "Grow your portfolio and develop strategic leadership through industry projects with our flagship experience for early-career professionals.",
-                status: "COMING (JULY 20)",
+                status: "Closed",
                 to: "/practicums",
                 hash: "hanaro-leadership",
               },

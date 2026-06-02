@@ -232,7 +232,7 @@ function PracticumsPage() {
         </div>
       </section>
 
-      <section id="hanaro-leadership" className="bg-background text-foreground scroll-mt-20">
+      <section id="hanaro-leadership" className="bg-background text-foreground scroll-mt-20 hidden">
         <div className="container-x py-24">
           <div className="max-w-3xl">
             <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">
