@@ -171,23 +171,23 @@ function TrainingPage() {
             them as people ready to contribute, given the right conditions.
           </p>
 
-          <Tabs defaultValue="t1" className="mt-12">
-            <TabsList className="h-auto flex-wrap gap-2 bg-cream/60 p-2 rounded-xl">
+          <Tabs defaultValue="t1" className="mt-12 w-full">
+            <TabsList className="grid h-auto w-full grid-cols-1 gap-2 rounded-xl border border-border bg-background/60 p-2 md:grid-cols-3">
               <TabsTrigger
                 value="t1"
-                className="px-4 py-2 text-sm md:text-base data-[state=active]:bg-background"
+                className="min-h-14 w-full border border-transparent px-4 py-3 text-center text-sm font-semibold text-foreground/75 md:text-base data-[state=active]:border-[#B87517] data-[state=active]:bg-[#E89A2B] data-[state=active]:text-[#2A1B08] data-[state=active]:shadow-md data-[state=active]:ring-2 data-[state=active]:ring-[#2A1B08]/10"
               >
                 Mental health & burnout
               </TabsTrigger>
               <TabsTrigger
                 value="t2"
-                className="px-4 py-2 text-sm md:text-base data-[state=active]:bg-background"
+                className="min-h-14 w-full border border-transparent px-4 py-3 text-center text-sm font-semibold text-foreground/75 md:text-base data-[state=active]:border-[#B87517] data-[state=active]:bg-[#E89A2B] data-[state=active]:text-[#2A1B08] data-[state=active]:shadow-md data-[state=active]:ring-2 data-[state=active]:ring-[#2A1B08]/10"
               >
                 Financial & economic uncertainty
               </TabsTrigger>
               <TabsTrigger
                 value="t3"
-                className="px-4 py-2 text-sm md:text-base data-[state=active]:bg-background"
+                className="min-h-14 w-full border border-transparent px-4 py-3 text-center text-sm font-semibold text-foreground/75 md:text-base data-[state=active]:border-[#B87517] data-[state=active]:bg-[#E89A2B] data-[state=active]:text-[#2A1B08] data-[state=active]:shadow-md data-[state=active]:ring-2 data-[state=active]:ring-[#2A1B08]/10"
               >
                 Identity & social pressures
               </TabsTrigger>
@@ -222,12 +222,15 @@ function TrainingPage() {
       </section>
 
       {/* 1c. QUOTE */}
-      <section className="bg-background text-foreground border-t border-border">
+      <section className="bg-[#2A1B08] text-white border-t border-white/10">
         <div className="container-x py-16 md:py-20">
+          <h2 className="text-center text-4xl md:text-5xl font-bold leading-[1.05]">
+            Boosting your <span style={{ color: AMBER }}>employability.</span>
+          </h2>
           <blockquote className="max-w-4xl mx-auto text-center">
-            <p className="text-2xl md:text-3xl font-semibold italic leading-snug text-foreground/90">
-              "Less confusion about where you're headed means less fear of stepping into the job
-              market. Less fear means a better start."
+            <p className="mt-8 text-2xl md:text-3xl font-semibold italic leading-snug text-white/90">
+              Less confusion about where you're headed means less fear of stepping into the job
+              market. Less fear means a better start.
             </p>
           </blockquote>
         </div>
@@ -306,22 +309,28 @@ function TrainingPage() {
               {[
                 {
                   label: "2025 PEN Worldwide Fact Sheet — General (EN)",
-                  href: "https://penworldwide.org/",
+                  href: "/downloads/2025-PEN-Worldwide-Fact-Sheet-General-English.pdf",
                 },
                 {
                   label: "2025 PEN Worldwide Fact Sheet — Skill Development (EN)",
-                  href: "https://penworldwide.org/",
+                  href: "/downloads/2025-PEN-Worldwide-Fact-Sheet-Skill-Development-English.pdf",
                 },
                 {
                   label: "2025 PEN Worldwide Mentor Company Flyer (EN)",
-                  href: "https://penworldwide.org/",
+                  href: "/downloads/2025-PEN-Worldwide-Mentor-Company-Flyer-English.pdf",
                 },
                 {
                   label: "2025 PEN Worldwide PE4Entrepreneurship One Pager (EN)",
-                  href: "https://penworldwide.org/",
+                  href: "/downloads/2025-PEN-Worldwide-PE4Entrepreneurship-One-Pager-English.pdf",
                 },
-                { label: "PEN Worldwide General Lingo Short", href: "https://penworldwide.org/" },
-                { label: "PEN Worldwide Poster Vertical", href: "https://penworldwide.org/" },
+                {
+                  label: "PEN Worldwide General Lingo Short",
+                  href: "/downloads/PEN-Worldwide-General-Lingo-Short.pdf",
+                },
+                {
+                  label: "PEN Worldwide Poster Vertical",
+                  href: "/downloads/PEN-Worldwide-Poster-Vertical.pdf",
+                },
               ].map((d) => (
                 <li key={d.label}>
                   <a
@@ -341,30 +350,32 @@ function TrainingPage() {
       </section>
 
       {/* 3. LEARNING ENVIRONMENT — tabbed */}
-      <section className="bg-cream/40 text-foreground border-t border-border">
+      <section className="bg-[#2A1B08] text-white border-t border-white/10">
         <div className="container-x py-24 md:py-28">
-          <SectionLabel>Learning environment</SectionLabel>
+          <p className="text-xs uppercase tracking-[0.22em] font-semibold text-white/55">
+            Learning environment
+          </p>
           <h2 className="mt-3 text-4xl md:text-5xl font-bold leading-[1.05]">
             Career-readiness <span style={{ color: AMBER }}>built on real practice.</span>
           </h2>
 
           <Tabs value={learningTab} onValueChange={setLearningTab} className="mt-10 w-full">
-            <TabsList className="grid h-auto w-full grid-cols-1 gap-2 rounded-xl border border-border bg-background/60 p-2 md:grid-cols-3">
+            <TabsList className="grid h-auto w-full grid-cols-1 gap-2 rounded-xl border border-white/10 bg-white/10 p-2 md:grid-cols-3">
               <TabsTrigger
                 value="le1"
-                className="min-h-14 w-full border border-transparent px-4 py-3 text-center text-sm font-semibold md:text-base data-[state=active]:border-[#B87517] data-[state=active]:bg-[#E89A2B] data-[state=active]:text-[#2A1B08] data-[state=active]:shadow-md data-[state=active]:ring-2 data-[state=active]:ring-[#2A1B08]/10"
+                className="min-h-14 w-full border border-transparent px-4 py-3 text-center text-sm font-semibold text-white/75 md:text-base data-[state=active]:border-[#B87517] data-[state=active]:bg-[#E89A2B] data-[state=active]:text-[#2A1B08] data-[state=active]:shadow-md data-[state=active]:ring-2 data-[state=active]:ring-white/20"
               >
                 Career-readiness workshops
               </TabsTrigger>
               <TabsTrigger
                 value="le2"
-                className="min-h-14 w-full border border-transparent px-4 py-3 text-center text-sm font-semibold md:text-base data-[state=active]:border-[#B87517] data-[state=active]:bg-[#E89A2B] data-[state=active]:text-[#2A1B08] data-[state=active]:shadow-md data-[state=active]:ring-2 data-[state=active]:ring-[#2A1B08]/10"
+                className="min-h-14 w-full border border-transparent px-4 py-3 text-center text-sm font-semibold text-white/75 md:text-base data-[state=active]:border-[#B87517] data-[state=active]:bg-[#E89A2B] data-[state=active]:text-[#2A1B08] data-[state=active]:shadow-md data-[state=active]:ring-2 data-[state=active]:ring-white/20"
               >
                 EPOCH awareness training
               </TabsTrigger>
               <TabsTrigger
                 value="le3"
-                className="min-h-14 w-full border border-transparent px-4 py-3 text-center text-sm font-semibold md:text-base data-[state=active]:border-[#B87517] data-[state=active]:bg-[#E89A2B] data-[state=active]:text-[#2A1B08] data-[state=active]:shadow-md data-[state=active]:ring-2 data-[state=active]:ring-[#2A1B08]/10"
+                className="min-h-14 w-full border border-transparent px-4 py-3 text-center text-sm font-semibold text-white/75 md:text-base data-[state=active]:border-[#B87517] data-[state=active]:bg-[#E89A2B] data-[state=active]:text-[#2A1B08] data-[state=active]:shadow-md data-[state=active]:ring-2 data-[state=active]:ring-white/20"
               >
                 AI fluency training
               </TabsTrigger>
@@ -372,7 +383,7 @@ function TrainingPage() {
 
             {/* Tab 1: Career-readiness */}
             <TabsContent value="le1" className="mt-8">
-              <p className="text-foreground/80 max-w-3xl leading-relaxed">
+              <p className="text-white/80 max-w-3xl leading-relaxed">
                 We skip the generic resume advice. Instead, you build core meta-skills tested in
                 live scenarios and optimized through personalized reflection.
               </p>
@@ -393,7 +404,7 @@ function TrainingPage() {
                   desc="Curiosity, sense-making, creativity, and the critical thinking to solve real problems."
                 />
               </div>
-              <p className="mt-6 text-sm italic text-foreground/70 leading-relaxed">
+              <p className="mt-6 text-sm italic text-white/70 leading-relaxed">
                 Every completed project becomes a proven success story you can share with absolute
                 confidence in any interview.
               </p>
@@ -401,7 +412,7 @@ function TrainingPage() {
 
             {/* Tab 2: EPOCH */}
             <TabsContent value="le2" className="mt-8">
-              <p className="text-foreground/80 max-w-3xl leading-relaxed">
+              <p className="text-white/80 max-w-3xl leading-relaxed">
                 Five human-centred skills, identified by MIT Sloan as the capabilities that
                 complement — rather than compete with — AI.
               </p>
@@ -454,20 +465,20 @@ function TrainingPage() {
                   bg="#E6DCF1"
                 />
               </div>
-              <div className="mt-8 rounded-2xl border border-border bg-background p-6">
+              <div className="mt-8 rounded-2xl border border-white/10 bg-white/10 p-6">
                 <p
                   className="text-xs uppercase tracking-[0.18em] font-bold"
                   style={{ color: AMBER }}
                 >
                   Interview ready
                 </p>
-                <p className="mt-3 text-foreground/85 leading-relaxed">
+                <p className="mt-3 text-white/85 leading-relaxed">
                   EPOCH helps you visualise and articulate answers to behavioural interview
                   questions — which remain the gold standard for how top employers assess human
                   potential.
                 </p>
               </div>
-              <p className="mt-6 text-sm italic text-foreground/70 leading-relaxed">
+              <p className="mt-6 text-sm italic text-white/70 leading-relaxed">
                 Every completed project becomes a proven success story you can share with absolute
                 confidence in any interview.
               </p>
@@ -475,7 +486,7 @@ function TrainingPage() {
 
             {/* Tab 3: AI fluency */}
             <TabsContent value="le3" className="mt-8">
-              <p className="text-foreground/80 max-w-3xl leading-relaxed">
+              <p className="text-white/80 max-w-3xl leading-relaxed">
                 There's a lot of noise around AI right now — fear of being replaced, guilt about
                 using it, distrust of what it produces. EPOCHA doesn't ask you to pick a side. We
                 give you the judgment to navigate all of it — critically, ethically, and
@@ -605,7 +616,7 @@ function TrainingPage() {
                     className="mt-5 text-sm uppercase font-bold tracking-wider"
                     style={{ color: AMBER }}
                   >
-                    EXPLORE
+                    <ArrowRight className="w-5 h-5" />
                   </p>
                 </div>
               </Link>

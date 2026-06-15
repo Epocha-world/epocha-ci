@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { X, MessageCircle } from "lucide-react";
-import logo from "@/assets/new-logo.svg";
+import logo from "@/assets/Logo.svg";
 
 export function Footer() {
   const [showCookie, setShowCookie] = useState(true);

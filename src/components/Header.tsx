@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
-import logo from "@/assets/new-logo.svg";
+import logo from "@/assets/Logo.svg";
 
 interface NavLink {
   to: string;

@@ -118,7 +118,7 @@ function HomePage() {
       {/* WHO WE SERVE (moved from About) */}
       <section className="container-x pt-20 pb-12">
         <div className="max-w-2xl">
-          <p className="text-xs uppercase tracking-[0.2em] text-[#B07A1A] font-bold">Who we serve</p>
+          <p className="text-xs uppercase tracking-[0.2em] text-lime font-bold">Who we serve</p>
           <h2 className="mt-3 text-4xl md:text-5xl font-bold">
             Built for youth and industry leaders.
           </h2>
@@ -159,7 +159,7 @@ function HomePage() {
               className="group relative rounded-3xl border border-border bg-muted/30 p-8 transition-all hover:border-lime hover:-translate-y-1"
             >
               <c.icon className="w-8 h-8 text-lime" />
-              <p className="mt-6 text-sm md:text-base uppercase tracking-widest text-foreground font-bold">
+              <p className="mt-6 text-xs uppercase tracking-widest text-foreground font-bold">
                 {c.tag}
               </p>
               <h3 className="mt-2 text-2xl font-bold">{c.title}</h3>
@@ -202,7 +202,7 @@ function HomePage() {
                   "Outcomes depend on where you land",
                 ].map((c) => (
                   <li key={c} className="flex gap-3 text-cream/60">
-                    <X className="w-5 h-5 text-[#B07A1A] shrink-0 mt-0.5" /> {c}
+                    <X className="w-5 h-5 text-lime shrink-0 mt-0.5" /> {c}
                   </li>
                 ))}
               </ul>
@@ -237,7 +237,7 @@ function HomePage() {
               <div className="relative">
                 <h2 className="text-5xl md:text-7xl font-bold leading-[0.95]">
                   What is a <br />
-                  <span className="text-[#B07A1A]">Practicum?</span>
+                  <span className="text-lime">Practicum?</span>
                 </h2>
               </div>
             </div>
@@ -334,7 +334,7 @@ function HomePage() {
             </div>
 
             <div className="mt-10 rounded-2xl bg-ink text-cream border border-cream/10 p-8 md:p-10">
-              <h3 className="text-2xl font-bold text-[#B07A1A]">Why it matters</h3>
+              <h3 className="text-2xl font-bold text-lime">Why it matters</h3>
               <ul className="mt-5 space-y-4">
                 {[
                   "Hands-on experience is exactly what employers look for — a practicum gives you that before you graduate or enter the job market.",
@@ -357,7 +357,7 @@ function HomePage() {
         <div className="container-x py-20 md:py-24">
           <p className="max-w-4xl mx-auto text-center text-2xl md:text-4xl font-bold leading-snug text-cream">
             A practicum is not a course. It is not an internship. It is{" "}
-            <span className="text-[#B07A1A]">learning that leaves something behind.</span>
+            <span className="text-lime">learning that leaves something behind.</span>
           </p>
         </div>
       </section>
@@ -365,7 +365,7 @@ function HomePage() {
       {/* THREE PRACTICUM TRACKS */}
       <section id="choose-your-practicum" className="bg-background text-foreground scroll-mt-20">
         <div className="container-x py-20">
-          <p className="text-xs uppercase tracking-[0.2em] text-[#B07A1A] font-bold">Available now</p>
+          <p className="text-xs uppercase tracking-[0.2em] text-lime font-bold">Available now</p>
           <h2 className="mt-3 text-4xl md:text-5xl font-bold">
             Choose your <span className="text-lime">practicum.</span>
           </h2>
@@ -416,7 +416,7 @@ function HomePage() {
                     <p className="mt-3 text-muted-foreground text-sm leading-relaxed flex-1">
                       {p.desc}
                     </p>
-                    <p className="mt-5 text-[#B07A1A]" aria-label={`Open ${p.title}`}>
+                    <p className="mt-5 text-lime" aria-label={`Open ${p.title}`}>
                       <ArrowRight className="w-5 h-5" />
                     </p>
                   </div>
@@ -503,9 +503,7 @@ function HomePage() {
       <section className="bg-background">
         <div className="container-x py-24">
           <div className="max-w-2xl">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#B07A1A] font-bold">
-              TRAINING OFFER
-            </p>
+            <p className="text-xs uppercase tracking-[0.2em] text-lime font-bold">TRAINING OFFER</p>
             <h2 className="mt-3 text-4xl md:text-5xl font-bold text-ink">
               Not just educated. <br />
               <span className="text-lime">Career-ready.</span>
@@ -594,7 +592,7 @@ function HomePage() {
           aria-hidden
         />
         <div className="container-x py-24 relative">
-          <p className="text-xs uppercase tracking-[0.2em] text-[#B07A1A] font-bold">Global standard</p>
+          <p className="text-xs uppercase tracking-[0.2em] text-lime font-bold">Global standard</p>
           <h2 className="mt-3 text-4xl md:text-5xl font-bold max-w-3xl">
             Backed by a <span className="text-lime">global network.</span>
           </h2>
@@ -714,9 +712,7 @@ function HomePage() {
       <section id="faq" className="border-t border-border">
         <div className="container-x py-24">
           <div className="text-center max-w-3xl mx-auto">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#B07A1A] font-bold">
-              FAQ
-            </p>
+            <p className="text-xs uppercase tracking-[0.2em] text-lime font-bold">FAQ</p>
             <h2 className="mt-3 text-4xl md:text-5xl font-bold">Frequently Asked Questions</h2>
           </div>
           <div className="mt-16 max-w-3xl mx-auto">

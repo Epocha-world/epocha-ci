@@ -1,6 +1,6 @@
 {
-  "last_turn_at": "2026-06-15T03:15:15.723Z",
-  "turn_count": 190,
-  "last_progress_at": "2026-06-15T03:15:15.723Z",
-  "last_agent_output": "요청한 변경 적용했습니다.\n\n변경 내용:\n- [src/routes/practicums_.hanaro-marketing.tsx](C:/Users/suptest/Developer/lo"
+  "last_turn_at": "2026-06-15T09:06:10.832Z",
+  "turn_count": 192,
+  "last_progress_at": "2026-06-15T09:06:10.832Z",
+  "last_agent_output": "요청한 Training 페이지 변경 적용했습니다.\n\n변경 내용:\n- 기존 `Boosting your employability` 본문 hero 섹션은 현재 페이지에 이미 없어서 유지"
 }
