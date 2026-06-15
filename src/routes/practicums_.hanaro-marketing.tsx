@@ -89,49 +89,65 @@ function HanaroMarketingPage() {
             A maximum of 10 participants team up to develop and lead their own project, moving through three structured phases with coaching and mentor support at every step.
           </p>
 
-          <h3 className="mt-12 text-2xl md:text-3xl font-bold">6-Week Schedule</h3>
-          <div className="mt-6 divide-y divide-border border-t border-b border-border">
-            {[
-              { week: "Weeks 1–2 · Foundation & Design", title: "Foundation & Design", desc: "Identify your cause, connect with an NGO or charity partner, and shape your project concept. Define goals, stakeholders, and a realistic plan for the weeks ahead.", tags: ["Ideation", "Partner outreach", "Planning"] },
-              { week: "Weeks 3–5 · Development & Execution", title: "Development & Project Execution", desc: "Run your campaign or initiative, manage logistics, coordinate with your partner organisation, and adapt in real time. This is where you put leadership into practice.", tags: ["Campaign execution", "Community engagement"] },
-              { week: "Week 6 · Closing", title: "Closing & Presentation", desc: "Present your project outcomes to mentors, peers, and partner organisations. Reflect on what you built, document your impact, and receive your PEN-Worldwide credentials.", tags: ["Presentation", "Certification", "Reflection"] },
-            ].map((p) => (
-              <div key={p.week} className="grid md:grid-cols-12 gap-2 md:gap-3 py-6">
-                <div className="md:col-span-4 text-xs uppercase tracking-wider text-foreground/70 font-semibold">{p.week}</div>
-                <div className="md:col-span-8">
-                  <h4 className="font-semibold">{p.title}</h4>
-                  <p className="mt-2 text-sm text-foreground/80 leading-relaxed">{p.desc}</p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {p.tags.map((t) => (
-                      <span key={t} className="inline-block text-xs px-3 py-1 rounded-full bg-[#FBE8C6] text-[#8C5A12] font-semibold">{t}</span>
-                    ))}
+          <div className="mt-12 grid gap-5 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]">
+            <div className="rounded-lg border border-border bg-card p-6 md:p-8">
+              <h3 className="text-xl font-bold">6-Week Schedule</h3>
+              <div className="mt-6 space-y-5">
+                {[
+                  { week: "Weeks 1–2 · Foundation & Design", title: "Foundation & Design", desc: "Identify your cause, connect with an NGO or charity partner, and shape your project concept. Define goals, stakeholders, and a realistic plan for the weeks ahead.", tags: ["Ideation", "Partner outreach", "Planning"] },
+                  { week: "Weeks 3–5 · Development & Execution", title: "Development & Project Execution", desc: "Run your campaign or initiative, manage logistics, coordinate with your partner organisation, and adapt in real time. This is where you put leadership into practice.", tags: ["Campaign execution", "Community engagement"] },
+                  { week: "Week 6 · Closing", title: "Closing & Presentation", desc: "Present your project outcomes to mentors, peers, and partner organisations. Reflect on what you built, document your impact, and receive your PEN-Worldwide credentials.", tags: ["Presentation", "Certification", "Reflection"] },
+                ].map((p) => (
+                  <div key={p.week} className="border-t border-border pt-5 first:border-t-0 first:pt-0">
+                    <div className="text-xs uppercase tracking-wider text-foreground/60 font-semibold">{p.week}</div>
+                    <h4 className="mt-2 font-semibold">{p.title}</h4>
+                    <p className="mt-2 text-sm text-foreground/75 leading-relaxed">{p.desc}</p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {p.tags.map((t) => (
+                        <span key={t} className="inline-block text-xs px-3 py-1 rounded-full bg-[#FBE8C6] text-[#8C5A12] font-semibold">{t}</span>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
-
-          <div className="mt-12 rounded-2xl border border-border bg-card p-6 md:p-8">
-            <div className="flex items-center gap-3">
-              <Clock className="w-5 h-5 text-[#B07A1A]" />
-              <h3 className="text-xl font-bold">Typical Day</h3>
             </div>
-            <ul className="mt-5 grid sm:grid-cols-2 gap-x-8 gap-y-2 text-sm text-foreground/85">
-              <li><span className="font-semibold">11:00 – 12:30</span> · Session 1</li>
-              <li><span className="font-semibold">12:30 – 13:20</span> · Lunch</li>
-              <li><span className="font-semibold">13:20 – 14:30</span> · Session 2</li>
-              <li><span className="font-semibold">14:30 – 14:40</span> · Break</li>
-              <li><span className="font-semibold">14:40 – 15:30</span> · Session 3</li>
-              <li><span className="font-semibold">15:30 – 16:00</span> · Daily Debrief</li>
-            </ul>
-            <p className="mt-4 text-sm text-foreground/75 leading-relaxed">
-              Each day closes with a debrief: presenting the day's output, agreeing next steps, and reflecting on what was learned — keeping the project on track and the learning visible.
-            </p>
-            <ul className="mt-5 space-y-2 text-sm text-foreground/80">
-              <li className="flex gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#B07A1A] mt-2 shrink-0" /> Mini-breaks built into each session</li>
-              <li className="flex gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#B07A1A] mt-2 shrink-0" /> Refreshments provided throughout the day</li>
-              <li className="flex gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#B07A1A] mt-2 shrink-0" /> Welcome lunch and end-of-practicum lunch provided</li>
-            </ul>
+
+            <div className="rounded-lg border border-border bg-card p-6 md:p-8">
+              <div className="flex items-center gap-3">
+                <Clock className="w-5 h-5 text-[#B07A1A]" />
+                <h3 className="text-xl font-bold">Typical Day</h3>
+              </div>
+              <div className="mt-6 divide-y divide-border overflow-hidden rounded-lg border border-border">
+                {[
+                  { time: "11:00 – 12:30", label: "Session 1" },
+                  { time: "12:30 – 13:20", label: "Lunch", isBreak: true },
+                  { time: "13:20 – 14:30", label: "Session 2" },
+                  { time: "14:30 – 14:40", label: "Break", isBreak: true },
+                  { time: "14:40 – 15:30", label: "Session 3" },
+                  { time: "15:30 – 16:00", label: "Daily Debrief", isBreak: true },
+                ].map((item) => (
+                  <div key={`${item.time}-${item.label}`} className={`grid grid-cols-[8.5rem_1fr] gap-4 px-4 py-3 text-sm ${item.isBreak ? "bg-muted/45" : "bg-background"}`}>
+                    <div className="font-semibold text-foreground">{item.time}</div>
+                    <div className="text-foreground/75">{item.label}</div>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-5 text-sm text-foreground/75 leading-relaxed">
+                Each day closes with a debrief: presenting the day's output, agreeing next steps, and reflecting on what was learned — keeping the project on track and the learning visible.
+              </p>
+              <ul className="mt-5 space-y-2 text-sm text-foreground/80">
+                {[
+                  "Mini-breaks built into each session",
+                  "Refreshments provided throughout the day",
+                  "Welcome lunch and end-of-practicum lunch provided",
+                ].map((note) => (
+                  <li key={note} className="flex gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#B07A1A] mt-2 shrink-0" />
+                    <span>{note}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
