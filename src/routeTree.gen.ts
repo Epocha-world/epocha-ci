@@ -11,10 +11,18 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PracticumsRouteImport } from './routes/practicums'
-import { Route as PartnerRouteImport } from './routes/partner'
+import { Route as HpiAssessmentRouteImport } from './routes/hpi-assessment'
+import { Route as HowHpiWorksRouteImport } from './routes/how-hpi-works'
+import { Route as HomeDemoRouteImport } from './routes/home-demo'
+import { Route as GrowWithUsRouteImport } from './routes/grow-with-us'
 import { Route as ConnectRouteImport } from './routes/connect'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PracticumsStartupLabCampRouteImport } from './routes/practicums_.startup-lab-camp'
+import { Route as PracticumsMiraeIndustryRouteImport } from './routes/practicums_.mirae-industry'
+import { Route as PracticumsHanaroMarketingRouteImport } from './routes/practicums_.hanaro-marketing'
+import { Route as AboutPartnershipsRouteImport } from './routes/about_.partnerships'
+import { Route as AboutOurStoryRouteImport } from './routes/about_.our-story'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -26,9 +34,24 @@ const PracticumsRoute = PracticumsRouteImport.update({
   path: '/practicums',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PartnerRoute = PartnerRouteImport.update({
-  id: '/partner',
-  path: '/partner',
+const HpiAssessmentRoute = HpiAssessmentRouteImport.update({
+  id: '/hpi-assessment',
+  path: '/hpi-assessment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowHpiWorksRoute = HowHpiWorksRouteImport.update({
+  id: '/how-hpi-works',
+  path: '/how-hpi-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeDemoRoute = HomeDemoRouteImport.update({
+  id: '/home-demo',
+  path: '/home-demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GrowWithUsRoute = GrowWithUsRouteImport.update({
+  id: '/grow-with-us',
+  path: '/grow-with-us',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConnectRoute = ConnectRouteImport.update({
@@ -46,31 +69,82 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PracticumsStartupLabCampRoute =
+  PracticumsStartupLabCampRouteImport.update({
+    id: '/practicums_/startup-lab-camp',
+    path: '/practicums/startup-lab-camp',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const PracticumsMiraeIndustryRoute = PracticumsMiraeIndustryRouteImport.update({
+  id: '/practicums_/mirae-industry',
+  path: '/practicums/mirae-industry',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PracticumsHanaroMarketingRoute =
+  PracticumsHanaroMarketingRouteImport.update({
+    id: '/practicums_/hanaro-marketing',
+    path: '/practicums/hanaro-marketing',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AboutPartnershipsRoute = AboutPartnershipsRouteImport.update({
+  id: '/about_/partnerships',
+  path: '/about/partnerships',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutOurStoryRoute = AboutOurStoryRouteImport.update({
+  id: '/about_/our-story',
+  path: '/about/our-story',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/connect': typeof ConnectRoute
-  '/partner': typeof PartnerRoute
+  '/grow-with-us': typeof GrowWithUsRoute
+  '/home-demo': typeof HomeDemoRoute
+  '/how-hpi-works': typeof HowHpiWorksRoute
+  '/hpi-assessment': typeof HpiAssessmentRoute
   '/practicums': typeof PracticumsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/about/our-story': typeof AboutOurStoryRoute
+  '/about/partnerships': typeof AboutPartnershipsRoute
+  '/practicums/hanaro-marketing': typeof PracticumsHanaroMarketingRoute
+  '/practicums/mirae-industry': typeof PracticumsMiraeIndustryRoute
+  '/practicums/startup-lab-camp': typeof PracticumsStartupLabCampRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/connect': typeof ConnectRoute
-  '/partner': typeof PartnerRoute
+  '/grow-with-us': typeof GrowWithUsRoute
+  '/home-demo': typeof HomeDemoRoute
+  '/how-hpi-works': typeof HowHpiWorksRoute
+  '/hpi-assessment': typeof HpiAssessmentRoute
   '/practicums': typeof PracticumsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/about/our-story': typeof AboutOurStoryRoute
+  '/about/partnerships': typeof AboutPartnershipsRoute
+  '/practicums/hanaro-marketing': typeof PracticumsHanaroMarketingRoute
+  '/practicums/mirae-industry': typeof PracticumsMiraeIndustryRoute
+  '/practicums/startup-lab-camp': typeof PracticumsStartupLabCampRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/connect': typeof ConnectRoute
-  '/partner': typeof PartnerRoute
+  '/grow-with-us': typeof GrowWithUsRoute
+  '/home-demo': typeof HomeDemoRoute
+  '/how-hpi-works': typeof HowHpiWorksRoute
+  '/hpi-assessment': typeof HpiAssessmentRoute
   '/practicums': typeof PracticumsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/about_/our-story': typeof AboutOurStoryRoute
+  '/about_/partnerships': typeof AboutPartnershipsRoute
+  '/practicums_/hanaro-marketing': typeof PracticumsHanaroMarketingRoute
+  '/practicums_/mirae-industry': typeof PracticumsMiraeIndustryRoute
+  '/practicums_/startup-lab-camp': typeof PracticumsStartupLabCampRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -78,28 +152,66 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/connect'
-    | '/partner'
+    | '/grow-with-us'
+    | '/home-demo'
+    | '/how-hpi-works'
+    | '/hpi-assessment'
     | '/practicums'
     | '/sitemap.xml'
+    | '/about/our-story'
+    | '/about/partnerships'
+    | '/practicums/hanaro-marketing'
+    | '/practicums/mirae-industry'
+    | '/practicums/startup-lab-camp'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/connect' | '/partner' | '/practicums' | '/sitemap.xml'
+  to:
+    | '/'
+    | '/about'
+    | '/connect'
+    | '/grow-with-us'
+    | '/home-demo'
+    | '/how-hpi-works'
+    | '/hpi-assessment'
+    | '/practicums'
+    | '/sitemap.xml'
+    | '/about/our-story'
+    | '/about/partnerships'
+    | '/practicums/hanaro-marketing'
+    | '/practicums/mirae-industry'
+    | '/practicums/startup-lab-camp'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/connect'
-    | '/partner'
+    | '/grow-with-us'
+    | '/home-demo'
+    | '/how-hpi-works'
+    | '/hpi-assessment'
     | '/practicums'
     | '/sitemap.xml'
+    | '/about_/our-story'
+    | '/about_/partnerships'
+    | '/practicums_/hanaro-marketing'
+    | '/practicums_/mirae-industry'
+    | '/practicums_/startup-lab-camp'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ConnectRoute: typeof ConnectRoute
-  PartnerRoute: typeof PartnerRoute
+  GrowWithUsRoute: typeof GrowWithUsRoute
+  HomeDemoRoute: typeof HomeDemoRoute
+  HowHpiWorksRoute: typeof HowHpiWorksRoute
+  HpiAssessmentRoute: typeof HpiAssessmentRoute
   PracticumsRoute: typeof PracticumsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  AboutOurStoryRoute: typeof AboutOurStoryRoute
+  AboutPartnershipsRoute: typeof AboutPartnershipsRoute
+  PracticumsHanaroMarketingRoute: typeof PracticumsHanaroMarketingRoute
+  PracticumsMiraeIndustryRoute: typeof PracticumsMiraeIndustryRoute
+  PracticumsStartupLabCampRoute: typeof PracticumsStartupLabCampRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -118,11 +230,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PracticumsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/partner': {
-      id: '/partner'
-      path: '/partner'
-      fullPath: '/partner'
-      preLoaderRoute: typeof PartnerRouteImport
+    '/hpi-assessment': {
+      id: '/hpi-assessment'
+      path: '/hpi-assessment'
+      fullPath: '/hpi-assessment'
+      preLoaderRoute: typeof HpiAssessmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-hpi-works': {
+      id: '/how-hpi-works'
+      path: '/how-hpi-works'
+      fullPath: '/how-hpi-works'
+      preLoaderRoute: typeof HowHpiWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home-demo': {
+      id: '/home-demo'
+      path: '/home-demo'
+      fullPath: '/home-demo'
+      preLoaderRoute: typeof HomeDemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/grow-with-us': {
+      id: '/grow-with-us'
+      path: '/grow-with-us'
+      fullPath: '/grow-with-us'
+      preLoaderRoute: typeof GrowWithUsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/connect': {
@@ -146,6 +279,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/practicums_/startup-lab-camp': {
+      id: '/practicums_/startup-lab-camp'
+      path: '/practicums/startup-lab-camp'
+      fullPath: '/practicums/startup-lab-camp'
+      preLoaderRoute: typeof PracticumsStartupLabCampRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/practicums_/mirae-industry': {
+      id: '/practicums_/mirae-industry'
+      path: '/practicums/mirae-industry'
+      fullPath: '/practicums/mirae-industry'
+      preLoaderRoute: typeof PracticumsMiraeIndustryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/practicums_/hanaro-marketing': {
+      id: '/practicums_/hanaro-marketing'
+      path: '/practicums/hanaro-marketing'
+      fullPath: '/practicums/hanaro-marketing'
+      preLoaderRoute: typeof PracticumsHanaroMarketingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about_/partnerships': {
+      id: '/about_/partnerships'
+      path: '/about/partnerships'
+      fullPath: '/about/partnerships'
+      preLoaderRoute: typeof AboutPartnershipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about_/our-story': {
+      id: '/about_/our-story'
+      path: '/about/our-story'
+      fullPath: '/about/our-story'
+      preLoaderRoute: typeof AboutOurStoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -153,9 +321,17 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ConnectRoute: ConnectRoute,
-  PartnerRoute: PartnerRoute,
+  GrowWithUsRoute: GrowWithUsRoute,
+  HomeDemoRoute: HomeDemoRoute,
+  HowHpiWorksRoute: HowHpiWorksRoute,
+  HpiAssessmentRoute: HpiAssessmentRoute,
   PracticumsRoute: PracticumsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  AboutOurStoryRoute: AboutOurStoryRoute,
+  AboutPartnershipsRoute: AboutPartnershipsRoute,
+  PracticumsHanaroMarketingRoute: PracticumsHanaroMarketingRoute,
+  PracticumsMiraeIndustryRoute: PracticumsMiraeIndustryRoute,
+  PracticumsStartupLabCampRoute: PracticumsStartupLabCampRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,520 +1,461 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import {
   ArrowRight,
-  FileText,
+  ArrowUpRight,
+  UserCheck,
+  Globe,
+  Users,
+  RefreshCw,
+  Briefcase,
+  Cpu,
+  Frown,
+  Wallet,
   Sparkles,
-  CheckCircle2,
-  Send,
-  Gift,
-  GraduationCap,
-  Dock,
-  Calendar,
-  Clock,
-  MapPin,
-  Languages,
-  MessageCircle,
-  TvMinimalPlay,
-  ClipboardList,
-  Clapperboard,
+  FileText,
+  Download,
 } from "lucide-react";
-import student from "@/assets/student.jpg";
-import epochaXUpperclassQR from "@/assets/epocha-x-upperclass-qr.png";
+import leadershipCamp from "@/assets/practicum-leadership-camp.jpg";
 import advisoryBoard from "@/assets/practicum-advisory-board.jpg";
-import seagullLogo from "@/assets/the-seagull-films-logo.png";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import hanaro from "@/assets/practicum-hanaro.jpg";
 
 export const Route = createFileRoute("/practicums")({
   head: () => ({
     meta: [
-      { title: "Practicums — EPOCHA" },
+      { title: "Training — EPOCHA" },
       {
         name: "description",
         content:
-          "Project-based practicums boosting your employability — real experience, recognized credentials, coaching, and competencies employers want.",
+          "EPOCHA training: the Practice Enterprise model, MIT-research-backed EPOCH awareness, AI fluency with QualitaX, and career-readiness skills that don't expire.",
       },
-      { property: "og:title", content: "EPOCHA Practicums" },
-      { property: "og:description", content: "Turn academic effort into career momentum." },
-      { property: "og:image", content: student },
+      { property: "og:title", content: "Training — EPOCHA" },
+      {
+        property: "og:description",
+        content:
+          "Boosting your employability through Practice Enterprise, EPOCH awareness, AI fluency, and career readiness.",
+      },
     ],
   }),
-  component: PracticumsPage,
+  component: TrainingPage,
 });
 
-function PracticumsPage() {
+const NAVY = "#2A1B08";
+const AMBER = "#E89A2B";
+const PILL_BG = "#FBE8C6";
+const PILL_TEXT = "#8C5A12";
+
+const trackImages = [leadershipCamp, advisoryBoard, hanaro];
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="text-xs uppercase tracking-[0.22em] font-semibold text-foreground/55">
+      {children}
+    </p>
+  );
+}
+
+function Card({
+  icon: Icon,
+  title,
+  desc,
+  iconBg,
+  iconColor,
+  step,
+}: {
+  icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
+  title: string;
+  desc: string;
+  iconBg?: string;
+  iconColor?: string;
+  step?: string;
+}) {
+  return (
+    <div className="rounded-2xl border border-border bg-card p-6 flex flex-col h-full">
+      {step && (
+        <div className="flex justify-end text-xs text-foreground/50 font-medium mb-2">{step}</div>
+      )}
+      <div
+        className="w-9 h-9 rounded-full flex items-center justify-center"
+        style={{ background: iconBg ?? "transparent" }}
+      >
+        <Icon className="w-5 h-5" style={{ color: iconColor ?? AMBER }} />
+      </div>
+      <h3 className="mt-4 font-semibold text-foreground">{title}</h3>
+      <p className="mt-2 text-sm text-foreground/70 leading-relaxed">{desc}</p>
+    </div>
+  );
+}
+
+function LetterCard({
+  letter,
+  title,
+  desc,
+  color,
+  bg,
+}: {
+  letter: string;
+  title: string;
+  desc: string;
+  color: string;
+  bg: string;
+}) {
+  return (
+    <div className="rounded-2xl border border-border bg-card p-6 flex flex-col h-full">
+      <div
+        className="w-10 h-10 rounded-full flex items-center justify-center font-bold"
+        style={{ background: bg, color }}
+      >
+        {letter}
+      </div>
+      <h3 className="mt-4 font-semibold text-foreground">{title}</h3>
+      <p className="mt-2 text-sm text-foreground/70 leading-relaxed">{desc}</p>
+    </div>
+  );
+}
+
+function Pill({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex items-center text-xs px-3 py-1.5 rounded-full bg-cream/60 border border-border text-foreground/80">
+      {children}
+    </span>
+  );
+}
+
+function LinkPill({ children }: { children: React.ReactNode }) {
+  return (
+    <span
+      className="inline-flex items-center gap-2 text-xs px-3 py-1.5 rounded-full font-semibold"
+      style={{ background: PILL_BG, color: PILL_TEXT }}
+    >
+      <ArrowUpRight className="w-3.5 h-3.5" />
+      {children}
+    </span>
+  );
+}
+
+function TrainingPage() {
   return (
     <>
-      <section className="container-x pt-20 pb-16 grid lg:grid-cols-12 gap-12 items-center">
-        <div className="lg:col-span-7">
-          <p className="text-xs uppercase tracking-[0.2em] text-coral text-black font-bold">​</p>
-          <h1 className="mt-4 text-5xl md:text-7xl font-bold leading-[1]">
-            Boosting your <span className="text-lime">employability.</span>
+      {/* 1. HERO — LIGHT */}
+      <section className="bg-background text-foreground">
+        <div className="container-x pt-28 pb-20 md:pt-36 md:pb-28">
+          <h1 className="text-5xl md:text-7xl font-bold leading-[1]">
+            Boosting your <span style={{ color: AMBER }}>employability.</span>
           </h1>
-          <p className="mt-6 text-xl text-foreground/80 max-w-xl">
+          <p className="mt-7 text-lg md:text-xl text-foreground/75 max-w-3xl leading-relaxed">
             EPOCHA transforms how you leverage experiential learning. We help you turn academic
-            efforts into career momentum, with the real-world experience, connections, and
-            confidence to thrive from day one.
+            effort into career momentum — building skills that don't expire with work experience,
+            connections, and the confidence to thrive from day one.
           </p>
         </div>
-        <div className="lg:col-span-5">
-          <div className="rounded-3xl overflow-hidden border border-border aspect-[4/5]">
-            <img
-              src={student}
-              alt="EPOCHA student"
-              width={1200}
-              height={1400}
-              loading="lazy"
-              className="w-full h-full object-cover"
+      </section>
+
+      {/* 1b. WHY PRACTICUM TRAINING MATTERS — LIGHT */}
+      <section className="bg-cream/40 text-foreground border-t border-border">
+        <div className="container-x py-24 md:py-28">
+          <SectionLabel>Why practicum training matters</SectionLabel>
+          <h2 className="mt-3 text-4xl md:text-5xl font-bold leading-[1.05]">
+            Gen Z challenges are real. <span style={{ color: AMBER }}>So is our response.</span>
+          </h2>
+          <p className="mt-6 text-lg text-foreground/75 max-w-3xl leading-relaxed">
+            Our practicum training starts from the real obstacles young people face and what it actually takes to overcome them. We don't see young people as problems to fix. We see them as people ready to contribute, given the right conditions.
+          </p>
+
+          <Tabs defaultValue="t1" className="mt-12">
+            <TabsList className="h-auto flex-wrap gap-2 bg-cream/60 p-2 rounded-xl">
+              <TabsTrigger value="t1" className="px-4 py-2 text-sm md:text-base data-[state=active]:bg-background">
+                Mental health & burnout
+              </TabsTrigger>
+              <TabsTrigger value="t2" className="px-4 py-2 text-sm md:text-base data-[state=active]:bg-background">
+                Financial & economic uncertainty
+              </TabsTrigger>
+              <TabsTrigger value="t3" className="px-4 py-2 text-sm md:text-base data-[state=active]:bg-background">
+                Identity & social pressures
+              </TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="t1" className="mt-8">
+              <ChallengeResponse
+                challengeTitle="Anxiety, burnout, and disengagement"
+                challengeText="Constant comparison, academic pressure, and an uncertain future have left many young people feeling like they're falling behind before they've even started, exhausted by expectations they had no part in setting."
+                responseTitle="A supportive cohort and visible progress"
+                responseText="Practicums place participants in a supported cohort with coaching built in. Progress is tracked and made visible, so it feels real rather than performative. Small, genuine wins rebuild confidence and momentum."
+              />
+            </TabsContent>
+            <TabsContent value="t2" className="mt-8">
+              <ChallengeResponse
+                challengeTitle="Rising costs, and shrinking opportunities"
+                challengeText="An unstable job market and shrinking entry-level roles make it harder than ever to get started. Many can't afford unpaid internships and lack the support to articulate the experience they gain through gig work. This leaves them struggling to showcase the exact skills employers are looking for."
+                responseTitle="Verified credentials and access"
+                responseText="Practicums build a verified portfolio and skills profile that shortens the path to paid work. Meanwhile, lower pricing and scholarships reduce financial barriers to participation. Finally, AI fluency training future-proofs participants for a fast-changing labor market."
+              />
+            </TabsContent>
+            <TabsContent value="t3" className="mt-8">
+              <ChallengeResponse
+                challengeTitle="Pressure to have it all figured out"
+                challengeText="Constant social comparison and the fear of failing in public make it hard for young people to take risks, be authentic, or admit they don't yet know who they want to be."
+                responseTitle="A safe space to grow on your own terms"
+                responseText="Practicums are a space for young people to experiment and fail without judgement. Our training program centers on personal growth, where learning in a cohort allows them to collaborate in a supportive environment that channels healthy competition for mutual growth."
+              />
+            </TabsContent>
+          </Tabs>
+        </div>
+      </section>
+
+      {/* 1c. QUOTE */}
+      <section className="bg-background text-foreground border-t border-border">
+        <div className="container-x py-16 md:py-20">
+          <blockquote className="max-w-4xl mx-auto text-center">
+            <p className="text-2xl md:text-3xl font-semibold italic leading-snug text-foreground/90">
+              "Less confusion about where you're headed means less fear of stepping into the job market. Less fear means a better start."
+            </p>
+          </blockquote>
+        </div>
+      </section>
+
+      {/* 2. TRAINING CONCEPT — Practice Enterprise model — LIGHT */}
+      <section className="bg-background text-foreground">
+        <div className="container-x py-24 md:py-28">
+          <SectionLabel>Training concept</SectionLabel>
+          <h2 className="mt-3 text-4xl md:text-5xl font-bold leading-[1.05]">
+            The <span style={{ color: AMBER }}>Practice Enterprise</span> model.
+          </h2>
+          <p className="mt-6 text-lg text-foreground/75 max-w-3xl leading-relaxed">
+            At the heart of every EPOCHA practicum is the Practice Enterprise — an internationally
+            proven, award-winning training model where you don't just learn about work. You do it.
+          </p>
+
+          <blockquote className="mt-8 border-l-4 pl-6" style={{ borderColor: AMBER }}>
+            <p className="italic text-foreground/85 leading-relaxed">
+              A Practice Enterprise is a trainee-run company that operates like a real business — from product development and marketing to finance and human resources. Trainees are the employees and managers.
+            </p>
+            <footer className="mt-3 text-sm text-foreground/55">— PEN Worldwide, Practice Enterprise Training Concept</footer>
+          </blockquote>
+
+          <div className="mt-8">
+            <a
+              href="https://penworldwide.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex"
+            >
+              <LinkPill>PEN Worldwide — Practice Enterprise concept</LinkPill>
+            </a>
+          </div>
+
+          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <Card
+              icon={UserCheck}
+              title="Ownership"
+              desc="You take responsibility for your own learning and work at your own pace within a real structure."
+            />
+            <Card
+              icon={Globe}
+              title="Experience"
+              desc="Dive into authentic, practical work. We trade hypothetical case studies and staged tests for real industry experience."
+            />
+            <Card
+              icon={Users}
+              title="Cooperation"
+              desc="You work alongside peers, learning the real demands of teamwork and cross-functional collaboration."
+            />
+            <Card
+              icon={RefreshCw}
+              title="Reflection"
+              desc="You experience the consequences of your decisions and apply that learning to future challenges."
             />
           </div>
-        </div>
-      </section>
 
-      <section id="epocha-x-upperclass" className="bg-ink text-cream scroll-mt-20">
-        <div className="container-x py-24">
-          <div className="max-w-3xl">
-            <p className="text-xs uppercase tracking-[0.2em] text-lime font-bold">
-              EPOCHA X UpperClass
+          <div className="mt-8 flex flex-wrap gap-2">
+            <Pill>ETF 3-star excellent practice</Pill>
+            <Pill>40+ countries</Pill>
+            <Pill>PEN Worldwide network</Pill>
+            <Pill>Work-based learning</Pill>
+          </div>
+
+          <div className="mt-12 rounded-2xl border border-border bg-cream/40 p-6 md:p-8">
+            <p className="font-semibold text-foreground flex items-center gap-2">
+              <Download className="w-5 h-5" style={{ color: AMBER }} />
+              Download PEN Worldwide Fact sheets to learn more.
             </p>
-            <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-[1.05]">
-              Join us as&nbsp;
-              <span className="text-lime">content creator</span>
-              <br />
-              for EPOCHA.
-            </h2>
-          </div>
-
-          <div className="mt-14 grid lg:grid-cols-12 gap-12 items-start">
-            {/* LEFT: card */}
-            <div className="lg:col-span-5">
-              <article className="rounded-3xl border border-cream/15 bg-cream text-ink overflow-hidden flex flex-col">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={advisoryBoard}
-                    alt="EPOCHA X UpperClass students collaborating"
-                    width={1400}
-                    height={1000}
-                    loading="lazy"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-7 flex flex-col">
-                  <span className="inline-block self-start text-xs px-3 py-1 rounded-full bg-lime text-ink font-semibold">
-                    19–29 years old
-                  </span>
-                  <h3 className="mt-4 text-2xl font-bold">EPOCHA X UpperClass</h3>
-                  <p className="mt-3 text-ink/70 text-sm leading-relaxed">
-                    Lead real projects, run marketing campaigns or business operations, and shape
-                    the EPOCHA experience for future cohorts.
-                  </p>
-                  <p className="mt-5 text-sm text-coral uppercase font-bold tracking-wider">
-                    Submission period: june 1 - july 1 2026
-                  </p>
-                </div>
-              </article>
-
-              <div className="mt-6 rounded-2xl border border-cream/10 bg-white/5 p-5">
-                <p className="text-xs uppercase font-bold tracking-wider text-lime">How to apply</p>
-                <p className="mt-2 text-sm text-cream/80 leading-relaxed">
-                  Apply on UpperClass or scan the QR code to start building your creator portfolio.
-                </p>
-                <div className="mt-4 flex items-center gap-4">
-                  <div className="bg-cream p-3 rounded-xl w-fit shrink-0">
-                    <img
-                      src={epochaXUpperclassQR}
-                      alt="QR code to apply for EPOCHA X UpperClass practicum"
-                      width={160}
-                      height={160}
-                      loading="lazy"
-                      className="w-32 h-32"
-                    />
-                  </div>
+            <ul className="mt-4 grid sm:grid-cols-2 gap-2 text-sm">
+              {[
+                { label: "2025 PEN Worldwide Fact Sheet — General (EN)", href: "https://penworldwide.org/" },
+                { label: "2025 PEN Worldwide Fact Sheet — Skill Development (EN)", href: "https://penworldwide.org/" },
+                { label: "2025 PEN Worldwide Mentor Company Flyer (EN)", href: "https://penworldwide.org/" },
+                { label: "2025 PEN Worldwide PE4Entrepreneurship One Pager (EN)", href: "https://penworldwide.org/" },
+                { label: "PEN Worldwide General Lingo Short", href: "https://penworldwide.org/" },
+                { label: "PEN Worldwide Poster Vertical", href: "https://penworldwide.org/" },
+              ].map((d) => (
+                <li key={d.label}>
                   <a
-                    href="https://upperclass.app/i/epocha/join"
+                    href={d.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-primary inline-flex"
+                    className="inline-flex items-start gap-2 text-foreground/80 hover:text-foreground"
                   >
-                    Apply on UpperClass <ArrowRight className="w-4 h-4" />
+                    <FileText className="w-4 h-4 mt-0.5 shrink-0" style={{ color: AMBER }} />
+                    <span>{d.label}</span>
                   </a>
-                </div>
-              </div>
-            </div>
-
-            {/* RIGHT: details */}
-            <div className="lg:col-span-7">
-              <p className="text-lg text-cream/80">
-                Join the EPOCHA X UpperClass practicum and turn your ideas into content, campaigns,
-                and campus impact.
-              </p>
-
-              <ol className="mt-8 space-y-4">
-                {[
-                  {
-                    icon: FileText,
-                    title: "Receive the brief",
-                    desc: "Get an EPOCHA campaign brief with the goal, message, and creative direction.",
-                  },
-                  {
-                    icon: Sparkles,
-                    title: "Create authentic content",
-                    desc: "Produce short-form content for Instagram, TikTok, LinkedIn, or Facebook.",
-                  },
-                  {
-                    icon: Send,
-                    title: "Submit for approval",
-                    desc: "Send your draft for a quick review by the EPOCHA team.",
-                  },
-                  {
-                    icon: CheckCircle2,
-                    title: "Publish if approved",
-                    desc: "Once approved, publish on your channels and tag EPOCHA.",
-                  },
-                  {
-                    icon: Gift,
-                    title: "Earn your reward",
-                    desc: "Get rewarded when your content is approved and live.",
-                  },
-                ].map((step, i) => (
-                  <li
-                    key={step.title}
-                    className="flex gap-4 rounded-2xl border border-cream/10 bg-white/5 p-5"
-                  >
-                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-lime text-ink shrink-0 font-bold">
-                      {i + 1}
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <step.icon className="w-4 h-4 text-lime" />
-                        <h4 className="font-semibold">{step.title}</h4>
-                      </div>
-                      <p className="mt-1 text-sm text-cream/70 leading-relaxed">{step.desc}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-
-              <div className="mt-10">
-                <p className="text-xs uppercase font-bold tracking-wider text-coral">FAQ</p>
-                <h3 className="mt-2 text-2xl font-bold">Frequently asked questions</h3>
-                <Accordion type="single" collapsible className="mt-4">
-                  {[
-                    {
-                      q: "What do I walk away with?",
-                      a: "A verified creator portfolio with published campaigns, hands-on experience producing short-form content across Instagram, TikTok, LinkedIn, and Facebook, plus rewards for every approved and live piece of content. 2026 submission rewards includes cash, and points redeemable to UpperClass marketplace, and/or gift cards.",
-                    },
-                    {
-                      q: "Do I need a large following to apply?",
-                      a: "No. EPOCHA X UpperClass is about authentic ideas and execution, not follower count. We care about your creativity, voice, and willingness to learn.",
-                    },
-                    {
-                      q: "Will EPOCHA tell me exactly what to do?",
-                      a: "You'll receive a clear campaign brief with goals, key messages, and creative direction — but the ideas, format, and voice are yours. We review and approve before you publish.",
-                    },
-                  ].map((item, i) => (
-                    <AccordionItem key={item.q} value={`faq-${i}`} className="border-cream/10">
-                      <AccordionTrigger className="text-cream hover:no-underline text-base font-semibold py-5">
-                        {item.q}
-                      </AccordionTrigger>
-                      <AccordionContent className="text-cream/70 text-sm leading-relaxed pb-5">
-                        {item.a}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </div>
-            </div>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
 
-      <section id="hanaro-leadership" className="bg-background text-foreground scroll-mt-20 hidden">
-        <div className="container-x py-24">
-          <div className="max-w-3xl">
-            <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">
-              하나로 - Hanaro Leadership
-            </p>
-            <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-[1.05]">
-              Become a <span className="text-coral">Hanaro leader</span>
-              <br />
-              in your community.
-            </h2>
-          </div>
-
-          <div className="mt-14 grid lg:grid-cols-12 gap-12 items-start">
-            {/* LEFT: card */}
-            <div className="lg:col-span-5">
-              <article className="rounded-3xl border border-border bg-card text-foreground overflow-hidden flex flex-col">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={advisoryBoard}
-                    alt="Hanaro Leadership practicum students"
-                    width={1400}
-                    height={1000}
-                    loading="lazy"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-7 flex flex-col">
-                  <span className="inline-block self-start text-xs px-3 py-1 rounded-full bg-coral text-cream font-semibold">
-                    19–29 years old
-                  </span>
-                  <h3 className="mt-4 text-2xl font-bold">하나로 - Hanaro Leadership Practicum</h3>
-                  <p className="mt-3 text-muted-foreground text-sm leading-relaxed">
-                    Team up with nine others to develop, produce, and showcase a short documentary
-                    or film in collaboration with The Seagull Films, Korea.
-                  </p>
-                  <p className="mt-5 text-sm text-coral uppercase font-bold tracking-wider">
-                    Registration period: OPEN
-                  </p>
-                </div>
-              </article>
-
-              <div className="mt-6 rounded-2xl border border-border bg-card p-5">
-                <p className="text-xs uppercase font-bold tracking-wider text-coral">
-                  How to REGISTER
-                </p>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                  Submit your registration form. We accept a maximum of 30 trainees.
-                </p>
-                <div className="mt-4">
-                  <a
-                    href="https://tally.so/r/gD78al"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-primary inline-flex"
-                  >
-                    Register now <ArrowRight className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
-
-              <div className="mt-6 rounded-2xl border border-border bg-card p-5">
-                <p className="text-xs uppercase font-bold tracking-wider text-coral">
-                  Practicum details
-                </p>
-                <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-center gap-3">
-                    <Calendar className="w-4 h-4 text-coral shrink-0" />
-                    <span>Multiple dates available</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Clock className="w-4 h-4 text-coral shrink-0" />
-                    <span>9:00 AM – 1:00 PM KST</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <MapPin className="w-4 h-4 text-coral shrink-0" />
-                    <span>Seoul, South Korea</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Languages className="w-4 h-4 text-coral shrink-0" />
-                    <span>English</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="mt-6 rounded-2xl border border-border bg-card p-5">
-                <p className="text-xs uppercase font-bold tracking-wider text-coral">
-                  Industry Partner
-                </p>
-                <div className="mt-3 flex items-center gap-3">
-                  <img
-                    src={seagullLogo}
-                    alt="The Seagull Films logo"
-                    width={48}
-                    height={48}
-                    className="w-12 h-12 object-contain"
-                  />
-                  <h4 className="text-lg font-bold">The Seagull Films, Korea</h4>
-                </div>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                  The Seagull Films is an international production company dedicated to socially
-                  impactful, culturally rich cinema. With a strong focus on Asian–European
-                  co-productions and voices worldwide, they champion stories that explore freedom,
-                  identity, and human rights tackling themes of censorship, oppression, and
-                  resistance. Driven by artistic integrity and a belief in film as a force for
-                  change, The Seagull Films brings together filmmakers and producers across borders
-                  to create work that is both artistically ambitious and deeply resonant.
-                </p>
-                <div className="mt-4">
-                  <a
-                    href="https://www.theseagullfilms.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-primary inline-flex"
-                  >
-                    Learn more <ArrowRight className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
-
-              <div className="mt-6 rounded-2xl border border-border bg-card p-5">
-                <p className="text-xs uppercase font-bold tracking-wider text-coral">Questions?</p>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                  Message us on WhatsApp for any queries.
-                </p>
-                <div className="mt-4">
-                  <a
-                    href="https://wa.me/447801202799"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Chat with us on WhatsApp"
-                    className="btn-primary inline-flex"
-                  >
-                    <MessageCircle className="w-4 h-4" /> +44 7801 202 799
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* RIGHT: details */}
-            <div className="lg:col-span-7">
-              <p className="text-lg text-muted-foreground">
-                Become a Hanaro Leader in your community. Explore diverse career pathways across the
-                film and production industry, from creative and technical roles to business and
-                leadership positions.
-              </p>
-
-              <ol className="mt-8 space-y-4">
-                {[
-                  {
-                    icon: ClipboardList,
-                    title: "Register your interest",
-                    desc: "Fill out and submit the short registration form to let us know you're in.",
-                  },
-                  {
-                    icon: Dock,
-                    title: "Receive the practicum information",
-                    desc: "We'll send you the practicum prospectus including, schedule, fees, and what to expect in Seoul.",
-                  },
-                  {
-                    icon: Send,
-                    title: "Confirm your spot",
-                    desc: "If you like what you see, pay the practicum fee to secure one of the 30 trainee seats.",
-                  },
-                  {
-                    icon: Clapperboard,
-                    title: "Produce a short film",
-                    desc: "Collaborate with nine other trainees and The Seagull Films, Korea to develop, produce, and showcase a short documentary or film.",
-                  },
-                  {
-                    icon: GraduationCap,
-                    title: "Earn verified credentials",
-                    desc: "Earn your PEN Worldwide credential and update your portfolio with us.",
-                  },
-                ].map((step, i) => (
-                  <li
-                    key={step.title}
-                    className="flex gap-4 rounded-2xl border border-border bg-card p-5"
-                  >
-                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-coral text-cream shrink-0 font-bold">
-                      {i + 1}
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <step.icon className="w-4 h-4 text-coral" />
-                        <h4 className="font-semibold">{step.title}</h4>
-                      </div>
-                      <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
-                        {step.desc}
-                      </p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-
-              <div className="mt-10">
-                <p className="text-xs uppercase font-bold tracking-wider text-coral">FAQ</p>
-                <h3 className="mt-2 text-2xl font-bold">Frequently asked questions</h3>
-                <Accordion type="single" collapsible className="mt-4">
-                  {[
-                    {
-                      q: "What does Hanaro mean?",
-                      a: "The name Hanaro ( 하나로 ) is drawn directly from the Korean language. 하나 (hana) means one, and 로 (ro) is a directional particle meaning toward, into, or by way of. Together, 하나로 carries the meaning of into one evoking convergence, unity, and the idea of many people and perspectives coming together as a single force. The name was chosen deliberately. For young adults navigating the transition from education into professional life, often across cultures, borders, and identities, the experience of finding a single path forward, a unified sense of direction and purpose, is both deeply personal and profoundly relevant. Hanaro names that journey.",
-                    },
-                    {
-                      q: "Who is the Hanaro Leadership practicum for?",
-                      a: "Students and young professionals (19–29) who want to develop leadership skills and lead real projects in their community or organization.",
-                    },
-                    {
-                      q: "What is the time commitment?",
-                      a: "The practicum runs over six weeks with a mix of workshops, coaching sessions, and project work. Exact schedule shared in the practicum prospectus.",
-                    },
-                    {
-                      q: "Do I receive a certificate?",
-                      a: "Yes. Upon completion you receive a certificate recognized by PEN Worldwide.",
-                    },
-                    {
-                      q: "How does the project work? Who do I work with?",
-                      a: "You join or form a Practice Enterprise, a team of up to 10 trainees who work together. Your Practice Enterprise operates with the same structure and accountability you would find in any professional setting, within the safety net of Epocha's guidance throughout.",
-                    },
-                    {
-                      q: "Can a Practice Enterprise earn real money?",
-                      a: "Yes. Your Practice Enterprise operates in the real world — which means the work your team does can generate genuine revenue. This is not a simulation. If your work creates value, that value is real.",
-                    },
-                    {
-                      q: "What happens to the money the Practice Enterprise earns?",
-                      a: "Revenue generated during a practicum stays within the Epocha ecosystem. At the end of the practicum, your team decides together how to put it to work. You have three options: \n\n1. Pay it forward: contribute to the Epocha Scholarship Fund, opening the door for the next cohort of young people. \n\n2. Invest in yourselves: apply it toward the cost of a future Epocha practicum. \n\n3. Keep building: continue running your Practice Enterprise under Epocha's guidance and grow what you started.",
-                    },
-                    {
-                      q: "What happens to money the Practice Enterprise earns after the practicum ends?",
-                      a: "Once your practicum is complete, anything your Practice Enterprise generates beyond that point is entirely yours and your team's — full stop. Epocha takes nothing. No cut. No conditions. No hidden terms. What we ask in return is simple and it has nothing to do with money: Pay it forward: when the time comes, show up for the next generation the way someone showed up for you. Mentor a future trainee, open a door, share what you know. Carry the standard: represent what Epocha stands for in everything you build next. Your success is our proof of concept. Stay connected: remain part of the Epocha community. The network you build here grows more valuable the more people invest in it together.",
-                    },
-                    {
-                      q: "Do I need a degree or prior experience to join?",
-                      a: "No. What matters is not what is on your resume. What matters is that you show up ready to contribute, work as part of a team, and take your role seriously. Everything else is what the practicum is here to build.",
-                    },
-                    {
-                      q: "Who owns the work created during the practicum?",
-                      a: "Great question, and an important one. Any intellectual property developed during a practicum is jointly owned by Epocha, the Practice Enterprise, and the industry partner involved. Both Epocha and the industry partner hold a non-exclusive license to use that work for commercial purposes.",
-                    },
-                    {
-                      q: "Is accommodation included in the practicum fee?",
-                      a: "Accommodation is not included in the practicum fee. Trainees are responsible for arranging and funding their own housing.",
-                    },
-                    {
-                      q: "Do I need a visa to participate?",
-                      a: "For most international participants, completing a practicum in South Korea do not require a visa — most nationalities are permitted to complete short training programs when entering South Korea visa-free for stays of up to 90 days, which comfortably covers the full range of Hanaro practicum durations.\n\nThat said, entry requirements vary by nationality and are subject to change. Each trainee remains solely responsible for verifying their own visa and entry requirements before the program begins.\n\nWe recommend:\n\n• Confirming your country's visa-free status for South Korea before registering\n• Ensuring your passport is valid for the full duration of your stay\n• Checking official government or embassy sources for the most up to date entry requirements",
-                    },
-                  ].map((item, i) => (
-                    <AccordionItem key={item.q} value={`hanaro-faq-${i}`} className="border-border">
-                      <AccordionTrigger className="hover:no-underline text-base font-semibold py-5">
-                        {item.q}
-                      </AccordionTrigger>
-                      <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-5">
-                        {item.a}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-ink text-cream">
-        <div className="container-x py-24 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold max-w-3xl mx-auto">
-            Ready to turn knowledge into a <span className="text-lime">verified portfolio?</span>
+      {/* 3. LEARNING ENVIRONMENT — tabbed */}
+      <section className="bg-cream/40 text-foreground border-t border-border">
+        <div className="container-x py-24 md:py-28">
+          <SectionLabel>Learning environment</SectionLabel>
+          <h2 className="mt-3 text-4xl md:text-5xl font-bold leading-[1.05]">
+            Career-readiness <span style={{ color: AMBER }}>built on real practice.</span>
           </h2>
-          <div className="mt-10 flex justify-center gap-4 flex-wrap">
-            <Link to="/connect" className="btn-primary">
-              Get in touch <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              to="/about"
-              className="inline-flex items-center gap-2 border border-cream text-cream font-medium px-6 py-3.5 rounded-full hover:bg-cream hover:text-ink transition"
-            >
-              Learn more
-            </Link>
+
+          <Tabs defaultValue="le1" className="mt-10">
+            <TabsList className="h-auto flex-wrap gap-2 bg-background/60 p-2 rounded-xl border border-border">
+              <TabsTrigger value="le1" className="px-4 py-2 text-sm md:text-base data-[state=active]:bg-cream/80">
+                Career-readiness workshops
+              </TabsTrigger>
+              <TabsTrigger value="le2" className="px-4 py-2 text-sm md:text-base data-[state=active]:bg-cream/80">
+                EPOCH awareness training
+              </TabsTrigger>
+              <TabsTrigger value="le3" className="px-4 py-2 text-sm md:text-base data-[state=active]:bg-cream/80">
+                AI fluency training
+              </TabsTrigger>
+            </TabsList>
+
+            {/* Tab 1: Career-readiness */}
+            <TabsContent value="le1" className="mt-8">
+              <p className="text-foreground/80 max-w-3xl leading-relaxed">
+                We skip the generic resume advice. Instead, you build core meta-skills tested in live scenarios and optimized through personalized reflection.
+              </p>
+              <div className="mt-8 grid sm:grid-cols-3 gap-5">
+                <Card icon={UserCheck} title="Self-leadership" desc="Focus, integrity, adaptability, and the initiative to act without being directed." />
+                <Card icon={Users} title="Social intelligence" desc="Communicating clearly, reading people, and leading across cultures and difference." />
+                <Card icon={Sparkles} title="Innovation" desc="Curiosity, sense-making, creativity, and the critical thinking to solve real problems." />
+              </div>
+              <p className="mt-6 text-sm italic text-foreground/70 leading-relaxed">
+                Every completed project becomes a proven success story you can share with absolute confidence in any interview.
+              </p>
+            </TabsContent>
+
+            {/* Tab 2: EPOCH */}
+            <TabsContent value="le2" className="mt-8">
+              <p className="text-foreground/80 max-w-3xl leading-relaxed">
+                Five human-centred skills, identified by MIT Sloan as the capabilities that complement — rather than compete with — AI.
+              </p>
+              <div className="mt-6">
+                <a
+                  href="https://mitsloan.mit.edu/ideas-made-to-matter/these-human-capabilities-complement-ais-shortcomings"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex"
+                >
+                  <LinkPill>MIT Sloan — These human capabilities complement AI's shortcomings</LinkPill>
+                </a>
+              </div>
+              <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+                <LetterCard letter="E" title="Empathy" desc="Empathy and emotional intelligence." color="#2F8C6B" bg="#D9EFE6" />
+                <LetterCard letter="P" title="Presence" desc="Presence, networking, and connectedness." color="#1B5FA5" bg="#DCE9F6" />
+                <LetterCard letter="O" title="Opinion" desc="Opinion, judgment, and ethics." color="#C2792A" bg="#F6E4CB" />
+                <LetterCard letter="C" title="Creativity" desc="Creativity and imagination." color="#B6442C" bg="#F4D9D2" />
+                <LetterCard letter="H" title="Hope" desc="Hope, vision, and leadership." color="#7B4FA2" bg="#E6DCF1" />
+              </div>
+              <div className="mt-8 rounded-2xl border border-border bg-background p-6">
+                <p className="text-xs uppercase tracking-[0.18em] font-bold" style={{ color: AMBER }}>Interview ready</p>
+                <p className="mt-3 text-foreground/85 leading-relaxed">
+                  EPOCH helps you visualise and articulate answers to behavioural interview questions — which remain the gold standard for how top employers assess human potential.
+                </p>
+              </div>
+              <p className="mt-6 text-sm italic text-foreground/70 leading-relaxed">
+                Every completed project becomes a proven success story you can share with absolute confidence in any interview.
+              </p>
+            </TabsContent>
+
+            {/* Tab 3: AI fluency */}
+            <TabsContent value="le3" className="mt-8">
+              <p className="text-foreground/80 max-w-3xl leading-relaxed">
+                There's a lot of noise around AI right now — fear of being replaced, guilt about using it, distrust of what it produces. EPOCHA doesn't ask you to pick a side. We give you the judgment to navigate all of it — critically, ethically, and confidently.
+              </p>
+              <div className="mt-6">
+                <a
+                  href="https://www.qualitax.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex"
+                >
+                  <LinkPill>AI fluency training in partnership with QualitaX</LinkPill>
+                </a>
+              </div>
+              <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <Card icon={Cpu} title="Understanding AI" desc="Know what AI is, how it works, and what it can and cannot do — so you use it with clarity, not blind trust." />
+                <Card icon={Cpu} title="Using AI tools" desc="Fluently operate generative AI, automation, and data tools to boost personal and professional output." />
+                <Card icon={Cpu} title="Critical AI thinking" desc="Evaluate AI outputs for bias, accuracy, and reliability. Never accept results without human judgement." />
+                <Card icon={Cpu} title="Ethics & responsibility" desc="Navigate privacy, intellectual property, fairness, and accountability when working with AI systems." />
+                <Card icon={Cpu} title="Human–AI collaboration" desc="Know when to use AI and when not to. Combine human creativity and empathy with AI efficiency." />
+                <Card icon={Cpu} title="Lifelong adaptability" desc="Stay current as AI evolves rapidly. Build the habit of continuous learning in a changing digital landscape." />
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </section>
+
+      {/* 4. CHOOSE YOUR PRACTICUM (duplicated from HOME) */}
+      <section className="bg-background text-foreground border-t border-border">
+        <div className="container-x py-20">
+          <p className="text-xs uppercase tracking-[0.2em] font-bold" style={{ color: AMBER }}>Available now</p>
+          <h2 className="mt-3 text-4xl md:text-5xl font-bold">
+            Choose your <span style={{ color: AMBER }}>practicum.</span>
+          </h2>
+          <div className="mt-12 grid md:grid-cols-3 gap-6">
+            {[
+              { age: "14–18", title: "Start-up Lab Camp", desc: "Build confidence, find your voice, and develop cross-cultural fluency by launching your very own Practice Enterprise, a trainee-run company that operates like a real business.", to: "/practicums/startup-lab-camp" },
+              { age: "19–29", title: "Hanaro Leadership Project", desc: "Partner with NGOs and charities to drive meaningful change within your community. Lead campaigns and champion a cause that matters to you.", to: "/practicums/hanaro-marketing" },
+              { age: "19–29", title: "Mirae Industry Project", desc: "Work directly with businesses, grow a career portfolio you're proud of, and build the strategic leadership skills that set you apart.", to: "/practicums/mirae-industry" },
+            ].map((p, i) => (
+              <Link key={p.title} to={p.to} className="rounded-3xl border border-border bg-card overflow-hidden flex flex-col transition-transform hover:-translate-y-1">
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img src={trackImages[i]} alt="" width={1400} height={1000} loading="lazy" className="w-full h-full object-cover" />
+                </div>
+                <div className="p-7 flex-1 flex flex-col">
+                  <span className="inline-block self-start text-xs px-3 py-1 rounded-full font-semibold" style={{ background: PILL_BG, color: PILL_TEXT }}>{p.age} years old</span>
+                  <h3 className="mt-4 text-2xl font-bold">{p.title}</h3>
+                  <p className="mt-3 text-muted-foreground text-sm leading-relaxed flex-1">{p.desc}</p>
+                  <p className="mt-5 text-sm uppercase font-bold tracking-wider" style={{ color: AMBER }}>EXPLORE</p>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
     </>
+  );
+}
+
+function ChallengeResponse({ challengeTitle, challengeText, responseTitle, responseText }: { challengeTitle: string; challengeText: string; responseTitle: string; responseText: string }) {
+  return (
+    <div className="grid md:grid-cols-2 gap-5">
+      <div className="rounded-2xl border border-border bg-background p-6 md:p-8">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: "#F6E4CB" }}>
+            <Frown className="w-5 h-5" style={{ color: "#C2792A" }} />
+          </div>
+          <p className="text-xs uppercase tracking-[0.18em] font-bold text-foreground/55">The challenge</p>
+        </div>
+        <h3 className="mt-4 text-xl md:text-2xl font-bold">{challengeTitle}</h3>
+        <p className="mt-3 text-foreground/75 leading-relaxed">{challengeText}</p>
+      </div>
+      <div className="rounded-2xl border p-6 md:p-8" style={{ background: "#FBF3E0", borderColor: "#E8C97A" }}>
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: AMBER }}>
+            <Users className="w-5 h-5 text-white" />
+          </div>
+          <p className="text-xs uppercase tracking-[0.18em] font-bold" style={{ color: PILL_TEXT }}>Our response</p>
+        </div>
+        <h3 className="mt-4 text-xl md:text-2xl font-bold">{responseTitle}</h3>
+        <p className="mt-3 text-foreground/80 leading-relaxed">{responseText}</p>
+      </div>
+    </div>
   );
 }

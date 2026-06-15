@@ -75,18 +75,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "EPOCHA — Project-based practicums for youth aged 14–29" },
-      {
-        name: "description",
-        content:
-          "EPOCHA Learning Hub turns academic effort into career momentum through guided, project-based practicums with recognized credentials.",
-      },
+      { name: "description", content: "EPOCHA Learning Hub turns academic effort into career momentum through guided, project-based practicums with recognized credentials." },
       { name: "author", content: "EPOCHA Learning Hub" },
       { property: "og:title", content: "EPOCHA — Project-based practicums for youth" },
-      {
-        property: "og:description",
-        content:
-          "Real projects. Real coaching. Recognized credentials. The #1 practicum experience for youth aged 14–29.",
-      },
+      { property: "og:description", content: "Real projects. Real coaching. Recognized credentials. The #1 practicum experience for youth aged 14–29." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -94,6 +86,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: appCss,
+      },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap",
       },
     ],
   }),
