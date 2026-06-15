@@ -521,19 +521,19 @@ function HomePage() {
                 title: "EPOCH Awareness Training",
                 desc: "We embed MIT Sloan's EPOCH Framework across all our practicums to help young people develop the essential human capabilities that AI cannot replace.",
                 icon: HeartPulse,
-                link: { label: "Learn more", href: "/how-hpi-works" },
+                link: { label: "Learn more", href: "/practicums#epoch-awareness-training" },
               },
               {
                 title: "AI Fluency Training",
                 desc: "We partner with QualitaX to offer practical AI training that gives young people the fluency to step confidently and responsibly in the modern workforce.",
                 icon: Atom,
-                link: { label: "Learn more", href: "https://www.qualitax.io/" },
+                link: { label: "Learn more", href: "/practicums#ai-fluency-training" },
               },
               {
                 title: "Career-readiness Workshops",
                 desc: "We empower young people to build critical life skills they need to solve real-world problems, tackle academic and professional challenges while driving meaningful changes.",
                 icon: Users,
-                link: { label: "Learn more", href: "/practicums" },
+                link: { label: "Learn more", href: "/practicums#career-readiness-workshops" },
               },
             ].map((c) => {
               const CardIcon = c.icon;

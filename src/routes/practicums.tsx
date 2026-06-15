@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import {
   ArrowRight,
@@ -45,6 +46,12 @@ const PILL_BG = "#FBE8C6";
 const PILL_TEXT = "#8C5A12";
 
 const trackImages = [leadershipCamp, advisoryBoard, hanaro];
+
+const learningTabByHash: Record<string, string> = {
+  "#career-readiness-workshops": "le1",
+  "#epoch-awareness-training": "le2",
+  "#ai-fluency-training": "le3",
+};
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
@@ -134,6 +141,18 @@ function LinkPill({ children }: { children: React.ReactNode }) {
 }
 
 function TrainingPage() {
+  const [learningTab, setLearningTab] = useState("le1");
+
+  useEffect(() => {
+    const syncTabFromHash = () => {
+      setLearningTab(learningTabByHash[window.location.hash] ?? "le1");
+    };
+
+    syncTabFromHash();
+    window.addEventListener("hashchange", syncTabFromHash);
+    return () => window.removeEventListener("hashchange", syncTabFromHash);
+  }, []);
+
   return (
     <>
       {/* 1. HERO — LIGHT */}
@@ -158,18 +177,29 @@ function TrainingPage() {
             Gen Z challenges are real. <span style={{ color: AMBER }}>So is our response.</span>
           </h2>
           <p className="mt-6 text-lg text-foreground/75 max-w-3xl leading-relaxed">
-            Our practicum training starts from the real obstacles young people face and what it actually takes to overcome them. We don't see young people as problems to fix. We see them as people ready to contribute, given the right conditions.
+            Our practicum training starts from the real obstacles young people face and what it
+            actually takes to overcome them. We don't see young people as problems to fix. We see
+            them as people ready to contribute, given the right conditions.
           </p>
 
           <Tabs defaultValue="t1" className="mt-12">
             <TabsList className="h-auto flex-wrap gap-2 bg-cream/60 p-2 rounded-xl">
-              <TabsTrigger value="t1" className="px-4 py-2 text-sm md:text-base data-[state=active]:bg-background">
+              <TabsTrigger
+                value="t1"
+                className="px-4 py-2 text-sm md:text-base data-[state=active]:bg-background"
+              >
                 Mental health & burnout
               </TabsTrigger>
-              <TabsTrigger value="t2" className="px-4 py-2 text-sm md:text-base data-[state=active]:bg-background">
+              <TabsTrigger
+                value="t2"
+                className="px-4 py-2 text-sm md:text-base data-[state=active]:bg-background"
+              >
                 Financial & economic uncertainty
               </TabsTrigger>
-              <TabsTrigger value="t3" className="px-4 py-2 text-sm md:text-base data-[state=active]:bg-background">
+              <TabsTrigger
+                value="t3"
+                className="px-4 py-2 text-sm md:text-base data-[state=active]:bg-background"
+              >
                 Identity & social pressures
               </TabsTrigger>
             </TabsList>
@@ -207,7 +237,8 @@ function TrainingPage() {
         <div className="container-x py-16 md:py-20">
           <blockquote className="max-w-4xl mx-auto text-center">
             <p className="text-2xl md:text-3xl font-semibold italic leading-snug text-foreground/90">
-              "Less confusion about where you're headed means less fear of stepping into the job market. Less fear means a better start."
+              "Less confusion about where you're headed means less fear of stepping into the job
+              market. Less fear means a better start."
             </p>
           </blockquote>
         </div>
@@ -227,9 +258,13 @@ function TrainingPage() {
 
           <blockquote className="mt-8 border-l-4 pl-6" style={{ borderColor: AMBER }}>
             <p className="italic text-foreground/85 leading-relaxed">
-              A Practice Enterprise is a trainee-run company that operates like a real business — from product development and marketing to finance and human resources. Trainees are the employees and managers.
+              A Practice Enterprise is a trainee-run company that operates like a real business —
+              from product development and marketing to finance and human resources. Trainees are
+              the employees and managers.
             </p>
-            <footer className="mt-3 text-sm text-foreground/55">— PEN Worldwide, Practice Enterprise Training Concept</footer>
+            <footer className="mt-3 text-sm text-foreground/55">
+              — PEN Worldwide, Practice Enterprise Training Concept
+            </footer>
           </blockquote>
 
           <div className="mt-8">
@@ -280,10 +315,22 @@ function TrainingPage() {
             </p>
             <ul className="mt-4 grid sm:grid-cols-2 gap-2 text-sm">
               {[
-                { label: "2025 PEN Worldwide Fact Sheet — General (EN)", href: "https://penworldwide.org/" },
-                { label: "2025 PEN Worldwide Fact Sheet — Skill Development (EN)", href: "https://penworldwide.org/" },
-                { label: "2025 PEN Worldwide Mentor Company Flyer (EN)", href: "https://penworldwide.org/" },
-                { label: "2025 PEN Worldwide PE4Entrepreneurship One Pager (EN)", href: "https://penworldwide.org/" },
+                {
+                  label: "2025 PEN Worldwide Fact Sheet — General (EN)",
+                  href: "https://penworldwide.org/",
+                },
+                {
+                  label: "2025 PEN Worldwide Fact Sheet — Skill Development (EN)",
+                  href: "https://penworldwide.org/",
+                },
+                {
+                  label: "2025 PEN Worldwide Mentor Company Flyer (EN)",
+                  href: "https://penworldwide.org/",
+                },
+                {
+                  label: "2025 PEN Worldwide PE4Entrepreneurship One Pager (EN)",
+                  href: "https://penworldwide.org/",
+                },
                 { label: "PEN Worldwide General Lingo Short", href: "https://penworldwide.org/" },
                 { label: "PEN Worldwide Poster Vertical", href: "https://penworldwide.org/" },
               ].map((d) => (
@@ -312,15 +359,24 @@ function TrainingPage() {
             Career-readiness <span style={{ color: AMBER }}>built on real practice.</span>
           </h2>
 
-          <Tabs defaultValue="le1" className="mt-10">
-            <TabsList className="h-auto flex-wrap gap-2 bg-background/60 p-2 rounded-xl border border-border">
-              <TabsTrigger value="le1" className="px-4 py-2 text-sm md:text-base data-[state=active]:bg-cream/80">
+          <Tabs value={learningTab} onValueChange={setLearningTab} className="mt-10 w-full">
+            <TabsList className="grid h-auto w-full grid-cols-1 gap-2 rounded-xl border border-border bg-background/60 p-2 md:grid-cols-3">
+              <TabsTrigger
+                value="le1"
+                className="min-h-14 w-full border border-transparent px-4 py-3 text-center text-sm font-semibold md:text-base data-[state=active]:border-[#B87517] data-[state=active]:bg-[#E89A2B] data-[state=active]:text-[#2A1B08] data-[state=active]:shadow-md data-[state=active]:ring-2 data-[state=active]:ring-[#2A1B08]/10"
+              >
                 Career-readiness workshops
               </TabsTrigger>
-              <TabsTrigger value="le2" className="px-4 py-2 text-sm md:text-base data-[state=active]:bg-cream/80">
+              <TabsTrigger
+                value="le2"
+                className="min-h-14 w-full border border-transparent px-4 py-3 text-center text-sm font-semibold md:text-base data-[state=active]:border-[#B87517] data-[state=active]:bg-[#E89A2B] data-[state=active]:text-[#2A1B08] data-[state=active]:shadow-md data-[state=active]:ring-2 data-[state=active]:ring-[#2A1B08]/10"
+              >
                 EPOCH awareness training
               </TabsTrigger>
-              <TabsTrigger value="le3" className="px-4 py-2 text-sm md:text-base data-[state=active]:bg-cream/80">
+              <TabsTrigger
+                value="le3"
+                className="min-h-14 w-full border border-transparent px-4 py-3 text-center text-sm font-semibold md:text-base data-[state=active]:border-[#B87517] data-[state=active]:bg-[#E89A2B] data-[state=active]:text-[#2A1B08] data-[state=active]:shadow-md data-[state=active]:ring-2 data-[state=active]:ring-[#2A1B08]/10"
+              >
                 AI fluency training
               </TabsTrigger>
             </TabsList>
@@ -328,22 +384,37 @@ function TrainingPage() {
             {/* Tab 1: Career-readiness */}
             <TabsContent value="le1" className="mt-8">
               <p className="text-foreground/80 max-w-3xl leading-relaxed">
-                We skip the generic resume advice. Instead, you build core meta-skills tested in live scenarios and optimized through personalized reflection.
+                We skip the generic resume advice. Instead, you build core meta-skills tested in
+                live scenarios and optimized through personalized reflection.
               </p>
               <div className="mt-8 grid sm:grid-cols-3 gap-5">
-                <Card icon={UserCheck} title="Self-leadership" desc="Focus, integrity, adaptability, and the initiative to act without being directed." />
-                <Card icon={Users} title="Social intelligence" desc="Communicating clearly, reading people, and leading across cultures and difference." />
-                <Card icon={Sparkles} title="Innovation" desc="Curiosity, sense-making, creativity, and the critical thinking to solve real problems." />
+                <Card
+                  icon={UserCheck}
+                  title="Self-leadership"
+                  desc="Focus, integrity, adaptability, and the initiative to act without being directed."
+                />
+                <Card
+                  icon={Users}
+                  title="Social intelligence"
+                  desc="Communicating clearly, reading people, and leading across cultures and difference."
+                />
+                <Card
+                  icon={Sparkles}
+                  title="Innovation"
+                  desc="Curiosity, sense-making, creativity, and the critical thinking to solve real problems."
+                />
               </div>
               <p className="mt-6 text-sm italic text-foreground/70 leading-relaxed">
-                Every completed project becomes a proven success story you can share with absolute confidence in any interview.
+                Every completed project becomes a proven success story you can share with absolute
+                confidence in any interview.
               </p>
             </TabsContent>
 
             {/* Tab 2: EPOCH */}
             <TabsContent value="le2" className="mt-8">
               <p className="text-foreground/80 max-w-3xl leading-relaxed">
-                Five human-centred skills, identified by MIT Sloan as the capabilities that complement — rather than compete with — AI.
+                Five human-centred skills, identified by MIT Sloan as the capabilities that
+                complement — rather than compete with — AI.
               </p>
               <div className="mt-6">
                 <a
@@ -352,31 +423,74 @@ function TrainingPage() {
                   rel="noopener noreferrer"
                   className="inline-flex"
                 >
-                  <LinkPill>MIT Sloan — These human capabilities complement AI's shortcomings</LinkPill>
+                  <LinkPill>
+                    MIT Sloan — These human capabilities complement AI's shortcomings
+                  </LinkPill>
                 </a>
               </div>
               <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
-                <LetterCard letter="E" title="Empathy" desc="Empathy and emotional intelligence." color="#2F8C6B" bg="#D9EFE6" />
-                <LetterCard letter="P" title="Presence" desc="Presence, networking, and connectedness." color="#1B5FA5" bg="#DCE9F6" />
-                <LetterCard letter="O" title="Opinion" desc="Opinion, judgment, and ethics." color="#C2792A" bg="#F6E4CB" />
-                <LetterCard letter="C" title="Creativity" desc="Creativity and imagination." color="#B6442C" bg="#F4D9D2" />
-                <LetterCard letter="H" title="Hope" desc="Hope, vision, and leadership." color="#7B4FA2" bg="#E6DCF1" />
+                <LetterCard
+                  letter="E"
+                  title="Empathy"
+                  desc="Empathy and emotional intelligence."
+                  color="#2F8C6B"
+                  bg="#D9EFE6"
+                />
+                <LetterCard
+                  letter="P"
+                  title="Presence"
+                  desc="Presence, networking, and connectedness."
+                  color="#1B5FA5"
+                  bg="#DCE9F6"
+                />
+                <LetterCard
+                  letter="O"
+                  title="Opinion"
+                  desc="Opinion, judgment, and ethics."
+                  color="#C2792A"
+                  bg="#F6E4CB"
+                />
+                <LetterCard
+                  letter="C"
+                  title="Creativity"
+                  desc="Creativity and imagination."
+                  color="#B6442C"
+                  bg="#F4D9D2"
+                />
+                <LetterCard
+                  letter="H"
+                  title="Hope"
+                  desc="Hope, vision, and leadership."
+                  color="#7B4FA2"
+                  bg="#E6DCF1"
+                />
               </div>
               <div className="mt-8 rounded-2xl border border-border bg-background p-6">
-                <p className="text-xs uppercase tracking-[0.18em] font-bold" style={{ color: AMBER }}>Interview ready</p>
+                <p
+                  className="text-xs uppercase tracking-[0.18em] font-bold"
+                  style={{ color: AMBER }}
+                >
+                  Interview ready
+                </p>
                 <p className="mt-3 text-foreground/85 leading-relaxed">
-                  EPOCH helps you visualise and articulate answers to behavioural interview questions — which remain the gold standard for how top employers assess human potential.
+                  EPOCH helps you visualise and articulate answers to behavioural interview
+                  questions — which remain the gold standard for how top employers assess human
+                  potential.
                 </p>
               </div>
               <p className="mt-6 text-sm italic text-foreground/70 leading-relaxed">
-                Every completed project becomes a proven success story you can share with absolute confidence in any interview.
+                Every completed project becomes a proven success story you can share with absolute
+                confidence in any interview.
               </p>
             </TabsContent>
 
             {/* Tab 3: AI fluency */}
             <TabsContent value="le3" className="mt-8">
               <p className="text-foreground/80 max-w-3xl leading-relaxed">
-                There's a lot of noise around AI right now — fear of being replaced, guilt about using it, distrust of what it produces. EPOCHA doesn't ask you to pick a side. We give you the judgment to navigate all of it — critically, ethically, and confidently.
+                There's a lot of noise around AI right now — fear of being replaced, guilt about
+                using it, distrust of what it produces. EPOCHA doesn't ask you to pick a side. We
+                give you the judgment to navigate all of it — critically, ethically, and
+                confidently.
               </p>
               <div className="mt-6">
                 <a
@@ -389,12 +503,36 @@ function TrainingPage() {
                 </a>
               </div>
               <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                <Card icon={Cpu} title="Understanding AI" desc="Know what AI is, how it works, and what it can and cannot do — so you use it with clarity, not blind trust." />
-                <Card icon={Cpu} title="Using AI tools" desc="Fluently operate generative AI, automation, and data tools to boost personal and professional output." />
-                <Card icon={Cpu} title="Critical AI thinking" desc="Evaluate AI outputs for bias, accuracy, and reliability. Never accept results without human judgement." />
-                <Card icon={Cpu} title="Ethics & responsibility" desc="Navigate privacy, intellectual property, fairness, and accountability when working with AI systems." />
-                <Card icon={Cpu} title="Human–AI collaboration" desc="Know when to use AI and when not to. Combine human creativity and empathy with AI efficiency." />
-                <Card icon={Cpu} title="Lifelong adaptability" desc="Stay current as AI evolves rapidly. Build the habit of continuous learning in a changing digital landscape." />
+                <Card
+                  icon={Cpu}
+                  title="Understanding AI"
+                  desc="Know what AI is, how it works, and what it can and cannot do — so you use it with clarity, not blind trust."
+                />
+                <Card
+                  icon={Cpu}
+                  title="Using AI tools"
+                  desc="Fluently operate generative AI, automation, and data tools to boost personal and professional output."
+                />
+                <Card
+                  icon={Cpu}
+                  title="Critical AI thinking"
+                  desc="Evaluate AI outputs for bias, accuracy, and reliability. Never accept results without human judgement."
+                />
+                <Card
+                  icon={Cpu}
+                  title="Ethics & responsibility"
+                  desc="Navigate privacy, intellectual property, fairness, and accountability when working with AI systems."
+                />
+                <Card
+                  icon={Cpu}
+                  title="Human–AI collaboration"
+                  desc="Know when to use AI and when not to. Combine human creativity and empathy with AI efficiency."
+                />
+                <Card
+                  icon={Cpu}
+                  title="Lifelong adaptability"
+                  desc="Stay current as AI evolves rapidly. Build the habit of continuous learning in a changing digital landscape."
+                />
               </div>
             </TabsContent>
           </Tabs>
@@ -404,25 +542,65 @@ function TrainingPage() {
       {/* 4. CHOOSE YOUR PRACTICUM (duplicated from HOME) */}
       <section className="bg-background text-foreground border-t border-border">
         <div className="container-x py-20">
-          <p className="text-xs uppercase tracking-[0.2em] font-bold" style={{ color: AMBER }}>Available now</p>
+          <p className="text-xs uppercase tracking-[0.2em] font-bold" style={{ color: AMBER }}>
+            Available now
+          </p>
           <h2 className="mt-3 text-4xl md:text-5xl font-bold">
             Choose your <span style={{ color: AMBER }}>practicum.</span>
           </h2>
           <div className="mt-12 grid md:grid-cols-3 gap-6">
             {[
-              { age: "14–18", title: "Start-up Lab Camp", desc: "Build confidence, find your voice, and develop cross-cultural fluency by launching your very own Practice Enterprise, a trainee-run company that operates like a real business.", to: "/practicums/startup-lab-camp" },
-              { age: "19–29", title: "Hanaro Leadership Project", desc: "Partner with NGOs and charities to drive meaningful change within your community. Lead campaigns and champion a cause that matters to you.", to: "/practicums/hanaro-marketing" },
-              { age: "19–29", title: "Mirae Industry Project", desc: "Work directly with businesses, grow a career portfolio you're proud of, and build the strategic leadership skills that set you apart.", to: "/practicums/mirae-industry" },
+              {
+                age: "14–18",
+                title: "Start-up Lab Camp",
+                desc: "Build confidence, find your voice, and develop cross-cultural fluency by launching your very own Practice Enterprise, a trainee-run company that operates like a real business.",
+                to: "/practicums/startup-lab-camp",
+              },
+              {
+                age: "19–29",
+                title: "Hanaro Leadership Project",
+                desc: "Partner with NGOs and charities to drive meaningful change within your community. Lead campaigns and champion a cause that matters to you.",
+                to: "/practicums/hanaro-marketing",
+              },
+              {
+                age: "19–29",
+                title: "Mirae Industry Project",
+                desc: "Work directly with businesses, grow a career portfolio you're proud of, and build the strategic leadership skills that set you apart.",
+                to: "/practicums/mirae-industry",
+              },
             ].map((p, i) => (
-              <Link key={p.title} to={p.to} className="rounded-3xl border border-border bg-card overflow-hidden flex flex-col transition-transform hover:-translate-y-1">
+              <Link
+                key={p.title}
+                to={p.to}
+                className="rounded-3xl border border-border bg-card overflow-hidden flex flex-col transition-transform hover:-translate-y-1"
+              >
                 <div className="aspect-[4/3] overflow-hidden">
-                  <img src={trackImages[i]} alt="" width={1400} height={1000} loading="lazy" className="w-full h-full object-cover" />
+                  <img
+                    src={trackImages[i]}
+                    alt=""
+                    width={1400}
+                    height={1000}
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="p-7 flex-1 flex flex-col">
-                  <span className="inline-block self-start text-xs px-3 py-1 rounded-full font-semibold" style={{ background: PILL_BG, color: PILL_TEXT }}>{p.age} years old</span>
+                  <span
+                    className="inline-block self-start text-xs px-3 py-1 rounded-full font-semibold"
+                    style={{ background: PILL_BG, color: PILL_TEXT }}
+                  >
+                    {p.age} years old
+                  </span>
                   <h3 className="mt-4 text-2xl font-bold">{p.title}</h3>
-                  <p className="mt-3 text-muted-foreground text-sm leading-relaxed flex-1">{p.desc}</p>
-                  <p className="mt-5 text-sm uppercase font-bold tracking-wider" style={{ color: AMBER }}>EXPLORE</p>
+                  <p className="mt-3 text-muted-foreground text-sm leading-relaxed flex-1">
+                    {p.desc}
+                  </p>
+                  <p
+                    className="mt-5 text-sm uppercase font-bold tracking-wider"
+                    style={{ color: AMBER }}
+                  >
+                    EXPLORE
+                  </p>
                 </div>
               </Link>
             ))}
@@ -433,25 +611,48 @@ function TrainingPage() {
   );
 }
 
-function ChallengeResponse({ challengeTitle, challengeText, responseTitle, responseText }: { challengeTitle: string; challengeText: string; responseTitle: string; responseText: string }) {
+function ChallengeResponse({
+  challengeTitle,
+  challengeText,
+  responseTitle,
+  responseText,
+}: {
+  challengeTitle: string;
+  challengeText: string;
+  responseTitle: string;
+  responseText: string;
+}) {
   return (
     <div className="grid md:grid-cols-2 gap-5">
       <div className="rounded-2xl border border-border bg-background p-6 md:p-8">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: "#F6E4CB" }}>
+          <div
+            className="w-10 h-10 rounded-full flex items-center justify-center"
+            style={{ background: "#F6E4CB" }}
+          >
             <Frown className="w-5 h-5" style={{ color: "#C2792A" }} />
           </div>
-          <p className="text-xs uppercase tracking-[0.18em] font-bold text-foreground/55">The challenge</p>
+          <p className="text-xs uppercase tracking-[0.18em] font-bold text-foreground/55">
+            The challenge
+          </p>
         </div>
         <h3 className="mt-4 text-xl md:text-2xl font-bold">{challengeTitle}</h3>
         <p className="mt-3 text-foreground/75 leading-relaxed">{challengeText}</p>
       </div>
-      <div className="rounded-2xl border p-6 md:p-8" style={{ background: "#FBF3E0", borderColor: "#E8C97A" }}>
+      <div
+        className="rounded-2xl border p-6 md:p-8"
+        style={{ background: "#FBF3E0", borderColor: "#E8C97A" }}
+      >
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: AMBER }}>
+          <div
+            className="w-10 h-10 rounded-full flex items-center justify-center"
+            style={{ background: AMBER }}
+          >
             <Users className="w-5 h-5 text-white" />
           </div>
-          <p className="text-xs uppercase tracking-[0.18em] font-bold" style={{ color: PILL_TEXT }}>Our response</p>
+          <p className="text-xs uppercase tracking-[0.18em] font-bold" style={{ color: PILL_TEXT }}>
+            Our response
+          </p>
         </div>
         <h3 className="mt-4 text-xl md:text-2xl font-bold">{responseTitle}</h3>
         <p className="mt-3 text-foreground/80 leading-relaxed">{responseText}</p>

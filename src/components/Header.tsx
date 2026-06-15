@@ -49,7 +49,7 @@ export function Header() {
     <header className="sticky top-0 z-50 backdrop-blur-md bg-ink/90 text-cream border-b border-cream/10">
       <div className="container-x flex items-center justify-between h-16">
         <Link to="/" className="flex items-center" aria-label="EPOCHA home">
-          <img src={logo} alt="EPOCHA" className="h-10 w-auto" />
+          <img src={logo} alt="EPOCHA" className="h-14 w-auto" />
         </Link>
         <nav className="hidden md:flex items-center gap-8">
           {nav.map((n) =>
@@ -70,16 +70,16 @@ export function Header() {
                 {openDropdown === n.label && (
                   <div className="absolute top-full left-0 pt-2 w-56">
                     <div className="rounded-xl border border-cream/10 bg-ink shadow-xl overflow-hidden">
-                    {n.children.map((child) => (
-                      <Link
-                        key={child.to}
-                        to={child.to}
-                        className="block px-4 py-3 text-sm text-cream/80 hover:text-lime hover:bg-white/5 transition-colors"
-                        activeProps={{ className: "text-lime bg-white/5" }}
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
+                      {n.children.map((child) => (
+                        <Link
+                          key={child.to}
+                          to={child.to}
+                          className="block px-4 py-3 text-sm text-cream/80 hover:text-lime hover:bg-white/5 transition-colors"
+                          activeProps={{ className: "text-lime bg-white/5" }}
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
                     </div>
                   </div>
                 )}
@@ -93,7 +93,7 @@ export function Header() {
               >
                 {n.label}
               </Link>
-            )
+            ),
           )}
         </nav>
         <Link to="/practicums" className="hidden md:inline-flex btn-primary text-sm">
@@ -124,10 +124,15 @@ export function Header() {
                   ))}
                 </div>
               ) : (
-                <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="py-2 text-cream/90">
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  onClick={() => setOpen(false)}
+                  className="py-2 text-cream/90"
+                >
                   {n.label}
                 </Link>
-              )
+              ),
             )}
           </div>
         </div>
