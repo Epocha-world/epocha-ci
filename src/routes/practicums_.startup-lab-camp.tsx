@@ -97,43 +97,59 @@ function StartupLabCampPage() {
           <p className="text-xs uppercase tracking-[0.2em] font-bold" style={{ color: GOLD_DEEP }}>Practicum at a glance</p>
           <h2 className="mt-3 text-3xl md:text-4xl font-bold">Practicum information</h2>
 
-          <h3 className="mt-10 text-xl md:text-2xl font-bold">4-Week Schedule</h3>
-          <div className="mt-6 divide-y divide-border border-t border-b border-border">
-            {[
-              { week: "Weeks 1–2 · Foundation", title: "Build the Brand", desc: "Trainees define their product or service, establish team roles and responsibilities, develop their brand identity, and map out their business model from the ground up." },
-              { week: "Weeks 3–4 · Operations", title: "Build & Operate", desc: "The business goes live. Trainees finalise their offering, serve real or simulated customers, manage their operations day-to-day, and respond to real-world challenges." },
-              { week: "Final days · Closing", title: "Pitch, Reflect & Celebrate", desc: "Teams present to a panel, sharing results and lessons learned. The camp closes with structured reflection and a celebration of what each trainee has accomplished." },
-            ].map((p) => (
-              <div key={p.week} className="grid md:grid-cols-12 gap-2 md:gap-3 py-6">
-                <div className="md:col-span-4 text-xs uppercase tracking-wider text-foreground/70 font-semibold">{p.week}</div>
-                <div className="md:col-span-8">
-                  <h4 className="font-semibold">{p.title}</h4>
-                  <p className="mt-2 text-sm text-foreground/80 leading-relaxed">{p.desc}</p>
-                </div>
+          <div className="mt-10 grid gap-5 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]">
+            <div className="rounded-lg border border-border bg-card p-6 md:p-8">
+              <h3 className="text-xl font-bold">4-Week Schedule</h3>
+              <div className="mt-6 space-y-5">
+                {[
+                  { week: "Weeks 1–2 · Foundation", title: "Build the Brand", desc: "Trainees define their product or service, establish team roles and responsibilities, develop their brand identity, and map out their business model from the ground up." },
+                  { week: "Weeks 3–4 · Operations", title: "Build & Operate", desc: "The business goes live. Trainees finalise their offering, serve real or simulated customers, manage their operations day-to-day, and respond to real-world challenges." },
+                  { week: "Final Days · Closing", title: "Pitch, Reflect & Celebrate", desc: "Teams present to a panel, sharing results and lessons learned. The camp closes with structured reflection and a celebration of what each trainee has accomplished." },
+                ].map((p) => (
+                  <div key={p.week} className="border-t border-border pt-5 first:border-t-0 first:pt-0">
+                    <div className="text-xs uppercase tracking-wider text-foreground/60 font-semibold">{p.week}</div>
+                    <h4 className="mt-2 font-semibold">{p.title}</h4>
+                    <p className="mt-2 text-sm text-foreground/75 leading-relaxed">{p.desc}</p>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-
-          <div className="mt-12 rounded-2xl border border-border bg-card p-6 md:p-8">
-            <div className="flex items-center gap-3">
-              <Clock className="w-5 h-5" style={{ color: GOLD_DEEP }} />
-              <h3 className="text-xl font-bold">Typical Day</h3>
             </div>
-            <ul className="mt-5 grid sm:grid-cols-2 gap-x-8 gap-y-2 text-sm text-foreground/85">
-              <li><span className="font-semibold">9:00 – 10:30</span> · Session 1</li>
-              <li><span className="font-semibold">10:30 – 10:40</span> · Break</li>
-              <li><span className="font-semibold">10:40 – 12:10</span> · Session 2</li>
-              <li><span className="font-semibold">12:10 – 1:00</span> · Lunch (provided)</li>
-              <li><span className="font-semibold">1:00 – 2:30</span> · Session 3</li>
-              <li><span className="font-semibold">2:30 – 3:00</span> · Learning reflections</li>
-            </ul>
-            <p className="mt-5 text-sm text-foreground/75 leading-relaxed">
-              <span className="font-semibold">Why reflections matter:</span> each day ends with time to step back and connect the day's work to what was learned — building the self-awareness that helps trainees apply these lessons long after the camp ends.
-            </p>
-            <ul className="mt-5 space-y-2 text-sm text-foreground/80">
-              <li className="flex gap-2"><span className="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style={{ background: GOLD_DEEP }} /> Mini-breaks built into each session</li>
-              <li className="flex gap-2"><span className="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style={{ background: GOLD_DEEP }} /> Refreshments and lunch provided</li>
-            </ul>
+
+            <div className="rounded-lg border border-border bg-card p-6 md:p-8">
+              <div className="flex items-center gap-3">
+                <Clock className="w-5 h-5" style={{ color: GOLD_DEEP }} />
+                <h3 className="text-xl font-bold">Typical Day</h3>
+              </div>
+              <div className="mt-6 divide-y divide-border overflow-hidden rounded-lg border border-border">
+                {[
+                  { time: "9:00 – 10:30", label: "Session 1" },
+                  { time: "10:30 – 10:40", label: "Break", isBreak: true },
+                  { time: "10:40 – 12:10", label: "Session 2" },
+                  { time: "12:10 – 1:00", label: "Lunch (provided)", isBreak: true },
+                  { time: "1:00 – 2:30", label: "Session 3" },
+                  { time: "2:30 – 3:00", label: "Learning reflections", isBreak: true },
+                ].map((item) => (
+                  <div key={`${item.time}-${item.label}`} className={`grid grid-cols-[8.5rem_1fr] gap-4 px-4 py-3 text-sm ${item.isBreak ? "bg-muted/45" : "bg-background"}`}>
+                    <div className="font-semibold text-foreground">{item.time}</div>
+                    <div className="text-foreground/75">{item.label}</div>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-5 text-sm text-foreground/75 leading-relaxed">
+                <span className="font-semibold text-foreground">Why reflections matter:</span> each day ends with time to step back and connect the day's work to what was learned — building the self-awareness that helps trainees apply these lessons long after the camp ends.
+              </p>
+              <ul className="mt-5 space-y-2 text-sm text-foreground/80">
+                {[
+                  "Mini-breaks built into each session",
+                  "Refreshments and lunch provided throughout the day",
+                ].map((note) => (
+                  <li key={note} className="flex gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style={{ background: GOLD_DEEP }} />
+                    <span>{note}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
