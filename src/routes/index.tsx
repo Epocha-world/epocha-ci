@@ -118,9 +118,9 @@ function HomePage() {
       {/* WHO WE SERVE (moved from About) */}
       <section className="container-x pt-20 pb-12">
         <div className="max-w-2xl">
-          <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">Who we serve</p>
+          <p className="text-xs uppercase tracking-[0.2em] text-[#B07A1A] font-bold">Who we serve</p>
           <h2 className="mt-3 text-4xl md:text-5xl font-bold">
-            Built for youth <span className="text-lime">and</span> industry leaders.
+            Built for youth and industry leaders.
           </h2>
           <p className="mt-4 text-foreground/70">
             Whether you're a young person ready to lead, an institution investing in talent, or an
@@ -131,7 +131,7 @@ function HomePage() {
           {[
             {
               icon: Users,
-              tag: "Youths · Students",
+              tag: "YOUTHS · STUDENTS",
               title: "\n",
               desc: "Work on real projects, build your network, jumpstart your career while earning recognized credentials.",
               cta: "Learn more",
@@ -139,7 +139,7 @@ function HomePage() {
             },
             {
               icon: Building2,
-              tag: "BUSINESSES AND EDUCATIONAL INSTITUTIONS",
+              tag: "BUSINESSES · EDUCATIONAL INSTITUTIONS",
               title: "\n",
               desc: "Bring fresh ideas into your organization. Tap into motivated talent and help shape the future of work.",
               cta: "Learn more",
@@ -147,7 +147,7 @@ function HomePage() {
             },
             {
               icon: HandHeart,
-              tag: "Non-profits",
+              tag: "NON-PROFITS · CHARITIES",
               title: "\n",
               desc: "Engage passionate young talent ready to contribute, lead, and grow. Discover how trainee collaboration can help your organization.",
               cta: "Learn more",
@@ -159,7 +159,7 @@ function HomePage() {
               className="group relative rounded-3xl border border-border bg-muted/30 p-8 transition-all hover:border-lime hover:-translate-y-1"
             >
               <c.icon className="w-8 h-8 text-lime" />
-              <p className="mt-6 text-[11px] uppercase tracking-widest text-foreground/60">
+              <p className="mt-6 text-sm md:text-base uppercase tracking-widest text-foreground font-bold">
                 {c.tag}
               </p>
               <h3 className="mt-2 text-2xl font-bold">{c.title}</h3>
@@ -202,7 +202,7 @@ function HomePage() {
                   "Outcomes depend on where you land",
                 ].map((c) => (
                   <li key={c} className="flex gap-3 text-cream/60">
-                    <X className="w-5 h-5 text-coral shrink-0 mt-0.5" /> {c}
+                    <X className="w-5 h-5 text-[#B07A1A] shrink-0 mt-0.5" /> {c}
                   </li>
                 ))}
               </ul>
@@ -232,12 +232,12 @@ function HomePage() {
         <div className="container-x py-20">
           <div id="what-is-a-practicum" className="scroll-mt-24">
             <div className="relative overflow-hidden rounded-3xl bg-ink text-cream border border-cream/10 p-10 md:p-14">
-              <div className="absolute -left-16 top-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-yellow-700/40" />
-              <div className="absolute -right-10 -top-10 w-72 h-72 rounded-full bg-yellow-700/40" />
+              <div className="absolute -left-16 top-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-[#B07A1A]/40" />
+              <div className="absolute -right-10 -top-10 w-72 h-72 rounded-full bg-[#B07A1A]/40" />
               <div className="relative">
                 <h2 className="text-5xl md:text-7xl font-bold leading-[0.95]">
                   What is a <br />
-                  <span className="text-coral">Practicum?</span>
+                  <span className="text-[#B07A1A]">Practicum?</span>
                 </h2>
               </div>
             </div>
@@ -254,7 +254,7 @@ function HomePage() {
               </p>
             </div>
 
-            <div className="mt-6 rounded-xl bg-coral/80 text-ink p-5 flex items-center gap-3">
+            <div className="mt-6 rounded-xl bg-[#B07A1A]/80 text-ink p-5 flex items-center gap-3">
               <Zap className="w-6 h-6 shrink-0" fill="currentColor" />
               <p className="font-bold text-base md:text-lg">
                 The fastest way we know to turn potential into evidence of work.
@@ -334,7 +334,7 @@ function HomePage() {
             </div>
 
             <div className="mt-10 rounded-2xl bg-ink text-cream border border-cream/10 p-8 md:p-10">
-              <h3 className="text-2xl font-bold text-coral">Why it matters</h3>
+              <h3 className="text-2xl font-bold text-[#B07A1A]">Why it matters</h3>
               <ul className="mt-5 space-y-4">
                 {[
                   "Hands-on experience is exactly what employers look for — a practicum gives you that before you graduate or enter the job market.",
@@ -342,7 +342,7 @@ function HomePage() {
                   "You learn how to show up, contribute, and lead — skills that no classroom can fully teach.",
                 ].map((t) => (
                   <li key={t} className="flex gap-3 text-cream/90">
-                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-coral shrink-0" />
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#B07A1A] shrink-0" />
                     <span className="leading-relaxed">{t}</span>
                   </li>
                 ))}
@@ -357,7 +357,7 @@ function HomePage() {
         <div className="container-x py-20 md:py-24">
           <p className="max-w-4xl mx-auto text-center text-2xl md:text-4xl font-bold leading-snug text-cream">
             A practicum is not a course. It is not an internship. It is{" "}
-            <span className="text-coral">learning that leaves something behind.</span>
+            <span className="text-[#B07A1A]">learning that leaves something behind.</span>
           </p>
         </div>
       </section>
@@ -365,7 +365,7 @@ function HomePage() {
       {/* THREE PRACTICUM TRACKS */}
       <section id="choose-your-practicum" className="bg-background text-foreground scroll-mt-20">
         <div className="container-x py-20">
-          <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">Available now</p>
+          <p className="text-xs uppercase tracking-[0.2em] text-[#B07A1A] font-bold">Available now</p>
           <h2 className="mt-3 text-4xl md:text-5xl font-bold">
             Choose your <span className="text-lime">practicum.</span>
           </h2>
@@ -378,7 +378,6 @@ function HomePage() {
                 age: "14–18",
                 title: "Start-up Lab Camp",
                 desc: "Build confidence, find your voice, and develop cross-cultural fluency by launching your very own Practice Enterprise, a trainee-run company that operates like a real business.",
-                status: "EXPLORE",
                 to: "/practicums/startup-lab-camp",
                 hash: null,
               },
@@ -386,7 +385,6 @@ function HomePage() {
                 age: "19–29",
                 title: "Hanaro Leadership Project",
                 desc: "Partner with NGOs and charities to drive meaningful change within your community. Lead campaigns and champion a cause that matters to you.",
-                status: "EXPLORE",
                 to: "/practicums/hanaro-marketing",
                 hash: null,
               },
@@ -394,7 +392,6 @@ function HomePage() {
                 age: "19–29",
                 title: "Mirae Industry Project",
                 desc: "Work directly with businesses, grow a career portfolio you're proud of, and build the strategic leadership skills that set you apart.",
-                status: "EXPLORE",
                 to: "/practicums/mirae-industry",
                 hash: null,
               },
@@ -419,8 +416,8 @@ function HomePage() {
                     <p className="mt-3 text-muted-foreground text-sm leading-relaxed flex-1">
                       {p.desc}
                     </p>
-                    <p className="mt-5 text-sm text-coral uppercase font-bold tracking-wider">
-                      {p.status}{" "}
+                    <p className="mt-5 text-[#B07A1A]" aria-label={`Open ${p.title}`}>
+                      <ArrowRight className="w-5 h-5" />
                     </p>
                   </div>
                 </>
@@ -506,7 +503,7 @@ function HomePage() {
       <section className="bg-background">
         <div className="container-x py-24">
           <div className="max-w-2xl">
-            <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">
+            <p className="text-xs uppercase tracking-[0.2em] text-[#B07A1A] font-bold">
               TRAINING OFFER
             </p>
             <h2 className="mt-3 text-4xl md:text-5xl font-bold text-ink">
@@ -597,7 +594,7 @@ function HomePage() {
           aria-hidden
         />
         <div className="container-x py-24 relative">
-          <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">Global standard</p>
+          <p className="text-xs uppercase tracking-[0.2em] text-[#B07A1A] font-bold">Global standard</p>
           <h2 className="mt-3 text-4xl md:text-5xl font-bold max-w-3xl">
             Backed by a <span className="text-lime">global network.</span>
           </h2>
@@ -717,7 +714,7 @@ function HomePage() {
       <section id="faq" className="border-t border-border">
         <div className="container-x py-24">
           <div className="text-center max-w-3xl mx-auto">
-            <p className="text-xs uppercase tracking-[0.2em] text-coral text-black font-bold">
+            <p className="text-xs uppercase tracking-[0.2em] text-[#B07A1A] font-bold">
               FAQ
             </p>
             <h2 className="mt-3 text-4xl md:text-5xl font-bold">Frequently Asked Questions</h2>
