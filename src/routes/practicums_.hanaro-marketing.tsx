@@ -325,13 +325,13 @@ function HanaroMarketingPage() {
       {/* Section 6 — DARK */}
       <section id="hanaro-leadership" className="bg-background text-foreground scroll-mt-20">
         <div className="container-x py-24">
-          <div className="max-w-3xl rounded-3xl border border-border bg-card p-8 md:p-10 flex gap-5 items-start">
-            <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-[#FBE8C6] shrink-0">
-              <BellRing className="w-6 h-6 text-[#B07A1A]" />
+          <div className="max-w-3xl rounded-3xl border border-white/10 bg-[#2A1B08] p-8 md:p-10 flex gap-5 items-start text-white">
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-[#E89A2B] shrink-0">
+              <BellRing className="w-6 h-6 text-[#2A1B08]" />
             </div>
             <div>
               <h2 className="text-xl md:text-2xl font-bold">Notice</h2>
-              <p className="mt-3 text-base md:text-lg text-foreground/80 leading-relaxed">
+              <p className="mt-3 text-base md:text-lg text-white/80 leading-relaxed">
                 Details for the next Hanaro Leadership Practicum cohort will be announced soon.
               </p>
             </div>

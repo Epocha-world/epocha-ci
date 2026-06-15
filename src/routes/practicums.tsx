@@ -10,9 +10,12 @@ import {
   RefreshCw,
   Briefcase,
   Cpu,
+  Eye,
   Frown,
+  Shield,
   Wallet,
   Sparkles,
+  Wrench,
   FileText,
   Download,
 } from "lucide-react";
@@ -155,20 +158,6 @@ function TrainingPage() {
 
   return (
     <>
-      {/* 1. HERO — LIGHT */}
-      <section className="bg-background text-foreground">
-        <div className="container-x pt-28 pb-20 md:pt-36 md:pb-28">
-          <h1 className="text-5xl md:text-7xl font-bold leading-[1]">
-            Boosting your <span style={{ color: AMBER }}>employability.</span>
-          </h1>
-          <p className="mt-7 text-lg md:text-xl text-foreground/75 max-w-3xl leading-relaxed">
-            EPOCHA transforms how you leverage experiential learning. We help you turn academic
-            effort into career momentum — building skills that don't expire with work experience,
-            connections, and the confidence to thrive from day one.
-          </p>
-        </div>
-      </section>
-
       {/* 1b. WHY PRACTICUM TRAINING MATTERS — LIGHT */}
       <section className="bg-cream/40 text-foreground border-t border-border">
         <div className="container-x py-24 md:py-28">
@@ -507,31 +496,45 @@ function TrainingPage() {
                   icon={Cpu}
                   title="Understanding AI"
                   desc="Know what AI is, how it works, and what it can and cannot do — so you use it with clarity, not blind trust."
+                  iconBg="#FAEEDA"
+                  iconColor="#854F0B"
                 />
                 <Card
-                  icon={Cpu}
+                  icon={Wrench}
                   title="Using AI tools"
                   desc="Fluently operate generative AI, automation, and data tools to boost personal and professional output."
+                  iconBg="#FAEEDA"
+                  iconColor="#854F0B"
                 />
                 <Card
-                  icon={Cpu}
+                  icon={Eye}
                   title="Critical AI thinking"
                   desc="Evaluate AI outputs for bias, accuracy, and reliability. Never accept results without human judgement."
+                  iconBg="#FAEEDA"
+                  iconColor="#854F0B"
                 />
+              </div>
+              <div className="mt-5 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 <Card
-                  icon={Cpu}
+                  icon={Shield}
                   title="Ethics & responsibility"
                   desc="Navigate privacy, intellectual property, fairness, and accountability when working with AI systems."
+                  iconBg="#FAEEDA"
+                  iconColor="#854F0B"
                 />
                 <Card
-                  icon={Cpu}
-                  title="Human–AI collaboration"
+                  icon={Users}
+                  title="Human-AI collaboration"
                   desc="Know when to use AI and when not to. Combine human creativity and empathy with AI efficiency."
+                  iconBg="#FAEEDA"
+                  iconColor="#854F0B"
                 />
                 <Card
-                  icon={Cpu}
+                  icon={RefreshCw}
                   title="Lifelong adaptability"
                   desc="Stay current as AI evolves rapidly. Build the habit of continuous learning in a changing digital landscape."
+                  iconBg="#FAEEDA"
+                  iconColor="#854F0B"
                 />
               </div>
             </TabsContent>
@@ -540,7 +543,10 @@ function TrainingPage() {
       </section>
 
       {/* 4. CHOOSE YOUR PRACTICUM (duplicated from HOME) */}
-      <section className="bg-background text-foreground border-t border-border">
+      <section
+        id="choose-your-practicum"
+        className="bg-background text-foreground border-t border-border scroll-mt-20"
+      >
         <div className="container-x py-20">
           <p className="text-xs uppercase tracking-[0.2em] font-bold" style={{ color: AMBER }}>
             Available now

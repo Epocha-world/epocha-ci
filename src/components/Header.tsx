@@ -96,7 +96,11 @@ export function Header() {
             ),
           )}
         </nav>
-        <Link to="/practicums" className="hidden md:inline-flex btn-primary text-sm">
+        <Link
+          to="/practicums"
+          hash="choose-your-practicum"
+          className="hidden md:inline-flex btn-primary text-sm"
+        >
           Explore practicums
         </Link>
         <button onClick={() => setOpen(!open)} className="md:hidden text-cream" aria-label="Menu">
