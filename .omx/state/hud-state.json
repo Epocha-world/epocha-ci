@@ -1,6 +1,6 @@
 {
-  "last_turn_at": "2026-06-15T09:06:10.832Z",
-  "turn_count": 192,
-  "last_progress_at": "2026-06-15T09:06:10.832Z",
-  "last_agent_output": "요청한 Training 페이지 변경 적용했습니다.\n\n변경 내용:\n- 기존 `Boosting your employability` 본문 hero 섹션은 현재 페이지에 이미 없어서 유지"
+  "last_turn_at": "2026-06-15T09:28:22.221Z",
+  "turn_count": 193,
+  "last_progress_at": "2026-06-15T09:28:22.221Z",
+  "last_agent_output": "커밋 완료했습니다.\n\n커밋:\n`ed6fd3d Sharpen practicum training presentation`\n\n포함 내용:\n- Training 페이지 quote/learn"
 }
