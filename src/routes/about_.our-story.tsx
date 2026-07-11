@@ -11,7 +11,6 @@ import {
   Rocket,
 } from "lucide-react";
 import maevaPortrait from "@/assets/maeva-caricature.png";
-import jessPortrait from "@/assets/jess-caricature.png";
 import juwonPortrait from "@/assets/juwon-caricature.png";
 import logoQualitax from "@/assets/logos/qualitax.svg";
 import logoKoreaPen from "@/assets/logos/koreapen.png";
@@ -183,13 +182,6 @@ function OurStoryPage() {
               bio: "Full-stack engineer and systems thinker. Juwon builds the infrastructure that powers EPOCHA's platforms — from AI-driven tools to production systems that just work. He believes good technology is invisible when it works, and that's the whole point.",
               linkedin: "https://www.linkedin.com/in/thekeg",
             },
-            {
-              name: "Jess Ng",
-              role: "CMO",
-              img: jessPortrait,
-              bio: "Founder of Upleash and Impact Comedy, Jess is a soft-skills coach who helps people communicate with clarity, lead with self-awareness, and build genuine connection at work. She bridges the gap between what businesses need and what young talent is ready to bring.",
-              linkedin: "https://www.linkedin.com/in/jesschingwa/",
-            },
           ].map((p) => (
             <div
               key={p.name}
@@ -231,68 +223,61 @@ function OurStoryPage() {
             </p>
           </div>
           <h3 className="mt-3 text-3xl font-bold">What else we're working on.</h3>
-          <div className="mt-8 grid md:grid-cols-2 gap-8">
-            {[
-              {
-                founder: "Maeva Ofranc",
-                projects: [
-                  {
-                    name: "Youth for Peace: UNESCO Intercultural Leadership Programme",
-                    desc: "A UNESCO programme developing intercultural leadership in young people through dialogue, collaboration, and peace-building.",
-                    href: "https://www.unesco.org/en/interculturaldialogue/youthforpeace?hub=181405",
-                    cta: "Learn more",
-                  },
-                  {
-                    name: "Virtual Entrepreneurship Program (VEP) with KoreaPEN",
-                    desc: "A Practice Enterprise-based after-school program building career readiness and college competitiveness through global peer collaboration and experiential learning.",
-                    href: "https://vep-info-english-vks96vv.gamma.site/",
-                    cta: "Learn more",
-                  },
-                ],
-              },
-              {
-                founder: "Jess Ng",
-                projects: [
-                  {
-                    name: "Impact Comedy — Improv Training",
-                    desc: "A creative approach to building confidence and communication through improvisational theater.",
-                    href: "https://impactcomedy.co/",
-                    cta: "Visit website",
-                  },
-                  {
-                    name: "Upleash",
-                    desc: "A transformative coaching practice unlocking personal and professional potential through guided experiences.",
-                    href: "https://upleash.co/",
-                    cta: "Visit website",
-                  },
-                ],
-              },
-            ].map((group) => (
-              <div key={group.founder} className="flex flex-col gap-4">
-                <div className="rounded-2xl bg-ink text-cream p-5">
-                  <p className="text-[11px] uppercase tracking-[0.2em] text-lime font-bold">
-                    Coaching by
-                  </p>
-                  <h4 className="mt-1 text-xl font-bold">{group.founder}</h4>
-                </div>
-                {group.projects.map((proj) => (
-                  <a
-                    key={proj.name}
-                    href={proj.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group rounded-2xl border border-border p-6 hover:border-lime transition block"
-                  >
-                    <h4 className="font-bold">{proj.name}</h4>
-                    <p className="mt-2 text-sm text-foreground/70">{proj.desc}</p>
-                    <span className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-lime">
-                      {proj.cta || "Visit website"}
-                      <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                    </span>
-                  </a>
-                ))}
+          <div className="mt-8">
+            <div className="rounded-2xl bg-ink text-cream p-5">
+              <p className="text-[11px] uppercase tracking-[0.2em] text-lime font-bold">
+                Coaching by
+              </p>
+              <h4 className="mt-1 text-xl font-bold">Maeva Ofranc</h4>
+            </div>
+            <div className="mt-4 grid md:grid-cols-2 gap-4">
+              {[
+                {
+                  name: "Youth for Peace: UNESCO Intercultural Leadership Programme",
+                  desc: "A UNESCO programme developing intercultural leadership in young people through dialogue, collaboration, and peace-building.",
+                  href: "https://www.unesco.org/en/interculturaldialogue/youthforpeace?hub=181405",
+                  cta: "Learn more",
+                },
+                {
+                  name: "Virtual Entrepreneurship Program (VEP) with KoreaPEN",
+                  desc: "A Practice Enterprise-based after-school program building career readiness and college competitiveness through global peer collaboration and experiential learning.",
+                  href: "https://vep-info-english-vks96vv.gamma.site/",
+                  cta: "Learn more",
+                },
+              ].map((project) => (
+                <a
+                  key={project.name}
+                  href={project.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group rounded-2xl border border-border p-6 hover:border-lime transition block"
+                >
+                  <h4 className="font-bold">{project.name}</h4>
+                  <p className="mt-2 text-sm text-foreground/70">{project.desc}</p>
+                  <span className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-lime">
+                    {project.cta}
+                    <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                  </span>
+                </a>
+              ))}
+              <div
+                aria-hidden="true"
+                className="min-h-[172px] rounded-2xl border border-border bg-muted/10"
+              />
+              <div className="min-h-[172px] rounded-2xl border border-border p-6 flex flex-col items-start">
+                <h4 className="font-bold">Let's talk about coaching.</h4>
+                <p className="mt-2 text-sm text-foreground/70">
+                  Book a call to explore how coaching with Maeva can support your goals, team, or
+                  organisation.
+                </p>
+                <Link
+                  to="/connect"
+                  className="mt-auto pt-4 inline-flex items-center gap-2 text-sm font-medium text-lime hover:underline"
+                >
+                  Book a call <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
-            ))}
+            </div>
           </div>
         </div>
 
