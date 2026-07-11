@@ -16,6 +16,9 @@ dist-ssr
 .nitro
 *.local
 
+# Local OMX runtime state and generated artifacts
+.omx/
+
 # Wrangler / Cloudflare
 .wrangler/
 .dev.vars
