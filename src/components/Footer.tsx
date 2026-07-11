@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { X, MessageCircle } from "lucide-react";
+import { Instagram, Linkedin, MessageCircle, X } from "lucide-react";
 import logo from "@/assets/Logo.svg";
 
 export function Footer() {
@@ -86,6 +86,28 @@ export function Footer() {
               >
                 <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
               </a>
+            </li>
+            <li className="pt-2">
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://www.instagram.com/learnwithepocha/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="EPOCHA on Instagram"
+                  className="inline-flex rounded-sm text-muted-foreground transition-colors hover:text-lime focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lime"
+                >
+                  <Instagram aria-hidden="true" className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/epocha-world/?viewAsMember=true"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="EPOCHA on LinkedIn"
+                  className="inline-flex rounded-sm text-muted-foreground transition-colors hover:text-lime focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lime"
+                >
+                  <Linkedin aria-hidden="true" className="h-5 w-5" />
+                </a>
+              </div>
             </li>
           </ul>
         </div>
