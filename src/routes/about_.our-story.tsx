@@ -260,7 +260,7 @@ function OurStoryPage() {
                   </span>
                 </a>
               ))}
-              <div
+              {/*<div
                 aria-hidden="true"
                 className="min-h-[172px] rounded-2xl border border-border bg-muted/10"
               />
@@ -276,7 +276,7 @@ function OurStoryPage() {
                 >
                   Book a call <ArrowRight className="w-4 h-4" />
                 </Link>
-              </div>
+              </div>*/}
             </div>
           </div>
         </div>
