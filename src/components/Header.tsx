@@ -31,6 +31,10 @@ const nav: NavItem[] = [
     ],
   },
   {
+    label: "Events",
+    children: [{ to: "/events/launch-event", label: "Launch Event" }],
+  },
+  {
     label: "About",
     children: [
       { to: "/about/our-story", label: "Our Story" },
@@ -51,7 +55,7 @@ export function Header() {
         <Link to="/" className="flex items-center" aria-label="EPOCHA home">
           <img src={logo} alt="EPOCHA" className="h-14 w-auto" />
         </Link>
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-8">
           {nav.map((n) =>
             isNavGroup(n) ? (
               <div
@@ -59,16 +63,37 @@ export function Header() {
                 className="relative"
                 onMouseEnter={() => setOpenDropdown(n.label)}
                 onMouseLeave={() => setOpenDropdown((cur) => (cur === n.label ? null : cur))}
+                onFocus={(event) => {
+                  if (!event.currentTarget.contains(event.relatedTarget)) {
+                    setOpenDropdown(n.label);
+                  }
+                }}
+                onBlur={(event) => {
+                  if (!event.currentTarget.contains(event.relatedTarget)) {
+                    setOpenDropdown((cur) => (cur === n.label ? null : cur));
+                  }
+                }}
+                onKeyDown={(event) => {
+                  if (event.key === "Escape") {
+                    setOpenDropdown(null);
+                    event.currentTarget.querySelector("button")?.focus();
+                  }
+                }}
               >
                 <button
-                  className="flex items-center gap-1 text-sm text-cream/80 hover:text-lime transition-colors"
+                  className="flex items-center gap-1 text-sm text-cream/80 hover:text-lime transition-colors focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lime"
                   aria-expanded={openDropdown === n.label}
-                  aria-haspopup="menu"
+                  aria-haspopup="true"
+                  aria-controls={`${n.label.toLowerCase()}-nav`}
+                  onClick={() => setOpenDropdown(n.label)}
                 >
                   {n.label} <ChevronDown className="w-4 h-4" />
                 </button>
                 {openDropdown === n.label && (
-                  <div className="absolute top-full left-0 pt-2 w-56">
+                  <div
+                    id={`${n.label.toLowerCase()}-nav`}
+                    className="absolute top-full left-0 pt-2 w-56"
+                  >
                     <div className="rounded-xl border border-cream/10 bg-ink shadow-xl overflow-hidden">
                       {n.children.map((child) => (
                         <Link
@@ -99,16 +124,16 @@ export function Header() {
         <Link
           to="/practicums"
           hash="choose-your-practicum"
-          className="hidden md:inline-flex btn-primary text-sm"
+          className="hidden lg:inline-flex btn-primary text-sm"
         >
           Explore practicums
         </Link>
-        <button onClick={() => setOpen(!open)} className="md:hidden text-cream" aria-label="Menu">
+        <button onClick={() => setOpen(!open)} className="lg:hidden text-cream" aria-label="Menu">
           {open ? <X /> : <Menu />}
         </button>
       </div>
       {open && (
-        <div className="md:hidden border-t border-cream/10 bg-ink text-cream">
+        <div className="lg:hidden border-t border-cream/10 bg-ink text-cream">
           <div className="container-x py-4 flex flex-col gap-3">
             {nav.map((n) =>
               isNavGroup(n) ? (
