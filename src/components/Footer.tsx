@@ -150,9 +150,14 @@ export function Footer() {
         <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-md z-50 rounded-lg border border-border bg-card text-card-foreground shadow-lg p-4 flex items-start gap-3">
           <p className="text-xs leading-relaxed flex-1">
             This website uses cookies to ensure you get the best experience on our site. Read the{" "}
-            <Link to="/privacy" className="underline text-lime hover:opacity-80">
-              Privacy Policy
-            </Link>
+            <a
+              href="/privacy-cookies-policy.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline text-lime hover:opacity-80"
+            >
+              Privacy &amp; Cookies Policy
+            </a>
             .
           </p>
           <button
