@@ -87,7 +87,7 @@ const en: LegalDocument = {
     {
       title: "1. Scope",
       paragraphs: [
-        "This Policy applies to the educational support, education-related advisory and assessment, practicums, camps, coaching and events provided by EPOCHA (representatives: Ofranc Maeva Aurelie and Park Juwon; business registration number: 708-53-00997). A separate school or institutional contract prevails where applicable but does not restrict mandatory consumer rights.",
+        "This Policy applies to the educational support, education-related advisory and assessment, practicums, camps, coaching and events provided by EPOCHA (representatives: Ofranc Maeva Aurelie and Juwon Bak; business registration number: 708-53-00997). A separate school or institutional contract prevails where applicable but does not restrict mandatory consumer rights.",
       ],
     },
     {
@@ -143,7 +143,7 @@ const en: LegalDocument = {
     {
       title: "9. Contact and disputes",
       paragraphs: [
-        "Business operator: EPOCHA\nRepresentatives: Ofranc Maeva Aurelie and Park Juwon\nBusiness registration number: 708-53-00997\nRefund contact: hello@epocha.world\nAddress: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
+        "Business operator: EPOCHA\nRepresentatives: Ofranc Maeva Aurelie and Juwon Bak\nBusiness registration number: 708-53-00997\nRefund contact: hello@epocha.world\nAddress: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
         "Unresolved consumer disputes may be submitted to the Korea Consumer Agency or Consumer Dispute Settlement Commission.",
       ],
     },

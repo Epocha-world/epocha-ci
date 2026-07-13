@@ -182,7 +182,7 @@ const en: LegalDocument = {
     {
       title: "11. Contact and review",
       paragraphs: [
-        "Policy leads: Ofranc Maeva Aurelie and Park Juwon (EPOCHA Founders)\nBusiness operator: EPOCHA\nBusiness registration number: 708-53-00997\nEmail: hello@epocha.world\nEmergency: Korean police 112\nAddress: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
+        "Policy leads: Ofranc Maeva Aurelie and Juwon Bak (EPOCHA Founders)\nBusiness operator: EPOCHA\nBusiness registration number: 708-53-00997\nEmail: hello@epocha.world\nEmergency: Korean police 112\nAddress: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
         "We review this Policy at least annually and when law, services or incident procedures change. Concerns about a response or policy breach may be raised through the email above.",
       ],
     },

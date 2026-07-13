@@ -94,7 +94,7 @@ const en: LegalDocument = {
     {
       title: "1. Purpose and scope",
       paragraphs: [
-        "These Terms govern the relationship between EPOCHA (representatives: Ofranc Maeva Aurelie and Park Juwon; business registration number: 708-53-00997; “EPOCHA”) and users of its website, online and in-person education, coaching, events and related services. Specific programme information, forms or contracts prevail where they state different terms. Any provision inconsistent with mandatory law does not apply.",
+        "These Terms govern the relationship between EPOCHA (representatives: Ofranc Maeva Aurelie and Juwon Bak; business registration number: 708-53-00997; “EPOCHA”) and users of its website, online and in-person education, coaching, events and related services. Specific programme information, forms or contracts prevail where they state different terms. Any provision inconsistent with mandatory law does not apply.",
       ],
     },
     {
@@ -162,7 +162,7 @@ const en: LegalDocument = {
       title: "11. Changes, contact and law",
       paragraphs: [
         "We may amend these Terms to reflect changes in law or the services. The effective date and material changes are published in advance, with reasonable prior notice for significant changes adverse to users.",
-        "Business operator: EPOCHA\nRepresentatives: Ofranc Maeva Aurelie and Park Juwon\nBusiness registration number: 708-53-00997\nContact: hello@epocha.world\nAddress: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
+        "Business operator: EPOCHA\nRepresentatives: Ofranc Maeva Aurelie and Juwon Bak\nBusiness registration number: 708-53-00997\nContact: hello@epocha.world\nAddress: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
         "These Terms are governed by the laws of the Republic of Korea. Parties should first seek agreement or consumer dispute resolution; unresolved disputes may be brought before a court with jurisdiction under Korean civil procedure law.",
       ],
     },

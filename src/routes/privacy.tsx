@@ -104,7 +104,7 @@ const en: LegalDocument = {
     {
       title: "1. Purposes of processing",
       paragraphs: [
-        "EPOCHA (business operator: EPOCHA; representatives: Ofranc Maeva Aurelie and Park Juwon; “EPOCHA”) processes personal information to respond to enquiries; provide information; accept, assess and administer programme registrations; communicate with participants and guardians; manage safety; process contracts, payments and refunds; and comply with legal obligations. Processing is based on consent, steps requested before or needed to perform a contract, legal obligations, or EPOCHA’s legitimate interests within the reasonable limits of Article 15(1) of Korea’s Personal Information Protection Act. We obtain separate consent or confirm another lawful basis before using information for an unrelated purpose.",
+        "EPOCHA (business operator: EPOCHA; representatives: Ofranc Maeva Aurelie and Juwon Bak; “EPOCHA”) processes personal information to respond to enquiries; provide information; accept, assess and administer programme registrations; communicate with participants and guardians; manage safety; process contracts, payments and refunds; and comply with legal obligations. Processing is based on consent, steps requested before or needed to perform a contract, legal obligations, or EPOCHA’s legitimate interests within the reasonable limits of Article 15(1) of Korea’s Personal Information Protection Act. We obtain separate consent or confirm another lawful basis before using information for an unrelated purpose.",
       ],
     },
     {
@@ -176,7 +176,7 @@ const en: LegalDocument = {
     {
       title: "10. Contact and changes",
       paragraphs: [
-        "Controller: EPOCHA\nRepresentatives: Ofranc Maeva Aurelie and Park Juwon\nBusiness registration number: 708-53-00997\nPrivacy officers: Ofranc Maeva Aurelie and Park Juwon (Founders)\nEmail: hello@epocha.world\nAddress: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
+        "Controller: EPOCHA\nRepresentatives: Ofranc Maeva Aurelie and Juwon Bak\nBusiness registration number: 708-53-00997\nPrivacy officers: Ofranc Maeva Aurelie and Juwon Bak (Founders)\nEmail: hello@epocha.world\nAddress: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
         "In Korea, privacy concerns may also be directed to the Privacy Infringement Report Center (118), Personal Information Dispute Mediation Committee (1833-6972), or Korean National Police Agency (182). We publish material changes and their effective date before they take effect.",
       ],
     },
