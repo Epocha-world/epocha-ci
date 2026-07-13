@@ -8,7 +8,7 @@ export function Footer() {
   return (
     <footer className="dark border-t border-border bg-ink text-foreground">
       <div className="container-x py-16 grid gap-12 md:grid-cols-12 items-start">
-        <div className="md:col-span-5 max-w-md">
+        <div className="md:col-span-4 max-w-md">
           <Link to="/" className="inline-flex items-center" aria-label="EPOCHA home">
             <img src={logo} alt="EPOCHA logo" className="h-28 w-auto object-contain" />
           </Link>
@@ -64,7 +64,7 @@ export function Footer() {
             </li>
           </ul>
         </div>
-        <div className="md:col-span-3">
+        <div className="md:col-span-2">
           <h4 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Connect</h4>
           <ul className="space-y-2 text-sm">
             <li>
@@ -111,6 +111,31 @@ export function Footer() {
             </li>
           </ul>
         </div>
+        <div className="md:col-span-2">
+          <h4 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Legal</h4>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <Link to="/privacy" className="hover:text-lime">
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link to="/terms" className="hover:text-lime">
+                Terms of Service
+              </Link>
+            </li>
+            <li>
+              <Link to="/refund-policy" className="hover:text-lime">
+                Refund Policy
+              </Link>
+            </li>
+            <li>
+              <Link to="/safeguarding" className="hover:text-lime">
+                Safeguarding
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
       <div className="border-t border-border">
         <div className="container-x py-6 text-xs text-muted-foreground flex flex-col md:flex-row gap-2 md:justify-between">
@@ -122,14 +147,9 @@ export function Footer() {
         <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-md z-50 rounded-lg border border-border bg-card text-card-foreground shadow-lg p-4 flex items-start gap-3">
           <p className="text-xs leading-relaxed flex-1">
             This website uses cookies to ensure you get the best experience on our site. Read the{" "}
-            <a
-              href="/privacy-cookies-policy.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline text-lime hover:opacity-80"
-            >
-              Privacy & Cookies Policy
-            </a>
+            <Link to="/privacy" className="underline text-lime hover:opacity-80">
+              Privacy Policy
+            </Link>
             .
           </p>
           <button

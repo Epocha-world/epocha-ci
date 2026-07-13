@@ -9,7 +9,11 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SafeguardingRouteImport } from './routes/safeguarding'
+import { Route as RefundPolicyRouteImport } from './routes/refund-policy'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PracticumsRouteImport } from './routes/practicums'
 import { Route as HpiAssessmentRouteImport } from './routes/hpi-assessment'
 import { Route as HowHpiWorksRouteImport } from './routes/how-hpi-works'
@@ -26,9 +30,29 @@ import { Route as EventsLaunchEventRouteImport } from './routes/events_.launch-e
 import { Route as AboutPartnershipsRouteImport } from './routes/about_.partnerships'
 import { Route as AboutOurStoryRouteImport } from './routes/about_.our-story'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SafeguardingRoute = SafeguardingRouteImport.update({
+  id: '/safeguarding',
+  path: '/safeguarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RefundPolicyRoute = RefundPolicyRouteImport.update({
+  id: '/refund-policy',
+  path: '/refund-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PracticumsRoute = PracticumsRouteImport.update({
@@ -119,7 +143,11 @@ export interface FileRoutesByFullPath {
   '/how-hpi-works': typeof HowHpiWorksRoute
   '/hpi-assessment': typeof HpiAssessmentRoute
   '/practicums': typeof PracticumsRoute
+  '/privacy': typeof PrivacyRoute
+  '/refund-policy': typeof RefundPolicyRoute
+  '/safeguarding': typeof SafeguardingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terms': typeof TermsRoute
   '/about/our-story': typeof AboutOurStoryRoute
   '/about/partnerships': typeof AboutPartnershipsRoute
   '/events/launch-event': typeof EventsLaunchEventRoute
@@ -137,7 +165,11 @@ export interface FileRoutesByTo {
   '/how-hpi-works': typeof HowHpiWorksRoute
   '/hpi-assessment': typeof HpiAssessmentRoute
   '/practicums': typeof PracticumsRoute
+  '/privacy': typeof PrivacyRoute
+  '/refund-policy': typeof RefundPolicyRoute
+  '/safeguarding': typeof SafeguardingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terms': typeof TermsRoute
   '/about/our-story': typeof AboutOurStoryRoute
   '/about/partnerships': typeof AboutPartnershipsRoute
   '/events/launch-event': typeof EventsLaunchEventRoute
@@ -156,7 +188,11 @@ export interface FileRoutesById {
   '/how-hpi-works': typeof HowHpiWorksRoute
   '/hpi-assessment': typeof HpiAssessmentRoute
   '/practicums': typeof PracticumsRoute
+  '/privacy': typeof PrivacyRoute
+  '/refund-policy': typeof RefundPolicyRoute
+  '/safeguarding': typeof SafeguardingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terms': typeof TermsRoute
   '/about_/our-story': typeof AboutOurStoryRoute
   '/about_/partnerships': typeof AboutPartnershipsRoute
   '/events_/launch-event': typeof EventsLaunchEventRoute
@@ -176,7 +212,11 @@ export interface FileRouteTypes {
     | '/how-hpi-works'
     | '/hpi-assessment'
     | '/practicums'
+    | '/privacy'
+    | '/refund-policy'
+    | '/safeguarding'
     | '/sitemap.xml'
+    | '/terms'
     | '/about/our-story'
     | '/about/partnerships'
     | '/events/launch-event'
@@ -194,7 +234,11 @@ export interface FileRouteTypes {
     | '/how-hpi-works'
     | '/hpi-assessment'
     | '/practicums'
+    | '/privacy'
+    | '/refund-policy'
+    | '/safeguarding'
     | '/sitemap.xml'
+    | '/terms'
     | '/about/our-story'
     | '/about/partnerships'
     | '/events/launch-event'
@@ -212,7 +256,11 @@ export interface FileRouteTypes {
     | '/how-hpi-works'
     | '/hpi-assessment'
     | '/practicums'
+    | '/privacy'
+    | '/refund-policy'
+    | '/safeguarding'
     | '/sitemap.xml'
+    | '/terms'
     | '/about_/our-story'
     | '/about_/partnerships'
     | '/events_/launch-event'
@@ -231,7 +279,11 @@ export interface RootRouteChildren {
   HowHpiWorksRoute: typeof HowHpiWorksRoute
   HpiAssessmentRoute: typeof HpiAssessmentRoute
   PracticumsRoute: typeof PracticumsRoute
+  PrivacyRoute: typeof PrivacyRoute
+  RefundPolicyRoute: typeof RefundPolicyRoute
+  SafeguardingRoute: typeof SafeguardingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TermsRoute: typeof TermsRoute
   AboutOurStoryRoute: typeof AboutOurStoryRoute
   AboutPartnershipsRoute: typeof AboutPartnershipsRoute
   EventsLaunchEventRoute: typeof EventsLaunchEventRoute
@@ -242,11 +294,39 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/safeguarding': {
+      id: '/safeguarding'
+      path: '/safeguarding'
+      fullPath: '/safeguarding'
+      preLoaderRoute: typeof SafeguardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/refund-policy': {
+      id: '/refund-policy'
+      path: '/refund-policy'
+      fullPath: '/refund-policy'
+      preLoaderRoute: typeof RefundPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/practicums': {
@@ -367,7 +447,11 @@ const rootRouteChildren: RootRouteChildren = {
   HowHpiWorksRoute: HowHpiWorksRoute,
   HpiAssessmentRoute: HpiAssessmentRoute,
   PracticumsRoute: PracticumsRoute,
+  PrivacyRoute: PrivacyRoute,
+  RefundPolicyRoute: RefundPolicyRoute,
+  SafeguardingRoute: SafeguardingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TermsRoute: TermsRoute,
   AboutOurStoryRoute: AboutOurStoryRoute,
   AboutPartnershipsRoute: AboutPartnershipsRoute,
   EventsLaunchEventRoute: EventsLaunchEventRoute,
