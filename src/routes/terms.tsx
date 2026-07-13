@@ -173,7 +173,7 @@ export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
       { title: "서비스 이용약관 | Terms of Service — EPOCHA" },
-      { name: "description", content: "EPOCHA Learning Hub 서비스 이용약관 및 영문 번역본" },
+      { name: "description", content: "EPOCHA 서비스 이용약관 및 영문 번역본" },
     ],
   }),
   component: () => <LegalDocumentPage ko={ko} en={en} />,

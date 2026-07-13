@@ -4,8 +4,7 @@ import { LegalDocumentPage, type LegalDocument } from "@/components/LegalDocumen
 const ko: LegalDocument = {
   label: "Legal",
   title: "개인정보처리방침",
-  summary:
-    "EPOCHA Learning Hub는 참가자와 보호자의 개인정보를 필요한 범위에서 안전하고 투명하게 처리합니다.",
+  summary: "EPOCHA는 참가자와 보호자의 개인정보를 필요한 범위에서 안전하고 투명하게 처리합니다.",
   effectiveDate: "2026년 7월 13일",
   notice:
     "프로그램 신청 양식에서는 수집 항목, 보유기간, 국외 이전 등 해당 신청에 필요한 사항을 별도로 안내하고 동의를 받습니다.",
@@ -96,7 +95,7 @@ const en: LegalDocument = {
   label: "Legal",
   title: "Privacy Policy",
   summary:
-    "EPOCHA Learning Hub processes participant and guardian information safely, transparently, and only as needed.",
+    "EPOCHA processes participant and guardian information safely, transparently, and only as needed.",
   effectiveDate: "13 July 2026",
   notice:
     "Each programme form provides a separate notice and obtains any consent required for the information collected, retention period, and overseas transfer.",
@@ -187,7 +186,7 @@ export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
       { title: "개인정보처리방침 | Privacy Policy — EPOCHA" },
-      { name: "description", content: "EPOCHA Learning Hub 개인정보처리방침 및 영문 번역본" },
+      { name: "description", content: "EPOCHA 개인정보처리방침 및 영문 번역본" },
     ],
   }),
   component: () => <LegalDocumentPage ko={ko} en={en} />,

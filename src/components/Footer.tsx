@@ -112,7 +112,7 @@ export function Footer() {
           </ul>
         </div>
         <div className="md:col-span-2">
-          <h4 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Legal</h4>
+          <h4 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">KR Legal</h4>
           <ul className="space-y-2 text-sm">
             <li>
               <Link to="/privacy" className="hover:text-lime">
@@ -139,7 +139,7 @@ export function Footer() {
       </div>
       <div className="border-t border-border">
         <div className="container-x py-6 text-xs text-muted-foreground flex flex-col gap-2 lg:flex-row lg:flex-wrap lg:justify-between">
-          <span>© 2026 EPOCHA Learning Hub. All rights reserved.</span>
+          <span>© 2026 EPOCHA. All rights reserved.</span>
           <span>
             에포차(EPOCHA) · 대표 Ofranc Maeva Aurelie 외 1명(박주원) · 사업자등록번호 708-53-00997
           </span>
