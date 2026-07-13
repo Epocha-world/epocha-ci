@@ -88,7 +88,7 @@ const ko: LegalDocument = {
     {
       title: "11. 담당자와 정책 검토",
       paragraphs: [
-        "Safeguarding contact: EPOCHA Safeguarding Team\n이메일: hello@epocha.world\n긴급 신고: 경찰 112\n주소: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
+        "정책 책임자: Ofranc Maeva Aurelie, 박주원(에포차 창업자)\n사업자: 에포차(EPOCHA)\n사업자등록번호: 708-53-00997\n이메일: hello@epocha.world\n긴급 신고: 경찰 112\n주소: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
         "이 정책은 최소 연 1회, 관련 법령·서비스 또는 사고 대응 절차가 변경될 때 검토합니다. 정책 위반 또는 대응 결과에 대한 이의는 위 이메일로 제기할 수 있습니다.",
       ],
     },
@@ -182,7 +182,7 @@ const en: LegalDocument = {
     {
       title: "11. Contact and review",
       paragraphs: [
-        "Safeguarding contact: EPOCHA Safeguarding Team\nEmail: hello@epocha.world\nEmergency: Korean police 112\nAddress: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
+        "Policy leads: Ofranc Maeva Aurelie and Park Juwon (EPOCHA Founders)\nBusiness operator: EPOCHA\nBusiness registration number: 708-53-00997\nEmail: hello@epocha.world\nEmergency: Korean police 112\nAddress: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
         "We review this Policy at least annually and when law, services or incident procedures change. Concerns about a response or policy breach may be raised through the email above.",
       ],
     },

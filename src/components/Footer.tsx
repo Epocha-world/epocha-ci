@@ -138,8 +138,11 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-border">
-        <div className="container-x py-6 text-xs text-muted-foreground flex flex-col md:flex-row gap-2 md:justify-between">
+        <div className="container-x py-6 text-xs text-muted-foreground flex flex-col gap-2 lg:flex-row lg:flex-wrap lg:justify-between">
           <span>© 2026 EPOCHA Learning Hub. All rights reserved.</span>
+          <span>
+            에포차(EPOCHA) · 대표 Ofranc Maeva Aurelie 외 1명(박주원) · 사업자등록번호 708-53-00997
+          </span>
           <span>R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, South Korea</span>
         </div>
       </div>

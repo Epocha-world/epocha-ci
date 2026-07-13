@@ -12,7 +12,7 @@ const ko: LegalDocument = {
     {
       title: "1. 적용범위",
       paragraphs: [
-        "이 정책은 EPOCHA가 교육서비스업으로 제공하는 교육지원 서비스, 교육 관련 자문·평가, Practicum, 캠프, 코칭과 행사에 적용됩니다. 학교·기관과 별도 계약을 체결한 경우에는 해당 계약을 우선 적용하되, 소비자에게 법률상 보장되는 권리를 제한하지 않습니다.",
+        "이 정책은 에포차(EPOCHA, 대표자 Ofranc Maeva Aurelie 외 1명 박주원, 사업자등록번호 708-53-00997)가 교육서비스업으로 제공하는 교육지원 서비스, 교육 관련 자문·평가, Practicum, 캠프, 코칭과 행사에 적용됩니다. 학교·기관과 별도 계약을 체결한 경우에는 해당 계약을 우선 적용하되, 소비자에게 법률상 보장되는 권리를 제한하지 않습니다.",
       ],
     },
     {
@@ -68,7 +68,7 @@ const ko: LegalDocument = {
     {
       title: "9. 문의와 분쟁 해결",
       paragraphs: [
-        "환불 문의: hello@epocha.world\n주소: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
+        "사업자: 에포차(EPOCHA)\n대표자: Ofranc Maeva Aurelie 외 1명(박주원)\n사업자등록번호: 708-53-00997\n환불 문의: hello@epocha.world\n주소: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
         "해결되지 않은 분쟁은 한국소비자원 피해구제 또는 소비자분쟁조정위원회의 조정을 이용할 수 있습니다.",
       ],
     },
@@ -87,7 +87,7 @@ const en: LegalDocument = {
     {
       title: "1. Scope",
       paragraphs: [
-        "This Policy applies to EPOCHA’s educational support, education-related advisory and assessment, practicums, camps, coaching and events. A separate school or institutional contract prevails where applicable but does not restrict mandatory consumer rights.",
+        "This Policy applies to the educational support, education-related advisory and assessment, practicums, camps, coaching and events provided by EPOCHA (representatives: Ofranc Maeva Aurelie and Park Juwon; business registration number: 708-53-00997). A separate school or institutional contract prevails where applicable but does not restrict mandatory consumer rights.",
       ],
     },
     {
@@ -143,7 +143,7 @@ const en: LegalDocument = {
     {
       title: "9. Contact and disputes",
       paragraphs: [
-        "Refund contact: hello@epocha.world\nAddress: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
+        "Business operator: EPOCHA\nRepresentatives: Ofranc Maeva Aurelie and Park Juwon\nBusiness registration number: 708-53-00997\nRefund contact: hello@epocha.world\nAddress: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
         "Unresolved consumer disputes may be submitted to the Korea Consumer Agency or Consumer Dispute Settlement Commission.",
       ],
     },

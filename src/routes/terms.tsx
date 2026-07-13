@@ -10,7 +10,7 @@ const ko: LegalDocument = {
     {
       title: "1. 목적과 적용범위",
       paragraphs: [
-        "이 약관은 EPOCHA Learning Hub(이하 ‘EPOCHA’)가 웹사이트와 온·오프라인 교육, 코칭, 행사 및 관련 서비스(이하 ‘서비스’)를 제공할 때 EPOCHA와 이용자 사이의 권리와 의무를 정합니다. 개별 프로그램 안내, 신청서 또는 계약에서 달리 정한 사항은 해당 개별 조건이 우선하며, 관련 법령에 반하는 조항은 적용되지 않습니다.",
+        "이 약관은 에포차(EPOCHA, 대표자 Ofranc Maeva Aurelie 외 1명 박주원, 사업자등록번호 708-53-00997, 이하 ‘EPOCHA’)가 웹사이트와 온·오프라인 교육, 코칭, 행사 및 관련 서비스(이하 ‘서비스’)를 제공할 때 EPOCHA와 이용자 사이의 권리와 의무를 정합니다. 개별 프로그램 안내, 신청서 또는 계약에서 달리 정한 사항은 해당 개별 조건이 우선하며, 관련 법령에 반하는 조항은 적용되지 않습니다.",
       ],
     },
     {
@@ -78,7 +78,7 @@ const ko: LegalDocument = {
       title: "11. 약관 변경, 문의 및 준거법",
       paragraphs: [
         "EPOCHA는 법령 또는 서비스 변경을 반영하기 위해 약관을 개정할 수 있으며 시행일과 주요 변경 내용을 사전에 게시합니다. 이용자에게 불리한 중요한 변경은 합리적인 기간 전에 알립니다.",
-        "문의: hello@epocha.world\n주소: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
+        "사업자: 에포차(EPOCHA)\n대표자: Ofranc Maeva Aurelie 외 1명(박주원)\n사업자등록번호: 708-53-00997\n문의: hello@epocha.world\n주소: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
         "이 약관은 대한민국 법률을 따릅니다. 분쟁은 당사자 간 협의 또는 소비자분쟁조정 절차로 해결하며, 해결되지 않으면 대한민국 민사소송법상 관할법원에 제기할 수 있습니다.",
       ],
     },
@@ -94,7 +94,7 @@ const en: LegalDocument = {
     {
       title: "1. Purpose and scope",
       paragraphs: [
-        "These Terms govern the relationship between EPOCHA Learning Hub (“EPOCHA”) and users of its website, online and in-person education, coaching, events and related services. Specific programme information, forms or contracts prevail where they state different terms. Any provision inconsistent with mandatory law does not apply.",
+        "These Terms govern the relationship between EPOCHA (representatives: Ofranc Maeva Aurelie and Park Juwon; business registration number: 708-53-00997; “EPOCHA”) and users of its website, online and in-person education, coaching, events and related services. Specific programme information, forms or contracts prevail where they state different terms. Any provision inconsistent with mandatory law does not apply.",
       ],
     },
     {
@@ -162,7 +162,7 @@ const en: LegalDocument = {
       title: "11. Changes, contact and law",
       paragraphs: [
         "We may amend these Terms to reflect changes in law or the services. The effective date and material changes are published in advance, with reasonable prior notice for significant changes adverse to users.",
-        "Contact: hello@epocha.world\nAddress: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
+        "Business operator: EPOCHA\nRepresentatives: Ofranc Maeva Aurelie and Park Juwon\nBusiness registration number: 708-53-00997\nContact: hello@epocha.world\nAddress: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
         "These Terms are governed by the laws of the Republic of Korea. Parties should first seek agreement or consumer dispute resolution; unresolved disputes may be brought before a court with jurisdiction under Korean civil procedure law.",
       ],
     },

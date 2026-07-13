@@ -13,7 +13,7 @@ const ko: LegalDocument = {
     {
       title: "1. 개인정보의 처리 목적",
       paragraphs: [
-        "EPOCHA Learning Hub(이하 ‘EPOCHA’)는 문의 응대, 프로그램 안내·신청·선발·운영, 참가자와 보호자 연락, 안전관리, 계약 및 결제·환불 처리, 법적 의무 이행을 위해 개인정보를 처리합니다. 동의받은 목적을 벗어나 이용할 때에는 법령상 근거를 확인하거나 별도 동의를 받습니다.",
+        "에포차(EPOCHA, 대표자 Ofranc Maeva Aurelie 외 1명 박주원, 이하 ‘EPOCHA’)는 문의 응대, 프로그램 안내·신청·선발·운영, 참가자와 보호자 연락, 안전관리, 계약 및 결제·환불 처리, 법적 의무 이행을 위해 개인정보를 처리합니다. 처리는 개인정보 보호법 제15조제1항에 따른 정보주체의 동의, 계약 체결·이행, 법령상 의무 또는 합리적인 범위의 정당한 이익을 근거로 하며, 목적을 벗어나 이용할 때에는 법령상 근거를 확인하거나 별도 동의를 받습니다.",
       ],
     },
     {
@@ -30,15 +30,18 @@ const ko: LegalDocument = {
     {
       title: "3. 처리 및 보유기간",
       bullets: [
-        "일반 문의: 답변 완료 후 1년",
-        "프로그램 신청 및 참가 기록: 프로그램 종료 후 3년 또는 동의 철회 시까지",
+        "일반 문의: 답변 완료 후 1년(동의 또는 요청에 따른 조치 이행). 다만 소비자 불만·분쟁에 해당하면 3년",
+        "선발되지 않은 프로그램 신청정보: 선발 절차 종료 후 6개월(이의 제기 및 추가 선발 대응 후 파기)",
+        "참가자의 신청·출결·운영 기록: 프로그램 종료 후 3년(계약 이행, 교육 운영 확인 및 분쟁 대응)",
+        "응급연락처·알레르기·건강상 유의사항: 프로그램 종료 후 30일 이내 파기. 안전사고가 발생하면 해당 사고가 종결될 때까지",
+        "선택 동의에 따른 사진·영상·결과물: 동의일로부터 3년 또는 동의 철회 시까지",
         "계약·대금결제·공급 기록: 전자상거래법에 따라 5년",
         "소비자 불만 또는 분쟁처리 기록: 전자상거래법에 따라 3년",
         "표시·광고 기록: 전자상거래법에 따라 6개월",
-        "법정대리인 동의 기록: 해당 개인정보의 보유기간 또는 관계 법령이 요구하는 기간",
+        "법정대리인 동의 기록: 프로그램 종료 후 3년(동의 및 계약의 적법성 확인)",
       ],
       paragraphs: [
-        "다른 법령이 더 긴 보존기간을 요구하거나 분쟁 해결을 위해 보존할 필요가 있는 경우에는 해당 기간 동안 분리하여 보관합니다.",
+        "전자상거래법 시행령 제6조가 정한 거래기록을 제외한 개인정보는 개인정보 보호법 제21조에 따라 보유기간이 지나거나 목적이 달성되면 지체 없이 파기합니다. 다른 법령이 더 긴 보존기간을 요구하거나 진행 중인 분쟁 해결에 필요한 경우에는 해당 정보만 분리하여 보관합니다.",
       ],
     },
     {
@@ -82,7 +85,7 @@ const ko: LegalDocument = {
     {
       title: "10. 개인정보 문의 및 방침 변경",
       paragraphs: [
-        "개인정보 보호업무 및 권리행사 담당: EPOCHA Privacy Team\n이메일: hello@epocha.world\n주소: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
+        "개인정보처리자: 에포차(EPOCHA)\n대표자: Ofranc Maeva Aurelie 외 1명(박주원)\n사업자등록번호: 708-53-00997\n개인정보 보호책임자: Ofranc Maeva Aurelie, 박주원(창업자)\n이메일: hello@epocha.world\n주소: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
         "권리침해 상담은 개인정보침해신고센터(국번 없이 118), 개인정보분쟁조정위원회(1833-6972), 경찰청(국번 없이 182) 등에 문의할 수 있습니다. 이 방침을 변경하는 경우 시행 전에 웹사이트에 변경 내용과 시행일을 알립니다.",
       ],
     },
@@ -101,7 +104,7 @@ const en: LegalDocument = {
     {
       title: "1. Purposes of processing",
       paragraphs: [
-        "EPOCHA Learning Hub (“EPOCHA”) processes personal information to respond to enquiries; provide information; accept, assess and administer programme registrations; communicate with participants and guardians; manage safety; process contracts, payments and refunds; and comply with legal obligations. We obtain separate consent or confirm another lawful basis before using information for an unrelated purpose.",
+        "EPOCHA (business operator: EPOCHA; representatives: Ofranc Maeva Aurelie and Park Juwon; “EPOCHA”) processes personal information to respond to enquiries; provide information; accept, assess and administer programme registrations; communicate with participants and guardians; manage safety; process contracts, payments and refunds; and comply with legal obligations. Processing is based on consent, steps requested before or needed to perform a contract, legal obligations, or EPOCHA’s legitimate interests within the reasonable limits of Article 15(1) of Korea’s Personal Information Protection Act. We obtain separate consent or confirm another lawful basis before using information for an unrelated purpose.",
       ],
     },
     {
@@ -118,15 +121,18 @@ const en: LegalDocument = {
     {
       title: "3. Retention",
       bullets: [
-        "General enquiries: one year after the response is completed",
-        "Programme application and participation records: three years after the programme or until consent is withdrawn",
+        "General enquiries: one year after the response is completed; three years where the matter is a consumer complaint or dispute",
+        "Unsuccessful programme applications: six months after selection ends",
+        "Participant application, attendance and administration records: three years after the programme",
+        "Emergency contacts, allergies and health considerations: deleted within 30 days after the programme, or when a related safety incident is resolved",
+        "Images, video and participant work used with optional consent: three years from consent or until consent is withdrawn",
         "Contract, payment and supply records: five years under Korean e-commerce law",
         "Consumer complaints and dispute records: three years under Korean e-commerce law",
         "Advertising records: six months under Korean e-commerce law",
-        "Guardian consent records: for the related retention period or as required by law",
+        "Guardian consent records: three years after the programme",
       ],
       paragraphs: [
-        "Where law requires longer retention or records are needed to resolve a dispute, they are stored separately for the applicable period.",
+        "Except for transaction records retained under Article 6 of the Enforcement Decree of the Korean E-Commerce Act, personal information is deleted without delay when its purpose or retention period ends under Article 21 of the Personal Information Protection Act. Only records required by another law or an active dispute are stored separately for the applicable period.",
       ],
     },
     {
@@ -170,7 +176,7 @@ const en: LegalDocument = {
     {
       title: "10. Contact and changes",
       paragraphs: [
-        "Privacy and rights contact: EPOCHA Privacy Team\nEmail: hello@epocha.world\nAddress: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
+        "Controller: EPOCHA\nRepresentatives: Ofranc Maeva Aurelie and Park Juwon\nBusiness registration number: 708-53-00997\nPrivacy officers: Ofranc Maeva Aurelie and Park Juwon (Founders)\nEmail: hello@epocha.world\nAddress: R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, Republic of Korea",
         "In Korea, privacy concerns may also be directed to the Privacy Infringement Report Center (118), Personal Information Dispute Mediation Committee (1833-6972), or Korean National Police Agency (182). We publish material changes and their effective date before they take effect.",
       ],
     },
