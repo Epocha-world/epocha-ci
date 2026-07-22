@@ -17,6 +17,7 @@ import {
   FileBadge,
   Network,
   UsersRound,
+  Building2,
 } from "lucide-react";
 import student from "@/assets/student.jpg";
 
@@ -134,11 +135,11 @@ function StartupLabCampPage() {
               >
                 <li className="flex items-start gap-2">
                   <UsersRound className="w-4 h-4 mt-0.5 shrink-0" style={{ color: GOLD }} />
-                  <span>Cohort A: June 21 – July 17</span>
+                  <span>Cohort A: June 28 – July 23</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <UsersRound className="w-4 h-4 mt-0.5 shrink-0" style={{ color: GOLD }} />
-                  <span>Cohort B: July 19 – August 13</span>
+                  <span>Cohort B: July 26 to August 20</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Calendar className="w-4 h-4 mt-0.5 shrink-0" style={{ color: GOLD }} />
@@ -162,7 +163,7 @@ function StartupLabCampPage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="shrink-0">👥</span>
-                  <span>Minimum 6 trainees, maximum 10 trainees</span>
+                  <span>30 spots available</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="shrink-0">📍</span>
@@ -356,7 +357,7 @@ function StartupLabCampPage() {
               >
                 <li className="flex items-start gap-2">
                   <span className="shrink-0">👥</span>
-                  <span>Minimum 6 trainees, maximum 10 trainees</span>
+                  <span>30 spots available</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="shrink-0">📍</span>
@@ -400,7 +401,149 @@ function StartupLabCampPage() {
         </div>
       </section>
 
-      {/* Section 5 — CREAM · What trainees learn */}
+      {/* Section 5 — LIGHT · EPOCHA Calendar */}
+      <section className="border-t border-border bg-background text-foreground">
+        <div className="container-x py-20">
+          <p className="text-xs uppercase tracking-[0.2em] font-bold" style={{ color: GOLD_DEEP }}>
+            EPOCHA Calendar
+          </p>
+          <h2 className="mt-3 text-3xl font-bold md:text-4xl">2026–27 term dates</h2>
+          <p className="mt-4 max-w-3xl leading-relaxed text-foreground/80">
+            We operate on a 20-session-per-term basis from September to June. Sessions will run
+            according to the 2026–27 calendar dates below:
+          </p>
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {[
+              { term: "Fall", dates: "Tuesday 1 September to Friday 18 December" },
+              { term: "Winter", dates: "Monday 4 January to Friday 26 March" },
+              { term: "Spring", dates: "Monday 5 April to Friday 25 June" },
+            ].map((term) => (
+              <div key={term.term} className="rounded-2xl border border-border bg-card p-6">
+                <h3
+                  className="text-xs font-bold uppercase tracking-[0.2em]"
+                  style={{ color: GOLD_DEEP }}
+                >
+                  {term.term}
+                </h3>
+                <p className="mt-4 text-sm leading-relaxed text-foreground/75">{term.dates}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 6 — DARK · International track */}
+      <section
+        className="border-t"
+        style={{ background: DARK, color: LIGHT_ON_DARK, borderColor: "rgba(255,255,255,0.1)" }}
+      >
+        <div className="container-x py-20">
+          <div className="flex flex-wrap items-center gap-3">
+            <p className="text-xs uppercase tracking-[0.2em] font-bold" style={{ color: GOLD }}>
+              International track
+            </p>
+            <span
+              className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold"
+              style={{
+                borderColor: "rgba(250,199,117,0.45)",
+                background: "rgba(250,199,117,0.12)",
+                color: GOLD,
+              }}
+            >
+              <Globe className="h-4 w-4" aria-hidden="true" />
+              Online
+            </span>
+          </div>
+          <h2 className="mt-3 text-3xl font-bold text-white md:text-4xl">
+            Build with teams around the world.
+          </h2>
+          <p className="mt-4 max-w-3xl leading-relaxed" style={{ color: LIGHT_ON_DARK }}>
+            The international track is a high-accelerator program where teens work in teams to
+            identify a real-world problem, validate it through early research, and develop a
+            business concept, prototype, or MVP.
+          </p>
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            <div className="rounded-2xl border border-white/15 bg-white/5 p-6">
+              <h3 className="font-semibold text-white">Schedule</h3>
+              <ul
+                className="mt-3 space-y-2 text-sm leading-relaxed"
+                style={{ color: LIGHT_ON_DARK }}
+              >
+                <li className="flex items-start gap-2">
+                  <Calendar className="mt-0.5 h-4 w-4 shrink-0" style={{ color: GOLD }} />
+                  <span>September to June</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Calendar className="mt-0.5 h-4 w-4 shrink-0" style={{ color: GOLD }} />
+                  <span>Once a week during term time</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <UsersRound className="mt-0.5 h-4 w-4 shrink-0" style={{ color: GOLD }} />
+                  <span>Saturdays</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Clock className="mt-0.5 h-4 w-4 shrink-0" style={{ color: GOLD }} />
+                  <span>10 am to 1:00 pm KST</span>
+                </li>
+              </ul>
+            </div>
+            <div className="rounded-2xl border border-white/15 bg-white/5 p-6">
+              <h3 className="font-semibold text-white">Program details</h3>
+              <ul
+                className="mt-3 space-y-2 text-sm leading-relaxed"
+                style={{ color: LIGHT_ON_DARK }}
+              >
+                <li className="flex items-start gap-2">
+                  <Users className="mt-0.5 h-4 w-4 shrink-0" style={{ color: GOLD }} />
+                  <span>30 spots available</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0" style={{ color: GOLD }} />
+                  <span>Location: online</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <FileBadge className="mt-0.5 h-4 w-4 shrink-0" style={{ color: GOLD }} />
+                  <span>Individual and institutional registrations available</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Building2
+                    aria-hidden="true"
+                    className="mt-0.5 h-4 w-4 shrink-0"
+                    style={{ color: GOLD }}
+                  />
+                  <span>Industry collaboration</span>
+                </li>
+              </ul>
+            </div>
+            <div className="rounded-2xl border border-white/15 bg-white/5 p-6">
+              <h3 className="font-semibold text-white">Training</h3>
+              <ul
+                className="mt-3 space-y-2 text-sm leading-relaxed"
+                style={{ color: LIGHT_ON_DARK }}
+              >
+                <li className="flex items-start gap-2">
+                  <Bot className="mt-0.5 h-4 w-4 shrink-0" style={{ color: GOLD }} />
+                  <span>AI in the workplace</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <HeartPulse className="mt-0.5 h-4 w-4 shrink-0" style={{ color: GOLD }} />
+                  <span>EPOCH awareness training</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Target className="mt-0.5 h-4 w-4 shrink-0" style={{ color: GOLD }} />
+                  <span>Leadership workshop</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Globe className="mt-0.5 h-4 w-4 shrink-0" style={{ color: GOLD }} />
+                  <span>Intercultural dialogues</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 7 — CREAM · What trainees learn */}
       <section className="border-t border-border" style={{ background: CREAM_BG }}>
         <div className="container-x py-20">
           <p className="text-xs uppercase tracking-[0.2em] font-bold" style={{ color: GOLD_DEEP }}>
@@ -450,6 +593,14 @@ function StartupLabCampPage() {
               </div>
             ))}
           </div>
+          <div className="mt-8 rounded-2xl border border-border bg-card p-6">
+            <h3 className="font-semibold text-foreground">Pitching and Rewards Opportunities</h3>
+            <p className="mt-3 leading-relaxed text-foreground/75">
+              All trainees can pitch their projects and startups at local and global events. These
+              platforms allow them to showcase their innovations, gain industry visibility, and earn
+              valuable rewards.
+            </p>
+          </div>
           <div className="mt-10">
             <Link
               to="/practicums"
@@ -462,7 +613,7 @@ function StartupLabCampPage() {
         </div>
       </section>
 
-      {/* Section 6 — LIGHT · How trainees learn */}
+      {/* Section 8 — LIGHT · How trainees learn */}
       <section className="bg-background text-foreground border-t border-border">
         <div className="container-x py-20">
           <p className="text-xs uppercase tracking-[0.2em] font-bold" style={{ color: GOLD_DEEP }}>
@@ -489,7 +640,7 @@ function StartupLabCampPage() {
         </div>
       </section>
 
-      {/* Section 7 — CREAM · What trainees gain */}
+      {/* Section 9 — CREAM · What trainees gain */}
       <section className="border-t border-border" style={{ background: CREAM_BG }}>
         <div className="container-x py-20">
           <p className="text-xs uppercase tracking-[0.2em] font-bold" style={{ color: GOLD_DEEP }}>
@@ -550,16 +701,16 @@ function StartupLabCampPage() {
         </div>
       </section>
 
-      {/* Section 8 — LIGHT · How to apply */}
+      {/* Section 10 — LIGHT · How to register */}
       <section
         id="startup-lab"
         className="bg-background text-foreground border-t border-border scroll-mt-20"
       >
         <div className="container-x py-20">
-          <h2 className="text-4xl md:text-5xl font-bold leading-[1.05]">How to apply</h2>
+          <h2 className="text-4xl md:text-5xl font-bold leading-[1.05]">How to register</h2>
           <p className="mt-6 text-foreground/80 max-w-2xl leading-relaxed">
-            Start-up Lab Camp is open to young people aged 14–18. Applications can be submitted by a
-            parent or guardian on behalf of their teens, or by an educator looking to bring the
+            Start-up Lab Camp is open to young people aged 14–18. Registrations can be submitted by
+            a parent or guardian on behalf of their teens, or by an educator looking to bring the
             practicum to a full student cohort at their school or institution.
           </p>
           <div className="mt-10 grid md:grid-cols-2 gap-5">
@@ -617,7 +768,7 @@ function StartupLabCampPage() {
         </div>
       </section>
 
-      {/* Section 9 — FAQ */}
+      {/* Section 11 — FAQ */}
       <section className="bg-background text-foreground border-t border-border">
         <div className="container-x py-20">
           <p className="text-xs uppercase tracking-[0.2em] font-bold" style={{ color: GOLD_DEEP }}>
