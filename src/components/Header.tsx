@@ -25,7 +25,7 @@ const nav: NavItem[] = [
   {
     label: "Practicums",
     children: [
-      { to: "/practicums/hanaro-marketing", label: "Hanaro Leadership Practicum" },
+      { to: "/practicums/hanaro", label: "Hanaro Leadership Practicum" },
       { to: "/practicums/startup-lab-camp", label: "Start-up Lab Camp" },
       { to: "/practicums/mirae-industry", label: "Mirae Industry Practicum" },
     ],

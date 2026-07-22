@@ -184,7 +184,7 @@ function HomeDemoPage() {
                 ))}
               </ul>
               <div className="mt-8">
-                <Link to="/practicums/hanaro-marketing" className="btn-primary">
+                <Link to="/practicums/hanaro" className="btn-primary">
                   Explore Hanaro Practicum <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>

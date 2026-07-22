@@ -577,7 +577,7 @@ function TrainingPage() {
                 age: "19–29",
                 title: "Hanaro Leadership Project",
                 desc: "Partner with NGOs and charities to drive meaningful change within your community. Lead campaigns and champion a cause that matters to you.",
-                to: "/practicums/hanaro-marketing",
+                to: "/practicums/hanaro",
               },
               {
                 age: "19–29",

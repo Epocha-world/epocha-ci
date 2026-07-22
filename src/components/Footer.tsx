@@ -48,7 +48,7 @@ export function Footer() {
           </h4>
           <ul className="space-y-2 text-sm">
             <li>
-              <Link to="/practicums/hanaro-marketing" className="hover:text-lime">
+              <Link to="/practicums/hanaro" className="hover:text-lime">
                 Hanaro Practicum
               </Link>
             </li>

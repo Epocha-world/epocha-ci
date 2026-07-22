@@ -26,6 +26,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as PracticumsStartupLabCampRouteImport } from './routes/practicums_.startup-lab-camp'
 import { Route as PracticumsMiraeIndustryRouteImport } from './routes/practicums_.mirae-industry'
 import { Route as PracticumsHanaroMarketingRouteImport } from './routes/practicums_.hanaro-marketing'
+import { Route as PracticumsHanaroRouteImport } from './routes/practicums_.hanaro'
 import { Route as EventsLaunchEventRouteImport } from './routes/events_.launch-event'
 import { Route as AboutPartnershipsRouteImport } from './routes/about_.partnerships'
 import { Route as AboutOurStoryRouteImport } from './routes/about_.our-story'
@@ -117,6 +118,11 @@ const PracticumsHanaroMarketingRoute =
     path: '/practicums/hanaro-marketing',
     getParentRoute: () => rootRouteImport,
   } as any)
+const PracticumsHanaroRoute = PracticumsHanaroRouteImport.update({
+  id: '/practicums_/hanaro',
+  path: '/practicums/hanaro',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EventsLaunchEventRoute = EventsLaunchEventRouteImport.update({
   id: '/events_/launch-event',
   path: '/events/launch-event',
@@ -151,6 +157,7 @@ export interface FileRoutesByFullPath {
   '/about/our-story': typeof AboutOurStoryRoute
   '/about/partnerships': typeof AboutPartnershipsRoute
   '/events/launch-event': typeof EventsLaunchEventRoute
+  '/practicums/hanaro': typeof PracticumsHanaroRoute
   '/practicums/hanaro-marketing': typeof PracticumsHanaroMarketingRoute
   '/practicums/mirae-industry': typeof PracticumsMiraeIndustryRoute
   '/practicums/startup-lab-camp': typeof PracticumsStartupLabCampRoute
@@ -173,6 +180,7 @@ export interface FileRoutesByTo {
   '/about/our-story': typeof AboutOurStoryRoute
   '/about/partnerships': typeof AboutPartnershipsRoute
   '/events/launch-event': typeof EventsLaunchEventRoute
+  '/practicums/hanaro': typeof PracticumsHanaroRoute
   '/practicums/hanaro-marketing': typeof PracticumsHanaroMarketingRoute
   '/practicums/mirae-industry': typeof PracticumsMiraeIndustryRoute
   '/practicums/startup-lab-camp': typeof PracticumsStartupLabCampRoute
@@ -196,6 +204,7 @@ export interface FileRoutesById {
   '/about_/our-story': typeof AboutOurStoryRoute
   '/about_/partnerships': typeof AboutPartnershipsRoute
   '/events_/launch-event': typeof EventsLaunchEventRoute
+  '/practicums_/hanaro': typeof PracticumsHanaroRoute
   '/practicums_/hanaro-marketing': typeof PracticumsHanaroMarketingRoute
   '/practicums_/mirae-industry': typeof PracticumsMiraeIndustryRoute
   '/practicums_/startup-lab-camp': typeof PracticumsStartupLabCampRoute
@@ -220,6 +229,7 @@ export interface FileRouteTypes {
     | '/about/our-story'
     | '/about/partnerships'
     | '/events/launch-event'
+    | '/practicums/hanaro'
     | '/practicums/hanaro-marketing'
     | '/practicums/mirae-industry'
     | '/practicums/startup-lab-camp'
@@ -242,6 +252,7 @@ export interface FileRouteTypes {
     | '/about/our-story'
     | '/about/partnerships'
     | '/events/launch-event'
+    | '/practicums/hanaro'
     | '/practicums/hanaro-marketing'
     | '/practicums/mirae-industry'
     | '/practicums/startup-lab-camp'
@@ -264,6 +275,7 @@ export interface FileRouteTypes {
     | '/about_/our-story'
     | '/about_/partnerships'
     | '/events_/launch-event'
+    | '/practicums_/hanaro'
     | '/practicums_/hanaro-marketing'
     | '/practicums_/mirae-industry'
     | '/practicums_/startup-lab-camp'
@@ -287,6 +299,7 @@ export interface RootRouteChildren {
   AboutOurStoryRoute: typeof AboutOurStoryRoute
   AboutPartnershipsRoute: typeof AboutPartnershipsRoute
   EventsLaunchEventRoute: typeof EventsLaunchEventRoute
+  PracticumsHanaroRoute: typeof PracticumsHanaroRoute
   PracticumsHanaroMarketingRoute: typeof PracticumsHanaroMarketingRoute
   PracticumsMiraeIndustryRoute: typeof PracticumsMiraeIndustryRoute
   PracticumsStartupLabCampRoute: typeof PracticumsStartupLabCampRoute
@@ -413,6 +426,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PracticumsHanaroMarketingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/practicums_/hanaro': {
+      id: '/practicums_/hanaro'
+      path: '/practicums/hanaro'
+      fullPath: '/practicums/hanaro'
+      preLoaderRoute: typeof PracticumsHanaroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/events_/launch-event': {
       id: '/events_/launch-event'
       path: '/events/launch-event'
@@ -455,6 +475,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutOurStoryRoute: AboutOurStoryRoute,
   AboutPartnershipsRoute: AboutPartnershipsRoute,
   EventsLaunchEventRoute: EventsLaunchEventRoute,
+  PracticumsHanaroRoute: PracticumsHanaroRoute,
   PracticumsHanaroMarketingRoute: PracticumsHanaroMarketingRoute,
   PracticumsMiraeIndustryRoute: PracticumsMiraeIndustryRoute,
   PracticumsStartupLabCampRoute: PracticumsStartupLabCampRoute,
