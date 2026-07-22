@@ -233,15 +233,28 @@ function OurStoryPage() {
             <div className="mt-4 grid md:grid-cols-2 gap-4">
               {[
                 {
+                  name: "KIAC Coaching and Mentoring",
+                  desc: "Maeva coaches and mentors young leaders across international programs, blending experiential learning, intercultural dialogue, one-to-one and group guidance.",
+                  href: "https://kiac.info/",
+                  cta: "Learn more",
+                  featured: true,
+                },
+                {
+                  name: "Virtual Entrepreneurship Program (VEP) with KoreaPEN",
+                  desc: "A Practice Enterprise-based after-school program building career readiness and college competitiveness through global peer collaboration and experiential learning.",
+                  href: "https://vep-info-english-vks96vv.gamma.site/",
+                  cta: "Learn more",
+                },
+                {
                   name: "Youth for Peace: UNESCO Intercultural Leadership Programme",
                   desc: "A UNESCO programme developing intercultural leadership in young people through dialogue, collaboration, and peace-building.",
                   href: "https://www.unesco.org/en/interculturaldialogue/youthforpeace?hub=181405",
                   cta: "Learn more",
                 },
                 {
-                  name: "Virtual Entrepreneurship Program (VEP) with KoreaPEN",
-                  desc: "A Practice Enterprise-based after-school program building career readiness and college competitiveness through global peer collaboration and experiential learning.",
-                  href: "https://vep-info-english-vks96vv.gamma.site/",
+                  name: "Suwon ECHO Startup Program",
+                  desc: "A teen start-up program powered by Planet E.C.H.O and supported by Gyeonggido Office of Education, Gyeonggido Suwon Office of Education, KoreaPEN, and PEN Worldwide.",
+                  href: "https://www.suwonnews.co.kr/news/articleView.html?idxno=33880",
                   cta: "Learn more",
                 },
               ].map((project) => (
@@ -250,11 +263,19 @@ function OurStoryPage() {
                   href={project.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group rounded-2xl border border-border p-6 hover:border-lime transition block"
+                  className={`group flex flex-col rounded-2xl border p-6 transition ${
+                    project.featured
+                      ? "border-amber-400 bg-amber-50/80 shadow-sm hover:border-amber-500"
+                      : "border-border hover:border-lime"
+                  }`}
                 >
                   <h4 className="font-bold">{project.name}</h4>
                   <p className="mt-2 text-sm text-foreground/70">{project.desc}</p>
-                  <span className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-lime">
+                  <span
+                    className={`mt-auto inline-flex items-center gap-2 pt-4 text-sm font-medium ${
+                      project.featured ? "text-amber-600" : "text-lime"
+                    }`}
+                  >
                     {project.cta}
                     <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                   </span>
