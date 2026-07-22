@@ -100,10 +100,7 @@ function StartupLabCampPage() {
             <p className="text-xs uppercase tracking-[0.2em] font-bold" style={{ color: GOLD }}>
               Summer track
             </p>
-            {[
-              { icon: MapPin, label: "Seoul, Korea" },
-              { icon: Globe, label: "Access to global events" },
-            ].map((tag) => (
+            {[{ icon: MapPin, label: "Seoul, Korea" }].map((tag) => (
               <span
                 key={tag.label}
                 className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold"
