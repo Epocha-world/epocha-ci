@@ -77,7 +77,7 @@ function HanaroPage() {
             rel="noopener noreferrer"
             className="btn-primary inline-flex mt-10"
           >
-            Register your interest <ArrowRight className="w-4 h-4" />
+            Register <ArrowRight className="w-4 h-4" />
           </a>
         </div>
       </section>
@@ -352,8 +352,7 @@ function HanaroPage() {
             <div>
               <h2 className="text-xl md:text-2xl font-bold">Notice</h2>
               <p className="mt-3 text-base md:text-lg text-white/80 leading-relaxed">
-                Registrations will open soon! Register your interest today to secure early access to
-                the practicum information pack.
+                Register today to secure the practicum information pack.
               </p>
               <a
                 href="https://forms.gle/fEN28NbP3PTL4Hrc9"
@@ -361,7 +360,7 @@ function HanaroPage() {
                 rel="noopener noreferrer"
                 className="btn-primary inline-flex mt-6"
               >
-                Register your interest <ArrowRight aria-hidden="true" className="w-4 h-4" />
+                Register <ArrowRight aria-hidden="true" className="w-4 h-4" />
               </a>
             </div>
           </div>

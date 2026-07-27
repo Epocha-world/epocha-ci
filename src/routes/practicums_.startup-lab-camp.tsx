@@ -406,8 +406,7 @@ function StartupLabCampPage() {
           </p>
           <h2 className="mt-3 text-3xl font-bold md:text-4xl">2026–27 term dates</h2>
           <p className="mt-4 max-w-3xl leading-relaxed text-foreground/80">
-            We operate on a 20-session-per-term basis from September to June. Sessions will run
-            according to the 2026–27 calendar dates below:
+            Sessions will run according to the 2026–27 calendar dates below:
           </p>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {[
