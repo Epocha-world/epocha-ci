@@ -1,25 +1,22 @@
+import student from "@/assets/student.jpg";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
-  Calendar,
-  Clock,
-  MapPin,
-  Users,
   Award,
+  BellRing,
+  Bot,
+  Briefcase,
+  Compass,
   FileBadge,
   Globe,
-  Wrench,
-  Briefcase,
-  Target,
   Heart,
-  Bot,
-  CheckCircle2,
-  Wallet,
-  Compass,
-  BellRing,
+  MapPin,
   Network,
+  Target,
+  Users,
+  Wallet,
+  Wrench,
 } from "lucide-react";
-import student from "@/assets/student.jpg";
 
 export const Route = createFileRoute("/practicums_/hanaro")({
   head: () => ({
@@ -72,33 +69,35 @@ function HanaroPage() {
             ))}
           </div>
           <a
-            href="https://forms.gle/fEN28NbP3PTL4Hrc9"
+            href="https://forms.gle/sKxTLz7F79wnDsno6"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary inline-flex mt-10"
           >
-            Register <ArrowRight className="w-4 h-4" />
+            Register your interest now <ArrowRight className="w-4 h-4" />
           </a>
         </div>
       </section>
 
-      {/* Section 2 — DARK · Creative Arts banner */}
+      {/* Section 2 — LIGHT · Creative Arts banner */}
       <section
         aria-label="Creative Arts practicum"
-        className="border-y border-white/15 bg-[#171314] text-white"
+        className="border-y border-border bg-background text-foreground"
       >
         <div className="container-x py-10">
-          <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-[#1D1819] p-8 md:p-12">
+          <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-sm md:p-12">
             <div
               aria-hidden="true"
-              className="absolute -right-20 -top-24 h-80 w-80 rounded-full bg-[#E89A2B]/20 blur-3xl"
+              className="absolute -right-20 -top-24 h-80 w-80 rounded-full bg-[#E89A2B]/15 blur-3xl"
             />
             <div
               aria-hidden="true"
-              className="absolute -bottom-32 right-24 h-72 w-72 rounded-full border border-[#FAC775]/25"
+              className="absolute -bottom-32 right-24 h-72 w-72 rounded-full border border-[#B07A1A]/20"
             />
             <div className="relative z-10 max-w-4xl">
-              <p className="text-xs uppercase tracking-[0.2em] text-white/60">Upcoming</p>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#B07A1A]">
+                Registration open
+              </p>
               <div className="mt-5 flex flex-wrap gap-2">
                 {[
                   "AI & socio-cultural project",
@@ -116,17 +115,24 @@ function HanaroPage() {
               <div className="mt-8 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
                 <div>
                   <h2 className="text-5xl font-bold leading-[0.9] md:text-7xl">
-                    Creative <span className="text-[#FAC775]">Arts</span>
+                    Creative <span className="text-[#B07A1A]">Arts</span>
                   </h2>
-                  <p className="mt-4 max-w-md text-lg leading-snug text-white/75">
+                  <p className="mt-4 max-w-md text-lg leading-snug text-foreground/75">
                     Visual, Performing, Literary, and Media Arts
                   </p>
-                  <p className="mt-8 font-semibold text-white">Capstone project on campus</p>
+                  <p className="mt-8 font-semibold text-foreground">Capstone project on campus</p>
+                  <a
+                    href="/practicums/hanaro-marketing/voices-in-motion"
+                    className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#8A5C12] transition-colors hover:text-[#B07A1A]"
+                  >
+                    Learn more <ArrowRight aria-hidden="true" className="h-4 w-4" />
+                  </a>
                 </div>
-                <div className="max-w-sm rounded-2xl border border-[#FAC775]/35 bg-[#E89A2B] p-5 text-[#2A1B08]">
+                <div className="max-w-sm rounded-2xl border border-[#B07A1A]/30 bg-[#FFF4D8] p-5 text-[#2A1B08]">
                   <p className="font-bold">Interested in a career in Asia?</p>
                   <p className="mt-1 text-sm leading-relaxed">
-                    Enhance your employability and build your portfolio with Hanaro.
+                    Enhance your employability and build your portfolio with Hanaro - Voices in
+                    Motion
                   </p>
                 </div>
               </div>
@@ -136,14 +142,16 @@ function HanaroPage() {
       </section>
 
       {/* Section 3 — DARK · What you'll gain */}
-      <section className="bg-[#2A1B08] text-white border-t border-white/15">
+      <section id="what-youll-gain" className="bg-[#2A1B08] text-white border-t border-white/15">
         <div className="container-x py-20">
           <p className="text-xs uppercase tracking-[0.2em] font-bold text-[#F2C766]">
             What you'll gain
           </p>
           <p className="mt-4 max-w-3xl text-[#F5E4C2] leading-relaxed">
-            Beyond completing the project deliverables, you gain the practical experience, industry
-            credentials, and strategic direction needed to advance your career.
+            You will collaborate with peers to lead and complete capstone projects or develop a
+            business concept supported by industry experts, with structured guiding workshops and
+            project milestones built into the planning process. You’ll gain the practical
+            experience, industry credentials, and strategic direction needed to advance your career.
           </p>
           <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
@@ -188,82 +196,7 @@ function HanaroPage() {
         </div>
       </section>
 
-      {/* Section 4 — LIGHT · What you'll be doing */}
-      <section className="bg-background text-foreground">
-        <div className="container-x py-20">
-          <p className="text-xs uppercase tracking-[0.2em] font-bold text-[#B07A1A]">
-            What you'll be doing
-          </p>
-          <p className="mt-4 text-foreground/80 max-w-2xl">
-            You will collaborate with peers to lead and complete a capstone project, supported by
-            industry experts, with structured guiding workshops and project milestones built into
-            the planning process.
-          </p>
-
-          <div className="mt-12">
-            <div className="rounded-lg border border-border bg-card p-6 md:p-8">
-              <div className="flex items-center gap-3">
-                <Calendar className="w-5 h-5 text-[#B07A1A]" />
-                <h3 className="text-xl font-bold">45-hour capstone project</h3>
-              </div>
-              <div className="mt-6 space-y-2 text-foreground/80">
-                <p>
-                  <span className="font-semibold text-foreground">Time commitment:</span> 15 x 3 hr
-                  sessions
-                </p>
-                <p>
-                  <span className="font-semibold text-foreground">When:</span> next cohort starts
-                  September 12, 2026
-                </p>
-              </div>
-              <div className="mt-8 space-y-6">
-                {[
-                  {
-                    period: "Sessions 1–7",
-                    title: "Foundation & Design",
-                    desc: "Build the foundations of your project, define your cause, and connect with partners. Set clear goals, roles, and a roadmap for the months ahead.",
-                  },
-                  {
-                    period: "Sessions 8–13",
-                    title: "Development & Project Execution",
-                    desc: "Lead your campaign or initiative in real time, manage stakeholders, and adapt as you go. Turn plans into measurable community impact.",
-                  },
-                  {
-                    period: "Sessions 14–15",
-                    title: "Closing & Presentation",
-                    desc: "Finalise your deliverables, present your outcomes, and reflect on your growth. Receive your PEN-Worldwide credentials and update your portfolio.",
-                  },
-                ].map((p) => (
-                  <div
-                    key={p.period}
-                    className="grid gap-3 border-t border-border pt-6 first:border-t-0 first:pt-0 md:grid-cols-[14rem_1fr]"
-                  >
-                    <div className="text-xs uppercase tracking-wider text-foreground/60 font-semibold">
-                      {p.period}
-                    </div>
-                    <div>
-                      <h4 className="font-semibold">{p.title}</h4>
-                      <p className="mt-2 text-sm text-foreground/75 leading-relaxed">{p.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-8 rounded-lg border border-border bg-muted/35 p-5 md:p-6">
-                <div className="flex items-center gap-3">
-                  <Clock className="w-5 h-5 text-[#B07A1A]" />
-                  <h4 className="font-semibold">Format</h4>
-                </div>
-                <p className="mt-4 text-sm text-foreground/75 leading-relaxed">
-                  A mix of self-paced course and 3-hour practical training sessions online on
-                  Saturdays between 4 pm and 8 pm KST.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 5 — DARK · Training */}
+      {/* Section 4 — DARK · Training */}
       <section className="bg-[#2A1B08] text-white border-t border-white/15">
         <div className="container-x py-20">
           <p className="text-xs uppercase tracking-[0.2em] font-bold text-[#F2C766]">
@@ -321,28 +254,7 @@ function HanaroPage() {
         </div>
       </section>
 
-      {/* Section 6 — LIGHT · Who this is for */}
-      <section className="bg-background text-foreground">
-        <div className="container-x py-20">
-          <p className="text-xs uppercase tracking-[0.2em] font-bold text-[#B07A1A]">Eligibility</p>
-          <h2 className="mt-3 text-3xl md:text-4xl font-bold">This is for you if...</h2>
-          <ul className="mt-8 space-y-4 max-w-3xl">
-            {[
-              "You're between 19 and 29 years old — any degree or field of study is welcome.",
-              "You care about social issues and want to make changes.",
-              "You're ready to take ownership of a real project and see it through from start to finish.",
-              "You're looking to build professional skills, including leadership, project management, public advocacy, in a hands-on setting.",
-            ].map((item) => (
-              <li key={item} className="flex gap-3 text-foreground/90">
-                <CheckCircle2 className="w-5 h-5 text-[#B07A1A] shrink-0 mt-0.5" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* Section 7 — DARK */}
+      {/* Section 5 — DARK */}
       <section id="hanaro-leadership" className="bg-background text-foreground scroll-mt-20">
         <div className="container-x py-24">
           <div className="max-w-3xl rounded-3xl border border-white/10 bg-[#2A1B08] p-8 md:p-10 flex gap-5 items-start text-white">
@@ -352,7 +264,7 @@ function HanaroPage() {
             <div>
               <h2 className="text-xl md:text-2xl font-bold">Notice</h2>
               <p className="mt-3 text-base md:text-lg text-white/80 leading-relaxed">
-                Register today to secure the practicum information pack.
+                Registrations are open for Hanaro — Voices in Motion.
               </p>
               <a
                 href="https://forms.gle/fEN28NbP3PTL4Hrc9"

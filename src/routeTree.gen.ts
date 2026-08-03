@@ -30,6 +30,7 @@ import { Route as PracticumsHanaroRouteImport } from './routes/practicums_.hanar
 import { Route as EventsLaunchEventRouteImport } from './routes/events_.launch-event'
 import { Route as AboutPartnershipsRouteImport } from './routes/about_.partnerships'
 import { Route as AboutOurStoryRouteImport } from './routes/about_.our-story'
+import { Route as PracticumsHanaroMarketingVoicesInMotionRouteImport } from './routes/practicums_.hanaro-marketing_.voices-in-motion'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -138,6 +139,12 @@ const AboutOurStoryRoute = AboutOurStoryRouteImport.update({
   path: '/about/our-story',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PracticumsHanaroMarketingVoicesInMotionRoute =
+  PracticumsHanaroMarketingVoicesInMotionRouteImport.update({
+    id: '/practicums_/hanaro-marketing_/voices-in-motion',
+    path: '/practicums/hanaro-marketing/voices-in-motion',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -161,6 +168,7 @@ export interface FileRoutesByFullPath {
   '/practicums/hanaro-marketing': typeof PracticumsHanaroMarketingRoute
   '/practicums/mirae-industry': typeof PracticumsMiraeIndustryRoute
   '/practicums/startup-lab-camp': typeof PracticumsStartupLabCampRoute
+  '/practicums/hanaro-marketing/voices-in-motion': typeof PracticumsHanaroMarketingVoicesInMotionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -184,6 +192,7 @@ export interface FileRoutesByTo {
   '/practicums/hanaro-marketing': typeof PracticumsHanaroMarketingRoute
   '/practicums/mirae-industry': typeof PracticumsMiraeIndustryRoute
   '/practicums/startup-lab-camp': typeof PracticumsStartupLabCampRoute
+  '/practicums/hanaro-marketing/voices-in-motion': typeof PracticumsHanaroMarketingVoicesInMotionRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -208,6 +217,7 @@ export interface FileRoutesById {
   '/practicums_/hanaro-marketing': typeof PracticumsHanaroMarketingRoute
   '/practicums_/mirae-industry': typeof PracticumsMiraeIndustryRoute
   '/practicums_/startup-lab-camp': typeof PracticumsStartupLabCampRoute
+  '/practicums_/hanaro-marketing_/voices-in-motion': typeof PracticumsHanaroMarketingVoicesInMotionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -233,6 +243,7 @@ export interface FileRouteTypes {
     | '/practicums/hanaro-marketing'
     | '/practicums/mirae-industry'
     | '/practicums/startup-lab-camp'
+    | '/practicums/hanaro-marketing/voices-in-motion'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -256,6 +267,7 @@ export interface FileRouteTypes {
     | '/practicums/hanaro-marketing'
     | '/practicums/mirae-industry'
     | '/practicums/startup-lab-camp'
+    | '/practicums/hanaro-marketing/voices-in-motion'
   id:
     | '__root__'
     | '/'
@@ -279,6 +291,7 @@ export interface FileRouteTypes {
     | '/practicums_/hanaro-marketing'
     | '/practicums_/mirae-industry'
     | '/practicums_/startup-lab-camp'
+    | '/practicums_/hanaro-marketing_/voices-in-motion'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -303,6 +316,7 @@ export interface RootRouteChildren {
   PracticumsHanaroMarketingRoute: typeof PracticumsHanaroMarketingRoute
   PracticumsMiraeIndustryRoute: typeof PracticumsMiraeIndustryRoute
   PracticumsStartupLabCampRoute: typeof PracticumsStartupLabCampRoute
+  PracticumsHanaroMarketingVoicesInMotionRoute: typeof PracticumsHanaroMarketingVoicesInMotionRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -454,6 +468,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutOurStoryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/practicums_/hanaro-marketing_/voices-in-motion': {
+      id: '/practicums_/hanaro-marketing_/voices-in-motion'
+      path: '/practicums/hanaro-marketing/voices-in-motion'
+      fullPath: '/practicums/hanaro-marketing/voices-in-motion'
+      preLoaderRoute: typeof PracticumsHanaroMarketingVoicesInMotionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -479,6 +500,8 @@ const rootRouteChildren: RootRouteChildren = {
   PracticumsHanaroMarketingRoute: PracticumsHanaroMarketingRoute,
   PracticumsMiraeIndustryRoute: PracticumsMiraeIndustryRoute,
   PracticumsStartupLabCampRoute: PracticumsStartupLabCampRoute,
+  PracticumsHanaroMarketingVoicesInMotionRoute:
+    PracticumsHanaroMarketingVoicesInMotionRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
