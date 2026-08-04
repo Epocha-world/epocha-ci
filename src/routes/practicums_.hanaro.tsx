@@ -74,7 +74,7 @@ function HanaroPage() {
             rel="noopener noreferrer"
             className="btn-primary inline-flex mt-10"
           >
-            Register your interest now <ArrowRight className="w-4 h-4" />
+            Register your interest <ArrowRight className="w-4 h-4" />
           </a>
         </div>
       </section>
@@ -85,17 +85,17 @@ function HanaroPage() {
         className="border-y border-border bg-background text-foreground"
       >
         <div className="container-x py-10">
-          <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-sm md:p-12">
+          <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-[#1D1819] p-8 text-white shadow-sm md:p-12">
             <div
               aria-hidden="true"
-              className="absolute -right-20 -top-24 h-80 w-80 rounded-full bg-[#E89A2B]/15 blur-3xl"
+              className="absolute -right-20 -top-24 h-80 w-80 rounded-full bg-[#E89A2B]/20 blur-3xl"
             />
             <div
               aria-hidden="true"
-              className="absolute -bottom-32 right-24 h-72 w-72 rounded-full border border-[#B07A1A]/20"
+              className="absolute -bottom-32 right-24 h-72 w-72 rounded-full border border-[#FAC775]/25"
             />
             <div className="relative z-10 max-w-4xl">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#B07A1A]">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#FAC775]">
                 Registration open
               </p>
               <div className="mt-5 flex flex-wrap gap-2">
@@ -115,15 +115,15 @@ function HanaroPage() {
               <div className="mt-8 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
                 <div>
                   <h2 className="text-5xl font-bold leading-[0.9] md:text-7xl">
-                    Creative <span className="text-[#B07A1A]">Arts</span>
+                    Creative <span className="text-[#FAC775]">Arts</span>
                   </h2>
-                  <p className="mt-4 max-w-md text-lg leading-snug text-foreground/75">
+                  <p className="mt-4 max-w-md text-lg leading-snug text-white/75">
                     Visual, Performing, Literary, and Media Arts
                   </p>
-                  <p className="mt-8 font-semibold text-foreground">Capstone project on campus</p>
+                  <p className="mt-8 font-semibold text-white">Capstone project on campus</p>
                   <a
                     href="/practicums/hanaro-marketing/voices-in-motion"
-                    className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#8A5C12] transition-colors hover:text-[#B07A1A]"
+                    className="btn-primary mt-4 inline-flex"
                   >
                     Learn more <ArrowRight aria-hidden="true" className="h-4 w-4" />
                   </a>
@@ -196,13 +196,13 @@ function HanaroPage() {
         </div>
       </section>
 
-      {/* Section 4 — DARK · Training */}
-      <section className="bg-[#2A1B08] text-white border-t border-white/15">
+      {/* Section 4 — LIGHT · Training */}
+      <section className="border-t border-border bg-background text-foreground">
         <div className="container-x py-20">
-          <p className="text-xs uppercase tracking-[0.2em] font-bold text-[#F2C766]">
+          <p className="text-xs uppercase tracking-[0.2em] font-bold text-[#B07A1A]">
             What you'll learn
           </p>
-          <p className="mt-4 max-w-3xl text-[#F5E4C2] leading-relaxed">
+          <p className="mt-4 max-w-3xl text-foreground/80 leading-relaxed">
             Alongside running your project, a structured training program builds the professional
             and human skills employers look for.
           </p>
@@ -239,14 +239,11 @@ function HanaroPage() {
                 desc: "Learn how to design, measure, and communicate meaningful social impact — turning your project into tangible change for the communities you serve.",
               },
             ].map((t) => (
-              <div
-                key={t.name}
-                className="flex gap-4 rounded-2xl border border-white/15 bg-white/5 p-5"
-              >
-                <t.icon className="w-5 h-5 text-[#FAC775] shrink-0 mt-1" />
+              <div key={t.name} className="flex gap-4 rounded-2xl border border-border bg-card p-5">
+                <t.icon className="w-5 h-5 text-[#B07A1A] shrink-0 mt-1" />
                 <div>
-                  <div className="font-semibold text-white">{t.name}</div>
-                  <p className="mt-1 text-sm text-[#F5E4C2] leading-relaxed">{t.desc}</p>
+                  <div className="font-semibold text-foreground">{t.name}</div>
+                  <p className="mt-1 text-sm text-foreground/75 leading-relaxed">{t.desc}</p>
                 </div>
               </div>
             ))}

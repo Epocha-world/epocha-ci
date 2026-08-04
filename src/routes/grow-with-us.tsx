@@ -186,13 +186,13 @@ function GrowWithUsPage() {
             <div className="rounded-3xl border border-cream/15 bg-white/5 p-8 md:p-10">
               <p className="text-xs uppercase font-bold tracking-wider text-coral">How to apply</p>
               <p className="mt-4 text-cream/80 text-base leading-relaxed">
-                Apply on UpperClass or scan the QR code to start building your creator portfolio.
+                Apply to start building your creator portfolio.
               </p>
               <div className="mt-6 flex items-center gap-6">
                 <div className="bg-white p-3 rounded-2xl shrink-0 shadow-sm">
                   <img
                     src={epochaXUpperclassQR}
-                    alt="QR code to apply for EPOCHA X UpperClass practicum"
+                    alt="QR code to apply for the EPOCHA creator network"
                     width={140}
                     height={140}
                     loading="lazy"
@@ -200,12 +200,12 @@ function GrowWithUsPage() {
                   />
                 </div>
                 <a
-                  href="https://upperclass.app/i/epocha/join"
+                  href="https://forms.gle/UWujWAnT3Mc8MDvGA"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary inline-flex"
                 >
-                  Apply on UpperClass <ArrowRight className="w-4 h-4" />
+                  Apply now <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
             </div>
@@ -312,12 +312,12 @@ function GrowWithUsPage() {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="https://upperclass.app/i/epocha/join"
+                href="https://forms.gle/UWujWAnT3Mc8MDvGA"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary inline-flex"
               >
-                Apply on UpperClass <ArrowRight className="w-4 h-4" />
+                Apply now <ArrowRight className="w-4 h-4" />
               </a>
               <a
                 href="https://upperclass.app/home"

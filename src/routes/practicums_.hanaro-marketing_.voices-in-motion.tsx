@@ -169,7 +169,7 @@ function VoicesInMotionPage() {
                 <div className="mt-4 space-y-6">
                   <div>
                     <a
-                      href="https://www.facebook.com/CandonYouthMovement/"
+                      href="https://www.facebook.com/CandonYouthMovement/about"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="rounded-2xl bg-background border border-border p-6 flex items-center justify-center hover:border-[#C9821B] transition-colors"
@@ -181,7 +181,7 @@ function VoicesInMotionPage() {
                   </div>
                   <div>
                     <a
-                      href="https://www.youthcirclessg.org/about"
+                      href="https://www.youthcirclessg.org/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="rounded-2xl bg-background border border-border p-6 flex items-center justify-center hover:border-[#C9821B] transition-colors"
@@ -268,30 +268,32 @@ function VoicesInMotionPage() {
         </div>
       </section>
 
-      {/* Closing CTA — DARK */}
-      <section className="bg-[#0F0A03] text-white">
-        <div className="container-x py-24 text-center">
-          <h2 className="text-4xl md:text-6xl font-bold leading-[1.1]">
-            Ready to turn knowledge into a{" "}
-            <span className="text-[#FAC775]">verified portfolio?</span>
-          </h2>
-          <div className="mt-10 flex flex-wrap gap-4 justify-center">
-            <a
-              href="https://forms.gle/p8jq3WTskKgA5fRy7"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary inline-flex"
-            >
-              Register now <ArrowRight className="w-4 h-4" />
-            </a>
-            <a
-              href="https://forms.gle/sKxTLz7F79wnDsno6"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary inline-flex"
-            >
-              Get in touch
-            </a>
+      {/* Closing CTA — LIGHT background · DARK card */}
+      <section className="bg-background text-foreground">
+        <div className="container-x py-10">
+          <div className="rounded-3xl border border-white/10 bg-[#0F0A03] p-8 text-center text-white md:p-12">
+            <h2 className="text-4xl md:text-6xl font-bold leading-[1.1]">
+              Ready to turn knowledge into a{" "}
+              <span className="text-[#FAC775]">verified portfolio?</span>
+            </h2>
+            <div className="mt-10 flex flex-wrap gap-4 justify-center">
+              <a
+                href="https://forms.gle/p8jq3WTskKgA5fRy7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary inline-flex"
+              >
+                Register now <ArrowRight className="w-4 h-4" />
+              </a>
+              <a
+                href="https://forms.gle/sKxTLz7F79wnDsno6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary inline-flex"
+              >
+                Get in touch
+              </a>
+            </div>
           </div>
         </div>
       </section>
