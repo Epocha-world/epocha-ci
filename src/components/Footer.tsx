@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { Instagram, Linkedin, MessageCircle, X } from "lucide-react";
+import { Instagram, Linkedin, MessageCircle } from "lucide-react";
 import logo from "@/assets/Logo.svg";
+import { AnalyticsConsentBanner } from "@/components/AnalyticsConsentBanner";
+import { openAnalyticsSettings } from "@/lib/analytics-consent";
 
 export function Footer() {
-  const [showCookie, setShowCookie] = useState(true);
   return (
     <footer className="dark border-t border-border bg-ink text-foreground">
       <div className="container-x py-16 grid gap-12 md:grid-cols-12 items-start">
@@ -134,6 +134,11 @@ export function Footer() {
                 Safeguarding
               </Link>
             </li>
+            <li>
+              <button type="button" onClick={openAnalyticsSettings} className="hover:text-lime">
+                Cookie settings
+              </button>
+            </li>
           </ul>
         </div>
       </div>
@@ -146,29 +151,7 @@ export function Footer() {
           <span>R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, South Korea</span>
         </div>
       </div>
-      {showCookie && (
-        <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-md z-50 rounded-lg border border-border bg-card text-card-foreground shadow-lg p-4 flex items-start gap-3">
-          <p className="text-xs leading-relaxed flex-1">
-            This website uses cookies to ensure you get the best experience on our site. Read the{" "}
-            <a
-              href="/privacy-cookies-policy.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline text-lime hover:opacity-80"
-            >
-              Privacy &amp; Cookies Policy
-            </a>
-            .
-          </p>
-          <button
-            onClick={() => setShowCookie(false)}
-            aria-label="Dismiss cookie notice"
-            className="text-muted-foreground hover:text-foreground"
-          >
-            <X className="w-4 h-4" />
-          </button>
-        </div>
-      )}
+      <AnalyticsConsentBanner />
     </footer>
   );
 }
