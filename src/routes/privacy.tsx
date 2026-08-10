@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LegalDocumentPage, type LegalDocument } from "@/components/LegalDocumentPage";
+import { createSeoHead } from "@/lib/seo";
 
 const ko: LegalDocument = {
   label: "Legal",
@@ -183,11 +184,11 @@ const en: LegalDocument = {
 };
 
 export const Route = createFileRoute("/privacy")({
-  head: () => ({
-    meta: [
-      { title: "개인정보처리방침 | Privacy Policy — EPOCHA" },
-      { name: "description", content: "EPOCHA 개인정보처리방침 및 영문 번역본" },
-    ],
-  }),
+  head: () =>
+    createSeoHead({
+      title: "개인정보처리방침 | Privacy Policy — EPOCHA",
+      description: "EPOCHA 개인정보처리방침 및 영문 번역본",
+      path: "/privacy",
+    }),
   component: () => <LegalDocumentPage ko={ko} en={en} />,
 });

@@ -17,25 +17,19 @@ import {
   Wallet,
   Wrench,
 } from "lucide-react";
+import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/practicums_/hanaro")({
-  head: () => ({
-    meta: [
-      { title: "Hanaro Practicum — EPOCHA" },
-      {
-        name: "description",
-        content:
-          "Hanaro Creative Arts Practicum — complete a supported capstone project and build career-ready experience.",
-      },
-      { property: "og:title", content: "Hanaro Practicum — EPOCHA" },
-      {
-        property: "og:description",
-        content:
-          "Complete a Creative Arts capstone project with expert guidance and career coaching.",
-      },
-      { property: "og:image", content: student },
-    ],
-  }),
+  head: () =>
+    createSeoHead({
+      title: "Hanaro Practicum — EPOCHA",
+      description:
+        "Hanaro Creative Arts Practicum — complete a supported capstone project and build career-ready experience.",
+      path: "/practicums/hanaro",
+      image: student,
+      socialDescription:
+        "Complete a Creative Arts capstone project with expert guidance and career coaching.",
+    }),
   component: HanaroPage,
 });
 

@@ -14,24 +14,18 @@ import {
   Sparkles,
 } from "lucide-react";
 import bannerBg from "@/assets/hero-banner.jpg";
+import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/hpi-assessment")({
-  head: () => ({
-    meta: [
-      { title: "Begin your HPI Assessment — EPOCHA" },
-      {
-        name: "description",
-        content:
-          "Start your Human Premium Index baseline assessment. A guided, 10-minute reflection across the five EPOCH dimensions.",
-      },
-      { property: "og:title", content: "Begin your HPI Assessment — EPOCHA" },
-      {
-        property: "og:description",
-        content:
-          "Start your Human Premium Index baseline assessment with EPOCHA.",
-      },
-    ],
-  }),
+  head: () =>
+    createSeoHead({
+      title: "Begin your HPI Assessment — EPOCHA",
+      description:
+        "Start your Human Premium Index baseline assessment. A guided, 10-minute reflection across the five EPOCH dimensions.",
+      path: "/hpi-assessment",
+      image: bannerBg,
+      socialDescription: "Start your Human Premium Index baseline assessment with EPOCHA.",
+    }),
   component: HpiAssessmentPage,
 });
 
@@ -179,15 +173,13 @@ function HpiAssessmentPage() {
         />
         <div className="absolute inset-0 bg-black/70" aria-hidden />
         <div className="container-x relative py-20 md:py-24 text-center">
-          <p className="text-xs uppercase tracking-[0.2em] text-lime font-bold">
-            HPI Assessment
-          </p>
+          <p className="text-xs uppercase tracking-[0.2em] text-lime font-bold">HPI Assessment</p>
           <h1 className="mt-4 text-4xl md:text-6xl font-bold text-white leading-[1.05] max-w-4xl mx-auto">
             Begin your <span className="text-lime">HPI baseline.</span>
           </h1>
           <p className="mt-5 text-white/80 max-w-2xl mx-auto">
-            A guided 10-minute reflection across the five EPOCH dimensions. Your
-            baseline unlocks a peer- and coach-verified score during your practicum.
+            A guided 10-minute reflection across the five EPOCH dimensions. Your baseline unlocks a
+            peer- and coach-verified score during your practicum.
           </p>
         </div>
       </section>
@@ -213,9 +205,7 @@ function HpiAssessmentPage() {
       {/* FLOW */}
       <section className="bg-background">
         <div className="container-x py-16 max-w-3xl mx-auto">
-          {step === 0 && (
-            <IntroStep onStart={next} />
-          )}
+          {step === 0 && <IntroStep onStart={next} />}
 
           {step === 1 && (
             <ProfileStep
@@ -265,24 +255,29 @@ function HpiAssessmentPage() {
 function IntroStep({ onStart }: { onStart: () => void }) {
   return (
     <div>
-      <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">
-        What to expect
-      </p>
+      <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">What to expect</p>
       <h2 className="mt-3 text-3xl md:text-4xl font-bold text-ink">
         Your baseline in <span className="text-lime">five short sections.</span>
       </h2>
       <p className="mt-5 text-muted-foreground">
-        This assessment establishes your starting point across the five EPOCH
-        dimensions. It's a self-reflection — the final HPI score is later verified
-        by peers and coaches inside a practicum. Be honest; there are no wrong
-        answers.
+        This assessment establishes your starting point across the five EPOCH dimensions. It's a
+        self-reflection — the final HPI score is later verified by peers and coaches inside a
+        practicum. Be honest; there are no wrong answers.
       </p>
 
       <div className="mt-10 grid sm:grid-cols-3 gap-4">
         {[
           { icon: Clock, title: "10 minutes", desc: "20 short statements + a brief reflection." },
-          { icon: ShieldCheck, title: "Private", desc: "Your responses are never shared without your consent." },
-          { icon: Sparkles, title: "Personalised", desc: "Get a baseline report and recommended next steps." },
+          {
+            icon: ShieldCheck,
+            title: "Private",
+            desc: "Your responses are never shared without your consent.",
+          },
+          {
+            icon: Sparkles,
+            title: "Personalised",
+            desc: "Get a baseline report and recommended next steps.",
+          },
         ].map((c) => {
           const I = c.icon;
           return (
@@ -297,9 +292,9 @@ function IntroStep({ onStart }: { onStart: () => void }) {
 
       <div className="mt-8 rounded-2xl border border-border bg-muted/30 p-5">
         <p className="text-sm text-muted-foreground">
-          <strong className="text-ink">Heads up:</strong> The HPI you can display
-          publicly is only issued after peer + coach reviews inside a practicum.
-          This baseline helps you and your coach see where to focus first.
+          <strong className="text-ink">Heads up:</strong> The HPI you can display publicly is only
+          issued after peer + coach reviews inside a practicum. This baseline helps you and your
+          coach see where to focus first.
         </p>
       </div>
 
@@ -330,9 +325,7 @@ function ProfileStep({
 }) {
   return (
     <div>
-      <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">
-        About you
-      </p>
+      <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">About you</p>
       <h2 className="mt-3 text-3xl md:text-4xl font-bold text-ink">
         Tell us who's <span className="text-lime">taking the assessment.</span>
       </h2>
@@ -435,9 +428,7 @@ function DimensionStep({
           return (
             <div key={k} className="rounded-2xl border border-border bg-card p-5">
               <p className="text-ink font-medium">
-                <span className="text-muted-foreground mr-2 tabular-nums">
-                  {i + 1}.
-                </span>
+                <span className="text-muted-foreground mr-2 tabular-nums">{i + 1}.</span>
                 {q}
               </p>
               <div className="mt-4 grid grid-cols-5 gap-2">
@@ -482,14 +473,10 @@ function ReflectionStep({
   onBack: () => void;
   onSubmit: () => void;
 }) {
-  const ready =
-    reflection.strength.trim().length > 5 &&
-    reflection.growth.trim().length > 5;
+  const ready = reflection.strength.trim().length > 5 && reflection.growth.trim().length > 5;
   return (
     <div>
-      <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">
-        Reflection
-      </p>
+      <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">Reflection</p>
       <h2 className="mt-3 text-3xl md:text-4xl font-bold text-ink">
         Tell us, in your <span className="text-lime">own words.</span>
       </h2>
@@ -530,7 +517,12 @@ function ReflectionStep({
         </Field>
       </div>
 
-      <NavButtons onBack={onBack} onNext={onSubmit} canContinue={ready} nextLabel="Submit assessment" />
+      <NavButtons
+        onBack={onBack}
+        onNext={onSubmit}
+        canContinue={ready}
+        nextLabel="Submit assessment"
+      />
     </div>
   );
 }
@@ -565,8 +557,8 @@ function ResultsStep({
         Nice work{profile.name ? `, ${profile.name.split(" ")[0]}` : ""}.
       </h2>
       <p className="mt-4 text-muted-foreground">
-        Here's your self-reported baseline. A verified HPI score is issued after
-        peer and coach reviews inside a practicum.
+        Here's your self-reported baseline. A verified HPI score is issued after peer and coach
+        reviews inside a practicum.
       </p>
 
       <div className="mt-10 rounded-3xl border border-border bg-card p-8 shadow-xl">
@@ -621,16 +613,15 @@ function ResultsStep({
           <Sparkles className="w-5 h-5 text-lime" />
           <p className="mt-3 font-bold text-ink">What happens next</p>
           <p className="mt-1 text-sm text-muted-foreground">
-            We'll email your full baseline report and recommended practicum tracks
-            within 24 hours.
+            We'll email your full baseline report and recommended practicum tracks within 24 hours.
           </p>
         </div>
         <div className="rounded-2xl border border-border bg-card p-5">
           <BadgeCheck className="w-5 h-5 text-coral" />
           <p className="mt-3 font-bold text-ink">Earn a verified HPI</p>
           <p className="mt-1 text-sm text-muted-foreground">
-            Join a practicum to unlock peer and coach reviews that produce your
-            shareable, verified credential.
+            Join a practicum to unlock peer and coach reviews that produce your shareable, verified
+            credential.
           </p>
         </div>
       </div>

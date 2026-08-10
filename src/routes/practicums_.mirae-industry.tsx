@@ -1,17 +1,18 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, BellRing } from "lucide-react";
 import student from "@/assets/student.jpg";
+import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/practicums_/mirae-industry")({
-  head: () => ({
-    meta: [
-      { title: "Mirae Industry Practicum — EPOCHA" },
-      { name: "description", content: "Mirae Industry Practicum — details for the next cohort will be announced soon." },
-      { property: "og:title", content: "Mirae Industry Practicum — EPOCHA" },
-      { property: "og:description", content: "Details for the next Mirae Industry Practicum cohort will be announced soon." },
-      { property: "og:image", content: student },
-    ],
-  }),
+  head: () =>
+    createSeoHead({
+      title: "Mirae Industry Practicum — EPOCHA",
+      description: "Mirae Industry Practicum — details for the next cohort will be announced soon.",
+      path: "/practicums/mirae-industry",
+      image: student,
+      socialDescription:
+        "Details for the next Mirae Industry Practicum cohort will be announced soon.",
+    }),
   component: MiraeIndustryPage,
 });
 

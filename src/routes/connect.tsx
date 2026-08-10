@@ -1,19 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Clock, FileText, Instagram, Linkedin, Mail, MapPin } from "lucide-react";
+import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/connect")({
-  head: () => ({
-    meta: [
-      { title: "Contact Us — EPOCHA" },
-      {
-        name: "description",
-        content:
-          "Get in touch with EPOCHA Learning Hub. Reach out at hello@epocha.world or visit us in Seoul, South Korea.",
-      },
-      { property: "og:title", content: "Contact Us — EPOCHA" },
-      { property: "og:description", content: "We'd love to hear from you." },
-    ],
-  }),
+  head: () =>
+    createSeoHead({
+      title: "Contact Us — EPOCHA",
+      description:
+        "Get in touch with EPOCHA Learning Hub. Reach out at hello@epocha.world or visit us in Seoul, South Korea.",
+      path: "/connect",
+      socialDescription: "We'd love to hear from you.",
+    }),
   component: ConnectPage,
 });
 

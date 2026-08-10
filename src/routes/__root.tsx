@@ -11,6 +11,13 @@ import {
 import appCss from "../styles.css?url";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import hero from "@/assets/hero.jpg";
+import {
+  absoluteUrl,
+  createStructuredDataScripts,
+  organizationJsonLd,
+  websiteJsonLd,
+} from "@/lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -74,13 +81,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "EPOCHA — Project-based practicums for youth aged 14–29" },
-      { name: "description", content: "EPOCHA Learning Hub turns academic effort into career momentum through guided, project-based practicums with recognized credentials." },
+      { title: "EPOCHA ? Project-based practicums for youth aged 14?29" },
+      {
+        name: "description",
+        content:
+          "EPOCHA Learning Hub turns academic effort into career momentum through guided, project-based practicums with recognized credentials.",
+      },
       { name: "author", content: "EPOCHA Learning Hub" },
-      { property: "og:title", content: "EPOCHA — Project-based practicums for youth" },
-      { property: "og:description", content: "Real projects. Real coaching. Recognized credentials. The #1 practicum experience for youth aged 14–29." },
+      { property: "og:title", content: "EPOCHA ? Project-based practicums for youth" },
+      {
+        property: "og:description",
+        content:
+          "Real projects. Real coaching. Recognized credentials. The #1 practicum experience for youth aged 14?29.",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "EPOCHA Learning Hub" },
+      { property: "og:locale", content: "en_US" },
+      { property: "og:image", content: absoluteUrl(hero) },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: absoluteUrl(hero) },
     ],
     links: [
       {
@@ -94,6 +113,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap",
       },
     ],
+    scripts: createStructuredDataScripts([organizationJsonLd, websiteJsonLd]),
   }),
   shellComponent: RootShell,
   component: RootComponent,

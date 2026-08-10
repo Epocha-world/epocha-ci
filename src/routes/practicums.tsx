@@ -22,24 +22,19 @@ import {
 import leadershipCamp from "@/assets/practicum-leadership-camp.jpg";
 import advisoryBoard from "@/assets/practicum-advisory-board.jpg";
 import hanaro from "@/assets/practicum-hanaro.jpg";
+import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/practicums")({
-  head: () => ({
-    meta: [
-      { title: "Training — EPOCHA" },
-      {
-        name: "description",
-        content:
-          "EPOCHA training: the Practice Enterprise model, MIT-research-backed EPOCH awareness, AI fluency with QualitaX, and career-readiness skills that don't expire.",
-      },
-      { property: "og:title", content: "Training — EPOCHA" },
-      {
-        property: "og:description",
-        content:
-          "Boosting your employability through Practice Enterprise, EPOCH awareness, AI fluency, and career readiness.",
-      },
-    ],
-  }),
+  head: () =>
+    createSeoHead({
+      title: "Training — EPOCHA",
+      description:
+        "EPOCHA training: the Practice Enterprise model, MIT-research-backed EPOCH awareness, AI fluency with QualitaX, and career-readiness skills that don't expire.",
+      path: "/practicums",
+      image: leadershipCamp,
+      socialDescription:
+        "Boosting your employability through Practice Enterprise, EPOCH awareness, AI fluency, and career readiness.",
+    }),
   component: TrainingPage,
 });
 

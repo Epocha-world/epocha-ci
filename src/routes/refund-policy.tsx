@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LegalDocumentPage, type LegalDocument } from "@/components/LegalDocumentPage";
+import { createSeoHead } from "@/lib/seo";
 
 const ko: LegalDocument = {
   label: "Legal",
@@ -151,11 +152,11 @@ const en: LegalDocument = {
 };
 
 export const Route = createFileRoute("/refund-policy")({
-  head: () => ({
-    meta: [
-      { title: "취소 및 환불 정책 | Refund Policy — EPOCHA" },
-      { name: "description", content: "EPOCHA 교육서비스 취소 및 환불 정책" },
-    ],
-  }),
+  head: () =>
+    createSeoHead({
+      title: "취소 및 환불 정책 | Refund Policy — EPOCHA",
+      description: "EPOCHA 교육서비스 취소 및 환불 정책",
+      path: "/refund-policy",
+    }),
   component: () => <LegalDocumentPage ko={ko} en={en} />,
 });

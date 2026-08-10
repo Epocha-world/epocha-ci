@@ -15,22 +15,15 @@ import juwonPortrait from "@/assets/juwon-caricature.png";
 import logoQualitax from "@/assets/logos/qualitax.svg";
 import logoKoreaPen from "@/assets/logos/koreapen.png";
 import logoPenWw from "@/assets/logos/pen-worldwide.png";
+import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/about_/our-story")({
-  head: () => ({
-    meta: [
-      { title: "Our Story — EPOCHA Learning Hub" },
-      {
-        name: "description",
-        content: "Meet the founders behind EPOCHA and the story of how we got started.",
-      },
-      { property: "og:title", content: "Our Story — EPOCHA Learning Hub" },
-      {
-        property: "og:description",
-        content: "Meet the founders behind EPOCHA and the story of how we got started.",
-      },
-    ],
-  }),
+  head: () =>
+    createSeoHead({
+      title: "Our Story — EPOCHA Learning Hub",
+      description: "Meet the founders behind EPOCHA and the story of how we got started.",
+      path: "/about/our-story",
+    }),
   component: OurStoryPage,
 });
 

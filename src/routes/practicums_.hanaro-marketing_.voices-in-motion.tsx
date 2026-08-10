@@ -18,29 +18,19 @@ import {
   MapPin,
   MessageCircle,
 } from "lucide-react";
+import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/practicums_/hanaro-marketing_/voices-in-motion")({
-  head: () => ({
-    meta: [
-      { title: "Hanaro — Voices in Motion Practicum — EPOCHA" },
-      {
-        name: "description",
-        content:
-          "하나로 Hanaro Marketing and Advertising Practicum: team up with nine others to develop, produce and showcase a short documentary or film in Seoul.",
-      },
-      {
-        property: "og:title",
-        content: "Hanaro — Voices in Motion Practicum — EPOCHA",
-      },
-      {
-        property: "og:description",
-        content:
-          "Become a Hanaro leader in your community. Explore career pathways across the film and production industry.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    createSeoHead({
+      title: "Hanaro — Voices in Motion Practicum — EPOCHA",
+      description:
+        "하나로 Hanaro Marketing and Advertising Practicum: team up with nine others to develop, produce and showcase a short documentary or film in Seoul.",
+      path: "/practicums/hanaro-marketing/voices-in-motion",
+      image: teamPhoto,
+      socialDescription:
+        "Become a Hanaro leader in your community. Explore career pathways across the film and production industry.",
+    }),
   component: VoicesInMotionPage,
 });
 

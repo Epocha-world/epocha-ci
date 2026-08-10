@@ -30,6 +30,7 @@ import leadershipCamp from "@/assets/practicum-leadership-camp.jpg";
 import advisoryBoard from "@/assets/practicum-advisory-board.jpg";
 import hanaro from "@/assets/practicum-hanaro.jpg";
 import globalBg from "@/assets/global-network-bg.jpg";
+import { createSeoHead } from "@/lib/seo";
 const trackImages = [leadershipCamp, advisoryBoard, hanaro];
 
 function CountUp({ end, duration = 2000 }: { end: number; duration?: number }) {
@@ -67,23 +68,16 @@ function CountUp({ end, duration = 2000 }: { end: number; duration?: number }) {
 }
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "EPOCHA — The #1 practicum experience for youth 14–29" },
-      {
-        name: "description",
-        content:
-          "Turn knowledge into real experience. Project-based practicums with recognized credentials, coaching, and a global network.",
-      },
-      { property: "og:title", content: "EPOCHA — Project-based practicums for youth" },
-      {
-        property: "og:description",
-        content: "Real projects. Real coaching. Recognized credentials.",
-      },
-      { property: "og:image", content: hero },
-      { name: "twitter:image", content: hero },
-    ],
-  }),
+  head: () =>
+    createSeoHead({
+      title: "EPOCHA — The #1 practicum experience for youth 14–29",
+      description:
+        "Turn knowledge into real experience. Project-based practicums with recognized credentials, coaching, and a global network.",
+      path: "/",
+      image: hero,
+      ogTitle: "EPOCHA — Project-based practicums for youth",
+      socialDescription: "Real projects. Real coaching. Recognized credentials.",
+    }),
   component: HomePage,
 });
 

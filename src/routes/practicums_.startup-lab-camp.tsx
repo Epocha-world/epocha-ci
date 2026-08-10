@@ -20,25 +20,19 @@ import {
   Building2,
 } from "lucide-react";
 import student from "@/assets/student.jpg";
+import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/practicums_/startup-lab-camp")({
-  head: () => ({
-    meta: [
-      { title: "Start-up Lab Camp — EPOCHA" },
-      {
-        name: "description",
-        content:
-          "Start-up Lab Camp practicum — build and pitch a real venture in an immersive entrepreneurship sprint.",
-      },
-      { property: "og:title", content: "Start-up Lab Camp — EPOCHA" },
-      {
-        property: "og:description",
-        content:
-          "An immersive entrepreneurship sprint where teams build, test, and pitch real ventures.",
-      },
-      { property: "og:image", content: student },
-    ],
-  }),
+  head: () =>
+    createSeoHead({
+      title: "Start-up Lab Camp — EPOCHA",
+      description:
+        "Start-up Lab Camp practicum — build and pitch a real venture in an immersive entrepreneurship sprint.",
+      path: "/practicums/startup-lab-camp",
+      image: student,
+      socialDescription:
+        "An immersive entrepreneurship sprint where teams build, test, and pitch real ventures.",
+    }),
   component: StartupLabCampPage,
 });
 

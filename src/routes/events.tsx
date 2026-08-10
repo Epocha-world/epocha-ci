@@ -1,22 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import launchEventBackground from "@/assets/launch-event-background.webp";
+import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/events")({
-  head: () => ({
-    meta: [
-      { title: "Events — EPOCHA" },
-      {
-        name: "description",
-        content: "Discover upcoming EPOCHA events and announcements.",
-      },
-      { property: "og:title", content: "Events — EPOCHA" },
-      {
-        property: "og:description",
-        content: "Discover upcoming EPOCHA events and announcements.",
-      },
-    ],
-  }),
+  head: () =>
+    createSeoHead({
+      title: "Events — EPOCHA",
+      description: "Discover upcoming EPOCHA events and announcements.",
+      path: "/events",
+      image: launchEventBackground,
+    }),
   component: EventsPage,
 });
 

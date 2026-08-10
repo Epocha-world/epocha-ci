@@ -24,19 +24,18 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/grow-with-us")({
-  head: () => ({
-    meta: [
-      { title: "Work With Us — EPOCHA" },
-      {
-        name: "description",
-        content: "Join EPOCHA as a freelance content creator and help shape our next big campaign.",
-      },
-      { property: "og:title", content: "Work With Us — EPOCHA" },
-      { property: "og:description", content: "Love storytelling? Join our creator network today." },
-    ],
-  }),
+  head: () =>
+    createSeoHead({
+      title: "Work With Us — EPOCHA",
+      description:
+        "Join EPOCHA as a freelance content creator and help shape our next big campaign.",
+      path: "/grow-with-us",
+      image: advisoryBoard,
+      socialDescription: "Love storytelling? Join our creator network today.",
+    }),
   component: GrowWithUsPage,
 });
 
