@@ -138,7 +138,6 @@ function HanaroPage() {
       {/* Section 3 — DARK · What you'll gain */}
       <section id="what-youll-gain" className="bg-[#2A1B08] text-white border-t border-white/15">
         <div className="container-x py-20">
-          rav
           <p className="text-xs uppercase tracking-[0.2em] font-bold text-[#F2C766]">
             What you'll gain
           </p>
