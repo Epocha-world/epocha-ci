@@ -1,157 +1,139 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Linkedin, MessageCircle } from "lucide-react";
-import logo from "@/assets/Logo.svg";
+import { Instagram, Linkedin, ArrowUpRight } from "lucide-react";
+import { BrandLogo } from "@/components/BrandLogo";
+import { PreferencesControls } from "@/components/PreferencesControls";
 import { AnalyticsConsentBanner } from "@/components/AnalyticsConsentBanner";
 import { openAnalyticsSettings } from "@/lib/analytics-consent";
+import { useI18n } from "@/i18n";
+
+const columns = [
+  {
+    title: "Explore",
+    links: [
+      ["/practicums", "Programs"],
+      ["/about", "Our approach"],
+      ["/about/our-story", "Our story"],
+      ["/events", "Events"],
+    ],
+  },
+  {
+    title: "Your next step",
+    links: [
+      ["/practicums/startup-lab-camp", "Start-up Lab Camp"],
+      ["/practicums/hanaro", "Hanaro Practicum"],
+      ["/practicums/mirae-industry", "Mirae Practicum"],
+      ["/practicums/startup-lab-camp/practicum/live-opportunities", "Open capstones"],
+      ["/practicums/startup-lab-camp/account", "Your account"],
+    ],
+  },
+  {
+    title: "Together",
+    links: [
+      ["/about/partnerships", "Partner with us"],
+      ["/grow-with-us", "Grow with us"],
+      ["/connect", "Let's talk"],
+    ],
+  },
+] as const;
 
 export function Footer() {
+  const { t, locale } = useI18n();
   return (
-    <footer className="dark border-t border-border bg-ink text-foreground">
-      <div className="container-x py-16 grid gap-12 md:grid-cols-12 items-start">
-        <div className="md:col-span-4 max-w-md">
-          <Link to="/" className="inline-flex items-center" aria-label="EPOCHA home">
-            <img src={logo} alt="EPOCHA logo" className="h-28 w-auto object-contain" />
-          </Link>
-          <p className="mt-3 text-sm text-muted-foreground leading-relaxed text-amber-400">
-            A project-based learning hub dedicated to closing the gap between education and
-            employability for youth aged 14–29 worldwide.
-          </p>
-        </div>
-        <div className="md:col-span-2">
-          <h4 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Explore</h4>
-          <ul className="space-y-2 text-sm">
-            <li>
-              <Link to="/" className="hover:text-lime">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/practicums" className="hover:text-lime">
-                Training
-              </Link>
-            </li>
-            <li>
-              <Link to="/practicums" className="hover:text-lime">
-                Practicums
-              </Link>
-            </li>
-            <li>
-              <Link to="/about" className="hover:text-lime">
-                About
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="md:col-span-2">
-          <h4 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
-            Practicums
-          </h4>
-          <ul className="space-y-2 text-sm">
-            <li>
-              <Link to="/practicums/hanaro" className="hover:text-lime">
-                Hanaro Practicum
-              </Link>
-            </li>
-            <li>
-              <Link to="/practicums/startup-lab-camp" className="hover:text-lime">
-                Start-up Lab Camp
-              </Link>
-            </li>
-            <li>
-              <Link to="/practicums/mirae-industry" className="hover:text-lime">
-                Mirae Practicum
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="md:col-span-2">
-          <h4 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Connect</h4>
-          <ul className="space-y-2 text-sm">
-            <li>
-              <Link to="/about/partnerships" className="hover:text-lime">
-                Partner with us
-              </Link>
-            </li>
-            <li>
-              <Link to="/connect" className="hover:text-lime">
-                Let's talk
-              </Link>
-            </li>
-            <li>
+    <>
+      <footer className="border-t border-border bg-secondary/45">
+        <div className="container-x grid items-start gap-12 py-16 md:grid-cols-2 lg:grid-cols-5 lg:gap-10 lg:py-20">
+          <div className="max-w-sm lg:col-span-2">
+            <Link to="/" aria-label={t("EPOCHA home")} className="inline-block rounded-sm">
+              <BrandLogo />
+            </Link>
+            <p className="mt-5 max-w-xs text-sm leading-7 text-muted-foreground">
+              {t(
+                "A project-based learning hub connecting education and real-world experience for young people aged 14–29.",
+              )}
+            </p>
+            <div className="mt-6 flex items-center gap-3">
+              <a
+                className="social-link"
+                href="https://www.instagram.com/learnwithepocha/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t("EPOCHA on Instagram")}
+              >
+                <Instagram aria-hidden="true" className="size-5" />
+              </a>
+              <a
+                className="social-link"
+                href="https://www.linkedin.com/company/epocha-world/?viewAsMember=true"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t("EPOCHA on LinkedIn")}
+              >
+                <Linkedin aria-hidden="true" className="size-5" />
+              </a>
               <a
                 href="https://wa.me/447801202799"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 hover:text-lime"
+                className="ml-2 inline-flex min-h-11 items-center gap-2 text-sm underline underline-offset-4"
               >
-                <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
+                {t("Chat on WhatsApp")}
+                <ArrowUpRight aria-hidden="true" className="size-4" />
               </a>
-            </li>
-            <li className="pt-2">
-              <div className="flex items-center gap-3">
-                <a
-                  href="https://www.instagram.com/learnwithepocha/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="EPOCHA on Instagram"
-                  className="inline-flex rounded-sm text-muted-foreground transition-colors hover:text-lime focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lime"
-                >
-                  <Instagram aria-hidden="true" className="h-5 w-5" />
-                </a>
-                <a
-                  href="https://www.linkedin.com/company/epocha-world/?viewAsMember=true"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="EPOCHA on LinkedIn"
-                  className="inline-flex rounded-sm text-muted-foreground transition-colors hover:text-lime focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lime"
-                >
-                  <Linkedin aria-hidden="true" className="h-5 w-5" />
-                </a>
-              </div>
-            </li>
-          </ul>
+            </div>
+          </div>
+          {columns.map((column) => (
+            <div key={column.title}>
+              <h2 className="text-sm font-semibold">{t(column.title)}</h2>
+              <ul className="mt-5 flex flex-col gap-3">
+                {column.links.map(([to, label]) => (
+                  <li key={to}>
+                    <Link
+                      to={to}
+                      className="inline-flex min-h-8 items-center text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      {t(label)}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-        <div className="md:col-span-2">
-          <h4 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">KR Legal</h4>
-          <ul className="space-y-2 text-sm">
-            <li>
-              <Link to="/privacy" className="hover:text-lime">
-                Privacy Policy
-              </Link>
-            </li>
-            <li>
-              <Link to="/terms" className="hover:text-lime">
-                Terms of Service
-              </Link>
-            </li>
-            <li>
-              <Link to="/refund-policy" className="hover:text-lime">
-                Refund Policy
-              </Link>
-            </li>
-            <li>
-              <Link to="/safeguarding" className="hover:text-lime">
-                Safeguarding
-              </Link>
-            </li>
-            <li>
-              <button type="button" onClick={openAnalyticsSettings} className="hover:text-lime">
-                Cookie settings
+        <div className="container-x border-t border-border py-7">
+          <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-center">
+            <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-muted-foreground">
+              {[
+                ["/privacy", "Privacy Policy"],
+                ["/terms", "Terms of Service"],
+                ["/refund-policy", "Refund Policy"],
+                ["/safeguarding", "Safeguarding"],
+              ].map(([to, label]) => (
+                <Link key={to} to={to} className="py-2 hover:text-foreground">
+                  {t(label)}
+                </Link>
+              ))}
+              <button
+                type="button"
+                onClick={openAnalyticsSettings}
+                className="py-2 text-left hover:text-foreground"
+              >
+                {t("Cookie settings")}
               </button>
-            </li>
-          </ul>
+            </div>
+            <PreferencesControls compact />
+          </div>
+          <div className="mt-6 flex flex-col gap-2 text-xs leading-5 text-muted-foreground">
+            <span>{t("© 2026 EPOCHA. All rights reserved.")}</span>
+            <span>
+              {locale === "ko"
+                ? "에포차(EPOCHA) · 대표 Ofranc Maeva Aurelie 외 1명(박주원) · 사업자등록번호 708-53-00997"
+                : "EPOCHA · Representatives: Ofranc Maeva Aurelie and Juwon Park · Business registration 708-53-00997"}
+            </span>
+            <span>{t("R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, South Korea")}</span>
+          </div>
         </div>
-      </div>
-      <div className="border-t border-border">
-        <div className="container-x py-6 text-xs text-muted-foreground flex flex-col gap-2 lg:flex-row lg:flex-wrap lg:justify-between">
-          <span>© 2026 EPOCHA. All rights reserved.</span>
-          <span>
-            에포차(EPOCHA) · 대표 Ofranc Maeva Aurelie 외 1명(박주원) · 사업자등록번호 708-53-00997
-          </span>
-          <span>R214, 10 Yeonmujang 11-gil, Seongdong-gu, Seoul, South Korea</span>
-        </div>
-      </div>
+      </footer>
       <AnalyticsConsentBanner />
-    </footer>
+    </>
   );
 }

@@ -171,10 +171,11 @@ const en: LegalDocument = {
 };
 
 export const Route = createFileRoute("/terms")({
-  head: () =>
+  head: ({ match }) =>
     createSeoHead({
-      title: "서비스 이용약관 | Terms of Service — EPOCHA",
-      description: "EPOCHA 서비스 이용약관 및 영문 번역본",
+      locale: match.context.preferences.locale,
+      title: "Terms of Service — EPOCHA",
+      description: "Terms governing the use of EPOCHA services.",
       path: "/terms",
     }),
   component: () => <LegalDocumentPage ko={ko} en={en} />,

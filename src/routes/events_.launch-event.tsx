@@ -1,11 +1,13 @@
+import { useI18n } from "@/i18n";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import launchEventBackground from "@/assets/launch-event-background.webp";
 import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/events_/launch-event")({
-  head: () =>
+  head: ({ match }) =>
     createSeoHead({
+      locale: match.context.preferences.locale,
       title: "Launch Event — EPOCHA",
       description: "EPOCHA Launch Event. We are live, with more details coming soon.",
       path: "/events/launch-event",
@@ -16,36 +18,36 @@ export const Route = createFileRoute("/events_/launch-event")({
 });
 
 function LaunchEventPage() {
+  const { t } = useI18n();
   return (
-    <section
-      data-testid="launch-event-page"
-      className="relative min-h-[calc(100svh-4rem)] overflow-hidden bg-[#fff8eb] lg:aspect-[1744/902] lg:min-h-0"
-    >
-      <img
-        src={launchEventBackground}
-        alt=""
-        aria-hidden="true"
-        width={1744}
-        height={902}
-        fetchPriority="high"
-        className="absolute inset-0 h-full w-full object-cover lg:object-fill"
-      />
-
-      <div className="absolute inset-x-4 top-[24%] text-center text-black sm:top-[26%]">
-        <h1 className="font-sans text-[clamp(3.5rem,7.35vw,7.5rem)] font-bold leading-[0.95] tracking-[-0.055em]">
-          We are live!
-        </h1>
-        <p className="mt-[clamp(1.5rem,3vw,3.125rem)] font-sans text-[clamp(1.35rem,2.2vw,2.25rem)] leading-none">
-          Coming soon...
+    <section data-testid="launch-event-page" className="container-x py-16 md:py-24">
+      <div className="max-w-4xl">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-accent">
+          {t("Launch Event")}
         </p>
+        <h1 className="mt-5 text-5xl font-bold leading-tight tracking-tight text-foreground md:text-7xl">
+          {t("We are live!")}
+        </h1>
+        <p className="mt-5 text-xl leading-relaxed text-muted-foreground">{t("Coming soon...")}</p>
+      </div>
+
+      <div className="mt-12 overflow-hidden rounded-3xl border border-border">
+        <img
+          src={launchEventBackground}
+          alt={t("Pastel megaphone sending a rainbow through a field of stars and confetti")}
+          width={1744}
+          height={902}
+          fetchPriority="high"
+          className="aspect-[1744/902] w-full object-cover"
+        />
       </div>
 
       <Link
         to="/events"
-        className="absolute bottom-[10%] left-1/2 inline-flex -translate-x-1/2 items-center gap-2 whitespace-nowrap font-sans text-base text-[#373737] transition-colors hover:text-black focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black sm:text-xl"
+        className="mt-8 inline-flex min-h-11 items-center gap-2 rounded-full border border-border px-5 py-3 font-medium text-foreground transition-colors hover:bg-muted"
       >
         <ArrowLeft aria-hidden="true" className="h-[1em] w-[1em]" strokeWidth={1.75} />
-        Back to events
+        {t("Back to events")}
       </Link>
     </section>
   );

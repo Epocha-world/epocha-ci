@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useI18n } from "@/i18n";
 import {
   ANALYTICS_SETTINGS_EVENT,
   getAnalyticsConsent,
@@ -6,6 +7,7 @@ import {
 } from "@/lib/analytics-consent";
 
 export function AnalyticsConsentBanner() {
+  const { t } = useI18n();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -25,15 +27,16 @@ export function AnalyticsConsentBanner() {
 
   return (
     <aside
-      aria-label="Analytics preferences"
+      aria-label={t("Analytics preferences")}
       className="fixed bottom-4 left-4 right-4 z-50 rounded-lg border border-border bg-card p-4 text-card-foreground shadow-lg md:left-auto md:right-4 md:max-w-md"
     >
-      <p className="text-sm font-semibold">Analytics preferences</p>
+      <p className="text-sm font-semibold">{t("Analytics preferences")}</p>
       <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-        We use cookie-free Vercel Analytics for basic traffic insights. With your permission, Google
-        Analytics helps us understand campaigns and improve programme journeys. Read our{" "}
-        <a href="/privacy" className="text-lime underline hover:opacity-80">
-          Privacy Policy
+        {t(
+          "We use cookie-free Vercel Analytics for basic traffic insights. With your permission, Google Analytics helps us understand campaigns and improve programme journeys.",
+        )}{" "}
+        <a href="/privacy" className="text-brand-accent underline hover:opacity-80">
+          {t("Privacy Policy")}
         </a>
         .
       </p>
@@ -43,14 +46,14 @@ export function AnalyticsConsentBanner() {
           onClick={() => choose("denied")}
           className="rounded-md border border-input px-3 py-2 text-xs font-semibold transition-colors hover:bg-accent"
         >
-          Reject optional analytics
+          {t("Reject optional analytics")}
         </button>
         <button
           type="button"
           onClick={() => choose("granted")}
           className="rounded-md bg-lime px-3 py-2 text-xs font-semibold text-ink transition-opacity hover:opacity-90"
         >
-          Allow Google Analytics
+          {t("Allow Google Analytics")}
         </button>
       </div>
     </aside>

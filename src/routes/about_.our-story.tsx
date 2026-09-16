@@ -1,3 +1,4 @@
+import { useI18n } from "@/i18n";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -18,8 +19,9 @@ import logoPenWw from "@/assets/logos/pen-worldwide.png";
 import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/about_/our-story")({
-  head: () =>
+  head: ({ match }) =>
     createSeoHead({
+      locale: match.context.preferences.locale,
       title: "Our Story — EPOCHA Learning Hub",
       description: "Meet the founders behind EPOCHA and the story of how we got started.",
       path: "/about/our-story",
@@ -28,6 +30,7 @@ export const Route = createFileRoute("/about_/our-story")({
 });
 
 function OurStoryPage() {
+  const { t } = useI18n();
   return (
     <>
       {/* OPENING QUOTE — light mode */}
@@ -36,30 +39,35 @@ function OurStoryPage() {
           <div className="w-16 h-[2px] bg-coral mb-8" />
           <blockquote className="max-w-4xl">
             <p className="text-2xl md:text-4xl font-bold text-foreground leading-[1.2]">
-              EPOCHA transforms how young people aged 14–29 leverage experiential learning,{" "}
-              <span className="text-coral">turning academic effort into real career momentum.</span>{" "}
-              We give them the hands-on experience, professional connections, and confidence to
-              thrive from day one.
+              {t("EPOCHA transforms how young people aged 14–29 leverage experiential learning,")}{" "}
+              <span className="text-coral">
+                {t("turning academic effort into real career momentum.")}
+              </span>{" "}
+              {t(
+                "We give them the hands-on experience, professional connections, and confidence to thrive from day one.",
+              )}
             </p>
           </blockquote>
         </div>
       </section>
 
       {/* MISSION — THE CHALLENGE */}
-      <section className="bg-ink text-cream">
+      <section className="surface-inverse text-cream">
         <div className="container-x py-20 grid md:grid-cols-2 gap-16">
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">The challenge</p>
-            <h2 className="mt-3 text-4xl font-bold">A global employability crisis.</h2>
+            <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">
+              {t("The challenge")}
+            </p>
+            <h2 className="mt-3 text-4xl font-bold">{t("A global employability crisis.")}</h2>
             <p className="mt-5 text-cream/70 leading-relaxed">
-              Young talent today enters a landscape where the odds are stacked against them. Beyond
-              high unemployment, many are stuck in 'gig' roles without security because they haven't
-              been given the tools to prove the high-level skills employers demand.
+              {t(
+                "Young talent today enters a landscape where the odds are stacked against them. Beyond high unemployment, many are stuck in 'gig' roles without security because they haven't been given the tools to prove the high-level skills employers demand.",
+              )}
             </p>
             <p className="mt-4 text-cream/70 leading-relaxed">
-              EPOCHA exists to change that. We help international and diverse communities of young
-              learners move from the challenges of entering the job market to thriving,
-              fast-tracking careers with verified skills, real experience, and a genuine edge.
+              {t(
+                "EPOCHA exists to change that. We help international and diverse communities of young learners move from the challenges of entering the job market to thriving, fast-tracking careers with verified skills, real experience, and a genuine edge.",
+              )}
             </p>
           </div>
           <div className="grid gap-6 self-center">
@@ -72,10 +80,10 @@ function OurStoryPage() {
                 key={s.key}
                 className="rounded-2xl border border-cream/15 bg-white/5 p-6 flex items-center gap-6"
               >
-                <div className="text-5xl font-display font-bold text-lime min-w-[120px]">
-                  {s.label}
+                <div className="text-5xl font-display font-bold text-brand-accent min-w-[120px]">
+                  {t(s.label)}
                 </div>
-                <p className="text-cream/80">{s.l}</p>
+                <p className="text-cream/80">{t(s.l)}</p>
               </div>
             ))}
           </div>
@@ -103,42 +111,43 @@ function OurStoryPage() {
             },
           ].map((b) => (
             <div key={b.title}>
-              <b.icon className="w-9 h-9 text-lime" />
-              <h3 className="mt-5 text-2xl font-bold">{b.title}</h3>
-              <p className="mt-3 text-foreground/70 leading-relaxed">{b.desc}</p>
+              <b.icon className="w-9 h-9 text-brand-accent" />
+              <h3 className="mt-5 text-2xl font-bold">{t(b.title)}</h3>
+              <p className="mt-3 text-foreground/70 leading-relaxed">{t(b.desc)}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* SECOND QUOTE — dark, with decorative quotation marks */}
-      <section className="bg-ink">
+      <section className="surface-inverse">
         <div className="container-x py-20 md:py-28">
           <div className="relative rounded-3xl bg-background border border-border p-10 md:p-16 overflow-hidden">
             <span
               aria-hidden
               className="absolute top-8 left-8 md:top-10 md:left-12 text-foreground/80 font-serif font-bold leading-none select-none text-[120px] md:text-[180px]"
             >
-              &ldquo;
+              “
             </span>
             <span
               aria-hidden
               className="absolute bottom-8 right-8 md:bottom-10 md:right-12 text-coral font-serif font-bold leading-none select-none text-[60px] md:text-[90px]"
             >
-              &rdquo;
+              ”
             </span>
             <blockquote className="relative max-w-3xl mx-auto text-center pt-24 md:pt-28 pb-16 md:pb-20">
               <p className="text-xl md:text-2xl font-semibold text-foreground leading-[1.5] italic">
-                "We didn't build Epocha to fix a system.{" "}
+                {t("\"We didn't build Epocha to fix a system.")}{" "}
                 <span className="text-coral not-italic">
-                  We built it for people because lost potential is humanity's greatest waste.
+                  {t("We built it for people because lost potential is humanity's greatest waste.")}
                 </span>{" "}
-                Not resources. Not time. People. People deserve better and better is still
-                possible."
+                {t(
+                  'Not resources. Not time. People. People deserve better and better is still possible."',
+                )}
               </p>
             </blockquote>
             <p className="relative mt-2 text-center text-foreground/60 text-sm uppercase tracking-[0.2em]">
-              The people behind the mission
+              {t("The people behind the mission")}
             </p>
           </div>
         </div>
@@ -146,15 +155,16 @@ function OurStoryPage() {
 
       <section className="container-x py-24">
         <div className="max-w-2xl">
-          <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">Our story</p>
+          <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">
+            {t("Our story")}
+          </p>
           <h1 className="mt-3 text-4xl md:text-5xl font-bold">
-            Built on the power of <span className="text-lime">connection</span>.
+            {t("Built on the power of connection.")}
           </h1>
           <p className="mt-4 text-foreground/70">
-            EPOCHA started on a shared conviction: that real growth happens when people are
-            genuinely connected — to themselves, to each other, and to the work that matters. Every
-            practicum, coaching session, and partnership we build is designed to turn that belief
-            into lived experience.
+            {t(
+              "EPOCHA started on a shared conviction: that real growth happens when people are genuinely connected — to themselves, to each other, and to the work that matters. Every practicum, coaching session, and partnership we build is designed to turn that belief into lived experience.",
+            )}
           </p>
         </div>
 
@@ -178,11 +188,11 @@ function OurStoryPage() {
           ].map((p) => (
             <div
               key={p.name}
-              className="rounded-3xl border border-border bg-muted/30 p-8 flex gap-6 items-start"
+              className="rounded-3xl border border-border bg-muted/30 p-6 md:p-8 flex flex-col sm:flex-row gap-6 items-start"
             >
               <img
                 src={p.img}
-                alt={`${p.name} caricature portrait`}
+                alt={t("Caricature portrait of {{name}}", { name: p.name })}
                 loading="lazy"
                 width={96}
                 height={96}
@@ -195,13 +205,13 @@ function OurStoryPage() {
                     href={p.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`${p.name} LinkedIn`}
+                    aria-label={t("{{name}} LinkedIn profile", { name: p.name })}
                   >
-                    <Linkedin className="w-5 h-5 text-foreground/60 hover:text-lime transition" />
+                    <Linkedin className="w-5 h-5 text-foreground/60 hover:text-brand-accent transition" />
                   </a>
                 </div>
-                <p className="text-sm text-coral font-semibold mt-1">{p.role}</p>
-                <p className="mt-3 text-sm text-foreground/70 leading-relaxed">{p.bio}</p>
+                <p className="text-sm text-coral font-semibold mt-1">{t(p.role)}</p>
+                <p className="mt-3 text-sm text-foreground/70 leading-relaxed">{t(p.bio)}</p>
               </div>
             </div>
           ))}
@@ -210,18 +220,18 @@ function OurStoryPage() {
         {/* OTHER PROJECTS */}
         <div className="mt-20">
           <div className="flex items-center gap-3">
-            <Briefcase className="w-5 h-5 text-lime" />
+            <Briefcase className="w-5 h-5 text-brand-accent" />
             <p className="text-xs uppercase tracking-[0.2em] text-foreground/60 font-bold">
-              Other ventures
+              {t("Other ventures")}
             </p>
           </div>
-          <h3 className="mt-3 text-3xl font-bold">What else we're working on.</h3>
+          <h3 className="mt-3 text-3xl font-bold">{t("What else we're working on.")}</h3>
           <div className="mt-8">
-            <div className="rounded-2xl bg-ink text-cream p-5">
-              <p className="text-[11px] uppercase tracking-[0.2em] text-lime font-bold">
-                Coaching by
+            <div className="rounded-2xl surface-inverse text-cream p-5">
+              <p className="text-[11px] uppercase tracking-[0.2em] text-brand-accent font-bold">
+                {t("Coaching by")}
               </p>
-              <h4 className="mt-1 text-xl font-bold">Maeva Ofranc</h4>
+              <h4 className="mt-1 text-xl font-bold">{t("Maeva Ofranc")}</h4>
             </div>
             <div className="mt-4 grid md:grid-cols-2 gap-4">
               {[
@@ -258,18 +268,18 @@ function OurStoryPage() {
                   rel="noopener noreferrer"
                   className={`group flex flex-col rounded-2xl border p-6 transition ${
                     project.featured
-                      ? "border-amber-400 bg-amber-50/80 shadow-sm hover:border-amber-500"
+                      ? "border-amber-400 bg-lime/10 shadow-sm hover:border-amber-500"
                       : "border-border hover:border-lime"
                   }`}
                 >
                   <h4 className="font-bold">{project.name}</h4>
-                  <p className="mt-2 text-sm text-foreground/70">{project.desc}</p>
+                  <p className="mt-2 text-sm text-foreground/70">{t(project.desc)}</p>
                   <span
                     className={`mt-auto inline-flex items-center gap-2 pt-4 text-sm font-medium ${
-                      project.featured ? "text-amber-600" : "text-lime"
+                      project.featured ? "text-amber-600" : "text-brand-accent"
                     }`}
                   >
-                    {project.cta}
+                    {t(project.cta)}
                     <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                   </span>
                 </a>
@@ -286,7 +296,7 @@ function OurStoryPage() {
                 </p>
                 <Link
                   to="/connect"
-                  className="mt-auto pt-4 inline-flex items-center gap-2 text-sm font-medium text-lime hover:underline"
+                  className="mt-auto pt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-accent hover:underline"
                 >
                   Book a call <ArrowRight className="w-4 h-4" />
                 </Link>
@@ -298,12 +308,12 @@ function OurStoryPage() {
         {/* TESTIMONIALS */}
         <div className="mt-20">
           <div className="flex items-center gap-3">
-            <Quote className="w-5 h-5 text-lime" />
+            <Quote className="w-5 h-5 text-brand-accent" />
             <p className="text-xs uppercase tracking-[0.2em] text-foreground/60 font-bold">
-              Coaching testimonials
+              {t("Coaching testimonials")}
             </p>
           </div>
-          <h3 className="mt-3 text-3xl font-bold">What people say about working with us.</h3>
+          <h3 className="mt-3 text-3xl font-bold">{t("What people say about working with us.")}</h3>
           <div className="mt-8 grid md:grid-cols-2 gap-6">
             {[
               {
@@ -347,21 +357,23 @@ function OurStoryPage() {
                 href: "https://www.instagram.com/nazgul_dolotkeldieva?igsh=MWp5bnFtY3ZlNHZrNA==",
               },
             ]
-              .filter((t) => t.quote)
-              .map((t, i) => (
+              .filter((testimonial) => testimonial.quote)
+              .map((testimonial, i) => (
                 <figure key={i} className="rounded-3xl bg-muted/30 border border-border p-8">
                   <blockquote className="text-foreground/80 leading-relaxed italic whitespace-pre-line">
-                    "{t.quote}"
+                    "{t(testimonial.quote)}"
                   </blockquote>
-                  <figcaption className="mt-4 text-sm text-foreground/60">— {t.author}</figcaption>
-                  {t.cta && t.href && (
+                  <figcaption className="mt-4 text-sm text-foreground/60">
+                    — {t(testimonial.author)}
+                  </figcaption>
+                  {testimonial.cta && testimonial.href && (
                     <a
-                      href={t.href}
+                      href={testimonial.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-foreground hover:underline"
                     >
-                      {t.cta}
+                      {t(testimonial.cta)}
                       <ExternalLink className="w-4 h-4" />
                     </a>
                   )}
@@ -374,49 +386,44 @@ function OurStoryPage() {
       {/* DUPLICATE — Who we work with partner banner */}
       <section className="container-x py-20">
         <div className="flex items-center gap-3">
-          <Handshake className="w-5 h-5 text-lime" />
+          <Handshake className="w-5 h-5 text-brand-accent" />
           <p className="text-xs uppercase tracking-[0.2em] text-foreground/60 font-bold">
-            Who we work with
+            {t("Who we work with")}
           </p>
         </div>
-        <div className="mt-8 relative overflow-hidden rounded-3xl border border-border bg-muted/30 py-10 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-          <div className="marquee-track gap-16 pr-16">
-            {[...Array(2)].map((_, dup) => (
-              <div key={dup} className="flex items-center gap-16 shrink-0" aria-hidden={dup === 1}>
-                {[
-                  { src: logoQualitax, alt: "QualitaX", href: "https://www.qualitax.io/" },
-                  { src: logoKoreaPen, alt: "Korea PEN", href: "https://koreapen.org/" },
-                  { src: logoPenWw, alt: "PEN Worldwide", href: "https://penworldwide.org/" },
-                ].map((l) => (
-                  <a
-                    key={l.alt + dup}
-                    href={l.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="shrink-0 grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition"
-                  >
-                    <img
-                      src={l.src}
-                      alt={l.alt}
-                      className="h-14 w-auto object-contain"
-                      loading="lazy"
-                    />
-                  </a>
-                ))}
-              </div>
-            ))}
-          </div>
+        <div className="mt-8 flex flex-wrap items-center justify-around gap-10 rounded-2xl border border-border bg-white p-8 md:p-12">
+          {[
+            { src: logoQualitax, alt: "QualitaX", href: "https://www.qualitax.io/" },
+            { src: logoKoreaPen, alt: "Korea PEN", href: "https://koreapen.org/" },
+            { src: logoPenWw, alt: "PEN Worldwide", href: "https://penworldwide.org/" },
+          ].map((partner) => (
+            <a
+              key={partner.alt}
+              href={partner.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg p-2 transition-opacity hover:opacity-70"
+            >
+              <img
+                src={partner.src}
+                alt={partner.alt}
+                className="h-12 max-w-48 object-contain md:h-14"
+                loading="lazy"
+              />
+            </a>
+          ))}
         </div>
       </section>
 
       {/* CTA — Ready to lead what's next */}
       <section className="container-x pb-24">
-        <div className="rounded-[2.5rem] bg-ink text-cream p-12 md:p-20 relative overflow-hidden">
+        <div className="rounded-[2.5rem] surface-inverse text-cream p-12 md:p-20 relative overflow-hidden">
           <div className="relative max-w-2xl">
-            <h2 className="text-4xl md:text-6xl font-bold">Ready to lead what's next?</h2>
+            <h2 className="text-4xl md:text-6xl font-bold">{t("Ready to lead what's next?")}</h2>
             <p className="mt-5 text-cream/80 text-lg">
-              Join thousands of young leaders building real experience, real networks, and a real
-              edge in an AI-driven world.
+              {t(
+                "Join thousands of young leaders building real experience, real networks, and a real edge in an AI-driven world.",
+              )}
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
@@ -424,13 +431,14 @@ function OurStoryPage() {
                 hash="choose-your-practicum"
                 className="inline-flex items-center gap-2 bg-lime text-ink font-semibold px-6 py-3.5 rounded-full hover:bg-lime/90 transition"
               >
-                Find your practicum <ArrowRight className="w-4 h-4" />
+                {t("Find your practicum")}
+                <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 to="/about/partnerships"
                 className="inline-flex items-center gap-2 border border-cream text-cream font-medium px-6 py-3.5 rounded-full hover:bg-cream hover:text-ink transition"
               >
-                For organizations
+                {t("For organizations")}
               </Link>
             </div>
           </div>

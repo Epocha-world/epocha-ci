@@ -1,22 +1,11 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+@import "./design-system/tokens.css";
 
 @custom-variant dark (&:is(.dark *));
 
-/*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
- */
+/* Tailwind aliases for the EPOCHA design tokens. */
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -26,8 +15,8 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
-  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Noto Sans KR", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", "Noto Sans KR", ui-sans-serif, system-ui, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -65,155 +54,494 @@
   --color-coral: var(--coral);
   --color-ink: var(--ink);
   --color-cream: var(--cream);
+  --color-brand-accent: var(--brand-accent);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary-container: var(--on-primary-container);
+  --color-outline: var(--outline);
 }
 
-:root {
-  --radius: 1rem;
-  /* Brand palette extracted from logo: deep ink, soft cream, golden yellow, amber orange */
-  --ink: oklch(0.16 0.01 90);
-  --cream: oklch(0.97 0.012 85);   /* warm cream background */
-  --lime: oklch(0.78 0.17 85);     /* primary — logo yellow */
-  --coral: oklch(0.7 0.18 55);     /* accent  — logo amber  */
-
-  --background: var(--cream);
-  --foreground: var(--ink);
-  --card: oklch(0.99 0.008 85);
-  --card-foreground: var(--ink);
-  --popover: oklch(0.99 0.008 85);
-  --popover-foreground: var(--ink);
-  --primary: var(--lime);
-  --primary-foreground: var(--ink);
-  --secondary: oklch(0.93 0.02 85);
-  --secondary-foreground: var(--ink);
-  --muted: oklch(0.94 0.015 85);
-  --muted-foreground: oklch(0.45 0.02 85);
-  --accent: var(--coral);
-  --accent-foreground: var(--ink);
-  --destructive: oklch(0.6 0.22 28);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.88 0.015 85);
-  --input: oklch(0.9 0.015 85);
-  --ring: var(--lime);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+:root[data-theme="light"] {
+  color-scheme: light;
 }
-
+:root[data-theme="dark"],
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  color-scheme: dark;
+}
+
+/* Intentional inverse sections keep their own accessible surface semantics. */
+.surface-inverse,
+.bg-ink {
+  color-scheme: dark;
+  --background: oklch(0.21552 0.00595 121.939);
+  --foreground: oklch(0.96849 0.00793 106.547);
+  --card: oklch(0.25118 0.01022 132.67);
+  --card-foreground: oklch(0.96849 0.00793 106.547);
+  --secondary: oklch(0.29037 0.01527 129.062);
+  --secondary-foreground: oklch(0.96849 0.00793 106.547);
+  --muted: oklch(0.29037 0.01527 129.062);
+  --muted-foreground: oklch(0.74709 0.01515 128.688);
+  --brand-accent: oklch(0.87747 0.17449 92.549);
+  --border: oklch(0.33736 0.01789 125.12);
+  --ring: oklch(0.87747 0.17449 92.549);
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
 @layer base {
   * {
-    border-color: var(--color-border);
+    border-color: var(--border);
   }
-
+  html {
+    scroll-padding-top: 7rem;
+  }
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    margin: 0;
+    background: var(--background);
+    color: var(--foreground);
     font-family: var(--font-sans);
+    font-size: var(--type-body-size);
+    line-height: var(--type-body-line);
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
-
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :lang(ko) {
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+  :lang(ko) h1,
+  :lang(ko) h2,
+  :lang(ko) h3 {
+    letter-spacing: -0.045em;
+    line-height: 1.25;
+  }
+  button,
+  select {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  summary {
+    -webkit-tap-highlight-color: transparent;
+  }
+  :focus-visible {
+    outline: var(--focus-width) solid var(--ring);
+    outline-offset: var(--focus-offset);
+  }
+  ::selection {
+    background: var(--lime);
+    color: var(--ink);
+  }
+  img {
+    max-width: 100%;
   }
 }
 
 @utility container-x {
+  width: 100%;
   max-width: 1280px;
   margin-inline: auto;
-  padding-inline: 1.5rem;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
 }
-
-@utility btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--color-lime);
-  color: var(--color-ink);
+@utility section-padding {
+  padding-block: clamp(3.5rem, 7vw, 6.5rem);
+}
+@utility editorial-heading {
+  font-size: var(--type-display-size);
   font-weight: 600;
-  padding: 0.875rem 1.5rem;
-  border-radius: 999px;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  line-height: var(--type-display-line);
+  letter-spacing: -0.045em;
 }
-@utility btn-primary {
-  &:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -10px color-mix(in oklab, var(--color-lime) 60%, transparent); }
+@utility angular-media {
+  clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%, 0 12%);
 }
-
-@utility btn-outline {
+/* Both React Button and existing route links consume this one component family. */
+@layer components {
+  .ds-button,
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline {
+    --button-background: transparent;
+    --button-foreground: var(--foreground);
+    --button-border: transparent;
+    display: inline-flex;
+    position: relative;
+    min-height: var(--control-height);
+    align-items: center;
+    justify-content: center;
+    gap: var(--button-gap);
+    padding: var(--space-3) var(--button-padding-inline);
+    border: 1px solid var(--button-border);
+    border-radius: var(--button-shape);
+    background: var(--button-background);
+    color: var(--button-foreground);
+    font-size: var(--type-label-size);
+    font-weight: 600;
+    line-height: var(--type-label-line);
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+      background var(--motion-short) var(--motion-standard),
+      box-shadow var(--motion-short) var(--motion-standard);
+  }
+  .btn-primary {
+    --button-background: var(--primary);
+    --button-foreground: var(--primary-foreground);
+  }
+  .btn-secondary,
+  .btn-outline {
+    --button-border: var(--outline);
+  }
+  .ds-button-tonal {
+    --button-background: var(--primary-container);
+    --button-foreground: var(--on-primary-container);
+  }
+  .ds-button-destructive {
+    --button-background: var(--destructive);
+    --button-foreground: var(--destructive-foreground);
+  }
+  .ds-button-link {
+    --button-foreground: var(--brand-accent);
+    text-underline-offset: 4px;
+  }
+  :is(.ds-button, .btn-primary, .btn-secondary, .btn-outline):hover {
+    background: color-mix(
+      in oklch,
+      var(--button-background),
+      var(--button-foreground) var(--state-hover-opacity)
+    );
+  }
+  :is(.ds-button, .btn-primary, .btn-secondary, .btn-outline):active {
+    background: color-mix(
+      in oklch,
+      var(--button-background),
+      var(--button-foreground) var(--state-pressed-opacity)
+    );
+  }
+  :is(.ds-button, .btn-primary, .btn-secondary, .btn-outline):focus-visible {
+    outline: var(--focus-width) solid var(--ring);
+    outline-offset: var(--focus-offset);
+  }
+  .ds-button-link:hover {
+    text-decoration: underline;
+  }
+  :is(.ds-button, .btn-primary, .btn-secondary, .btn-outline):is(
+    :disabled,
+    [aria-disabled="true"]
+  ) {
+    opacity: var(--state-disabled-opacity);
+    pointer-events: none;
+  }
+  .ds-button-sm {
+    min-height: var(--control-height-compact);
+    padding-inline: var(--space-4);
+    padding-block: var(--space-2);
+  }
+  .ds-button-lg {
+    min-height: 3.5rem;
+    padding-inline: var(--space-8);
+  }
+  .ds-button-icon {
+    min-height: var(--control-height-compact);
+    width: var(--control-height-compact);
+    padding: 0;
+  }
+  .ds-field {
+    min-height: var(--control-height);
+    border: 1px solid var(--input);
+    border-radius: var(--field-shape);
+    background: var(--field-background);
+    color: var(--foreground);
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--type-body-size);
+    line-height: var(--type-label-line);
+    transition:
+      border-color var(--motion-short) var(--motion-standard),
+      box-shadow var(--motion-short) var(--motion-standard);
+  }
+  .ds-field:hover:not(:disabled) {
+    border-color: var(--foreground);
+  }
+  .ds-field:focus-visible {
+    border-color: var(--ring);
+    outline: var(--focus-width) solid var(--ring);
+    outline-offset: var(--focus-offset);
+  }
+  .ds-field[aria-invalid="true"] {
+    border-color: var(--destructive);
+    outline-color: var(--destructive);
+  }
+  .ds-field:disabled {
+    opacity: var(--state-disabled-opacity);
+    cursor: not-allowed;
+  }
+  .ds-menu {
+    border: 1px solid var(--outline-variant);
+    border-radius: var(--menu-shape);
+    background: var(--menu-background);
+    color: var(--foreground);
+    box-shadow: var(--menu-elevation);
+    padding: var(--space-2);
+    animation-duration: var(--motion-short);
+    animation-timing-function: var(--motion-standard);
+  }
+  .ds-menu-item {
+    position: relative;
+    display: flex;
+    min-height: var(--menu-item-height);
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    border-radius: var(--menu-item-shape);
+    color: var(--foreground);
+    font-size: var(--type-label-size);
+    line-height: var(--type-label-line);
+    cursor: pointer;
+    user-select: none;
+    outline: none;
+    transition: background var(--motion-short) var(--motion-standard);
+  }
+  .ds-menu-item:is(:focus, [data-highlighted], [data-state="open"]) {
+    background: color-mix(
+      in oklch,
+      var(--menu-background),
+      var(--foreground) var(--state-focus-opacity)
+    );
+  }
+  .ds-menu-item[data-state="checked"] {
+    background: var(--primary-container);
+    color: var(--on-primary-container);
+  }
+  .ds-menu-item[data-state="checked"]:is(:focus, [data-highlighted]) {
+    background: color-mix(
+      in oklch,
+      var(--primary-container),
+      var(--on-primary-container) var(--state-focus-opacity)
+    );
+  }
+  .ds-menu-item:focus-visible {
+    outline: var(--focus-width) solid var(--ring);
+    outline-offset: -2px;
+  }
+  .ds-menu-item[data-disabled] {
+    pointer-events: none;
+    opacity: var(--state-disabled-opacity);
+  }
+  .ds-menu-item-indicator-start {
+    padding-inline-start: 2.25rem;
+  }
+  .ds-menu-item-indicator-end {
+    padding-inline-end: 2.5rem;
+  }
+  .ds-menu-label {
+    padding: var(--space-2) var(--space-3);
+    color: var(--muted-foreground);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: var(--type-label-line);
+    letter-spacing: 0.04em;
+  }
+  .ds-card {
+    border: 1px solid var(--outline-variant);
+    border-radius: var(--panel-shape);
+    background: var(--card);
+    color: var(--card-foreground);
+    box-shadow: var(--panel-elevation);
+  }
+  .ds-card-title {
+    font-family: var(--font-display);
+    font-size: var(--type-title-size);
+    font-weight: 600;
+    line-height: var(--type-title-line);
+    letter-spacing: -0.025em;
+  }
+  .ds-toggle {
+    display: inline-flex;
+    min-height: var(--control-height);
+    min-width: var(--control-height);
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid transparent;
+    border-radius: var(--shape-full);
+    background: transparent;
+    color: var(--foreground);
+    font-size: var(--type-label-size);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background var(--motion-short) var(--motion-standard);
+  }
+  .ds-toggle-outline {
+    border-color: var(--outline);
+  }
+  .ds-toggle:hover {
+    background: var(--secondary);
+  }
+  .ds-toggle[data-state="on"] {
+    background: var(--primary-container);
+    color: var(--on-primary-container);
+  }
+  .ds-toggle:focus-visible {
+    outline: var(--focus-width) solid var(--ring);
+    outline-offset: var(--focus-offset);
+  }
+  .ds-toggle:disabled {
+    pointer-events: none;
+    opacity: var(--state-disabled-opacity);
+  }
+  .ds-toggle-sm {
+    min-height: var(--control-height-compact);
+    min-width: var(--control-height-compact);
+  }
+  .ds-toggle-lg {
+    padding-inline: var(--space-6);
+  }
+}
+@utility nav-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  border: 1px solid var(--color-ink);
-  color: var(--color-ink);
-  font-weight: 500;
-  padding: 0.875rem 1.5rem;
-  border-radius: 999px;
-  transition: background 0.15s ease, color 0.15s ease;
+  min-height: 44px;
+  padding-inline: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  transition: color 160ms ease;
+  &:hover {
+    color: var(--foreground);
+  }
 }
-@utility btn-outline {
-  &:hover { background: var(--color-ink); color: var(--color-cream); }
+.nav-link-active {
+  color: var(--foreground);
+  text-decoration: underline;
+  text-underline-offset: 7px;
 }
-
-@keyframes marquee-x {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+.brand-logo {
+  position: relative;
+  display: block;
+  width: 172px;
+  aspect-ratio: 2.5;
 }
-
+.brand-logo-wordmark {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background: var(--foreground);
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+}
+.brand-logo-symbol {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  clip-path: inset(0 65% 0 0);
+}
+.social-link {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  transition: background 160ms;
+}
+.social-link:hover {
+  background: var(--secondary);
+}
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  transform: translateY(-200%);
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
+  background: var(--lime);
+  color: var(--ink);
+  z-index: 100;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+/* Legacy accent names remain compatible with existing program content. */
+.text-lime {
+  color: var(--brand-accent);
+}
+.hover\:text-lime:hover {
+  color: var(--brand-accent);
+}
+.bg-lime .text-lime {
+  color: var(--ink);
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@utility animate-fade-in {
+  animation: fade-in 450ms ease-out;
+}
+@utility reveal {
+  animation: fade-in 450ms ease-out both;
+}
 @utility marquee-track {
   display: flex;
-  width: max-content;
-  animation: marquee-x 60s linear infinite;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
 }
-
-@keyframes fade-in {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
+@media (max-width: 639px) {
+  .brand-logo {
+    width: 148px;
+  }
 }
-
-@utility animate-fade-in {
-  animation: fade-in 0.5s ease-out;
+@media (max-width: 359px) {
+  .site-header .brand-logo {
+    width: 112px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal,
+  .animate-fade-in {
+    opacity: 1;
+    transform: none;
+  }
 }

@@ -152,10 +152,11 @@ const en: LegalDocument = {
 };
 
 export const Route = createFileRoute("/refund-policy")({
-  head: () =>
+  head: ({ match }) =>
     createSeoHead({
-      title: "취소 및 환불 정책 | Refund Policy — EPOCHA",
-      description: "EPOCHA 교육서비스 취소 및 환불 정책",
+      locale: match.context.preferences.locale,
+      title: "Refund Policy — EPOCHA",
+      description: "Cancellation and refund policy for EPOCHA educational services.",
       path: "/refund-policy",
     }),
   component: () => <LegalDocumentPage ko={ko} en={en} />,

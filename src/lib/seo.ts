@@ -1,9 +1,13 @@
+import type { Locale } from "./preferences";
+import { translate } from "@/i18n/resources";
+
 export const SITE_URL = "https://epocha.world";
 export const SITE_NAME = "EPOCHA Learning Hub";
 
 type JsonLd = Record<string, unknown>;
 
 type SeoOptions = {
+  locale?: Locale;
   title: string;
   description: string;
   path: string;
@@ -30,6 +34,7 @@ export function createStructuredDataScripts(data: JsonLd[]) {
 }
 
 export function createSeoHead({
+  locale = "en",
   title,
   description,
   path,
@@ -39,6 +44,10 @@ export function createSeoHead({
   noIndex = false,
   jsonLd,
 }: SeoOptions) {
+  title = translate(locale, title);
+  description = translate(locale, description);
+  ogTitle = translate(locale, ogTitle);
+  socialDescription = translate(locale, socialDescription);
   const canonical = absoluteUrl(path);
   const socialImage = image ? absoluteUrl(image) : undefined;
   const structuredData = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
@@ -58,7 +67,7 @@ export function createSeoHead({
       { property: "og:type", content: "website" },
       { property: "og:url", content: canonical },
       { property: "og:site_name", content: SITE_NAME },
-      { property: "og:locale", content: "en_US" },
+      { property: "og:locale", content: locale === "ko" ? "ko_KR" : "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: ogTitle },
       { name: "twitter:description", content: socialDescription },
@@ -76,6 +85,7 @@ export function createSeoHead({
         "@type": "WebPage",
         name: title,
         description,
+        inLanguage: locale,
         url: canonical,
         isPartOf: { "@id": `${SITE_URL}/#website` },
         about: { "@id": `${SITE_URL}/#organization` },

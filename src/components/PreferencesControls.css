@@ -1,0 +1,138 @@
+.preferences-controls {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.preferences-controls--compact {
+  padding: 3px;
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--shape-full);
+  background: var(--surface-container-low);
+}
+.preferences-controls--expanded {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.preference-trigger {
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding-inline: 12px;
+  gap: 8px;
+  color: var(--foreground);
+  border-radius: var(--shape-full);
+  font-size: var(--type-label-size);
+  font-weight: 500;
+}
+.preferences-controls--compact .preference-trigger:has(> svg:only-child) {
+  width: 44px;
+  padding: 0;
+}
+.preference-trigger[data-state="open"] {
+  background: var(--primary-container);
+  color: var(--on-primary-container);
+}
+.preferences-controls--expanded .preference-trigger {
+  width: 100%;
+  justify-content: flex-start;
+  background: var(--surface-container);
+}
+.preferences-controls--expanded .preference-chevron {
+  margin-left: auto;
+}
+.preference-trigger .preference-chevron {
+  width: 12px;
+  height: 12px;
+  opacity: 0.6;
+}
+.preferences-divider {
+  width: 1px;
+  height: 18px;
+  background: var(--outline-variant);
+}
+.preferences-menu {
+  width: min(292px, calc(100vw - 24px));
+  padding: 8px;
+}
+.preferences-menu-heading {
+  padding: 12px 12px 14px;
+}
+.preferences-menu-title {
+  display: block;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.preferences-menu-description {
+  display: block;
+  margin-top: 3px;
+  font-size: 12px;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--muted-foreground);
+}
+.preference-option {
+  min-height: 64px;
+  padding-block: 10px;
+  padding-left: 12px;
+  padding-right: 36px;
+  gap: 12px;
+  margin-block: 3px;
+}
+.preference-option-icon {
+  display: flex;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--shape-medium);
+  background: var(--surface-container-high);
+  color: var(--foreground);
+}
+.preference-option-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.7;
+}
+.preference-language-mark {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+.preference-option[data-state="checked"] .preference-option-icon {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+.preference-option-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 2px;
+}
+.preference-option-title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.preference-option-description {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+}
+.preference-option:is(:focus, [data-highlighted], [data-state="checked"])
+  .preference-option-description {
+  color: inherit;
+}
+@media (max-width: 480px) {
+  .preferences-controls--compact .preference-trigger-label,
+  .preferences-controls--compact .preference-chevron {
+    display: none;
+  }
+  .preferences-controls--compact .preference-trigger {
+    width: 44px;
+    padding: 0;
+  }
+}

@@ -1,3 +1,4 @@
+import { useI18n } from "@/i18n";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -21,14 +22,15 @@ import {
   PenTool,
   History,
 } from "lucide-react";
-import hero from "@/assets/hero.jpg";
-import hanaro from "@/assets/practicum-hanaro.jpg";
-import bannerBg from "@/assets/hero-banner.jpg";
+import hero from "@/assets/hero.webp";
+import hanaro from "@/assets/practicum-hanaro.webp";
+import bannerBg from "@/assets/hero-banner.webp";
 import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/home-demo")({
-  head: () =>
+  head: ({ match }) =>
     createSeoHead({
+      locale: match.context.preferences.locale,
       title: "EPOCHA Demo — From practicums to lifelong learning",
       description:
         "From youth practicums to EPOCH skills and lifelong learning — for youth, corporates, and schools. Get your verified Human Premium Index (HPI).",
@@ -43,10 +45,11 @@ export const Route = createFileRoute("/home-demo")({
 });
 
 function HomeDemoPage() {
+  const { t } = useI18n();
   return (
     <>
       {/* HERO */}
-      <section className="relative overflow-hidden">
+      <section className="surface-inverse relative overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${bannerBg})` }}
@@ -54,29 +57,36 @@ function HomeDemoPage() {
         />
         <div className="absolute inset-0 bg-black/60" aria-hidden />
         <div className="container-x relative py-28 md:py-40 text-center">
-          <p className="text-xs uppercase tracking-[0.2em] text-lime font-bold">
-            EPOCH human skills
+          <p className="text-xs uppercase tracking-[0.2em] text-brand-accent font-bold">
+            {t("EPOCH human skills")}
           </p>
           <h1 className="mt-4 text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] max-w-5xl mx-auto">
-            Build the human skills that make you <span className="text-lime">irreplaceable.</span>
+            {t("Build the human skills that make you")}{" "}
+            <span className="text-brand-accent">{t("irreplaceable.")}</span>
           </h1>
           <p className="mt-6 text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
-            Master EPOCH — Empathy, Presence, Opinion, Creativity, Hope. The five skills AI can't
-            replace.
+            {t(
+              "Master EPOCH — Empathy, Presence, Opinion, Creativity, Hope. The five skills AI can't replace.",
+            )}
           </p>
         </div>
       </section>
 
       {/* EPOCH FRAMEWORK — CURRICULUM */}
-      <section className="bg-ink text-cream">
+      <section className="surface-inverse text-cream">
         <div className="container-x py-24">
           <div className="max-w-3xl">
-            <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">Curriculum</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">
+              {t("Curriculum")}
+            </p>
             <h2 className="mt-3 text-4xl md:text-5xl font-bold">
-              Master the five human advantages <span className="text-lime">AI can't fake.</span>
+              {t("Master the five human advantages")}{" "}
+              <span className="text-brand-accent">{t("AI can't fake.")}</span>
             </h2>
             <p className="mt-5 text-cream/70">
-              Train every dimension that makes you irreplaceable — and prove it through real work.
+              {t(
+                "Train every dimension that makes you irreplaceable — and prove it through real work.",
+              )}
             </p>
           </div>
           <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -122,12 +132,12 @@ function HomeDemoPage() {
                     <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-ink font-bold text-xl">
                       {c.letter}
                     </div>
-                    <div className="w-8 h-8 rounded-lg bg-lime/20 flex items-center justify-center text-lime">
+                    <div className="w-8 h-8 rounded-lg bg-lime/20 flex items-center justify-center text-brand-accent">
                       <I className="w-5 h-5" />
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold">{c.title}</h3>
-                  <p className="mt-3 text-sm text-cream/70 leading-relaxed">{c.desc}</p>
+                  <h3 className="text-xl font-bold">{t(c.title)}</h3>
+                  <p className="mt-3 text-sm text-cream/70 leading-relaxed">{t(c.desc)}</p>
                 </div>
               );
             })}
@@ -136,15 +146,17 @@ function HomeDemoPage() {
       </section>
 
       {/* AI LITERACY — CURRICULUM */}
-      <section className="bg-ink text-cream">
+      <section className="surface-inverse text-cream">
         <div className="container-x py-24">
           <div className="max-w-3xl">
-            <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">Curriculum</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">
+              {t("Curriculum")}
+            </p>
             <h2 className="mt-3 text-4xl md:text-5xl font-bold">
-              Use AI. <span className="text-lime">Don't fear it.</span>
+              {t("Use AI.")} <span className="text-brand-accent">{t("Don't fear it.")}</span>
             </h2>
             <p className="mt-5 text-cream/70">
-              Learn to wield AI as an amplifier — responsibly, ethically, and effectively.
+              {t("Learn to wield AI as an amplifier — responsibly, ethically, and effectively.")}
             </p>
           </div>
           <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -179,8 +191,8 @@ function HomeDemoPage() {
                   <div className="w-12 h-12 rounded-xl bg-coral/20 flex items-center justify-center text-coral mb-5">
                     <I className="w-6 h-6" />
                   </div>
-                  <h3 className="text-xl font-bold">{c.title}</h3>
-                  <p className="mt-3 text-sm text-cream/70 leading-relaxed">{c.desc}</p>
+                  <h3 className="text-xl font-bold">{t(c.title)}</h3>
+                  <p className="mt-3 text-sm text-cream/70 leading-relaxed">{t(c.desc)}</p>
                 </div>
               );
             })}
@@ -189,29 +201,32 @@ function HomeDemoPage() {
       </section>
 
       {/* AI LITERACY + EPOCH — HIGHLIGHT */}
-      <section className="bg-ink text-cream">
+      <section className="surface-inverse text-cream">
         <div className="container-x py-20 text-center">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1]">
-            AI Literacy <span className="text-lime">+</span> EPOCH{" "}
-            <span className="text-lime">= unstoppable.</span>
+            {t("AI Literacy")} <span className="text-brand-accent">+</span> {t("EPOCH")}{" "}
+            <span className="text-brand-accent">{t("= unstoppable.")}</span>
           </h2>
           <p className="mt-6 text-lg md:text-xl text-cream/70 max-w-2xl mx-auto">
-            Wield the tools. Keep the judgment no algorithm can replicate.
+            {t("Wield the tools. Keep the judgment no algorithm can replicate.")}
           </p>
         </div>
       </section>
 
       {/* WHO WE SERVE */}
-      <section className="bg-ink text-cream">
+      <section className="surface-inverse text-cream">
         <div className="container-x py-24">
           <div className="text-center max-w-3xl mx-auto">
-            <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">Who we serve</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">
+              {t("Who we serve")}
+            </p>
             <h2 className="mt-3 text-4xl md:text-5xl font-bold">
-              Find your <span className="text-lime">path forward.</span>
+              {t("Find your")} <span className="text-brand-accent">{t("path forward.")}</span>
             </h2>
             <p className="mt-5 text-cream/70">
-              Starting a career, hiring leaders, or teaching the next generation — pick your
-              program.
+              {t(
+                "Starting a career, hiring leaders, or teaching the next generation — pick your program.",
+              )}
             </p>
           </div>
           <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -247,14 +262,14 @@ function HomeDemoPage() {
                   key={c.audience}
                   className="rounded-3xl border border-cream/15 bg-white/5 p-7 flex flex-col"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-lime/20 flex items-center justify-center text-lime mb-5">
+                  <div className="w-12 h-12 rounded-xl bg-lime/20 flex items-center justify-center text-brand-accent mb-5">
                     <I className="w-6 h-6" />
                   </div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-lime font-bold">
-                    {c.audience}
+                  <p className="text-xs uppercase tracking-[0.2em] text-brand-accent font-bold">
+                    {t(c.audience)}
                   </p>
-                  <h3 className="mt-2 text-xl font-bold">{c.title}</h3>
-                  <p className="mt-3 text-sm text-cream/70 leading-relaxed flex-1">{c.desc}</p>
+                  <h3 className="mt-2 text-xl font-bold">{t(c.title)}</h3>
+                  <p className="mt-3 text-sm text-cream/70 leading-relaxed flex-1">{t(c.desc)}</p>
                 </div>
               );
             })}
@@ -263,26 +278,28 @@ function HomeDemoPage() {
       </section>
 
       {/* HANARO LEADERSHIP — YOUTH */}
-      <section className="bg-ink text-cream">
+      <section className="surface-inverse text-cream">
         <div className="container-x py-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="rounded-3xl overflow-hidden order-2 lg:order-1">
               <img
                 src={hanaro}
-                alt="Hanaro Leadership Practicum"
+                alt={t("Hanaro Leadership Practicum")}
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="order-1 lg:order-2">
               <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">
-                For youth · Flagship program
+                {t("For youth · Flagship program")}
               </p>
               <h2 className="mt-3 text-4xl md:text-5xl font-bold">
-                Launch your career with <span className="text-lime">Hanaro.</span>
+                {t("Launch your career with")}{" "}
+                <span className="text-brand-accent">{t("Hanaro.")}</span>
               </h2>
               <p className="mt-5 text-cream/80">
-                Build a verified portfolio and earn credentials through real industry projects. Our
-                flagship for ages 19–29.
+                {t(
+                  "Build a verified portfolio and earn credentials through real industry projects. Our flagship for ages 19–29.",
+                )}
               </p>
               <ul className="mt-6 space-y-3">
                 {[
@@ -292,13 +309,14 @@ function HomeDemoPage() {
                   "Portfolio for employers",
                 ].map((p) => (
                   <li key={p} className="flex gap-3 text-cream/80">
-                    <BadgeCheck className="w-5 h-5 text-lime shrink-0 mt-0.5" /> {p}
+                    <BadgeCheck className="w-5 h-5 text-brand-accent shrink-0 mt-0.5" /> {t(p)}
                   </li>
                 ))}
               </ul>
               <div className="mt-8">
                 <Link to="/practicums/hanaro" className="btn-primary">
-                  Explore Hanaro Practicum <ArrowRight className="w-4 h-4" />
+                  {t("Explore Hanaro Practicum")}
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </div>
@@ -312,26 +330,30 @@ function HomeDemoPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">
-                The Human Premium Credential
+                {t("The Human Premium Credential")}
               </p>
-              <h2 className="mt-3 text-4xl md:text-6xl font-bold text-ink leading-[1.05]">
-                Earn a badge <span className="text-lime">others</span> vouch for.
+              <h2 className="mt-3 text-4xl md:text-6xl font-bold text-foreground leading-[1.05]">
+                {t("Earn a badge")} <span className="text-brand-accent">{t("others")}</span>{" "}
+                {t("vouch for.")}
               </h2>
               <p className="mt-6 text-lg text-muted-foreground">
-                Forget self-tests. The{" "}
-                <strong className="text-ink">Human Premium Index (HPI)</strong> is earned through
-                structured feedback from <strong className="text-ink">peers</strong> and{" "}
-                <strong className="text-ink">certified coaches</strong> on real projects.
+                {t("Forget self-tests. The")}{" "}
+                <strong className="text-foreground">{t("Human Premium Index (HPI)")}</strong>{" "}
+                {t("is earned through structured feedback from")}
+                <strong className="text-foreground">{t("peers")}</strong> {t("and")}{" "}
+                <strong className="text-foreground">{t("certified coaches")}</strong>{" "}
+                {t("on real projects.")}
               </p>
               <p className="mt-4 text-muted-foreground">
-                Get measured by how others experience you — not how you rate yourself.
+                {t("Get measured by how others experience you — not how you rate yourself.")}
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link to="/how-hpi-works" className="btn-primary">
-                  See how reviews work <ArrowRight className="w-4 h-4" />
+                  {t("See how reviews work")}
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link to="/practicums" className="btn-outline">
-                  Join a practicum
+                  {t("Join a practicum")}
                 </Link>
               </div>
             </div>
@@ -344,39 +366,43 @@ function HomeDemoPage() {
                     </div>
                     <div>
                       <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-bold">
-                        Peer + Coach verified
+                        {t("Peer + Coach verified")}
                       </p>
-                      <p className="text-sm font-bold text-ink">Human Premium Index</p>
+                      <p className="text-sm font-bold text-foreground">
+                        {t("Human Premium Index")}
+                      </p>
                     </div>
                   </div>
-                  <ShieldCheck className="w-6 h-6 text-lime" />
+                  <ShieldCheck className="w-6 h-6 text-brand-accent" />
                 </div>
                 <div className="mt-8 grid grid-cols-2 gap-4">
                   <div className="rounded-2xl bg-muted/40 p-4 text-center">
-                    <Users className="w-5 h-5 text-lime mx-auto" />
+                    <Users className="w-5 h-5 text-brand-accent mx-auto" />
                     <p className="mt-2 text-xs uppercase tracking-wider text-muted-foreground font-bold">
-                      Peer reviews
+                      {t("Peer reviews")}
                     </p>
-                    <p className="mt-1 text-2xl font-bold text-ink tabular-nums">12</p>
+                    <p className="mt-1 text-2xl font-bold text-foreground tabular-nums">12</p>
                   </div>
                   <div className="rounded-2xl bg-muted/40 p-4 text-center">
                     <UserCheck className="w-5 h-5 text-coral mx-auto" />
                     <p className="mt-2 text-xs uppercase tracking-wider text-muted-foreground font-bold">
-                      Coach reviews
+                      {t("Coach reviews")}
                     </p>
-                    <p className="mt-1 text-2xl font-bold text-ink tabular-nums">3</p>
+                    <p className="mt-1 text-2xl font-bold text-foreground tabular-nums">3</p>
                   </div>
                 </div>
                 <div className="mt-6 text-center">
                   <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                    Verified HPI
+                    {t("Verified HPI")}
                   </p>
-                  <p className="mt-1 text-6xl font-bold text-ink tabular-nums">
+                  <p className="mt-1 text-6xl font-bold text-foreground tabular-nums">
                     87<span className="text-2xl text-muted-foreground">/100</span>
                   </p>
                 </div>
                 <p className="mt-6 text-center text-xs text-muted-foreground italic">
-                  "Consistently brings empathy and clear judgment to every project." — Coach review
+                  {t(
+                    '"Consistently brings empathy and clear judgment to every project." — Coach review',
+                  )}
                 </p>
               </div>
             </div>
@@ -387,15 +413,17 @@ function HomeDemoPage() {
       {/* CTA */}
       <section className="bg-background">
         <div className="container-x py-24 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-ink max-w-3xl mx-auto">
-            Ready to earn your <span className="text-lime">Human Premium?</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground max-w-3xl mx-auto">
+            {t("Ready to earn your")}{" "}
+            <span className="text-brand-accent">{t("Human Premium?")}</span>
           </h2>
           <div className="mt-10 flex flex-wrap gap-4 justify-center">
             <Link to="/practicums" className="btn-primary">
-              Explore programs <ArrowRight className="w-4 h-4" />
+              {t("Explore programs")}
+              <ArrowRight className="w-4 h-4" />
             </Link>
             <Link to="/connect" className="btn-outline">
-              Talk to us
+              {t("Talk to us")}
             </Link>
           </div>
         </div>

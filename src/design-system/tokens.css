@@ -1,0 +1,128 @@
+/* EPOCHA: Material 3-inspired roles, implemented on the existing Radix primitives. */
+:root {
+  color-scheme: light dark;
+
+  /* Reference palette: brand colors and warm neutral tones. */
+  --ref-yellow: oklch(0.87747 0.17449 92.549);
+  --ref-amber: oklch(0.79269 0.17103 70.67);
+  --ref-neutral-100: oklch(1 0 0);
+  --ref-neutral-98: oklch(0.97003 0.00823 91.483);
+  --ref-neutral-95: oklch(0.94467 0.01069 100.827);
+  --ref-neutral-90: oklch(0.88988 0.01496 115.066);
+  --ref-neutral-75: oklch(0.74709 0.01515 128.688);
+  --ref-neutral-50: oklch(0.5203 0.01656 128.82);
+  --ref-neutral-35: oklch(0.33736 0.01789 125.12);
+  --ref-neutral-30: oklch(0.29037 0.01527 129.062);
+  --ref-neutral-25: oklch(0.25118 0.01022 132.67);
+  --ref-neutral-20: oklch(0.21552 0.00595 121.939);
+  --ref-neutral-15: oklch(0.20123 0.00663 134.993);
+
+  /* Semantic colors. Always pair a container with its on-color. */
+  --surface: light-dark(var(--ref-neutral-98), var(--ref-neutral-15));
+  --on-surface: light-dark(var(--ref-neutral-20), var(--ref-neutral-98));
+  --on-surface-variant: light-dark(var(--ref-neutral-50), var(--ref-neutral-75));
+  --surface-container-lowest: light-dark(var(--ref-neutral-100), var(--ref-neutral-15));
+  --surface-container-low: light-dark(var(--ref-neutral-100), var(--ref-neutral-20));
+  --surface-container: light-dark(var(--ref-neutral-98), var(--ref-neutral-25));
+  --surface-container-high: light-dark(var(--ref-neutral-95), var(--ref-neutral-30));
+  --surface-container-highest: light-dark(var(--ref-neutral-90), var(--ref-neutral-35));
+  --primary: var(--ref-yellow);
+  --on-primary: var(--ref-neutral-20);
+  --primary-container: light-dark(oklch(0.951 0.087 95), oklch(0.345 0.052 96));
+  --on-primary-container: light-dark(oklch(0.32 0.045 90), oklch(0.95 0.09 95));
+  --outline: light-dark(oklch(0.63 0.016 120), oklch(0.59 0.018 125));
+  --outline-variant: light-dark(var(--ref-neutral-90), var(--ref-neutral-35));
+  --brand-accent: light-dark(oklch(0.48295 0.09874 87.499), var(--ref-yellow));
+  --destructive: light-dark(oklch(0.48 0.18 27), oklch(0.75 0.15 25));
+  --destructive-foreground: light-dark(var(--ref-neutral-100), var(--ref-neutral-20));
+
+  /* Existing shadcn and editorial utility aliases share the same roles. */
+  --ink: var(--ref-neutral-20);
+  --cream: var(--ref-neutral-98);
+  --lime: var(--primary);
+  --coral: var(--ref-amber);
+  --background: var(--surface);
+  --foreground: var(--on-surface);
+  --card: var(--surface-container-low);
+  --card-foreground: var(--on-surface);
+  --popover: var(--surface-container-low);
+  --popover-foreground: var(--on-surface);
+  --primary-foreground: var(--on-primary);
+  --secondary: var(--surface-container-high);
+  --secondary-foreground: var(--on-surface);
+  --muted: var(--surface-container-high);
+  --muted-foreground: var(--on-surface-variant);
+  --accent: var(--primary-container);
+  --accent-foreground: var(--on-primary-container);
+  --border: var(--outline-variant);
+  --input: var(--outline);
+  --ring: var(--brand-accent);
+  --chart-1: var(--brand-accent);
+  --chart-2: oklch(0.58 0.1 160);
+  --chart-3: oklch(0.58 0.12 240);
+  --chart-4: var(--coral);
+  --chart-5: oklch(0.65 0.12 310);
+  --sidebar: var(--card);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+
+  /* 4px spacing grid, distinct control / menu / panel shapes. */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --shape-small: 0.5rem;
+  --shape-medium: 0.75rem;
+  --shape-large: 1rem;
+  --shape-extra-large: 1.5rem;
+  --shape-full: 9999px;
+  --radius: var(--shape-medium);
+
+  --elevation-0: none;
+  --elevation-1: 0 1px 3px oklch(0 0 0 / 0.08), 0 2px 6px oklch(0 0 0 / 0.04);
+  --elevation-2: 0 4px 12px oklch(0 0 0 / 0.1), 0 1px 3px oklch(0 0 0 / 0.06);
+  --elevation-3: 0 12px 36px oklch(0 0 0 / 0.14), 0 2px 8px oklch(0 0 0 / 0.08);
+  --motion-short: 150ms;
+  --motion-medium: 250ms;
+  --motion-long: 400ms;
+  --motion-standard: cubic-bezier(0.2, 0, 0, 1);
+  --motion-emphasized: cubic-bezier(0.2, 0, 0, 1.2);
+  --state-hover-opacity: 8%;
+  --state-focus-opacity: 12%;
+  --state-pressed-opacity: 12%;
+  --state-disabled-opacity: 0.38;
+  --focus-width: 2px;
+  --focus-offset: 3px;
+
+  --type-display-size: clamp(2.1rem, 4.5vw, 4rem);
+  --type-display-line: 1.1;
+  --type-title-size: 1.25rem;
+  --type-title-line: 1.4;
+  --type-body-size: 1rem;
+  --type-body-line: 1.65;
+  --type-label-size: 0.875rem;
+  --type-label-line: 1.5;
+
+  /* Component tokens: change a family without changing its consumers. */
+  --control-height: 3rem;
+  --control-height-compact: 2.75rem;
+  --button-shape: var(--shape-full);
+  --button-gap: var(--space-2);
+  --button-padding-inline: var(--space-6);
+  --field-shape: var(--shape-medium);
+  --field-background: var(--surface-container-low);
+  --menu-shape: var(--shape-large);
+  --menu-background: var(--surface-container-low);
+  --menu-elevation: var(--elevation-3);
+  --menu-item-shape: var(--shape-medium);
+  --menu-item-height: var(--control-height);
+  --panel-shape: var(--shape-extra-large);
+  --panel-elevation: var(--elevation-1);
+}

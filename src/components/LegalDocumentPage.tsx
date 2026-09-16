@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useI18n } from "@/i18n";
 
 export type LegalSection = {
   title: string;
@@ -21,17 +21,17 @@ type LegalDocumentPageProps = {
 };
 
 export function LegalDocumentPage({ ko, en }: LegalDocumentPageProps) {
-  const [language, setLanguage] = useState<"ko" | "en">("ko");
+  const { locale: language, setLocale: setLanguage, t } = useI18n();
   const document = language === "ko" ? ko : en;
 
   return (
     <div className="bg-background">
-      <header className="border-b border-border bg-ink text-white">
+      <header className="border-b border-border surface-inverse text-white">
         <div className="container-x py-16 md:py-24">
           <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
             <div className="max-w-3xl">
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-lime">
-                {document.label}
+                {t(document.label)}
               </p>
               <h1 className="mt-4 text-4xl font-bold leading-tight md:text-6xl">
                 {document.title}
@@ -43,7 +43,7 @@ export function LegalDocumentPage({ ko, en }: LegalDocumentPageProps) {
             <div
               className="inline-flex w-fit rounded-full border border-white/20 bg-white/5 p-1"
               role="group"
-              aria-label="문서 언어 선택 / Select document language"
+              aria-label={t("Select document language")}
             >
               <button
                 type="button"
@@ -73,7 +73,7 @@ export function LegalDocumentPage({ ko, en }: LegalDocumentPageProps) {
       <article lang={language} className="container-x py-12 md:py-20">
         <div className="mx-auto max-w-4xl">
           <div className="flex flex-col gap-2 border-b border-border pb-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-            <span>{language === "ko" ? "시행일" : "Effective date"}</span>
+            <span>{t("Effective date")}</span>
             <time dateTime="2026-07-13" className="font-medium text-foreground">
               {document.effectiveDate}
             </time>
@@ -85,12 +85,31 @@ export function LegalDocumentPage({ ko, en }: LegalDocumentPageProps) {
             </div>
           ) : null}
 
+          <nav
+            aria-label={t("Contents")}
+            className="my-10 rounded-2xl border border-border bg-card p-6 md:p-8"
+          >
+            <h2 className="font-semibold text-foreground">{t("Contents")}</h2>
+            <ol className="mt-4 grid gap-x-8 gap-y-3 md:grid-cols-2">
+              {document.sections.map((section, index) => (
+                <li key={section.title}>
+                  <a
+                    className="text-sm leading-relaxed text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+                    href={`#legal-section-${index}`}
+                  >
+                    {section.title}
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+
           <div className="mt-10 space-y-12">
             {document.sections.map((section, index) => (
               <section key={section.title} aria-labelledby={`legal-section-${index}`}>
                 <h2
                   id={`legal-section-${index}`}
-                  className="text-2xl font-bold tracking-tight text-foreground md:text-3xl"
+                  className="scroll-mt-28 text-2xl font-bold tracking-tight text-foreground md:text-3xl"
                 >
                   {section.title}
                 </h2>
