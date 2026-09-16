@@ -1,7 +1,7 @@
 import type { Locale } from "./preferences";
 import { translate } from "@/i18n/resources";
 
-export const SITE_URL = "https://epocha.world";
+export const SITE_URL = import.meta.env.VITE_SITE_URL || "https://epocha.world";
 export const SITE_NAME = "EPOCHA Learning Hub";
 
 type JsonLd = Record<string, unknown>;

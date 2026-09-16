@@ -51,8 +51,8 @@ test("accounts persist, authenticate, expire, rotate and revoke without leaking 
   for (const flag of ["HttpOnly", "SameSite=Strict", "Secure", "Max-Age=604800"])
     assert.ok(setCookie.includes(flag));
   const cookie = setCookie.split(";")[0];
-  assert.deepEqual(getCampUser(request(undefined, cookie)), body.user);
-  assert.equal(getCampUser(request(undefined, "camp_session=forged")), null);
+  assert.deepEqual(await getCampUser(request(undefined, cookie)), body.user);
+  assert.equal(await getCampUser(request(undefined, "camp_session=forged")), null);
 
   // A separate process reads the same persistent database and authenticates this session.
   const authModule = new URL("../src/lib/camp-auth.server.ts", import.meta.url).href;
@@ -61,7 +61,7 @@ test("accounts persist, authenticate, expire, rotate and revoke without leaking 
     [
       "--input-type=module",
       "-e",
-      `import {getCampUser} from ${JSON.stringify(authModule)}; const user = getCampUser(new Request('https://camp.example', {headers:{cookie:process.env.TEST_COOKIE}})); process.stdout.write(JSON.stringify(user));`,
+      `import {getCampUser} from ${JSON.stringify(authModule)}; const user = await getCampUser(new Request('https://camp.example', {headers:{cookie:process.env.TEST_COOKIE}})); process.stdout.write(JSON.stringify(user));`,
     ],
     {
       env: { ...process.env, TEST_COOKIE: cookie },
@@ -86,22 +86,22 @@ test("accounts persist, authenticate, expire, rotate and revoke without leaking 
   );
   const login = await handleCampAuth(request({ action: "login", email, password }, cookie));
   assert.equal(login.status, 200);
-  assert.equal(getCampUser(request(undefined, cookie)), null);
+  assert.equal(await getCampUser(request(undefined, cookie)), null);
   const newCookie = login.headers.get("set-cookie")!.split(";")[0];
   const blockedLogout = await handleCampAuth(
     request({ action: "logout" }, newCookie, "https://attacker.test"),
   );
   assert.equal(blockedLogout.status, 403);
-  assert.deepEqual(getCampUser(request(undefined, newCookie)), body.user);
+  assert.deepEqual(await getCampUser(request(undefined, newCookie)), body.user);
   const logout = await handleCampAuth(request({ action: "logout" }, newCookie));
   assert.equal(logout.status, 200);
   assert.ok(logout.headers.get("set-cookie")!.includes("Max-Age=0"));
-  assert.equal(getCampUser(request(undefined, newCookie)), null);
+  assert.equal(await getCampUser(request(undefined, newCookie)), null);
 
   const again = await handleCampAuth(request({ action: "login", email, password }));
   const expiredCookie = again.headers.get("set-cookie")!.split(";")[0];
   db.prepare("UPDATE camp_sessions SET expires_at = ?").run(Date.now() - 1);
-  assert.equal(getCampUser(request(undefined, expiredCookie)), null);
+  assert.equal(await getCampUser(request(undefined, expiredCookie)), null);
   db.close();
 });
 

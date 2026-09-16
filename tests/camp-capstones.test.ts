@@ -76,7 +76,7 @@ test("track, exact field and search combine and produce real empty states", () =
 test("detail API rejects anonymous and forged sessions without exposing brief or existence", async () => {
   for (const id of [campCapstones[0].id, "unknown-capstone"]) {
     for (const cookie of ["", "camp_session=forged"]) {
-      const response = getCapstoneResponse(
+      const response = await getCapstoneResponse(
         new Request("https://camp.example/api/camp-capstones/" + id, { headers: { cookie } }),
         id,
       );
@@ -105,13 +105,13 @@ test("free account accesses supplied brief; logout immediately revokes API acces
   const request = new Request("https://camp.example/api/camp-capstones/" + campCapstones[0].id, {
     headers: { cookie },
   });
-  const response = getCapstoneResponse(request, campCapstones[0].id);
+  const response = await getCapstoneResponse(request, campCapstones[0].id);
   assert.equal(response.status, 200);
   assert.equal(response.headers.get("cache-control"), "private, no-store");
   const body = await response.json();
   assert.deepEqual(body.capstone, campCapstones[0]);
   assert.equal(body.applicationUrl, "https://forms.gle/r3r36oZY15A2qUsL9");
-  assert.equal(getCapstoneResponse(request, "missing").status, 404);
+  assert.equal((await getCapstoneResponse(request, "missing")).status, 404);
   await handleCampAuth(
     new Request("https://camp.example/api/camp-auth", {
       method: "POST",
@@ -119,5 +119,5 @@ test("free account accesses supplied brief; logout immediately revokes API acces
       body: JSON.stringify({ action: "logout" }),
     }),
   );
-  assert.equal(getCapstoneResponse(request, campCapstones[0].id).status, 401);
+  assert.equal((await getCapstoneResponse(request, campCapstones[0].id)).status, 401);
 });
