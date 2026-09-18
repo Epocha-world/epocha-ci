@@ -1,3 +1,4 @@
+import { useI18n } from "@/i18n";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -27,8 +28,9 @@ import {
 import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/grow-with-us")({
-  head: () =>
+  head: ({ match }) =>
     createSeoHead({
+      locale: match.context.preferences.locale,
       title: "Work With Us — EPOCHA",
       description:
         "Join EPOCHA as a freelance content creator and help shape our next big campaign.",
@@ -40,6 +42,7 @@ export const Route = createFileRoute("/grow-with-us")({
 });
 
 function GrowWithUsPage() {
+  const { t } = useI18n();
   return (
     <>
       {/* HERO — dark */}
@@ -47,12 +50,12 @@ function GrowWithUsPage() {
         <div className="container-x py-24">
           <div className="max-w-3xl">
             <p className="text-xs uppercase tracking-[0.2em] text-lime font-bold">
-              EPOCHA X UpperClass
+              {t("EPOCHA X UpperClass")}
             </p>
             <h1 className="mt-4 text-4xl md:text-5xl font-bold leading-[1.05]">
-              Join us as&nbsp;
+              {t("Join us as")}
               <span className="text-lime">
-                Freelance Content Creator for the new EPOCHA campaign.
+                {t("Freelance Content Creator for the new EPOCHA campaign.")}
               </span>
             </h1>
           </div>
@@ -69,7 +72,7 @@ function GrowWithUsPage() {
                 <div className="aspect-[4/3] overflow-hidden">
                   <img
                     src={advisoryBoard}
-                    alt="EPOCHA X UpperClass students collaborating"
+                    alt={t("EPOCHA X UpperClass students collaborating")}
                     width={1400}
                     height={1000}
                     loading="lazy"
@@ -78,32 +81,31 @@ function GrowWithUsPage() {
                 </div>
                 <div className="p-7 flex flex-col">
                   <span className="inline-block self-start text-xs px-3 py-1 rounded-full bg-lime text-ink font-semibold">
-                    19–29 years old
+                    {t("19–29 years old")}
                   </span>
-                  <h2 className="mt-4 text-2xl font-bold">EPOCHA X UpperClass</h2>
+                  <h2 className="mt-4 text-2xl font-bold">{t("EPOCHA X UpperClass")}</h2>
                   <p className="mt-3 text-foreground/70 text-sm leading-relaxed">
-                    Let's create together! We are looking for talented, independent storytellers,
-                    videographers, and designers to bring the EPOCHA vision to life. Partner with us
-                    as a freelance content creator and help us shape our next big project. Whether
-                    you specialize in short-form video, high-end photography, or engaging
-                    copywriting, we want to hear from you.
+                    {t(
+                      "Let's create together! We are looking for talented, independent storytellers, videographers, and designers to bring the EPOCHA vision to life. Partner with us as a freelance content creator and help us shape our next big project. Whether you specialize in short-form video, high-end photography, or engaging copywriting, we want to hear from you.",
+                    )}
                   </p>
                   <p className="mt-5 text-sm text-coral uppercase font-bold tracking-wider">
-                    Submission period: OPEN
+                    {t("Submission period: OPEN")}
                   </p>
                   <ul className="mt-4 space-y-2 text-sm text-foreground/80 leading-relaxed">
                     <li>
-                      💰 <span className="font-semibold">Pay rate:</span> $25.00 per approved and
-                      published content piece
+                      💰 <span className="font-semibold">{t("Pay rate:")}</span>{" "}
+                      {t("$25.00 per approved and published content piece")}
                     </li>
                     <li>
-                      🎁 <span className="font-semibold">Reward:</span> Marketplace redeemable
-                      points (gift cards, practicum discounts)
+                      🎁 <span className="font-semibold">{t("Reward:")}</span>{" "}
+                      {t("Marketplace redeemable points (gift cards, practicum discounts)")}
                     </li>
                     <li>
-                      📢 <span className="font-semibold">Notice:</span> This is a freelance
-                      opportunity. Creators are welcome to undertake similar activities or
-                      collaborations with other companies alongside this role.
+                      📢 <span className="font-semibold">{t("Notice:")}</span>{" "}
+                      {t(
+                        "This is a freelance opportunity. Creators are welcome to undertake similar activities or collaborations with other companies alongside this role.",
+                      )}
                     </li>
                   </ul>
                 </div>
@@ -113,8 +115,9 @@ function GrowWithUsPage() {
             {/* RIGHT: details */}
             <div className="lg:col-span-7">
               <p className="text-lg text-foreground/80">
-                Love storytelling? Join our creator network today. Turn your ideas into buzz-worthy
-                campus campaigns that shape our trainees' experience.
+                {t(
+                  "Love storytelling? Join our creator network today. Turn your ideas into buzz-worthy campus campaigns that shape our trainees' experience.",
+                )}
               </p>
 
               <ol className="mt-8 space-y-4">
@@ -165,9 +168,11 @@ function GrowWithUsPage() {
                     <div>
                       <div className="flex items-center gap-2">
                         <step.icon className="w-4 h-4 text-coral" />
-                        <h4 className="font-semibold">{step.title}</h4>
+                        <h4 className="font-semibold">{t(step.title)}</h4>
                       </div>
-                      <p className="mt-1 text-sm text-foreground/70 leading-relaxed">{step.desc}</p>
+                      <p className="mt-1 text-sm text-foreground/70 leading-relaxed">
+                        {t(step.desc)}
+                      </p>
                     </div>
                   </li>
                 ))}
@@ -183,15 +188,17 @@ function GrowWithUsPage() {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* How to apply */}
             <div className="rounded-3xl border border-cream/15 bg-white/5 p-8 md:p-10">
-              <p className="text-xs uppercase font-bold tracking-wider text-coral">How to apply</p>
+              <p className="text-xs uppercase font-bold tracking-wider text-coral">
+                {t("How to apply")}
+              </p>
               <p className="mt-4 text-cream/80 text-base leading-relaxed">
-                Apply to start building your creator portfolio.
+                {t("Apply to start building your creator portfolio.")}
               </p>
               <div className="mt-6 flex items-center gap-6">
                 <div className="bg-white p-3 rounded-2xl shrink-0 shadow-sm">
                   <img
                     src={epochaXUpperclassQR}
-                    alt="QR code to apply for the EPOCHA creator network"
+                    alt={t("QR code to apply for the EPOCHA creator network")}
                     width={140}
                     height={140}
                     loading="lazy"
@@ -204,15 +211,17 @@ function GrowWithUsPage() {
                   rel="noopener noreferrer"
                   className="btn-primary inline-flex"
                 >
-                  Apply now <ArrowRight className="w-4 h-4" />
+                  {t("Apply now")} <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
             </div>
 
             {/* FAQ */}
             <div>
-              <p className="text-xs uppercase font-bold tracking-wider text-coral">FAQ</p>
-              <h2 className="mt-2 text-3xl md:text-4xl font-bold">Frequently asked questions</h2>
+              <p className="text-xs uppercase font-bold tracking-wider text-coral">{t("FAQ")}</p>
+              <h2 className="mt-2 text-3xl md:text-4xl font-bold">
+                {t("Frequently asked questions")}
+              </h2>
               <Accordion type="single" collapsible className="mt-6">
                 {[
                   {
@@ -230,10 +239,10 @@ function GrowWithUsPage() {
                 ].map((item, i) => (
                   <AccordionItem key={item.q} value={`faq-${i}`} className="border-cream/10">
                     <AccordionTrigger className="text-cream hover:no-underline text-base font-semibold py-5">
-                      {item.q}
+                      {t(item.q)}
                     </AccordionTrigger>
                     <AccordionContent className="text-cream/70 text-sm leading-relaxed pb-5">
-                      {item.a}
+                      {t(item.a)}
                     </AccordionContent>
                   </AccordionItem>
                 ))}
@@ -246,9 +255,10 @@ function GrowWithUsPage() {
       {/* WHY JOIN — light */}
       <section className="bg-background text-foreground">
         <div className="container-x py-24">
-          <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">Why join</p>
+          <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">{t("Why join")}</p>
           <h2 className="mt-3 text-3xl md:text-4xl font-bold leading-tight">
-            A global youth movement — <span className="text-lime">put your spin on it.</span>
+            {t("A global youth movement —")}{" "}
+            <span className="text-lime">{t("put your spin on it.")}</span>
           </h2>
           <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
@@ -287,8 +297,8 @@ function GrowWithUsPage() {
                 <div className="flex items-center justify-center w-10 h-10 rounded-full bg-lime/15 text-lime">
                   <item.icon className="w-5 h-5" />
                 </div>
-                <h4 className="mt-4 font-semibold">{item.title}</h4>
-                <p className="mt-2 text-sm text-foreground/70 leading-relaxed">{item.desc}</p>
+                <h4 className="mt-4 font-semibold">{t(item.title)}</h4>
+                <p className="mt-2 text-sm text-foreground/70 leading-relaxed">{t(item.desc)}</p>
               </div>
             ))}
           </div>
@@ -300,14 +310,16 @@ function GrowWithUsPage() {
         <div className="container-x py-24">
           <div className="rounded-3xl bg-ink text-cream border border-lime/30 p-8 md:p-12 text-center">
             <p className="text-xs uppercase tracking-[0.2em] text-lime font-bold">
-              Ready to start?
+              {t("Ready to start?")}
             </p>
             <h2 className="mt-3 text-3xl md:text-4xl font-bold leading-tight text-cream">
-              Join <span className="text-lime">hundreds</span> of creators already on UpperClass.
+              {t("Join")} <span className="text-lime">{t("hundreds")}</span>{" "}
+              {t("of creators already on UpperClass.")}
             </h2>
             <p className="mt-4 text-cream/80 max-w-xl mx-auto leading-relaxed">
-              No follower minimums. No fees. Get the briefs, get the rewards, and a portfolio you
-              actually own.
+              {t(
+                "No follower minimums. No fees. Get the briefs, get the rewards, and a portfolio you actually own.",
+              )}
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
@@ -316,7 +328,7 @@ function GrowWithUsPage() {
                 rel="noopener noreferrer"
                 className="btn-primary inline-flex"
               >
-                Apply now <ArrowRight className="w-4 h-4" />
+                {t("Apply now")} <ArrowRight className="w-4 h-4" />
               </a>
               <a
                 href="https://upperclass.app/home"
@@ -324,7 +336,7 @@ function GrowWithUsPage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-cream/70 hover:text-cream underline underline-offset-4 transition-colors"
               >
-                Learn more about UpperClass
+                {t("Learn more about UpperClass")}
               </a>
             </div>
           </div>

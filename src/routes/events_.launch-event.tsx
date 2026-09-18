@@ -1,51 +1,39 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft } from "lucide-react";
-import launchEventBackground from "@/assets/launch-event-background.webp";
-import { createSeoHead } from "@/lib/seo";
+import { createMiddleware } from "@tanstack/react-start";
+import { useI18n } from "@/i18n";
 
-export const Route = createFileRoute("/events_/launch-event")({
-  head: () =>
-    createSeoHead({
-      title: "Launch Event — EPOCHA",
-      description: "EPOCHA Launch Event. We are live, with more details coming soon.",
-      path: "/events/launch-event",
-      image: launchEventBackground,
-      socialDescription: "We are live. More Launch Event details are coming soon.",
-    }),
-  component: LaunchEventPage,
+const goneMiddleware = createMiddleware().server(async ({ next }) => {
+  const result = await next();
+  return new Response(result.response.body, {
+    status: 410,
+    statusText: "Gone",
+    headers: result.response.headers,
+  });
 });
 
-function LaunchEventPage() {
+export const Route = createFileRoute("/events_/launch-event")({
+  head: () => ({
+    meta: [{ title: "Page removed — EPOCHA" }, { name: "robots", content: "noindex, nofollow" }],
+  }),
+  server: {
+    middleware: [goneMiddleware],
+  },
+  component: RemovedEventPage,
+});
+
+function RemovedEventPage() {
+  const { t } = useI18n();
   return (
-    <section
-      data-testid="launch-event-page"
-      className="relative min-h-[calc(100svh-4rem)] overflow-hidden bg-[#fff8eb] lg:aspect-[1744/902] lg:min-h-0"
-    >
-      <img
-        src={launchEventBackground}
-        alt=""
-        aria-hidden="true"
-        width={1744}
-        height={902}
-        fetchPriority="high"
-        className="absolute inset-0 h-full w-full object-cover lg:object-fill"
-      />
-
-      <div className="absolute inset-x-4 top-[24%] text-center text-black sm:top-[26%]">
-        <h1 className="font-sans text-[clamp(3.5rem,7.35vw,7.5rem)] font-bold leading-[0.95] tracking-[-0.055em]">
-          We are live!
-        </h1>
-        <p className="mt-[clamp(1.5rem,3vw,3.125rem)] font-sans text-[clamp(1.35rem,2.2vw,2.25rem)] leading-none">
-          Coming soon...
-        </p>
-      </div>
-
-      <Link
-        to="/events"
-        className="absolute bottom-[10%] left-1/2 inline-flex -translate-x-1/2 items-center gap-2 whitespace-nowrap font-sans text-base text-[#373737] transition-colors hover:text-black focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black sm:text-xl"
-      >
-        <ArrowLeft aria-hidden="true" className="h-[1em] w-[1em]" strokeWidth={1.75} />
-        Back to events
+    <section className="container-x py-24 md:py-32">
+      <p className="text-sm font-semibold text-muted-foreground">410</p>
+      <h1 className="mt-4 text-4xl md:text-6xl font-bold">{t("This page has been removed.")}</h1>
+      <p className="mt-6 max-w-2xl text-lg text-foreground/75">
+        {t(
+          "The launch event page is no longer available. Visit News for published updates from EPOCHA.",
+        )}
+      </p>
+      <Link to="/news" className="btn-primary mt-8 inline-flex">
+        {t("Visit News")}
       </Link>
     </section>
   );

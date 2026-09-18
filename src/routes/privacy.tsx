@@ -184,10 +184,11 @@ const en: LegalDocument = {
 };
 
 export const Route = createFileRoute("/privacy")({
-  head: () =>
+  head: ({ match }) =>
     createSeoHead({
-      title: "개인정보처리방침 | Privacy Policy — EPOCHA",
-      description: "EPOCHA 개인정보처리방침 및 영문 번역본",
+      locale: match.context.preferences.locale,
+      title: "Privacy Policy — EPOCHA",
+      description: "EPOCHA's privacy policy, available in Korean and English.",
       path: "/privacy",
     }),
   component: () => <LegalDocumentPage ko={ko} en={en} />,

@@ -7,11 +7,23 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 import { nitro } from "nitro/vite";
 
+const sites = process.env.EPOCHA_SITES === "1";
+
 // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
 // @cloudflare/vite-plugin builds from this — wrangler.jsonc main alone is insufficient.
 export default defineConfig({
   nitro: false,
-  plugins: [nitro()],
+  plugins: [
+    nitro(
+      sites
+        ? {
+            preset: "cloudflare-module",
+            output: { dir: "dist", serverDir: "dist/server", publicDir: "dist/client" },
+            cloudflare: { nodeCompat: true },
+          }
+        : {},
+    ),
+  ],
   tanstackStart: {
     server: { entry: "server" },
   },

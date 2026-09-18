@@ -1,28 +1,20 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { ArrowRight, Menu, X, ChevronDown } from "lucide-react";
+import { useRef, useState } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/Logo.svg";
+import { PreferencesControls } from "@/components/PreferencesControls";
+import { useI18n } from "@/i18n";
 
-interface NavLink {
+interface NavItem {
   to: string;
   label: string;
-}
-
-interface NavGroup {
-  label: string;
-  children: NavLink[];
-}
-
-type NavItem = NavLink | NavGroup;
-
-function isNavGroup(item: NavItem): item is NavGroup {
-  return "children" in item;
+  children?: { to: string; label: string }[];
 }
 
 const nav: NavItem[] = [
   { to: "/", label: "Home" },
-  { to: "/practicums", label: "Training" },
   {
+    to: "/practicums",
     label: "Practicums",
     children: [
       { to: "/practicums/hanaro", label: "Hanaro Leadership Practicum" },
@@ -30,15 +22,13 @@ const nav: NavItem[] = [
       { to: "/practicums/mirae-industry", label: "Mirae Industry Practicum" },
     ],
   },
+  { to: "/news", label: "News" },
   {
-    label: "Events",
-    children: [{ to: "/events/launch-event", label: "Launch Event" }],
-  },
-  {
+    to: "/about",
     label: "About",
     children: [
       { to: "/about/our-story", label: "Our Story" },
-      { to: "/about/partnerships", label: "Partnerships" },
+      { to: "/about/sparked", label: "Sparked!" },
       { to: "/grow-with-us", label: "Work with us" },
       { to: "/connect", label: "Contact Us" },
     ],
@@ -46,144 +36,179 @@ const nav: NavItem[] = [
 ];
 
 export function Header() {
+  const { t } = useI18n();
   const [open, setOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const close = () => {
+    setOpen(false);
+    setOpenDropdown(null);
+  };
 
   return (
-    <>
-      <aside aria-label="Creator network announcement" className="bg-lime text-ink">
-        <div className="container-x min-h-14 py-2.5 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-center text-sm sm:text-base">
-          <span className="font-bold whitespace-nowrap">WE ARE LIVE!</span>
-          <span>Love storytelling? Join our creator network today.</span>
-          <Link
-            to="/grow-with-us"
-            onClick={() => {
-              setOpen(false);
-              setOpenDropdown(null);
-            }}
-            className="inline-flex items-center gap-1 font-bold underline underline-offset-4 transition-opacity hover:opacity-70 focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
-          >
-            Learn more <ArrowRight aria-hidden="true" className="h-4 w-4" />
-          </Link>
-        </div>
-      </aside>
-      <header className="sticky top-0 z-50 backdrop-blur-md bg-ink/90 text-cream border-b border-cream/10">
-        <div className="container-x flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center" aria-label="EPOCHA home">
-            <img src={logo} alt="EPOCHA" className="h-14 w-auto" />
-          </Link>
-          <nav className="hidden lg:flex items-center gap-8">
-            {nav.map((n) =>
-              isNavGroup(n) ? (
-                <div
-                  key={n.label}
-                  className="relative"
-                  onMouseEnter={() => setOpenDropdown(n.label)}
-                  onMouseLeave={() => setOpenDropdown((cur) => (cur === n.label ? null : cur))}
-                  onFocus={(event) => {
-                    if (!event.currentTarget.contains(event.relatedTarget)) {
-                      setOpenDropdown(n.label);
-                    }
-                  }}
-                  onBlur={(event) => {
-                    if (!event.currentTarget.contains(event.relatedTarget)) {
-                      setOpenDropdown((cur) => (cur === n.label ? null : cur));
-                    }
-                  }}
-                  onKeyDown={(event) => {
-                    if (event.key === "Escape") {
-                      setOpenDropdown(null);
-                      event.currentTarget.querySelector("button")?.focus();
-                    }
-                  }}
-                >
-                  <button
-                    className="flex items-center gap-1 text-sm text-cream/80 hover:text-lime transition-colors focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lime"
-                    aria-expanded={openDropdown === n.label}
-                    aria-haspopup="true"
-                    aria-controls={`${n.label.toLowerCase()}-nav`}
-                    onClick={() => setOpenDropdown(n.label)}
-                  >
-                    {n.label} <ChevronDown className="w-4 h-4" />
-                  </button>
-                  {openDropdown === n.label && (
-                    <div
-                      id={`${n.label.toLowerCase()}-nav`}
-                      className="absolute top-full left-0 pt-2 w-56"
-                    >
-                      <div className="rounded-xl border border-cream/10 bg-ink shadow-xl overflow-hidden">
-                        {n.children.map((child) => (
-                          <Link
-                            key={child.to}
-                            to={child.to}
-                            className="block px-4 py-3 text-sm text-cream/80 hover:text-lime hover:bg-white/5 transition-colors"
-                            activeProps={{ className: "text-lime bg-white/5" }}
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ) : (
+    <header className="surface-dark sticky top-0 z-50 border-b border-border bg-ink/95 backdrop-blur-md">
+      <div className="container-x flex h-20 items-center justify-between gap-3">
+        <Link
+          to="/"
+          onClick={close}
+          className="flex shrink-0 items-center"
+          aria-label={t("EPOCHA home")}
+        >
+          <img
+            src={logo}
+            alt="EPOCHA"
+            width={140}
+            height={56}
+            className="h-14 w-auto max-[360px]:max-w-24"
+          />
+        </Link>
+        <nav className="hidden items-center gap-5 lg:flex" aria-label={t("Main navigation")}>
+          {nav.map((item) => (
+            <div
+              key={item.to}
+              className="relative"
+              onMouseEnter={() => item.children && setOpenDropdown(item.label)}
+              onMouseLeave={() => setOpenDropdown(null)}
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget)) setOpenDropdown(null);
+              }}
+              onKeyDown={(event) => {
+                if (event.key === "Escape") {
+                  event.stopPropagation();
+                  setOpenDropdown(null);
+                  event.currentTarget.querySelector("button")?.focus();
+                }
+              }}
+            >
+              <div className="flex items-center">
                 <Link
-                  key={n.to}
-                  to={n.to}
-                  className="text-sm text-cream/80 hover:text-lime transition-colors"
+                  to={item.to}
+                  onClick={close}
+                  className="py-3 text-sm text-foreground/85 transition-colors hover:text-lime"
+                  activeOptions={{ exact: item.to === "/" }}
                   activeProps={{ className: "text-lime" }}
                 >
-                  {n.label}
+                  {t(item.label)}
                 </Link>
-              ),
-            )}
-          </nav>
+                {item.children && (
+                  <button
+                    type="button"
+                    className="flex size-10 items-center justify-center rounded-md hover:bg-secondary"
+                    aria-label={t("Toggle {{name}} menu", { name: t(item.label) })}
+                    aria-expanded={openDropdown === item.label}
+                    aria-controls={`desktop-${item.label}`}
+                    onClick={() =>
+                      setOpenDropdown((value) => (value === item.label ? null : item.label))
+                    }
+                  >
+                    <ChevronDown className="size-4" aria-hidden="true" />
+                  </button>
+                )}
+              </div>
+              {item.children && openDropdown === item.label && (
+                <div id={`desktop-${item.label}`} className="absolute left-0 top-full w-64 pt-2">
+                  <ul className="overflow-hidden rounded-xl border border-border bg-popover py-2 shadow-xl">
+                    {item.children.map((child) => (
+                      <li key={child.to}>
+                        <Link
+                          to={child.to}
+                          onClick={close}
+                          className="block px-4 py-3 text-sm text-popover-foreground hover:bg-secondary hover:text-lime"
+                          activeProps={{ className: "text-lime" }}
+                        >
+                          {t(child.label)}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          ))}
+        </nav>
+        <div className="flex items-center gap-1 sm:gap-3">
+          <PreferencesControls compact />
           <Link
             to="/practicums"
             hash="choose-your-practicum"
-            className="hidden lg:inline-flex btn-primary text-sm"
+            className="btn-primary hidden text-sm xl:inline-flex"
           >
-            Explore practicums
+            {t("Explore practicums")}
           </Link>
-          <button onClick={() => setOpen(!open)} className="lg:hidden text-cream" aria-label="Menu">
-            {open ? <X /> : <Menu />}
+          <button
+            ref={menuButton}
+            type="button"
+            onClick={() => {
+              setOpen(!open);
+              setOpenDropdown(null);
+            }}
+            className="flex size-11 items-center justify-center rounded-lg lg:hidden"
+            aria-label={t(open ? "Close menu" : "Open menu")}
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
+          >
+            {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
           </button>
         </div>
-        {open && (
-          <div className="lg:hidden border-t border-cream/10 bg-ink text-cream">
-            <div className="container-x py-4 flex flex-col gap-3">
-              {nav.map((n) =>
-                isNavGroup(n) ? (
-                  <div key={n.label} className="flex flex-col gap-2">
-                    <span className="py-2 text-cream/60 text-xs uppercase tracking-wider font-semibold">
-                      {n.label}
-                    </span>
-                    {n.children.map((child) => (
-                      <Link
-                        key={child.to}
-                        to={child.to}
-                        onClick={() => setOpen(false)}
-                        className="pl-4 py-2 text-cream/90 hover:text-lime"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                ) : (
+      </div>
+      {open && (
+        <nav
+          id="mobile-navigation"
+          className="max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-border lg:hidden"
+          aria-label={t("Mobile navigation")}
+          onKeyDown={(event) => {
+            if (event.key === "Escape") {
+              close();
+              menuButton.current?.focus();
+            }
+          }}
+        >
+          <div className="container-x flex flex-col gap-1 py-4">
+            {nav.map((item) => (
+              <div key={item.to}>
+                <div className="flex items-center justify-between">
                   <Link
-                    key={n.to}
-                    to={n.to}
-                    onClick={() => setOpen(false)}
-                    className="py-2 text-cream/90"
+                    to={item.to}
+                    onClick={close}
+                    className="flex-1 py-3 text-foreground hover:text-lime"
                   >
-                    {n.label}
+                    {t(item.label)}
                   </Link>
-                ),
-              )}
-            </div>
+                  {item.children && (
+                    <button
+                      type="button"
+                      className="flex size-11 items-center justify-center"
+                      aria-label={t("Toggle {{name}} menu", { name: t(item.label) })}
+                      aria-expanded={openDropdown === item.label}
+                      aria-controls={`mobile-${item.label}`}
+                      onClick={() =>
+                        setOpenDropdown((value) => (value === item.label ? null : item.label))
+                      }
+                    >
+                      <ChevronDown aria-hidden="true" className="size-4" />
+                    </button>
+                  )}
+                </div>
+                {item.children && openDropdown === item.label && (
+                  <ul id={`mobile-${item.label}`} className="mb-2 border-l border-border pl-4">
+                    {item.children.map((child) => (
+                      <li key={child.to}>
+                        <Link
+                          to={child.to}
+                          onClick={close}
+                          className="block py-3 text-sm text-foreground/85 hover:text-lime"
+                        >
+                          {t(child.label)}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
           </div>
-        )}
-      </header>
-    </>
+        </nav>
+      )}
+    </header>
   );
 }

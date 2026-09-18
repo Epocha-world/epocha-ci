@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useI18n } from "@/i18n";
 
 export type LegalSection = {
   title: string;
@@ -21,7 +21,7 @@ type LegalDocumentPageProps = {
 };
 
 export function LegalDocumentPage({ ko, en }: LegalDocumentPageProps) {
-  const [language, setLanguage] = useState<"ko" | "en">("ko");
+  const { locale: language, setLocale: setLanguage, t } = useI18n();
   const document = language === "ko" ? ko : en;
 
   return (
@@ -31,7 +31,7 @@ export function LegalDocumentPage({ ko, en }: LegalDocumentPageProps) {
           <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
             <div className="max-w-3xl">
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-lime">
-                {document.label}
+                {t(document.label)}
               </p>
               <h1 className="mt-4 text-4xl font-bold leading-tight md:text-6xl">
                 {document.title}
@@ -43,7 +43,7 @@ export function LegalDocumentPage({ ko, en }: LegalDocumentPageProps) {
             <div
               className="inline-flex w-fit rounded-full border border-white/20 bg-white/5 p-1"
               role="group"
-              aria-label="문서 언어 선택 / Select document language"
+              aria-label={t("Select document language")}
             >
               <button
                 type="button"

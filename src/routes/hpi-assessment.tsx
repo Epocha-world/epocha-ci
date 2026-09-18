@@ -1,3 +1,4 @@
+import { useI18n } from "@/i18n";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import {
@@ -17,8 +18,9 @@ import bannerBg from "@/assets/hero-banner.jpg";
 import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/hpi-assessment")({
-  head: () =>
+  head: ({ match }) =>
     createSeoHead({
+      locale: match.context.preferences.locale,
       title: "Begin your HPI Assessment — EPOCHA",
       description:
         "Start your Human Premium Index baseline assessment. A guided, 10-minute reflection across the five EPOCH dimensions.",
@@ -111,6 +113,7 @@ const LIKERT = [
 ];
 
 function HpiAssessmentPage() {
+  const { t } = useI18n();
   // step 0 = intro, 1 = profile, 2..6 = dimensions (E,P,O,C,H), 7 = reflection, 8 = results
   const [step, setStep] = useState(0);
   const [profile, setProfile] = useState<Profile>({
@@ -173,23 +176,29 @@ function HpiAssessmentPage() {
         />
         <div className="absolute inset-0 bg-black/70" aria-hidden />
         <div className="container-x relative py-20 md:py-24 text-center">
-          <p className="text-xs uppercase tracking-[0.2em] text-lime font-bold">HPI Assessment</p>
+          <p className="text-xs uppercase tracking-[0.2em] text-lime font-bold">
+            {t("HPI Assessment")}
+          </p>
           <h1 className="mt-4 text-4xl md:text-6xl font-bold text-white leading-[1.05] max-w-4xl mx-auto">
-            Begin your <span className="text-lime">HPI baseline.</span>
+            {t("Begin your")} <span className="text-lime">{t("HPI baseline.")}</span>
           </h1>
           <p className="mt-5 text-white/80 max-w-2xl mx-auto">
-            A guided 10-minute reflection across the five EPOCH dimensions. Your baseline unlocks a
-            peer- and coach-verified score during your practicum.
+            {t(
+              "A guided 10-minute reflection across the five EPOCH dimensions. Your baseline unlocks a peer- and coach-verified score during your practicum.",
+            )}
           </p>
         </div>
       </section>
 
       {/* PROGRESS */}
-      <section className="bg-background border-b border-border sticky top-16 z-30">
+      <section className="bg-background border-b border-border sticky top-20 z-30">
         <div className="container-x py-4">
           <div className="flex items-center justify-between text-xs text-muted-foreground">
-            <span className="uppercase tracking-[0.2em] font-bold text-ink">
-              Step {Math.min(step + 1, totalSteps)} of {totalSteps}
+            <span className="uppercase tracking-[0.2em] font-bold text-foreground">
+              {t("Step {{current}} of {{total}}", {
+                current: Math.min(step + 1, totalSteps),
+                total: totalSteps,
+              })}
             </span>
             <span className="tabular-nums">{progress}%</span>
           </div>
@@ -253,16 +262,19 @@ function HpiAssessmentPage() {
 }
 
 function IntroStep({ onStart }: { onStart: () => void }) {
+  const { t } = useI18n();
   return (
     <div>
-      <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">What to expect</p>
-      <h2 className="mt-3 text-3xl md:text-4xl font-bold text-ink">
-        Your baseline in <span className="text-lime">five short sections.</span>
+      <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">
+        {t("What to expect")}
+      </p>
+      <h2 className="mt-3 text-3xl md:text-4xl font-bold text-foreground">
+        {t("Your baseline in")} <span className="text-lime">{t("five short sections.")}</span>
       </h2>
       <p className="mt-5 text-muted-foreground">
-        This assessment establishes your starting point across the five EPOCH dimensions. It's a
-        self-reflection — the final HPI score is later verified by peers and coaches inside a
-        practicum. Be honest; there are no wrong answers.
+        {t(
+          "This assessment establishes your starting point across the five EPOCH dimensions. It's a self-reflection — the final HPI score is later verified by peers and coaches inside a practicum. Be honest; there are no wrong answers.",
+        )}
       </p>
 
       <div className="mt-10 grid sm:grid-cols-3 gap-4">
@@ -283,8 +295,8 @@ function IntroStep({ onStart }: { onStart: () => void }) {
           return (
             <div key={c.title} className="rounded-2xl border border-border bg-card p-5">
               <I className="w-5 h-5 text-lime" />
-              <p className="mt-3 font-bold text-ink">{c.title}</p>
-              <p className="mt-1 text-sm text-muted-foreground">{c.desc}</p>
+              <p className="mt-3 font-bold text-foreground">{t(c.title)}</p>
+              <p className="mt-1 text-sm text-muted-foreground">{t(c.desc)}</p>
             </div>
           );
         })}
@@ -292,18 +304,19 @@ function IntroStep({ onStart }: { onStart: () => void }) {
 
       <div className="mt-8 rounded-2xl border border-border bg-muted/30 p-5">
         <p className="text-sm text-muted-foreground">
-          <strong className="text-ink">Heads up:</strong> The HPI you can display publicly is only
-          issued after peer + coach reviews inside a practicum. This baseline helps you and your
-          coach see where to focus first.
+          <strong className="text-foreground">{t("Heads up:")}</strong>{" "}
+          {t(
+            "The HPI you can display publicly is only issued after peer + coach reviews inside a practicum. This baseline helps you and your coach see where to focus first.",
+          )}
         </p>
       </div>
 
       <div className="mt-10 flex flex-wrap gap-4">
         <button onClick={onStart} className="btn-primary">
-          Start assessment <ArrowRight className="w-4 h-4" />
+          {t("Start assessment")} <ArrowRight className="w-4 h-4" />
         </button>
         <Link to="/how-hpi-works" className="btn-outline">
-          Learn how HPI works
+          {t("Learn how HPI works")}
         </Link>
       </div>
     </div>
@@ -323,14 +336,15 @@ function ProfileStep({
   onNext: () => void;
   valid: boolean;
 }) {
+  const { t } = useI18n();
   return (
     <div>
-      <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">About you</p>
-      <h2 className="mt-3 text-3xl md:text-4xl font-bold text-ink">
-        Tell us who's <span className="text-lime">taking the assessment.</span>
+      <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">{t("About you")}</p>
+      <h2 className="mt-3 text-3xl md:text-4xl font-bold text-foreground">
+        {t("Tell us who's")} <span className="text-lime">{t("taking the assessment.")}</span>
       </h2>
       <p className="mt-4 text-muted-foreground">
-        We use this to send your baseline report and match you to the right cohort.
+        {t("We use this to send your baseline report and match you to the right cohort.")}
       </p>
 
       <div className="mt-10 space-y-5">
@@ -339,8 +353,8 @@ function ProfileStep({
             type="text"
             value={profile.name}
             onChange={(e) => setProfile({ ...profile, name: e.target.value })}
-            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-ink placeholder:text-muted-foreground focus:outline-none focus:border-lime focus:ring-2 focus:ring-lime/30 transition-colors"
-            placeholder="Jane Park"
+            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-lime focus:ring-2 focus:ring-lime/30 transition-colors"
+            placeholder={t("Jane Park")}
             maxLength={100}
           />
         </Field>
@@ -349,8 +363,8 @@ function ProfileStep({
             type="email"
             value={profile.email}
             onChange={(e) => setProfile({ ...profile, email: e.target.value })}
-            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-ink placeholder:text-muted-foreground focus:outline-none focus:border-lime focus:ring-2 focus:ring-lime/30 transition-colors"
-            placeholder="jane@example.com"
+            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-lime focus:ring-2 focus:ring-lime/30 transition-colors"
+            placeholder={t("jane@example.com")}
             maxLength={200}
           />
         </Field>
@@ -359,8 +373,8 @@ function ProfileStep({
             type="text"
             value={profile.role}
             onChange={(e) => setProfile({ ...profile, role: e.target.value })}
-            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-ink placeholder:text-muted-foreground focus:outline-none focus:border-lime focus:ring-2 focus:ring-lime/30 transition-colors"
-            placeholder="University student, intern, career changer…"
+            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-lime focus:ring-2 focus:ring-lime/30 transition-colors"
+            placeholder={t("University student, intern, career changer…")}
             maxLength={120}
           />
         </Field>
@@ -373,7 +387,7 @@ function ProfileStep({
             className="mt-1 w-4 h-4 accent-lime"
           />
           <span className="text-sm text-muted-foreground">
-            I agree to EPOCHA storing my responses to generate my baseline HPI report.
+            {t("I agree to EPOCHA storing my responses to generate my baseline HPI report.")}
           </span>
         </label>
       </div>
@@ -402,6 +416,7 @@ function DimensionStep({
   index: number;
   total: number;
 }) {
+  const { t } = useI18n();
   const I = dimension.icon;
   return (
     <div>
@@ -411,15 +426,15 @@ function DimensionStep({
         </div>
         <div>
           <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">
-            Dimension {index} of {total}
+            {t("Dimension {{current}} of {{total}}", { current: index, total })}
           </p>
-          <h2 className="text-2xl md:text-3xl font-bold text-ink flex items-center gap-2">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground flex items-center gap-2">
             <I className="w-6 h-6 text-lime" />
-            {dimension.title}
+            {t(dimension.title)}
           </h2>
         </div>
       </div>
-      <p className="mt-4 text-muted-foreground">{dimension.blurb}</p>
+      <p className="mt-4 text-muted-foreground">{t(dimension.blurb)}</p>
 
       <div className="mt-8 space-y-6">
         {dimension.questions.map((q, i) => {
@@ -427,9 +442,9 @@ function DimensionStep({
           const val = answers[k];
           return (
             <div key={k} className="rounded-2xl border border-border bg-card p-5">
-              <p className="text-ink font-medium">
+              <p className="text-foreground font-medium">
                 <span className="text-muted-foreground mr-2 tabular-nums">{i + 1}.</span>
-                {q}
+                {t(q)}
               </p>
               <div className="mt-4 grid grid-cols-5 gap-2">
                 {LIKERT.map((opt) => {
@@ -441,13 +456,13 @@ function DimensionStep({
                       onClick={() => setAnswer(k, opt.v)}
                       className={`rounded-xl border px-2 py-3 text-xs font-medium transition-all ${
                         active
-                          ? "border-lime bg-lime/10 text-ink"
+                          ? "border-lime bg-lime/10 text-foreground"
                           : "border-border bg-background text-muted-foreground hover:border-lime/50"
                       }`}
                       aria-pressed={active}
                     >
                       <span className="block text-lg font-bold tabular-nums">{opt.v}</span>
-                      <span className="block mt-1 leading-tight">{opt.label}</span>
+                      <span className="block mt-1 leading-tight">{t(opt.label)}</span>
                     </button>
                   );
                 })}
@@ -473,15 +488,16 @@ function ReflectionStep({
   onBack: () => void;
   onSubmit: () => void;
 }) {
+  const { t } = useI18n();
   const ready = reflection.strength.trim().length > 5 && reflection.growth.trim().length > 5;
   return (
     <div>
-      <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">Reflection</p>
-      <h2 className="mt-3 text-3xl md:text-4xl font-bold text-ink">
-        Tell us, in your <span className="text-lime">own words.</span>
+      <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">{t("Reflection")}</p>
+      <h2 className="mt-3 text-3xl md:text-4xl font-bold text-foreground">
+        {t("Tell us, in your")} <span className="text-lime">{t("own words.")}</span>
       </h2>
       <p className="mt-4 text-muted-foreground">
-        Two short paragraphs help us calibrate your baseline and prepare your coach.
+        {t("Two short paragraphs help us calibrate your baseline and prepare your coach.")}
       </p>
 
       <div className="mt-10 space-y-6">
@@ -491,8 +507,8 @@ function ReflectionStep({
             onChange={(e) => setReflection({ ...reflection, strength: e.target.value })}
             rows={4}
             maxLength={600}
-            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-ink placeholder:text-muted-foreground focus:outline-none focus:border-lime focus:ring-2 focus:ring-lime/30 transition-colors resize-none"
-            placeholder="Describe a moment that shows one of the EPOCH dimensions in action…"
+            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-lime focus:ring-2 focus:ring-lime/30 transition-colors resize-none"
+            placeholder={t("Describe a moment that shows one of the EPOCH dimensions in action…")}
           />
         </Field>
         <Field label="Where do you most want to grow?">
@@ -501,8 +517,8 @@ function ReflectionStep({
             onChange={(e) => setReflection({ ...reflection, growth: e.target.value })}
             rows={4}
             maxLength={600}
-            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-ink placeholder:text-muted-foreground focus:outline-none focus:border-lime focus:ring-2 focus:ring-lime/30 transition-colors resize-none"
-            placeholder="What feels hardest right now? What's getting in the way?"
+            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-lime focus:ring-2 focus:ring-lime/30 transition-colors resize-none"
+            placeholder={t("What feels hardest right now? What's getting in the way?")}
           />
         </Field>
         <Field label="A link to evidence (optional)">
@@ -510,8 +526,8 @@ function ReflectionStep({
             type="url"
             value={reflection.evidence}
             onChange={(e) => setReflection({ ...reflection, evidence: e.target.value })}
-            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-ink placeholder:text-muted-foreground focus:outline-none focus:border-lime focus:ring-2 focus:ring-lime/30 transition-colors"
-            placeholder="LinkedIn, portfolio, project, video…"
+            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-lime focus:ring-2 focus:ring-lime/30 transition-colors"
+            placeholder={t("LinkedIn, portfolio, project, video…")}
             maxLength={300}
           />
         </Field>
@@ -536,6 +552,7 @@ function ResultsStep({
   dimensionScores: (Dimension & { score: number })[];
   composite: number;
 }) {
+  const { t } = useI18n();
   const band =
     composite >= 80
       ? "Strong baseline"
@@ -550,15 +567,17 @@ function ResultsStep({
       <div className="flex items-center gap-3">
         <CheckCircle2 className="w-7 h-7 text-lime" />
         <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">
-          Assessment complete
+          {t("Assessment complete")}
         </p>
       </div>
-      <h2 className="mt-3 text-3xl md:text-4xl font-bold text-ink">
-        Nice work{profile.name ? `, ${profile.name.split(" ")[0]}` : ""}.
+      <h2 className="mt-3 text-3xl md:text-4xl font-bold text-foreground">
+        {t("Nice work")}
+        {profile.name ? `, ${profile.name.split(" ")[0]}` : ""}.
       </h2>
       <p className="mt-4 text-muted-foreground">
-        Here's your self-reported baseline. A verified HPI score is issued after peer and coach
-        reviews inside a practicum.
+        {t(
+          "Here's your self-reported baseline. A verified HPI score is issued after peer and coach reviews inside a practicum.",
+        )}
       </p>
 
       <div className="mt-10 rounded-3xl border border-border bg-card p-8 shadow-xl">
@@ -569,9 +588,9 @@ function ResultsStep({
             </div>
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-bold">
-                Baseline · self-reported
+                {t("Baseline · self-reported")}
               </p>
-              <p className="text-sm font-bold text-ink">Human Premium Index</p>
+              <p className="text-sm font-bold text-foreground">{t("Human Premium Index")}</p>
             </div>
           </div>
           <ShieldCheck className="w-6 h-6 text-lime" />
@@ -579,21 +598,21 @@ function ResultsStep({
 
         <div className="mt-8 text-center">
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            Baseline composite
+            {t("Baseline composite")}
           </p>
-          <p className="mt-2 text-7xl font-bold text-ink tabular-nums">
+          <p className="mt-2 text-7xl font-bold text-foreground tabular-nums">
             {composite}
             <span className="text-3xl text-muted-foreground">/100</span>
           </p>
-          <p className="mt-2 text-sm text-lime font-bold">{band}</p>
+          <p className="mt-2 text-sm text-lime font-bold">{t(band)}</p>
         </div>
 
         <div className="mt-8 space-y-3">
           {dimensionScores.map((s) => (
             <div key={s.key}>
               <div className="flex justify-between text-xs mb-1">
-                <span className="text-ink font-medium">
-                  {s.key} · {s.title}
+                <span className="text-foreground font-medium">
+                  {s.key} · {t(s.title)}
                 </span>
                 <span className="text-muted-foreground tabular-nums">{s.score}</span>
               </div>
@@ -611,27 +630,30 @@ function ResultsStep({
       <div className="mt-10 grid sm:grid-cols-2 gap-4">
         <div className="rounded-2xl border border-border bg-card p-5">
           <Sparkles className="w-5 h-5 text-lime" />
-          <p className="mt-3 font-bold text-ink">What happens next</p>
+          <p className="mt-3 font-bold text-foreground">{t("What happens next")}</p>
           <p className="mt-1 text-sm text-muted-foreground">
-            We'll email your full baseline report and recommended practicum tracks within 24 hours.
+            {t(
+              "We'll email your full baseline report and recommended practicum tracks within 24 hours.",
+            )}
           </p>
         </div>
         <div className="rounded-2xl border border-border bg-card p-5">
           <BadgeCheck className="w-5 h-5 text-coral" />
-          <p className="mt-3 font-bold text-ink">Earn a verified HPI</p>
+          <p className="mt-3 font-bold text-foreground">{t("Earn a verified HPI")}</p>
           <p className="mt-1 text-sm text-muted-foreground">
-            Join a practicum to unlock peer and coach reviews that produce your shareable, verified
-            credential.
+            {t(
+              "Join a practicum to unlock peer and coach reviews that produce your shareable, verified credential.",
+            )}
           </p>
         </div>
       </div>
 
       <div className="mt-10 flex flex-wrap gap-4">
         <Link to="/practicums" className="btn-primary">
-          Explore practicums <ArrowRight className="w-4 h-4" />
+          {t("Explore practicums")} <ArrowRight className="w-4 h-4" />
         </Link>
         <Link to="/connect" className="btn-outline">
-          Talk to an advisor
+          {t("Talk to an advisor")}
         </Link>
       </div>
     </div>
@@ -639,9 +661,10 @@ function ResultsStep({
 }
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
+  const { t } = useI18n();
   return (
     <label className="block">
-      <span className="block text-sm font-medium text-ink mb-2">{label}</span>
+      <span className="block text-sm font-medium text-foreground mb-2">{t(label)}</span>
       {children}
     </label>
   );
@@ -658,14 +681,15 @@ function NavButtons({
   canContinue: boolean;
   nextLabel?: string;
 }) {
+  const { t } = useI18n();
   return (
     <div className="mt-10 flex items-center justify-between gap-4">
       <button
         type="button"
         onClick={onBack}
-        className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-ink transition-colors"
+        className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
       >
-        <ArrowLeft className="w-4 h-4" /> Back
+        <ArrowLeft className="w-4 h-4" /> {t("Back")}
       </button>
       <button
         type="button"
@@ -673,7 +697,7 @@ function NavButtons({
         disabled={!canContinue}
         className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {nextLabel} <ArrowRight className="w-4 h-4" />
+        {t(nextLabel)} <ArrowRight className="w-4 h-4" />
       </button>
     </div>
   );

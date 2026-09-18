@@ -18,6 +18,7 @@ dist-ssr
 
 # Local OMX runtime state and generated artifacts
 .omx/
+.sites-runtime/
 
 # Wrangler / Cloudflare
 .wrangler/

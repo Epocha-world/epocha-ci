@@ -15,6 +15,7 @@ import { Route as SafeguardingRouteImport } from './routes/safeguarding'
 import { Route as RefundPolicyRouteImport } from './routes/refund-policy'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PracticumsRouteImport } from './routes/practicums'
+import { Route as NewsRouteImport } from './routes/news'
 import { Route as HpiAssessmentRouteImport } from './routes/hpi-assessment'
 import { Route as HowHpiWorksRouteImport } from './routes/how-hpi-works'
 import { Route as HomeDemoRouteImport } from './routes/home-demo'
@@ -28,9 +29,16 @@ import { Route as PracticumsMiraeIndustryRouteImport } from './routes/practicums
 import { Route as PracticumsHanaroMarketingRouteImport } from './routes/practicums_.hanaro-marketing'
 import { Route as PracticumsHanaroRouteImport } from './routes/practicums_.hanaro'
 import { Route as EventsLaunchEventRouteImport } from './routes/events_.launch-event'
+import { Route as AboutSparkedRouteImport } from './routes/about_.sparked'
 import { Route as AboutPartnershipsRouteImport } from './routes/about_.partnerships'
 import { Route as AboutOurStoryRouteImport } from './routes/about_.our-story'
+import { Route as PracticumsStartupLabCampIndexRouteImport } from './routes/practicums_.startup-lab-camp.index'
+import { Route as PracticumsStartupLabCampOpenCapstonesRouteImport } from './routes/practicums_.startup-lab-camp.open-capstones'
+import { Route as PracticumsStartupLabCampHowItWorksRouteImport } from './routes/practicums_.startup-lab-camp.how-it-works'
 import { Route as PracticumsHanaroMarketingVoicesInMotionRouteImport } from './routes/practicums_.hanaro-marketing_.voices-in-motion'
+import { Route as PracticumsStartupLabCampPracticumLeadershipTracksRouteImport } from './routes/practicums_.startup-lab-camp.practicum.leadership-tracks'
+import { Route as PracticumsStartupLabCampPracticumCoachingProgramRouteImport } from './routes/practicums_.startup-lab-camp.practicum.coaching-program'
+import { Route as PracticumsStartupLabCampCapstonesCapstoneIdRouteImport } from './routes/practicums_.startup-lab-camp.capstones.$capstoneId'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -60,6 +68,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const PracticumsRoute = PracticumsRouteImport.update({
   id: '/practicums',
   path: '/practicums',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HpiAssessmentRoute = HpiAssessmentRouteImport.update({
@@ -129,6 +142,11 @@ const EventsLaunchEventRoute = EventsLaunchEventRouteImport.update({
   path: '/events/launch-event',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutSparkedRoute = AboutSparkedRouteImport.update({
+  id: '/about_/sparked',
+  path: '/about/sparked',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutPartnershipsRoute = AboutPartnershipsRouteImport.update({
   id: '/about_/partnerships',
   path: '/about/partnerships',
@@ -139,11 +157,47 @@ const AboutOurStoryRoute = AboutOurStoryRouteImport.update({
   path: '/about/our-story',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PracticumsStartupLabCampIndexRoute =
+  PracticumsStartupLabCampIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => PracticumsStartupLabCampRoute,
+  } as any)
+const PracticumsStartupLabCampOpenCapstonesRoute =
+  PracticumsStartupLabCampOpenCapstonesRouteImport.update({
+    id: '/open-capstones',
+    path: '/open-capstones',
+    getParentRoute: () => PracticumsStartupLabCampRoute,
+  } as any)
+const PracticumsStartupLabCampHowItWorksRoute =
+  PracticumsStartupLabCampHowItWorksRouteImport.update({
+    id: '/how-it-works',
+    path: '/how-it-works',
+    getParentRoute: () => PracticumsStartupLabCampRoute,
+  } as any)
 const PracticumsHanaroMarketingVoicesInMotionRoute =
   PracticumsHanaroMarketingVoicesInMotionRouteImport.update({
     id: '/practicums_/hanaro-marketing_/voices-in-motion',
     path: '/practicums/hanaro-marketing/voices-in-motion',
     getParentRoute: () => rootRouteImport,
+  } as any)
+const PracticumsStartupLabCampPracticumLeadershipTracksRoute =
+  PracticumsStartupLabCampPracticumLeadershipTracksRouteImport.update({
+    id: '/practicum/leadership-tracks',
+    path: '/practicum/leadership-tracks',
+    getParentRoute: () => PracticumsStartupLabCampRoute,
+  } as any)
+const PracticumsStartupLabCampPracticumCoachingProgramRoute =
+  PracticumsStartupLabCampPracticumCoachingProgramRouteImport.update({
+    id: '/practicum/coaching-program',
+    path: '/practicum/coaching-program',
+    getParentRoute: () => PracticumsStartupLabCampRoute,
+  } as any)
+const PracticumsStartupLabCampCapstonesCapstoneIdRoute =
+  PracticumsStartupLabCampCapstonesCapstoneIdRouteImport.update({
+    id: '/capstones/$capstoneId',
+    path: '/capstones/$capstoneId',
+    getParentRoute: () => PracticumsStartupLabCampRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
@@ -155,6 +209,7 @@ export interface FileRoutesByFullPath {
   '/home-demo': typeof HomeDemoRoute
   '/how-hpi-works': typeof HowHpiWorksRoute
   '/hpi-assessment': typeof HpiAssessmentRoute
+  '/news': typeof NewsRoute
   '/practicums': typeof PracticumsRoute
   '/privacy': typeof PrivacyRoute
   '/refund-policy': typeof RefundPolicyRoute
@@ -163,12 +218,19 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/about/our-story': typeof AboutOurStoryRoute
   '/about/partnerships': typeof AboutPartnershipsRoute
+  '/about/sparked': typeof AboutSparkedRoute
   '/events/launch-event': typeof EventsLaunchEventRoute
   '/practicums/hanaro': typeof PracticumsHanaroRoute
   '/practicums/hanaro-marketing': typeof PracticumsHanaroMarketingRoute
   '/practicums/mirae-industry': typeof PracticumsMiraeIndustryRoute
-  '/practicums/startup-lab-camp': typeof PracticumsStartupLabCampRoute
+  '/practicums/startup-lab-camp': typeof PracticumsStartupLabCampRouteWithChildren
   '/practicums/hanaro-marketing/voices-in-motion': typeof PracticumsHanaroMarketingVoicesInMotionRoute
+  '/practicums/startup-lab-camp/how-it-works': typeof PracticumsStartupLabCampHowItWorksRoute
+  '/practicums/startup-lab-camp/open-capstones': typeof PracticumsStartupLabCampOpenCapstonesRoute
+  '/practicums/startup-lab-camp/': typeof PracticumsStartupLabCampIndexRoute
+  '/practicums/startup-lab-camp/capstones/$capstoneId': typeof PracticumsStartupLabCampCapstonesCapstoneIdRoute
+  '/practicums/startup-lab-camp/practicum/coaching-program': typeof PracticumsStartupLabCampPracticumCoachingProgramRoute
+  '/practicums/startup-lab-camp/practicum/leadership-tracks': typeof PracticumsStartupLabCampPracticumLeadershipTracksRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -179,6 +241,7 @@ export interface FileRoutesByTo {
   '/home-demo': typeof HomeDemoRoute
   '/how-hpi-works': typeof HowHpiWorksRoute
   '/hpi-assessment': typeof HpiAssessmentRoute
+  '/news': typeof NewsRoute
   '/practicums': typeof PracticumsRoute
   '/privacy': typeof PrivacyRoute
   '/refund-policy': typeof RefundPolicyRoute
@@ -187,12 +250,18 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/about/our-story': typeof AboutOurStoryRoute
   '/about/partnerships': typeof AboutPartnershipsRoute
+  '/about/sparked': typeof AboutSparkedRoute
   '/events/launch-event': typeof EventsLaunchEventRoute
   '/practicums/hanaro': typeof PracticumsHanaroRoute
   '/practicums/hanaro-marketing': typeof PracticumsHanaroMarketingRoute
   '/practicums/mirae-industry': typeof PracticumsMiraeIndustryRoute
-  '/practicums/startup-lab-camp': typeof PracticumsStartupLabCampRoute
   '/practicums/hanaro-marketing/voices-in-motion': typeof PracticumsHanaroMarketingVoicesInMotionRoute
+  '/practicums/startup-lab-camp/how-it-works': typeof PracticumsStartupLabCampHowItWorksRoute
+  '/practicums/startup-lab-camp/open-capstones': typeof PracticumsStartupLabCampOpenCapstonesRoute
+  '/practicums/startup-lab-camp': typeof PracticumsStartupLabCampIndexRoute
+  '/practicums/startup-lab-camp/capstones/$capstoneId': typeof PracticumsStartupLabCampCapstonesCapstoneIdRoute
+  '/practicums/startup-lab-camp/practicum/coaching-program': typeof PracticumsStartupLabCampPracticumCoachingProgramRoute
+  '/practicums/startup-lab-camp/practicum/leadership-tracks': typeof PracticumsStartupLabCampPracticumLeadershipTracksRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -204,6 +273,7 @@ export interface FileRoutesById {
   '/home-demo': typeof HomeDemoRoute
   '/how-hpi-works': typeof HowHpiWorksRoute
   '/hpi-assessment': typeof HpiAssessmentRoute
+  '/news': typeof NewsRoute
   '/practicums': typeof PracticumsRoute
   '/privacy': typeof PrivacyRoute
   '/refund-policy': typeof RefundPolicyRoute
@@ -212,12 +282,19 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/about_/our-story': typeof AboutOurStoryRoute
   '/about_/partnerships': typeof AboutPartnershipsRoute
+  '/about_/sparked': typeof AboutSparkedRoute
   '/events_/launch-event': typeof EventsLaunchEventRoute
   '/practicums_/hanaro': typeof PracticumsHanaroRoute
   '/practicums_/hanaro-marketing': typeof PracticumsHanaroMarketingRoute
   '/practicums_/mirae-industry': typeof PracticumsMiraeIndustryRoute
-  '/practicums_/startup-lab-camp': typeof PracticumsStartupLabCampRoute
+  '/practicums_/startup-lab-camp': typeof PracticumsStartupLabCampRouteWithChildren
   '/practicums_/hanaro-marketing_/voices-in-motion': typeof PracticumsHanaroMarketingVoicesInMotionRoute
+  '/practicums_/startup-lab-camp/how-it-works': typeof PracticumsStartupLabCampHowItWorksRoute
+  '/practicums_/startup-lab-camp/open-capstones': typeof PracticumsStartupLabCampOpenCapstonesRoute
+  '/practicums_/startup-lab-camp/': typeof PracticumsStartupLabCampIndexRoute
+  '/practicums_/startup-lab-camp/capstones/$capstoneId': typeof PracticumsStartupLabCampCapstonesCapstoneIdRoute
+  '/practicums_/startup-lab-camp/practicum/coaching-program': typeof PracticumsStartupLabCampPracticumCoachingProgramRoute
+  '/practicums_/startup-lab-camp/practicum/leadership-tracks': typeof PracticumsStartupLabCampPracticumLeadershipTracksRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -230,6 +307,7 @@ export interface FileRouteTypes {
     | '/home-demo'
     | '/how-hpi-works'
     | '/hpi-assessment'
+    | '/news'
     | '/practicums'
     | '/privacy'
     | '/refund-policy'
@@ -238,12 +316,19 @@ export interface FileRouteTypes {
     | '/terms'
     | '/about/our-story'
     | '/about/partnerships'
+    | '/about/sparked'
     | '/events/launch-event'
     | '/practicums/hanaro'
     | '/practicums/hanaro-marketing'
     | '/practicums/mirae-industry'
     | '/practicums/startup-lab-camp'
     | '/practicums/hanaro-marketing/voices-in-motion'
+    | '/practicums/startup-lab-camp/how-it-works'
+    | '/practicums/startup-lab-camp/open-capstones'
+    | '/practicums/startup-lab-camp/'
+    | '/practicums/startup-lab-camp/capstones/$capstoneId'
+    | '/practicums/startup-lab-camp/practicum/coaching-program'
+    | '/practicums/startup-lab-camp/practicum/leadership-tracks'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -254,6 +339,7 @@ export interface FileRouteTypes {
     | '/home-demo'
     | '/how-hpi-works'
     | '/hpi-assessment'
+    | '/news'
     | '/practicums'
     | '/privacy'
     | '/refund-policy'
@@ -262,12 +348,18 @@ export interface FileRouteTypes {
     | '/terms'
     | '/about/our-story'
     | '/about/partnerships'
+    | '/about/sparked'
     | '/events/launch-event'
     | '/practicums/hanaro'
     | '/practicums/hanaro-marketing'
     | '/practicums/mirae-industry'
-    | '/practicums/startup-lab-camp'
     | '/practicums/hanaro-marketing/voices-in-motion'
+    | '/practicums/startup-lab-camp/how-it-works'
+    | '/practicums/startup-lab-camp/open-capstones'
+    | '/practicums/startup-lab-camp'
+    | '/practicums/startup-lab-camp/capstones/$capstoneId'
+    | '/practicums/startup-lab-camp/practicum/coaching-program'
+    | '/practicums/startup-lab-camp/practicum/leadership-tracks'
   id:
     | '__root__'
     | '/'
@@ -278,6 +370,7 @@ export interface FileRouteTypes {
     | '/home-demo'
     | '/how-hpi-works'
     | '/hpi-assessment'
+    | '/news'
     | '/practicums'
     | '/privacy'
     | '/refund-policy'
@@ -286,12 +379,19 @@ export interface FileRouteTypes {
     | '/terms'
     | '/about_/our-story'
     | '/about_/partnerships'
+    | '/about_/sparked'
     | '/events_/launch-event'
     | '/practicums_/hanaro'
     | '/practicums_/hanaro-marketing'
     | '/practicums_/mirae-industry'
     | '/practicums_/startup-lab-camp'
     | '/practicums_/hanaro-marketing_/voices-in-motion'
+    | '/practicums_/startup-lab-camp/how-it-works'
+    | '/practicums_/startup-lab-camp/open-capstones'
+    | '/practicums_/startup-lab-camp/'
+    | '/practicums_/startup-lab-camp/capstones/$capstoneId'
+    | '/practicums_/startup-lab-camp/practicum/coaching-program'
+    | '/practicums_/startup-lab-camp/practicum/leadership-tracks'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -303,6 +403,7 @@ export interface RootRouteChildren {
   HomeDemoRoute: typeof HomeDemoRoute
   HowHpiWorksRoute: typeof HowHpiWorksRoute
   HpiAssessmentRoute: typeof HpiAssessmentRoute
+  NewsRoute: typeof NewsRoute
   PracticumsRoute: typeof PracticumsRoute
   PrivacyRoute: typeof PrivacyRoute
   RefundPolicyRoute: typeof RefundPolicyRoute
@@ -311,11 +412,12 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   AboutOurStoryRoute: typeof AboutOurStoryRoute
   AboutPartnershipsRoute: typeof AboutPartnershipsRoute
+  AboutSparkedRoute: typeof AboutSparkedRoute
   EventsLaunchEventRoute: typeof EventsLaunchEventRoute
   PracticumsHanaroRoute: typeof PracticumsHanaroRoute
   PracticumsHanaroMarketingRoute: typeof PracticumsHanaroMarketingRoute
   PracticumsMiraeIndustryRoute: typeof PracticumsMiraeIndustryRoute
-  PracticumsStartupLabCampRoute: typeof PracticumsStartupLabCampRoute
+  PracticumsStartupLabCampRoute: typeof PracticumsStartupLabCampRouteWithChildren
   PracticumsHanaroMarketingVoicesInMotionRoute: typeof PracticumsHanaroMarketingVoicesInMotionRoute
 }
 
@@ -361,6 +463,13 @@ declare module '@tanstack/react-router' {
       path: '/practicums'
       fullPath: '/practicums'
       preLoaderRoute: typeof PracticumsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/hpi-assessment': {
@@ -454,6 +563,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EventsLaunchEventRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about_/sparked': {
+      id: '/about_/sparked'
+      path: '/about/sparked'
+      fullPath: '/about/sparked'
+      preLoaderRoute: typeof AboutSparkedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about_/partnerships': {
       id: '/about_/partnerships'
       path: '/about/partnerships'
@@ -468,6 +584,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutOurStoryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/practicums_/startup-lab-camp/': {
+      id: '/practicums_/startup-lab-camp/'
+      path: '/'
+      fullPath: '/practicums/startup-lab-camp/'
+      preLoaderRoute: typeof PracticumsStartupLabCampIndexRouteImport
+      parentRoute: typeof PracticumsStartupLabCampRoute
+    }
+    '/practicums_/startup-lab-camp/open-capstones': {
+      id: '/practicums_/startup-lab-camp/open-capstones'
+      path: '/open-capstones'
+      fullPath: '/practicums/startup-lab-camp/open-capstones'
+      preLoaderRoute: typeof PracticumsStartupLabCampOpenCapstonesRouteImport
+      parentRoute: typeof PracticumsStartupLabCampRoute
+    }
+    '/practicums_/startup-lab-camp/how-it-works': {
+      id: '/practicums_/startup-lab-camp/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/practicums/startup-lab-camp/how-it-works'
+      preLoaderRoute: typeof PracticumsStartupLabCampHowItWorksRouteImport
+      parentRoute: typeof PracticumsStartupLabCampRoute
+    }
     '/practicums_/hanaro-marketing_/voices-in-motion': {
       id: '/practicums_/hanaro-marketing_/voices-in-motion'
       path: '/practicums/hanaro-marketing/voices-in-motion'
@@ -475,8 +612,58 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PracticumsHanaroMarketingVoicesInMotionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/practicums_/startup-lab-camp/practicum/leadership-tracks': {
+      id: '/practicums_/startup-lab-camp/practicum/leadership-tracks'
+      path: '/practicum/leadership-tracks'
+      fullPath: '/practicums/startup-lab-camp/practicum/leadership-tracks'
+      preLoaderRoute: typeof PracticumsStartupLabCampPracticumLeadershipTracksRouteImport
+      parentRoute: typeof PracticumsStartupLabCampRoute
+    }
+    '/practicums_/startup-lab-camp/practicum/coaching-program': {
+      id: '/practicums_/startup-lab-camp/practicum/coaching-program'
+      path: '/practicum/coaching-program'
+      fullPath: '/practicums/startup-lab-camp/practicum/coaching-program'
+      preLoaderRoute: typeof PracticumsStartupLabCampPracticumCoachingProgramRouteImport
+      parentRoute: typeof PracticumsStartupLabCampRoute
+    }
+    '/practicums_/startup-lab-camp/capstones/$capstoneId': {
+      id: '/practicums_/startup-lab-camp/capstones/$capstoneId'
+      path: '/capstones/$capstoneId'
+      fullPath: '/practicums/startup-lab-camp/capstones/$capstoneId'
+      preLoaderRoute: typeof PracticumsStartupLabCampCapstonesCapstoneIdRouteImport
+      parentRoute: typeof PracticumsStartupLabCampRoute
+    }
   }
 }
+
+interface PracticumsStartupLabCampRouteChildren {
+  PracticumsStartupLabCampHowItWorksRoute: typeof PracticumsStartupLabCampHowItWorksRoute
+  PracticumsStartupLabCampOpenCapstonesRoute: typeof PracticumsStartupLabCampOpenCapstonesRoute
+  PracticumsStartupLabCampIndexRoute: typeof PracticumsStartupLabCampIndexRoute
+  PracticumsStartupLabCampCapstonesCapstoneIdRoute: typeof PracticumsStartupLabCampCapstonesCapstoneIdRoute
+  PracticumsStartupLabCampPracticumCoachingProgramRoute: typeof PracticumsStartupLabCampPracticumCoachingProgramRoute
+  PracticumsStartupLabCampPracticumLeadershipTracksRoute: typeof PracticumsStartupLabCampPracticumLeadershipTracksRoute
+}
+
+const PracticumsStartupLabCampRouteChildren: PracticumsStartupLabCampRouteChildren =
+  {
+    PracticumsStartupLabCampHowItWorksRoute:
+      PracticumsStartupLabCampHowItWorksRoute,
+    PracticumsStartupLabCampOpenCapstonesRoute:
+      PracticumsStartupLabCampOpenCapstonesRoute,
+    PracticumsStartupLabCampIndexRoute: PracticumsStartupLabCampIndexRoute,
+    PracticumsStartupLabCampCapstonesCapstoneIdRoute:
+      PracticumsStartupLabCampCapstonesCapstoneIdRoute,
+    PracticumsStartupLabCampPracticumCoachingProgramRoute:
+      PracticumsStartupLabCampPracticumCoachingProgramRoute,
+    PracticumsStartupLabCampPracticumLeadershipTracksRoute:
+      PracticumsStartupLabCampPracticumLeadershipTracksRoute,
+  }
+
+const PracticumsStartupLabCampRouteWithChildren =
+  PracticumsStartupLabCampRoute._addFileChildren(
+    PracticumsStartupLabCampRouteChildren,
+  )
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -487,6 +674,7 @@ const rootRouteChildren: RootRouteChildren = {
   HomeDemoRoute: HomeDemoRoute,
   HowHpiWorksRoute: HowHpiWorksRoute,
   HpiAssessmentRoute: HpiAssessmentRoute,
+  NewsRoute: NewsRoute,
   PracticumsRoute: PracticumsRoute,
   PrivacyRoute: PrivacyRoute,
   RefundPolicyRoute: RefundPolicyRoute,
@@ -495,11 +683,12 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   AboutOurStoryRoute: AboutOurStoryRoute,
   AboutPartnershipsRoute: AboutPartnershipsRoute,
+  AboutSparkedRoute: AboutSparkedRoute,
   EventsLaunchEventRoute: EventsLaunchEventRoute,
   PracticumsHanaroRoute: PracticumsHanaroRoute,
   PracticumsHanaroMarketingRoute: PracticumsHanaroMarketingRoute,
   PracticumsMiraeIndustryRoute: PracticumsMiraeIndustryRoute,
-  PracticumsStartupLabCampRoute: PracticumsStartupLabCampRoute,
+  PracticumsStartupLabCampRoute: PracticumsStartupLabCampRouteWithChildren,
   PracticumsHanaroMarketingVoicesInMotionRoute:
     PracticumsHanaroMarketingVoicesInMotionRoute,
 }

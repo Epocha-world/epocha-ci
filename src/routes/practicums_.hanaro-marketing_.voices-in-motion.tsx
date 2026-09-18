@@ -1,3 +1,4 @@
+import { useI18n } from "@/i18n";
 import teamPhoto from "@/assets/practicum-hanaro.jpg";
 import {
   Accordion,
@@ -21,8 +22,9 @@ import {
 import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/practicums_/hanaro-marketing_/voices-in-motion")({
-  head: () =>
+  head: ({ match }) =>
     createSeoHead({
+      locale: match.context.preferences.locale,
       title: "Hanaro — Voices in Motion Practicum — EPOCHA",
       description:
         "하나로 Hanaro Marketing and Advertising Practicum: team up with nine others to develop, produce and showcase a short documentary or film in Seoul.",
@@ -101,13 +103,15 @@ const faqs = [
 ];
 
 function VoicesInMotionPage() {
+  const { t } = useI18n();
   return (
     <>
       {/* Hero + main content — LIGHT */}
       <section className="bg-background text-foreground">
         <div className="container-x pt-20 pb-20">
           <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] max-w-4xl">
-            Become a <span className="text-[#C9821B]">Hanaro leader</span> in your community.
+            {t("Become a")} <span className="text-[#C9821B]">{t("Hanaro leader")}</span>{" "}
+            {t("in your community.")}
           </h1>
 
           <div className="mt-14 grid lg:grid-cols-12 gap-8 items-start">
@@ -116,26 +120,26 @@ function VoicesInMotionPage() {
               <div className="rounded-3xl border border-border overflow-hidden bg-card">
                 <img
                   src={teamPhoto}
-                  alt="Trainees collaborating around laptops during the Hanaro practicum"
+                  alt={t("Trainees collaborating around laptops during the Hanaro practicum")}
                   className="w-full h-64 object-cover"
                   loading="lazy"
                 />
                 <div className="p-6">
                   <span className="inline-block rounded-full bg-[#C9821B] text-white text-xs font-bold px-3 py-1">
-                    19–24 years old
+                    {t("19–24 years old")}
                   </span>
                   <h2 className="mt-4 text-2xl font-bold leading-snug">
-                    하나로 · Hanaro Voices in Motion
+                    {t("하나로 · Hanaro Voices in Motion")}
                   </h2>
                   <p className="mt-5 text-sm font-bold uppercase tracking-[0.15em] text-[#C9821B]">
-                    Registrations open
+                    {t("Registrations open")}
                   </p>
                 </div>
               </div>
 
               <div className="rounded-3xl border border-border bg-card p-6">
                 <p className="text-xs uppercase tracking-[0.2em] font-bold text-[#C9821B]">
-                  Practicum details
+                  {t("Practicum details")}
                 </p>
                 <ul className="mt-4 space-y-3 text-foreground/80">
                   {[
@@ -146,7 +150,7 @@ function VoicesInMotionPage() {
                   ].map((d) => (
                     <li key={d.label} className="flex items-center gap-3">
                       <d.icon className="w-4 h-4 text-[#C9821B]" />
-                      {d.label}
+                      {t(d.label)}
                     </li>
                   ))}
                 </ul>
@@ -154,7 +158,7 @@ function VoicesInMotionPage() {
 
               <div className="rounded-3xl border border-border bg-card p-6">
                 <p className="text-xs uppercase tracking-[0.2em] font-bold text-[#C9821B]">
-                  Industry partners
+                  {t("Industry partners")}
                 </p>
                 <div className="mt-4 space-y-6">
                   <div>
@@ -165,7 +169,7 @@ function VoicesInMotionPage() {
                       className="rounded-2xl bg-background border border-border p-6 flex items-center justify-center hover:border-[#C9821B] transition-colors"
                     >
                       <span className="text-lg font-bold text-[#C9821B] text-center">
-                        Candon Youth Movement
+                        {t("Candon Youth Movement")}
                       </span>
                     </a>
                   </div>
@@ -176,7 +180,7 @@ function VoicesInMotionPage() {
                       rel="noopener noreferrer"
                       className="rounded-2xl bg-background border border-border p-6 flex items-center justify-center hover:border-[#C9821B] transition-colors"
                     >
-                      <span className="text-lg font-bold text-[#C9821B]">Youth Circles</span>
+                      <span className="text-lg font-bold text-[#C9821B]">{t("Youth Circles")}</span>
                     </a>
                   </div>
                 </div>
@@ -184,9 +188,11 @@ function VoicesInMotionPage() {
 
               <div className="rounded-3xl border border-border bg-card p-6">
                 <p className="text-xs uppercase tracking-[0.2em] font-bold text-[#C9821B]">
-                  Questions?
+                  {t("Questions?")}
                 </p>
-                <p className="mt-3 text-foreground/75">Message us on WhatsApp for any queries.</p>
+                <p className="mt-3 text-foreground/75">
+                  {t("Message us on WhatsApp for any queries.")}
+                </p>
                 <a
                   href="https://wa.me/447801202799"
                   target="_blank"
@@ -201,9 +207,9 @@ function VoicesInMotionPage() {
             {/* Right column */}
             <div className="lg:col-span-7">
               <p className="text-lg text-foreground/80 leading-relaxed">
-                Join Hanaro — Voices in Motion and team up with fellow trainees to explore the
-                importance of Human-AI collaboration in shaping youth social dynamics and social
-                integration through creative arts.
+                {t(
+                  "Join Hanaro — Voices in Motion and team up with fellow trainees to explore the importance of Human-AI collaboration in shaping youth social dynamics and social integration through creative arts.",
+                )}
               </p>
 
               <div className="mt-8 space-y-4">
@@ -217,10 +223,10 @@ function VoicesInMotionPage() {
                     </span>
                     <div>
                       <h3 className="font-semibold flex items-center gap-2">
-                        <s.icon className="w-4 h-4 text-[#C9821B]" /> {s.title}
+                        <s.icon className="w-4 h-4 text-[#C9821B]" /> {t(s.title)}
                       </h3>
                       {s.desc && (
-                        <p className="mt-2 text-foreground/75 leading-relaxed">{s.desc}</p>
+                        <p className="mt-2 text-foreground/75 leading-relaxed">{t(s.desc)}</p>
                       )}
                       {i === 0 && (
                         <a
@@ -229,7 +235,7 @@ function VoicesInMotionPage() {
                           rel="noopener noreferrer"
                           className="btn-primary inline-flex mt-4"
                         >
-                          Download guide <ArrowRight className="w-4 h-4" />
+                          {t("Download guide")} <ArrowRight className="w-4 h-4" />
                         </a>
                       )}
                     </div>
@@ -238,16 +244,18 @@ function VoicesInMotionPage() {
               </div>
 
               <div className="mt-14">
-                <p className="text-xs uppercase tracking-[0.2em] font-bold text-[#C9821B]">FAQ</p>
-                <h2 className="mt-3 text-3xl font-bold">Frequently asked questions</h2>
+                <p className="text-xs uppercase tracking-[0.2em] font-bold text-[#C9821B]">
+                  {t("FAQ")}
+                </p>
+                <h2 className="mt-3 text-3xl font-bold">{t("Frequently asked questions")}</h2>
                 <Accordion type="single" collapsible className="mt-4">
                   {faqs.map((f) => (
                     <AccordionItem key={f.q} value={f.q}>
                       <AccordionTrigger className="text-left text-base font-semibold">
-                        {f.q}
+                        {t(f.q)}
                       </AccordionTrigger>
                       <AccordionContent className="text-foreground/75 leading-relaxed">
-                        {f.a}
+                        {t(f.a)}
                       </AccordionContent>
                     </AccordionItem>
                   ))}
@@ -263,8 +271,8 @@ function VoicesInMotionPage() {
         <div className="container-x py-10">
           <div className="rounded-3xl border border-white/10 bg-[#0F0A03] p-8 text-center text-white md:p-12">
             <h2 className="text-4xl md:text-6xl font-bold leading-[1.1]">
-              Ready to turn knowledge into a{" "}
-              <span className="text-[#FAC775]">verified portfolio?</span>
+              {t("Ready to turn knowledge into a")}{" "}
+              <span className="text-[#FAC775]">{t("verified portfolio?")}</span>
             </h2>
             <div className="mt-10 flex flex-wrap gap-4 justify-center">
               <a
@@ -273,7 +281,7 @@ function VoicesInMotionPage() {
                 rel="noopener noreferrer"
                 className="btn-primary inline-flex"
               >
-                Register now <ArrowRight className="w-4 h-4" />
+                {t("Register now")} <ArrowRight className="w-4 h-4" />
               </a>
               <a
                 href="https://forms.gle/sKxTLz7F79wnDsno6"
@@ -281,7 +289,7 @@ function VoicesInMotionPage() {
                 rel="noopener noreferrer"
                 className="btn-primary inline-flex"
               >
-                Get in touch
+                {t("Get in touch")}
               </a>
             </div>
           </div>

@@ -191,10 +191,11 @@ const en: LegalDocument = {
 };
 
 export const Route = createFileRoute("/safeguarding")({
-  head: () =>
+  head: ({ match }) =>
     createSeoHead({
-      title: "아동·청소년 보호정책 | Safeguarding — EPOCHA",
-      description: "EPOCHA 아동·청소년 보호정책 및 영문 번역본",
+      locale: match.context.preferences.locale,
+      title: "Safeguarding — EPOCHA",
+      description: "EPOCHA's child and youth safeguarding policy, available in Korean and English.",
       path: "/safeguarding",
     }),
   component: () => <LegalDocumentPage ko={ko} en={en} />,
