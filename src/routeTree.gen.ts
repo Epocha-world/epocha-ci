@@ -16,22 +16,15 @@ import { Route as RefundPolicyRouteImport } from './routes/refund-policy'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PracticumsRouteImport } from './routes/practicums'
 import { Route as NewsRouteImport } from './routes/news'
-import { Route as HpiAssessmentRouteImport } from './routes/hpi-assessment'
-import { Route as HowHpiWorksRouteImport } from './routes/how-hpi-works'
-import { Route as HomeDemoRouteImport } from './routes/home-demo'
 import { Route as GrowWithUsRouteImport } from './routes/grow-with-us'
-import { Route as EventsRouteImport } from './routes/events'
 import { Route as ConnectRouteImport } from './routes/connect'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PracticumsStartupLabCampRouteImport } from './routes/practicums_.startup-lab-camp'
 import { Route as PracticumsMiraeIndustryRouteImport } from './routes/practicums_.mirae-industry'
-import { Route as PracticumsHanaroMarketingRouteImport } from './routes/practicums_.hanaro-marketing'
 import { Route as PracticumsHanaroRouteImport } from './routes/practicums_.hanaro'
 import { Route as NewsDigitalMediaAndDroneShowTechnologyWithYanPaulDubbelmanRouteImport } from './routes/news_.digital-media-and-drone-show-technology-with-yan-paul-dubbelman'
-import { Route as EventsLaunchEventRouteImport } from './routes/events_.launch-event'
 import { Route as AboutSparkedRouteImport } from './routes/about_.sparked'
-import { Route as AboutPartnershipsRouteImport } from './routes/about_.partnerships'
 import { Route as AboutOurStoryRouteImport } from './routes/about_.our-story'
 import { Route as PracticumsStartupLabCampIndexRouteImport } from './routes/practicums_.startup-lab-camp.index'
 import { Route as PracticumsStartupLabCampOpenCapstonesRouteImport } from './routes/practicums_.startup-lab-camp.open-capstones'
@@ -76,29 +69,9 @@ const NewsRoute = NewsRouteImport.update({
   path: '/news',
   getParentRoute: () => rootRouteImport,
 } as any)
-const HpiAssessmentRoute = HpiAssessmentRouteImport.update({
-  id: '/hpi-assessment',
-  path: '/hpi-assessment',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HowHpiWorksRoute = HowHpiWorksRouteImport.update({
-  id: '/how-hpi-works',
-  path: '/how-hpi-works',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HomeDemoRoute = HomeDemoRouteImport.update({
-  id: '/home-demo',
-  path: '/home-demo',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const GrowWithUsRoute = GrowWithUsRouteImport.update({
   id: '/grow-with-us',
   path: '/grow-with-us',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EventsRoute = EventsRouteImport.update({
-  id: '/events',
-  path: '/events',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConnectRoute = ConnectRouteImport.update({
@@ -127,12 +100,6 @@ const PracticumsMiraeIndustryRoute = PracticumsMiraeIndustryRouteImport.update({
   path: '/practicums/mirae-industry',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PracticumsHanaroMarketingRoute =
-  PracticumsHanaroMarketingRouteImport.update({
-    id: '/practicums_/hanaro-marketing',
-    path: '/practicums/hanaro-marketing',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const PracticumsHanaroRoute = PracticumsHanaroRouteImport.update({
   id: '/practicums_/hanaro',
   path: '/practicums/hanaro',
@@ -144,19 +111,9 @@ const NewsDigitalMediaAndDroneShowTechnologyWithYanPaulDubbelmanRoute =
     path: '/news/digital-media-and-drone-show-technology-with-yan-paul-dubbelman',
     getParentRoute: () => rootRouteImport,
   } as any)
-const EventsLaunchEventRoute = EventsLaunchEventRouteImport.update({
-  id: '/events_/launch-event',
-  path: '/events/launch-event',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AboutSparkedRoute = AboutSparkedRouteImport.update({
   id: '/about_/sparked',
   path: '/about/sparked',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutPartnershipsRoute = AboutPartnershipsRouteImport.update({
-  id: '/about_/partnerships',
-  path: '/about/partnerships',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutOurStoryRoute = AboutOurStoryRouteImport.update({
@@ -211,11 +168,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/connect': typeof ConnectRoute
-  '/events': typeof EventsRoute
   '/grow-with-us': typeof GrowWithUsRoute
-  '/home-demo': typeof HomeDemoRoute
-  '/how-hpi-works': typeof HowHpiWorksRoute
-  '/hpi-assessment': typeof HpiAssessmentRoute
   '/news': typeof NewsRoute
   '/practicums': typeof PracticumsRoute
   '/privacy': typeof PrivacyRoute
@@ -224,12 +177,9 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/about/our-story': typeof AboutOurStoryRoute
-  '/about/partnerships': typeof AboutPartnershipsRoute
   '/about/sparked': typeof AboutSparkedRoute
-  '/events/launch-event': typeof EventsLaunchEventRoute
   '/news/digital-media-and-drone-show-technology-with-yan-paul-dubbelman': typeof NewsDigitalMediaAndDroneShowTechnologyWithYanPaulDubbelmanRoute
   '/practicums/hanaro': typeof PracticumsHanaroRoute
-  '/practicums/hanaro-marketing': typeof PracticumsHanaroMarketingRoute
   '/practicums/mirae-industry': typeof PracticumsMiraeIndustryRoute
   '/practicums/startup-lab-camp': typeof PracticumsStartupLabCampRouteWithChildren
   '/practicums/hanaro-marketing/voices-in-motion': typeof PracticumsHanaroMarketingVoicesInMotionRoute
@@ -244,11 +194,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/connect': typeof ConnectRoute
-  '/events': typeof EventsRoute
   '/grow-with-us': typeof GrowWithUsRoute
-  '/home-demo': typeof HomeDemoRoute
-  '/how-hpi-works': typeof HowHpiWorksRoute
-  '/hpi-assessment': typeof HpiAssessmentRoute
   '/news': typeof NewsRoute
   '/practicums': typeof PracticumsRoute
   '/privacy': typeof PrivacyRoute
@@ -257,12 +203,9 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/about/our-story': typeof AboutOurStoryRoute
-  '/about/partnerships': typeof AboutPartnershipsRoute
   '/about/sparked': typeof AboutSparkedRoute
-  '/events/launch-event': typeof EventsLaunchEventRoute
   '/news/digital-media-and-drone-show-technology-with-yan-paul-dubbelman': typeof NewsDigitalMediaAndDroneShowTechnologyWithYanPaulDubbelmanRoute
   '/practicums/hanaro': typeof PracticumsHanaroRoute
-  '/practicums/hanaro-marketing': typeof PracticumsHanaroMarketingRoute
   '/practicums/mirae-industry': typeof PracticumsMiraeIndustryRoute
   '/practicums/hanaro-marketing/voices-in-motion': typeof PracticumsHanaroMarketingVoicesInMotionRoute
   '/practicums/startup-lab-camp/how-it-works': typeof PracticumsStartupLabCampHowItWorksRoute
@@ -277,11 +220,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/connect': typeof ConnectRoute
-  '/events': typeof EventsRoute
   '/grow-with-us': typeof GrowWithUsRoute
-  '/home-demo': typeof HomeDemoRoute
-  '/how-hpi-works': typeof HowHpiWorksRoute
-  '/hpi-assessment': typeof HpiAssessmentRoute
   '/news': typeof NewsRoute
   '/practicums': typeof PracticumsRoute
   '/privacy': typeof PrivacyRoute
@@ -290,12 +229,9 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/about_/our-story': typeof AboutOurStoryRoute
-  '/about_/partnerships': typeof AboutPartnershipsRoute
   '/about_/sparked': typeof AboutSparkedRoute
-  '/events_/launch-event': typeof EventsLaunchEventRoute
   '/news_/digital-media-and-drone-show-technology-with-yan-paul-dubbelman': typeof NewsDigitalMediaAndDroneShowTechnologyWithYanPaulDubbelmanRoute
   '/practicums_/hanaro': typeof PracticumsHanaroRoute
-  '/practicums_/hanaro-marketing': typeof PracticumsHanaroMarketingRoute
   '/practicums_/mirae-industry': typeof PracticumsMiraeIndustryRoute
   '/practicums_/startup-lab-camp': typeof PracticumsStartupLabCampRouteWithChildren
   '/practicums_/hanaro-marketing_/voices-in-motion': typeof PracticumsHanaroMarketingVoicesInMotionRoute
@@ -312,11 +248,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/connect'
-    | '/events'
     | '/grow-with-us'
-    | '/home-demo'
-    | '/how-hpi-works'
-    | '/hpi-assessment'
     | '/news'
     | '/practicums'
     | '/privacy'
@@ -325,12 +257,9 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/about/our-story'
-    | '/about/partnerships'
     | '/about/sparked'
-    | '/events/launch-event'
     | '/news/digital-media-and-drone-show-technology-with-yan-paul-dubbelman'
     | '/practicums/hanaro'
-    | '/practicums/hanaro-marketing'
     | '/practicums/mirae-industry'
     | '/practicums/startup-lab-camp'
     | '/practicums/hanaro-marketing/voices-in-motion'
@@ -345,11 +274,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/connect'
-    | '/events'
     | '/grow-with-us'
-    | '/home-demo'
-    | '/how-hpi-works'
-    | '/hpi-assessment'
     | '/news'
     | '/practicums'
     | '/privacy'
@@ -358,12 +283,9 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/about/our-story'
-    | '/about/partnerships'
     | '/about/sparked'
-    | '/events/launch-event'
     | '/news/digital-media-and-drone-show-technology-with-yan-paul-dubbelman'
     | '/practicums/hanaro'
-    | '/practicums/hanaro-marketing'
     | '/practicums/mirae-industry'
     | '/practicums/hanaro-marketing/voices-in-motion'
     | '/practicums/startup-lab-camp/how-it-works'
@@ -377,11 +299,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/connect'
-    | '/events'
     | '/grow-with-us'
-    | '/home-demo'
-    | '/how-hpi-works'
-    | '/hpi-assessment'
     | '/news'
     | '/practicums'
     | '/privacy'
@@ -390,12 +308,9 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/about_/our-story'
-    | '/about_/partnerships'
     | '/about_/sparked'
-    | '/events_/launch-event'
     | '/news_/digital-media-and-drone-show-technology-with-yan-paul-dubbelman'
     | '/practicums_/hanaro'
-    | '/practicums_/hanaro-marketing'
     | '/practicums_/mirae-industry'
     | '/practicums_/startup-lab-camp'
     | '/practicums_/hanaro-marketing_/voices-in-motion'
@@ -411,11 +326,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ConnectRoute: typeof ConnectRoute
-  EventsRoute: typeof EventsRoute
   GrowWithUsRoute: typeof GrowWithUsRoute
-  HomeDemoRoute: typeof HomeDemoRoute
-  HowHpiWorksRoute: typeof HowHpiWorksRoute
-  HpiAssessmentRoute: typeof HpiAssessmentRoute
   NewsRoute: typeof NewsRoute
   PracticumsRoute: typeof PracticumsRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -424,12 +335,9 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
   AboutOurStoryRoute: typeof AboutOurStoryRoute
-  AboutPartnershipsRoute: typeof AboutPartnershipsRoute
   AboutSparkedRoute: typeof AboutSparkedRoute
-  EventsLaunchEventRoute: typeof EventsLaunchEventRoute
   NewsDigitalMediaAndDroneShowTechnologyWithYanPaulDubbelmanRoute: typeof NewsDigitalMediaAndDroneShowTechnologyWithYanPaulDubbelmanRoute
   PracticumsHanaroRoute: typeof PracticumsHanaroRoute
-  PracticumsHanaroMarketingRoute: typeof PracticumsHanaroMarketingRoute
   PracticumsMiraeIndustryRoute: typeof PracticumsMiraeIndustryRoute
   PracticumsStartupLabCampRoute: typeof PracticumsStartupLabCampRouteWithChildren
   PracticumsHanaroMarketingVoicesInMotionRoute: typeof PracticumsHanaroMarketingVoicesInMotionRoute
@@ -486,39 +394,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NewsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/hpi-assessment': {
-      id: '/hpi-assessment'
-      path: '/hpi-assessment'
-      fullPath: '/hpi-assessment'
-      preLoaderRoute: typeof HpiAssessmentRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/how-hpi-works': {
-      id: '/how-hpi-works'
-      path: '/how-hpi-works'
-      fullPath: '/how-hpi-works'
-      preLoaderRoute: typeof HowHpiWorksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/home-demo': {
-      id: '/home-demo'
-      path: '/home-demo'
-      fullPath: '/home-demo'
-      preLoaderRoute: typeof HomeDemoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/grow-with-us': {
       id: '/grow-with-us'
       path: '/grow-with-us'
       fullPath: '/grow-with-us'
       preLoaderRoute: typeof GrowWithUsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/events': {
-      id: '/events'
-      path: '/events'
-      fullPath: '/events'
-      preLoaderRoute: typeof EventsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/connect': {
@@ -556,13 +436,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PracticumsMiraeIndustryRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/practicums_/hanaro-marketing': {
-      id: '/practicums_/hanaro-marketing'
-      path: '/practicums/hanaro-marketing'
-      fullPath: '/practicums/hanaro-marketing'
-      preLoaderRoute: typeof PracticumsHanaroMarketingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/practicums_/hanaro': {
       id: '/practicums_/hanaro'
       path: '/practicums/hanaro'
@@ -577,25 +450,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NewsDigitalMediaAndDroneShowTechnologyWithYanPaulDubbelmanRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/events_/launch-event': {
-      id: '/events_/launch-event'
-      path: '/events/launch-event'
-      fullPath: '/events/launch-event'
-      preLoaderRoute: typeof EventsLaunchEventRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/about_/sparked': {
       id: '/about_/sparked'
       path: '/about/sparked'
       fullPath: '/about/sparked'
       preLoaderRoute: typeof AboutSparkedRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about_/partnerships': {
-      id: '/about_/partnerships'
-      path: '/about/partnerships'
-      fullPath: '/about/partnerships'
-      preLoaderRoute: typeof AboutPartnershipsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about_/our-story': {
@@ -690,11 +549,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ConnectRoute: ConnectRoute,
-  EventsRoute: EventsRoute,
   GrowWithUsRoute: GrowWithUsRoute,
-  HomeDemoRoute: HomeDemoRoute,
-  HowHpiWorksRoute: HowHpiWorksRoute,
-  HpiAssessmentRoute: HpiAssessmentRoute,
   NewsRoute: NewsRoute,
   PracticumsRoute: PracticumsRoute,
   PrivacyRoute: PrivacyRoute,
@@ -703,13 +558,10 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
   AboutOurStoryRoute: AboutOurStoryRoute,
-  AboutPartnershipsRoute: AboutPartnershipsRoute,
   AboutSparkedRoute: AboutSparkedRoute,
-  EventsLaunchEventRoute: EventsLaunchEventRoute,
   NewsDigitalMediaAndDroneShowTechnologyWithYanPaulDubbelmanRoute:
     NewsDigitalMediaAndDroneShowTechnologyWithYanPaulDubbelmanRoute,
   PracticumsHanaroRoute: PracticumsHanaroRoute,
-  PracticumsHanaroMarketingRoute: PracticumsHanaroMarketingRoute,
   PracticumsMiraeIndustryRoute: PracticumsMiraeIndustryRoute,
   PracticumsStartupLabCampRoute: PracticumsStartupLabCampRouteWithChildren,
   PracticumsHanaroMarketingVoicesInMotionRoute:

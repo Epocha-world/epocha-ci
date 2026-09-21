@@ -264,10 +264,6 @@ const about: Record<string, string> = {
   "New stories will appear here when they are published. In the meantime, explore how you can get involved.":
     "새 소식이 게시되면 이곳에서 확인할 수 있습니다. 그동안 함께할 수 있는 참여 방법을 살펴보세요.",
   "Explore Sparked!": "Sparked! 둘러보기",
-  "This page has been removed.": "이 페이지는 삭제되었습니다.",
-  "The launch event page is no longer available. Visit News for published updates from EPOCHA.":
-    "출범 행사 페이지는 더 이상 제공되지 않습니다. EPOCHA의 새로운 소식은 소식 페이지에서 확인하세요.",
-  "Visit News": "소식 보기",
   "caricature portrait": "캐리커처 초상화",
   "LinkedIn profile": "LinkedIn 프로필",
   "Chat with us": "대화하기",

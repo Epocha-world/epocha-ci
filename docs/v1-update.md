@@ -26,9 +26,8 @@ Add real articles to `newsArticles` in `src/lib/news.ts`. Each needs a stable ID
 
 ## Routes and preferences
 
-- `/events` permanently redirects to `/news`.
-- `/about/partnerships` permanently redirects to `/about/sparked`.
-- `/events/launch-event` returns a translated removed-page notice with HTTP 410.
+- Unexposed routes `/home-demo`, `/how-hpi-works`, `/hpi-assessment`, `/events`, `/about/partnerships`, `/practicums/hanaro-marketing` and `/events/launch-event` have been removed and return the shared HTTP 404 page.
+- The linked `/practicums/hanaro-marketing/voices-in-motion` page remains available, as do the article and three published capstone details.
 - Existing training hashes and the camp `#startup-lab` anchor remain usable.
 - Preferences use `epocha_locale` and `epocha_theme` cookies. Initial SSR state is request-local; language changes retain React form state.
 - Personalised HTML uses `private, no-store` plus `Vary: Cookie, Accept-Language`. Static files and the sitemap retain independent caching.

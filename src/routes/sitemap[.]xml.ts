@@ -25,8 +25,6 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/about", priority: "0.8" },
           { path: "/about/our-story", priority: "0.7" },
           { path: "/about/sparked", priority: "0.8" },
-          { path: "/how-hpi-works", priority: "0.7" },
-          { path: "/hpi-assessment", priority: "0.6" },
           { path: "/grow-with-us", priority: "0.7" },
           { path: "/connect", priority: "0.6" },
           { path: "/privacy", priority: "0.3" },
