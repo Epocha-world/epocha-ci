@@ -1,4 +1,3 @@
-import { CapstonePartner } from "@/components/camp/CapstonePartner";
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useI18n } from "@/i18n";
@@ -112,21 +111,39 @@ function OpenCapstones() {
             {results.map((item) => (
               <article
                 key={item.id}
-                className="flex flex-col rounded-3xl border border-border bg-card p-7"
+                className="relative flex min-w-0 flex-col border border-border bg-card p-6 sm:p-8"
+                data-capstone-card
               >
-                <p className="text-sm text-muted-foreground">
-                  {t(item.track)} ·{" "}
-                  <span className="uppercase">
-                    {t(item.fieldLabel ?? capstoneFieldLabel(item.field))}
+                <div className="flex items-center justify-between gap-3">
+                  <span className="rounded-full bg-lime px-4 py-1 text-sm font-semibold text-ink">
+                    {t(item.track)}
                   </span>
+                  <span className="text-sm font-medium text-muted-foreground" data-capstone-number>
+                    #
+                    {String(records.findIndex((record) => record.id === item.id) + 1).padStart(
+                      2,
+                      "0",
+                    )}
+                  </span>
+                </div>
+                <p className="mt-7 text-sm font-semibold uppercase tracking-[0.15em] text-lime">
+                  {t(item.fieldLabel ?? capstoneFieldLabel(item.field))}
                 </p>
-                <h2 className="mt-5 text-2xl font-bold">{t(item.title)}</h2>
-                <CapstonePartner item={item} />
-                <p className="mt-4 leading-relaxed text-foreground/80">{t(item.summary)}</p>
-                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-                  {item.skills.map((skill) => t(skill)).join(" · ")}
+                <h2 className="mt-3 text-2xl font-bold leading-tight lg:text-[1.75rem]">
+                  {t(item.title)}
+                </h2>
+                <p className="mt-4 font-semibold" data-capstone-partner>
+                  {item.partner}
                 </p>
-                <dl className="mt-6 grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm">
+                <p className="my-7 leading-relaxed text-muted-foreground">{t(item.summary)}</p>
+                <ul aria-label={t("Skills")} className="mt-auto flex flex-wrap gap-2">
+                  {item.skills.map((skill) => (
+                    <li key={skill} className="rounded-full border border-border px-3 py-1 text-sm">
+                      {t(skill)}
+                    </li>
+                  ))}
+                </ul>
+                <dl className="mt-5 grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 border-t border-border pt-5 text-sm">
                   {[
                     ["Age", item.age],
                     ["Location", item.location],
@@ -144,10 +161,10 @@ function OpenCapstones() {
                 <Link
                   to="/practicums/startup-lab-camp/capstones/$capstoneId"
                   params={{ capstoneId: item.id }}
-                  className="mt-auto inline-flex items-center gap-2 pt-7 font-semibold underline underline-offset-4"
+                  aria-label={`${t("View capstone details")}: ${t(item.title)}`}
+                  className="mt-5 ml-auto inline-flex size-11 items-center justify-center text-foreground hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                 >
-                  {t("View capstone details")}
-                  <ArrowRight className="size-4" aria-hidden="true" />
+                  <ArrowRight className="size-6" aria-hidden="true" />
                 </Link>
               </article>
             ))}

@@ -6,9 +6,45 @@ import { yanPaulBlocks } from "../src/lib/yan-paul-story.ts";
 import { isPublishableCapstone, publishedCapstones } from "../src/lib/camp-capstones.ts";
 const sha = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
 
-test("the complete supplied article text matches the Word source, without omissions or invented copy", () => {
+test("review article links preserve the supplied destinations and three closing paragraphs", () => {
+  const paragraphs = yanPaulBlocks.filter((block) => block.type === "paragraph");
+  assert.deepEqual(
+    paragraphs.slice(-3).map((block) => block.text),
+    [
+      "Curious to see drones dance across the night sky and calm digital art come to life?",
+      "Follow Yan Paul on Instagram: @yanpauldubbelman",
+      "For more information:https://www.augustmedia.art/",
+    ],
+  );
+  const links = paragraphs.flatMap((block) => ("links" in block ? [...block.links] : []));
+  assert.deepEqual(
+    links.map((link) => link.href),
+    [
+      "https://www.linkedin.com/in/yanpauldubbelman/",
+      "https://www.gsis.sc.kr/",
+      "https://www.instagram.com/yanpauldubbelman/",
+      "https://www.augustmedia.art/",
+    ],
+  );
+  for (const block of paragraphs) {
+    if ("links" in block) {
+      for (const link of block.links) assert.ok(block.text.includes(link.label));
+    }
+  }
+});
+
+test("review banner artwork preserves the user-supplied Candon PNG bytes", () => {
+  for (const [name, hash] of Object.entries({
+    candon: "b4a49af4a57d504993ee65fd549606cd1b5638b832ab95939e1b44cd205e0d63",
+  })) {
+    assert.equal(sha(readFileSync(`src/assets/logos/${name}-provided.png`)), hash);
+  }
+});
+
+test("the article preserves the supplied body while adding only the review's information line", () => {
   const text = yanPaulBlocks
     .flatMap((block) => ("text" in block ? [block.text] : []))
+    .filter((text) => text !== "For more information:https://www.augustmedia.art/")
     .join("")
     .replace(/\s+/g, "");
   assert.equal(sha(text), "5e2cab2cbd24f28c567c0e491e6548bacac224db1fc75bb439592b400b16aa9d");

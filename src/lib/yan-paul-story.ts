@@ -16,6 +16,10 @@ export const yanPaulBlocks = [
   {
     type: "paragraph",
     text: "We recently had the pleasure of hosting a career talk with Yan Paul Dubbelman, a multidisciplinary digital artist, and received the warmest welcome from students and staff alike at The Gyeonggi Suwon International School (GSIS).",
+    links: [
+      { label: "Yan Paul Dubbelman", href: "https://www.linkedin.com/in/yanpauldubbelman/" },
+      { label: "The Gyeonggi Suwon International School (GSIS)", href: "https://www.gsis.sc.kr/" },
+    ],
   },
   {
     type: "paragraph",
@@ -98,7 +102,17 @@ export const yanPaulBlocks = [
   },
   {
     type: "paragraph",
-    text: "Curious to see drones dance across the night sky and calm digital art come to life? Follow Yan Paul on Instagram: @yanpauldubbelman",
+    text: "Curious to see drones dance across the night sky and calm digital art come to life?",
+  },
+  {
+    type: "paragraph",
+    text: "Follow Yan Paul on Instagram: @yanpauldubbelman",
+    links: [{ label: "@yanpauldubbelman", href: "https://www.instagram.com/yanpauldubbelman/" }],
+  },
+  {
+    type: "paragraph",
+    text: "For more information:https://www.augustmedia.art/",
+    links: [{ label: "https://www.augustmedia.art/", href: "https://www.augustmedia.art/" }],
   },
   {
     type: "image",

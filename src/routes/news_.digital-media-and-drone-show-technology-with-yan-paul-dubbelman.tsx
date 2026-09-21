@@ -1,3 +1,4 @@
+import { Fragment, type ReactNode } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { useI18n } from "@/i18n";
 import { createSeoHead } from "@/lib/seo";
@@ -39,26 +40,52 @@ function YanPaulArticle() {
               {t(block.text)}
             </h2>
           ) : (
-            <p key={index} className="mt-5 text-lg leading-relaxed text-foreground/85">
-              {block.text.includes("@yanpauldubbelman") ? (
-                <>
-                  {t(block.text.split("@yanpauldubbelman")[0])}
-                  <a
-                    href="https://www.instagram.com/yanpauldubbelman/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline underline-offset-4"
-                  >
-                    @yanpauldubbelman
-                  </a>
-                </>
-              ) : (
-                t(block.text)
-              )}
-            </p>
+            <LinkedParagraph
+              key={index}
+              text={block.text}
+              links={"links" in block ? block.links : []}
+            />
           ),
         )}
       </div>
     </article>
+  );
+}
+
+function LinkedParagraph({
+  text,
+  links,
+}: {
+  text: string;
+  links: readonly { label: string; href: string }[];
+}) {
+  const { t } = useI18n();
+  const content = t(text);
+  const parts: ReactNode[] = [];
+  let cursor = 0;
+  for (const link of links) {
+    const label = t(link.label);
+    const position = content.indexOf(label, cursor);
+    if (position < 0) continue;
+    parts.push(
+      <Fragment key={link.href}>
+        {content.slice(cursor, position)}
+        <a
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-4"
+        >
+          {label}
+        </a>
+      </Fragment>,
+    );
+    cursor = position + label.length;
+  }
+  return (
+    <p className="mt-5 text-lg leading-relaxed text-foreground/85">
+      {parts}
+      {content.slice(cursor)}
+    </p>
   );
 }

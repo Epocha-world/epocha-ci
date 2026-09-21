@@ -3,7 +3,7 @@ import { useI18n } from "@/i18n";
 import logoQualitax from "@/assets/logos/qualitax.svg";
 import logoKoreaPen from "@/assets/logos/koreapen.png";
 import logoPenWw from "@/assets/logos/pen-worldwide.png";
-import logoCandon from "@/assets/logos/candon-youth.jpg";
+import logoCandon from "@/assets/logos/candon-provided.png";
 
 export function PartnerLogoBanner({ includeCandon = false }: { includeCandon?: boolean }) {
   const { t } = useI18n();

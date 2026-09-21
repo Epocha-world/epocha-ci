@@ -106,7 +106,13 @@ export function ProgramExplorer({ home = false }: { home?: boolean }) {
                   </div>
                   <div>
                     <dt className="text-muted-foreground">{t("Registrations")}</dt>
-                    <dd className="mt-1">{t(program.status)}</dd>
+                    <dd className="mt-1">
+                      {t(
+                        home && program.image === "camp"
+                          ? "Winter registration open soon"
+                          : program.status,
+                      )}
+                    </dd>
                   </div>
                 </dl>
                 <Link

@@ -254,7 +254,7 @@ function LeadershipTracksPage() {
                     className="mt-0.5 h-4 w-4 shrink-0"
                     style={{ color: "var(--foreground)" }}
                   />
-                  <span>{t("10 am to 1:00 pm KST")}</span>
+                  <span>{t("Time varies (9 am - 1 pm)")}</span>
                 </li>
               </ul>
             </div>

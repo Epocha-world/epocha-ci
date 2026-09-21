@@ -153,9 +153,14 @@ function SparkedPage() {
                 </article>
               ))}
             </div>
-            <div className="mt-10 rounded-3xl bg-ink text-cream p-8 md:p-12 text-center">
+            <div
+              className={`mt-10 rounded-3xl p-8 md:p-12 text-center ${section.id === "volunteer" ? "surface-light text-foreground" : "bg-ink text-cream"}`}
+              data-participation-cta={section.id}
+            >
               <h3 className="text-2xl md:text-3xl font-bold">{t(section.ctaTitle)}</h3>
-              <p className="mt-5 mx-auto max-w-3xl text-lg text-cream/75 leading-relaxed">
+              <p
+                className={`mt-5 mx-auto max-w-3xl text-lg leading-relaxed ${section.id === "volunteer" ? "text-foreground/75" : "text-cream/75"}`}
+              >
                 {t(section.ctaText)}
               </p>
               <Link to="/connect" className="btn-primary mt-8 inline-flex">
