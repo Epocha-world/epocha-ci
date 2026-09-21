@@ -106,7 +106,7 @@ export function HomePartners() {
           </a>
         </div>
       </section>
-      <PartnerLogoBanner includeCandon />
+      <PartnerLogoBanner />
     </>
   );
 }
