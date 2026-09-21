@@ -9,7 +9,7 @@ import {
   filterCapstones,
   publishedCapstones,
 } from "@/lib/camp-capstones";
-import { ArrowRight, Search } from "lucide-react";
+import { Search } from "lucide-react";
 export const Route = createFileRoute("/practicums_/startup-lab-camp/open-capstones")({
   head: ({ match }) =>
     createSeoHead({
@@ -158,14 +158,6 @@ function OpenCapstones() {
                       </div>
                     ))}
                 </dl>
-                <Link
-                  to="/practicums/startup-lab-camp/capstones/$capstoneId"
-                  params={{ capstoneId: item.id }}
-                  aria-label={`${t("View capstone details")}: ${t(item.title)}`}
-                  className="mt-5 ml-auto inline-flex size-11 items-center justify-center text-foreground hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-                >
-                  <ArrowRight className="size-6" aria-hidden="true" />
-                </Link>
               </article>
             ))}
           </div>
