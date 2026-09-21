@@ -26,8 +26,39 @@ const fixture: CampCapstone = {
   verifiedAt: "2026-09-01T00:00:00Z",
   closesAt: "2026-10-01T00:00:00Z",
 };
-test("unverified demo opportunities are never published by default", () =>
-  assert.deepEqual(publishedCapstones(undefined, now), []));
+test("the three document-supplied briefs retain exact ages, locations and fees without invented registration data", () => {
+  const records = publishedCapstones(undefined, now);
+  assert.deepEqual(
+    records.map((item) => [
+      item.partner,
+      item.track,
+      item.age,
+      item.location,
+      item.fees,
+      item.workshopAddon,
+    ]),
+    [
+      ["QualitaX", "Semester", "17-18", "Online", "₩ 300,000", "N/A"],
+      ["The Seagull Films", "International", "14-18", "Hybrid", "₩ 690,000", "N/A"],
+      ["Candon Youth Movement", "International", "14-18", "Hybrid", "₩ 650,000", "N/A"],
+    ],
+  );
+  for (const item of records) {
+    assert.equal(item.kind, "document-listing");
+    assert.equal(item.registrationUrl, undefined);
+    assert.equal(item.dates, undefined);
+    assert.equal(item.closesAt, undefined);
+  }
+  assert.equal(filterCapstones(records, { query: "", track: "Semester", field: "" }).length, 1);
+  assert.equal(
+    filterCapstones(records, { query: "", track: "International", field: "" }).length,
+    2,
+  );
+  assert.equal(
+    filterCapstones(records, { query: "Filipino", track: "", field: "" })[0].partner,
+    "Candon Youth Movement",
+  );
+});
 test("publication rejects missing fields, unsafe registration links and closed or future verification", () => {
   assert.equal(isPublishableCapstone(fixture, now), true);
   for (const patch of [

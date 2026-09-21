@@ -1,9 +1,14 @@
-import { ArrowRight, Building2, GraduationCap, HandHeart, Handshake, Gift } from "lucide-react";
+import { PartnerLogoBanner } from "@/components/PartnerLogoBanner";
+import {
+  ArrowRight,
+  Building2,
+  GraduationCap,
+  HandHeart,
+  Handshake,
+  Gift,
+  Megaphone,
+} from "lucide-react";
 import { useI18n } from "@/i18n";
-import logoQualitax from "@/assets/logos/qualitax.svg";
-import logoKoreaPen from "@/assets/logos/koreapen.png";
-import logoPenWw from "@/assets/logos/pen-worldwide.png";
-import logoCandon from "@/assets/logos/candon-youth.jpg";
 
 const partners = [
   {
@@ -14,7 +19,7 @@ const partners = [
   {
     icon: GraduationCap,
     title: "Educational Institutions",
-    desc: "Turn classroom learning into active leadership. Your students graduate career-ready with workplace experience already behind them.",
+    desc: "Turn classroom learning into active leadership. Your students graduate career-ready with workplace experience.",
   },
   {
     icon: HandHeart,
@@ -30,23 +35,17 @@ const opportunities = [
     href: "/about/sparked#sponsor",
   },
   {
-    icon: HandHeart,
+    icon: Megaphone,
     desc: "Give a career talk or become a mentor and share your professional journey with the next generation.",
     label: "Volunteer with us",
     href: "/about/sparked#volunteer",
   },
   {
     icon: Gift,
-    desc: "Share rewards and practical resources to help young people launch their careers - including toolkits, networking events, educational programs, career opportunities or stipends.",
+    desc: "Share rewards and practical resources to help young people launch their careers (toolkits, events, programs, opportunities or stipends.",
     label: "Give and share",
     href: "/about/sparked#give-and-share",
   },
-];
-const logos = [
-  { src: logoQualitax, alt: "QualitaX", href: "https://www.qualitax.io/" },
-  { src: logoKoreaPen, alt: "Korea PEN", href: "https://koreapen.org/" },
-  { src: logoPenWw, alt: "PEN Worldwide", href: "https://penworldwide.org/" },
-  { src: logoCandon, alt: "Candon Youth for Empowerment Movement, Inc.", href: undefined },
 ];
 
 export function HomePartners() {
@@ -72,19 +71,6 @@ export function HomePartners() {
                 <p className="mt-3 text-cream/75 leading-relaxed">{t(desc)}</p>
               </article>
             ))}
-          </div>
-          <div className="mt-12 grid gap-6 border-t border-ink/15 pt-10 md:grid-cols-2 md:items-center">
-            <h3 className="text-3xl font-bold">{t("Let's build something together.")}</h3>
-            <div>
-              <p className="text-ink/75 leading-relaxed">
-                {t(
-                  "Reach out to discuss how a customized EPOCHA practicum can deliver value for your organization and the next generation of leaders.",
-                )}
-              </p>
-              <a href="/connect" className="btn-primary mt-5">
-                {t("Start the conversation")} <ArrowRight className="size-4" aria-hidden="true" />
-              </a>
-            </div>
           </div>
         </div>
       </section>
@@ -120,53 +106,7 @@ export function HomePartners() {
           </a>
         </div>
       </section>
-      <section className="container-x py-16">
-        <div className="flex items-center gap-3">
-          <Handshake className="size-5" aria-hidden="true" />
-          <h2 className="text-xs uppercase tracking-[0.2em] font-bold text-muted-foreground">
-            {t("Who we work with")}
-          </h2>
-        </div>
-        <div className="mt-8 overflow-hidden rounded-3xl border border-border bg-white py-10">
-          <div className="marquee-track gap-16 pr-16 motion-reduce:animate-none motion-reduce:w-full motion-reduce:justify-center motion-reduce:pr-0 hover:[animation-play-state:paused] focus-within:[animation-play-state:paused]">
-            {[0, 1].map((duplicate) => (
-              <div
-                key={duplicate}
-                aria-hidden={duplicate === 1 ? true : undefined}
-                className={`flex items-center gap-16 shrink-0 ${duplicate ? "motion-reduce:hidden" : "motion-reduce:flex-wrap motion-reduce:justify-center motion-reduce:gap-8 motion-reduce:shrink motion-reduce:px-6"}`}
-              >
-                {logos.map((logo) =>
-                  logo.href ? (
-                    <a
-                      key={logo.alt}
-                      href={logo.href}
-                      tabIndex={duplicate ? -1 : undefined}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="shrink-0"
-                    >
-                      <img
-                        src={logo.src}
-                        alt={duplicate ? "" : logo.alt}
-                        className="h-16 max-w-52 object-contain"
-                        loading="lazy"
-                      />
-                    </a>
-                  ) : (
-                    <img
-                      key={logo.alt}
-                      src={logo.src}
-                      alt={duplicate ? "" : logo.alt}
-                      className="h-20 w-20 object-contain"
-                      loading="lazy"
-                    />
-                  ),
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PartnerLogoBanner includeCandon />
     </>
   );
 }

@@ -12,8 +12,18 @@ const fixture: NewsArticle = {
   href: "https://example.com/story",
 };
 
-test("production catalogue remains empty until real articles are supplied", () => {
-  assert.deepEqual(publishedNews(), []);
+test("the supplied Yan Paul article is published without an invented publication date", () => {
+  const articles = publishedNews();
+  assert.equal(articles.length, 1);
+  assert.equal(
+    articles[0].title,
+    "Digital Media and Drone Show Technology with Yan Paul Dubbelman",
+  );
+  assert.equal(articles[0].publishedAt, undefined);
+  assert.equal(
+    articles[0].href,
+    "/news/digital-media-and-drone-show-technology-with-yan-paul-dubbelman",
+  );
 });
 
 test("Sparked category filters actual records and all news includes every category", () => {

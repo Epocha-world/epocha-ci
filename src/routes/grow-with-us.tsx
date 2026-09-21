@@ -52,18 +52,15 @@ function GrowWithUsPage() {
             <p className="text-xs uppercase tracking-[0.2em] text-lime font-bold">
               {t("EPOCHA X UpperClass")}
             </p>
-            <h1 className="mt-4 text-4xl md:text-5xl font-bold leading-[1.05]">
-              {t("Join us as")}
-              <span className="text-lime">
-                {t("Freelance Content Creator for the new EPOCHA campaign.")}
-              </span>
+            <h1 className="mt-4 text-4xl md:text-5xl font-bold leading-[1.05] text-[var(--lime)]">
+              {t("Join us as Freelance Content Creator.")}
             </h1>
           </div>
         </div>
       </section>
 
       {/* ABOUT UPPERCLASS + PROCESS — light */}
-      <section className="bg-background text-foreground">
+      <section className="surface-light text-foreground">
         <div className="container-x py-24">
           <div className="grid lg:grid-cols-12 gap-12 items-start">
             {/* LEFT: card */}
@@ -89,20 +86,35 @@ function GrowWithUsPage() {
                       "Let's create together! We are looking for talented, independent storytellers, videographers, and designers to bring the EPOCHA vision to life. Partner with us as a freelance content creator and help us shape our next big project. Whether you specialize in short-form video, high-end photography, or engaging copywriting, we want to hear from you.",
                     )}
                   </p>
-                  <p className="mt-5 text-sm text-coral uppercase font-bold tracking-wider">
+                  <p className="mt-5 text-sm text-black uppercase font-bold tracking-wider">
                     {t("Submission period: OPEN")}
                   </p>
                   <ul className="mt-4 space-y-2 text-sm text-foreground/80 leading-relaxed">
                     <li>
-                      💰 <span className="font-semibold">{t("Pay rate:")}</span>{" "}
+                      <Coins
+                        style={{ color: "#000" }}
+                        aria-hidden="true"
+                        className="inline size-4 text-black"
+                      />{" "}
+                      <span className="font-semibold text-black">{t("Pay rate:")}</span>{" "}
                       {t("$25.00 per approved and published content piece")}
                     </li>
                     <li>
-                      🎁 <span className="font-semibold">{t("Reward:")}</span>{" "}
+                      <Gift
+                        style={{ color: "#000" }}
+                        aria-hidden="true"
+                        className="inline size-4 text-black"
+                      />{" "}
+                      <span className="font-semibold text-black">{t("Reward:")}</span>{" "}
                       {t("Marketplace redeemable points (gift cards, practicum discounts)")}
                     </li>
                     <li>
-                      📢 <span className="font-semibold">{t("Notice:")}</span>{" "}
+                      <Megaphone
+                        style={{ color: "#000" }}
+                        aria-hidden="true"
+                        className="inline size-4 text-black"
+                      />{" "}
+                      <span className="font-semibold text-black">{t("Notice:")}</span>{" "}
                       {t(
                         "This is a freelance opportunity. Creators are welcome to undertake similar activities or collaborations with other companies alongside this role.",
                       )}
@@ -167,7 +179,7 @@ function GrowWithUsPage() {
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <step.icon className="w-4 h-4 text-coral" />
+                        <step.icon style={{ color: "#000" }} className="w-4 h-4 text-black" />
                         <h4 className="font-semibold">{t(step.title)}</h4>
                       </div>
                       <p className="mt-1 text-sm text-foreground/70 leading-relaxed">
@@ -211,7 +223,7 @@ function GrowWithUsPage() {
                   rel="noopener noreferrer"
                   className="btn-primary inline-flex"
                 >
-                  {t("Apply now")} <ArrowRight className="w-4 h-4" />
+                  {t("Apply now")} <ArrowRight style={{ color: "#000" }} className="w-4 h-4" />
                 </a>
               </div>
             </div>
@@ -238,7 +250,7 @@ function GrowWithUsPage() {
                   },
                 ].map((item, i) => (
                   <AccordionItem key={item.q} value={`faq-${i}`} className="border-cream/10">
-                    <AccordionTrigger className="text-cream hover:no-underline text-base font-semibold py-5">
+                    <AccordionTrigger className="[&>svg]:text-black [&>svg]:bg-lime [&>svg]:rounded-full text-cream hover:no-underline text-base font-semibold py-5">
                       {t(item.q)}
                     </AccordionTrigger>
                     <AccordionContent className="text-cream/70 text-sm leading-relaxed pb-5">
@@ -253,7 +265,7 @@ function GrowWithUsPage() {
       </section>
 
       {/* WHY JOIN — light */}
-      <section className="bg-background text-foreground">
+      <section className="surface-light text-foreground">
         <div className="container-x py-24">
           <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">{t("Why join")}</p>
           <h2 className="mt-3 text-3xl md:text-4xl font-bold leading-tight">
@@ -294,8 +306,8 @@ function GrowWithUsPage() {
               },
             ].map((item) => (
               <div key={item.title} className="rounded-2xl border border-border bg-muted/30 p-5">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-lime/15 text-lime">
-                  <item.icon className="w-5 h-5" />
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-lime/15 text-black">
+                  <item.icon style={{ color: "#000" }} className="w-5 h-5" />
                 </div>
                 <h4 className="mt-4 font-semibold">{t(item.title)}</h4>
                 <p className="mt-2 text-sm text-foreground/70 leading-relaxed">{t(item.desc)}</p>
@@ -328,7 +340,7 @@ function GrowWithUsPage() {
                 rel="noopener noreferrer"
                 className="btn-primary inline-flex"
               >
-                {t("Apply now")} <ArrowRight className="w-4 h-4" />
+                {t("Apply now")} <ArrowRight style={{ color: "#000" }} className="w-4 h-4" />
               </a>
               <a
                 href="https://upperclass.app/home"

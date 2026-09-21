@@ -176,29 +176,22 @@ function HomePage() {
         <div className="container-x py-20">
           <div id="what-is-a-practicum" className="scroll-mt-24">
             <div className="relative overflow-hidden rounded-3xl bg-ink text-cream border border-cream/10 p-10 md:p-14">
-              <div className="absolute -left-16 top-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-lime/20" />
-              <div className="absolute -right-10 -top-10 w-72 h-72 rounded-full bg-lime/20" />
-              <div className="relative">
-                <h2 className="text-5xl md:text-7xl font-bold leading-[0.95]">
+              <div className="absolute -left-16 top-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-lime" />
+              <div className="absolute -right-10 -top-10 w-72 h-72 rounded-full bg-lime" />
+              <div className="relative z-10">
+                <h2 className="text-5xl md:text-7xl font-bold leading-[0.95] text-white">
                   {t("What is a")} <br />
-                  <span className="text-lime">{t("Practicum?")}</span>
+                  <span className="text-white">{t("Practicum?")}</span>
                 </h2>
               </div>
             </div>
 
             <div className="mt-10 rounded-2xl bg-ink text-cream p-8 md:p-12">
-              <Quote className="w-8 h-8 text-cream/40" />
+              <Quote className="w-8 h-8 text-white" />
               <p className="mt-6 text-lg md:text-xl text-cream/90 leading-relaxed max-w-3xl">
                 {t(
                   "EPOCHA practicums are structured learning experiences where trainees apply their knowledge to real projects under the coaching, mentoring, and guidance of professionals and mentor companies. You learn by doing — taking real roles and solving real problems.",
                 )}
-              </p>
-            </div>
-
-            <div className="mt-6 rounded-xl bg-lime text-ink p-5 flex items-center gap-3">
-              <Zap className="w-6 h-6 shrink-0" fill="currentColor" />
-              <p className="font-bold text-base md:text-lg">
-                {t("The fastest way we know to turn potential into evidence of work.")}
               </p>
             </div>
 

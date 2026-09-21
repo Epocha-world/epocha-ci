@@ -68,9 +68,7 @@ function HowItWorks() {
           </p>
           <h2 className="mt-5 text-3xl font-bold md:text-4xl">{t("2026–27 term dates")}</h2>
           <p className="mt-6 max-w-3xl text-lg leading-relaxed">
-            {t(
-              "We operate on a 20-session-per-term basis from September to June. Sessions run according to the calendar dates below.",
-            )}
+            {t("Sessions run according to the calendar dates below.")}
           </p>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {terms.map((term) => (

@@ -24,7 +24,7 @@ function AboutPage() {
   return (
     <>
       {/* OPENING QUOTE — light mode */}
-      <section className="bg-background">
+      <section className="surface-dark">
         <div className="container-x py-20 md:py-28 flex flex-col items-center text-center">
           <div className="w-16 h-[2px] bg-coral mb-8" />
           <h1 className="max-w-4xl">
@@ -42,19 +42,19 @@ function AboutPage() {
       </section>
 
       {/* MISSION — THE CHALLENGE */}
-      <section className="bg-ink text-cream">
+      <section className="surface-light">
         <div className="container-x py-20 grid md:grid-cols-2 gap-16">
           <div>
             <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">
               {t("The challenge")}
             </p>
             <h2 className="mt-3 text-4xl font-bold">{t("A global employability crisis.")}</h2>
-            <p className="mt-5 text-cream/70 leading-relaxed">
+            <p className="mt-5 text-foreground/70 leading-relaxed">
               {t(
                 "Young talent today enters a landscape where the odds are stacked against them. Beyond high unemployment, many are stuck in 'gig' roles without security because they haven't been given the tools to prove the high-level skills employers demand.",
               )}
             </p>
-            <p className="mt-4 text-cream/70 leading-relaxed">
+            <p className="mt-4 text-foreground/70 leading-relaxed">
               {t(
                 "EPOCHA exists to change that. We help international and diverse communities of young learners move from the challenges of entering the job market to thriving, fast-tracking careers with verified skills, real experience, and a genuine edge.",
               )}
@@ -68,12 +68,12 @@ function AboutPage() {
             ].map((s) => (
               <div
                 key={s.key}
-                className="rounded-2xl border border-cream/15 bg-white/5 p-6 flex items-center gap-6"
+                className="rounded-2xl border border-foreground/15 bg-card p-6 flex items-center gap-6"
               >
                 <div className="text-5xl font-display font-bold text-lime min-w-[120px]">
                   {t(s.label)}
                 </div>
-                <p className="text-cream/80">{t(s.l)}</p>
+                <p className="text-foreground/80">{t(s.l)}</p>
               </div>
             ))}
           </div>
@@ -81,7 +81,7 @@ function AboutPage() {
       </section>
 
       {/* MISSION — APPROACH / WANT / WHO */}
-      <section className="border-y border-border bg-background">
+      <section className="border-y border-border surface-dark">
         <div className="container-x py-20 grid md:grid-cols-3 gap-10">
           {[
             {
@@ -110,14 +110,14 @@ function AboutPage() {
       </section>
 
       {/* GLOBAL STANDARD (moved from About) */}
-      <section className="relative bg-ink text-cream overflow-hidden">
+      <section className="relative surface-light overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-30"
           style={{ backgroundImage: `url(${globalBg})` }}
           aria-hidden
         />
         <div
-          className="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink/70 to-ink/90"
+          className="absolute inset-0 bg-gradient-to-b from-cream/80 via-cream/70 to-cream/90"
           aria-hidden
         />
         <div className="container-x py-24 relative">
@@ -127,7 +127,7 @@ function AboutPage() {
           <h2 className="mt-3 text-4xl md:text-5xl font-bold max-w-3xl">
             {t("Backed by a")} <span className="text-lime">{t("global network.")}</span>
           </h2>
-          <p className="mt-5 text-cream/70 max-w-2xl whitespace-pre-line">
+          <p className="mt-5 text-foreground/70 max-w-2xl whitespace-pre-line">
             {t(
               "EPOCHA is part of PEN Worldwide, the international network setting the benchmark for experiential and work-based across the globe operating in 40 countries.",
             )}
@@ -157,10 +157,10 @@ function AboutPage() {
             ].map((c) => (
               <div
                 key={c.t}
-                className="rounded-3xl border border-cream/15 bg-white/5 backdrop-blur-sm p-8"
+                className="rounded-3xl border border-foreground/15 bg-card backdrop-blur-sm p-8"
               >
                 <h3 className="text-xl font-bold">{t(c.t)}</h3>
-                {c.d && <p className="mt-4 text-cream/70 text-sm leading-relaxed">{t(c.d)}</p>}
+                {c.d && <p className="mt-4 text-foreground/70 text-sm leading-relaxed">{t(c.d)}</p>}
                 {c.q && <p className="mt-6 italic text-lime text-sm">"{t(c.q)}"</p>}
                 {c.link && (
                   <a
@@ -179,9 +179,9 @@ function AboutPage() {
       </section>
 
       {/* PEN WORLDWIDE COMMUNITY — ANIMATED BANNER */}
-      <section className="surface-light bg-white text-ink border-y border-border">
+      <section className="surface-dark border-y border-border">
         <div className="container-x py-16 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-ink">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             {t("PEN Worldwide Community")}
           </h2>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 max-w-5xl mx-auto">
@@ -191,7 +191,7 @@ function AboutPage() {
               { value: 40, suffix: "", label: "Member Countries" },
             ].map((s) => (
               <div key={s.label} className="flex flex-col items-center">
-                <span className="text-5xl md:text-6xl font-bold text-ink leading-none tabular-nums">
+                <span className="text-5xl md:text-6xl font-bold text-foreground leading-none tabular-nums">
                   {s.value.toLocaleString("en-US")}
                   {s.suffix}
                 </span>
@@ -207,7 +207,7 @@ function AboutPage() {
               { value: 200000, suffix: "+", label: "Trainees per Year" },
             ].map((s) => (
               <div key={s.label} className="flex flex-col items-center">
-                <span className="text-5xl md:text-6xl font-bold text-ink leading-none tabular-nums">
+                <span className="text-5xl md:text-6xl font-bold text-foreground leading-none tabular-nums">
                   {s.value.toLocaleString("en-US")}
                   {s.suffix}
                 </span>
@@ -231,7 +231,7 @@ function AboutPage() {
           </h2>
           <p className="mt-4 text-foreground/70">
             {t(
-              "Maeva and Jess founded EPOCHA on a shared conviction: that real growth happens when people are genuinely connected — to themselves, to each other, and to the work that matters. Every practicum, coaching session, and partnership we build is designed to turn that belief into lived experience.",
+              "EPOCHA started on a shared conviction: that real growth happens when people are genuinely connected — to themselves, to each other, and to the work that matters. Every practicum, coaching session, and partnership we build is designed to turn that belief into lived experience.",
             )}
           </p>
           <Link

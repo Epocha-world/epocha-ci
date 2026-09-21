@@ -28,6 +28,7 @@ import { Route as PracticumsStartupLabCampRouteImport } from './routes/practicum
 import { Route as PracticumsMiraeIndustryRouteImport } from './routes/practicums_.mirae-industry'
 import { Route as PracticumsHanaroMarketingRouteImport } from './routes/practicums_.hanaro-marketing'
 import { Route as PracticumsHanaroRouteImport } from './routes/practicums_.hanaro'
+import { Route as NewsDigitalMediaAndDroneShowTechnologyWithYanPaulDubbelmanRouteImport } from './routes/news_.digital-media-and-drone-show-technology-with-yan-paul-dubbelman'
 import { Route as EventsLaunchEventRouteImport } from './routes/events_.launch-event'
 import { Route as AboutSparkedRouteImport } from './routes/about_.sparked'
 import { Route as AboutPartnershipsRouteImport } from './routes/about_.partnerships'
@@ -137,6 +138,12 @@ const PracticumsHanaroRoute = PracticumsHanaroRouteImport.update({
   path: '/practicums/hanaro',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NewsDigitalMediaAndDroneShowTechnologyWithYanPaulDubbelmanRoute =
+  NewsDigitalMediaAndDroneShowTechnologyWithYanPaulDubbelmanRouteImport.update({
+    id: '/news_/digital-media-and-drone-show-technology-with-yan-paul-dubbelman',
+    path: '/news/digital-media-and-drone-show-technology-with-yan-paul-dubbelman',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const EventsLaunchEventRoute = EventsLaunchEventRouteImport.update({
   id: '/events_/launch-event',
   path: '/events/launch-event',
@@ -220,6 +227,7 @@ export interface FileRoutesByFullPath {
   '/about/partnerships': typeof AboutPartnershipsRoute
   '/about/sparked': typeof AboutSparkedRoute
   '/events/launch-event': typeof EventsLaunchEventRoute
+  '/news/digital-media-and-drone-show-technology-with-yan-paul-dubbelman': typeof NewsDigitalMediaAndDroneShowTechnologyWithYanPaulDubbelmanRoute
   '/practicums/hanaro': typeof PracticumsHanaroRoute
   '/practicums/hanaro-marketing': typeof PracticumsHanaroMarketingRoute
   '/practicums/mirae-industry': typeof PracticumsMiraeIndustryRoute
@@ -252,6 +260,7 @@ export interface FileRoutesByTo {
   '/about/partnerships': typeof AboutPartnershipsRoute
   '/about/sparked': typeof AboutSparkedRoute
   '/events/launch-event': typeof EventsLaunchEventRoute
+  '/news/digital-media-and-drone-show-technology-with-yan-paul-dubbelman': typeof NewsDigitalMediaAndDroneShowTechnologyWithYanPaulDubbelmanRoute
   '/practicums/hanaro': typeof PracticumsHanaroRoute
   '/practicums/hanaro-marketing': typeof PracticumsHanaroMarketingRoute
   '/practicums/mirae-industry': typeof PracticumsMiraeIndustryRoute
@@ -284,6 +293,7 @@ export interface FileRoutesById {
   '/about_/partnerships': typeof AboutPartnershipsRoute
   '/about_/sparked': typeof AboutSparkedRoute
   '/events_/launch-event': typeof EventsLaunchEventRoute
+  '/news_/digital-media-and-drone-show-technology-with-yan-paul-dubbelman': typeof NewsDigitalMediaAndDroneShowTechnologyWithYanPaulDubbelmanRoute
   '/practicums_/hanaro': typeof PracticumsHanaroRoute
   '/practicums_/hanaro-marketing': typeof PracticumsHanaroMarketingRoute
   '/practicums_/mirae-industry': typeof PracticumsMiraeIndustryRoute
@@ -318,6 +328,7 @@ export interface FileRouteTypes {
     | '/about/partnerships'
     | '/about/sparked'
     | '/events/launch-event'
+    | '/news/digital-media-and-drone-show-technology-with-yan-paul-dubbelman'
     | '/practicums/hanaro'
     | '/practicums/hanaro-marketing'
     | '/practicums/mirae-industry'
@@ -350,6 +361,7 @@ export interface FileRouteTypes {
     | '/about/partnerships'
     | '/about/sparked'
     | '/events/launch-event'
+    | '/news/digital-media-and-drone-show-technology-with-yan-paul-dubbelman'
     | '/practicums/hanaro'
     | '/practicums/hanaro-marketing'
     | '/practicums/mirae-industry'
@@ -381,6 +393,7 @@ export interface FileRouteTypes {
     | '/about_/partnerships'
     | '/about_/sparked'
     | '/events_/launch-event'
+    | '/news_/digital-media-and-drone-show-technology-with-yan-paul-dubbelman'
     | '/practicums_/hanaro'
     | '/practicums_/hanaro-marketing'
     | '/practicums_/mirae-industry'
@@ -414,6 +427,7 @@ export interface RootRouteChildren {
   AboutPartnershipsRoute: typeof AboutPartnershipsRoute
   AboutSparkedRoute: typeof AboutSparkedRoute
   EventsLaunchEventRoute: typeof EventsLaunchEventRoute
+  NewsDigitalMediaAndDroneShowTechnologyWithYanPaulDubbelmanRoute: typeof NewsDigitalMediaAndDroneShowTechnologyWithYanPaulDubbelmanRoute
   PracticumsHanaroRoute: typeof PracticumsHanaroRoute
   PracticumsHanaroMarketingRoute: typeof PracticumsHanaroMarketingRoute
   PracticumsMiraeIndustryRoute: typeof PracticumsMiraeIndustryRoute
@@ -556,6 +570,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PracticumsHanaroRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/news_/digital-media-and-drone-show-technology-with-yan-paul-dubbelman': {
+      id: '/news_/digital-media-and-drone-show-technology-with-yan-paul-dubbelman'
+      path: '/news/digital-media-and-drone-show-technology-with-yan-paul-dubbelman'
+      fullPath: '/news/digital-media-and-drone-show-technology-with-yan-paul-dubbelman'
+      preLoaderRoute: typeof NewsDigitalMediaAndDroneShowTechnologyWithYanPaulDubbelmanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/events_/launch-event': {
       id: '/events_/launch-event'
       path: '/events/launch-event'
@@ -685,6 +706,8 @@ const rootRouteChildren: RootRouteChildren = {
   AboutPartnershipsRoute: AboutPartnershipsRoute,
   AboutSparkedRoute: AboutSparkedRoute,
   EventsLaunchEventRoute: EventsLaunchEventRoute,
+  NewsDigitalMediaAndDroneShowTechnologyWithYanPaulDubbelmanRoute:
+    NewsDigitalMediaAndDroneShowTechnologyWithYanPaulDubbelmanRoute,
   PracticumsHanaroRoute: PracticumsHanaroRoute,
   PracticumsHanaroMarketingRoute: PracticumsHanaroMarketingRoute,
   PracticumsMiraeIndustryRoute: PracticumsMiraeIndustryRoute,

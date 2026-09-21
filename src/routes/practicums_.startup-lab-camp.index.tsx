@@ -1,3 +1,13 @@
+import {
+  TablerFlag,
+  TablerUsersGroup,
+  TablerCalendarCheck,
+  TablerBuildingSkyscraper,
+  TablerBriefcase,
+  TablerCompass,
+  TablerIdBadge2,
+  TablerFolderStar,
+} from "@/components/icons/RequestedTablerIcons";
 import campImage from "@/assets/practicum-leadership-camp.jpg";
 import { useI18n } from "@/i18n";
 import { createFileRoute, Link } from "@tanstack/react-router";
@@ -93,7 +103,7 @@ function StartupLabCampPage() {
             {[
               {
                 title: "Capstone projects",
-                text: "A minimum of two completed capstone projects delivered in partnership with an industry partner.",
+                text: "Trainees complete a minimum of two capstone projects delivered in partnership with an industry partner before creating their Practice Enterprise.",
               },
               {
                 title: "Practice Enterprise",
@@ -171,27 +181,27 @@ function StartupLabCampPage() {
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {[
               {
-                icon: GraduationCap,
+                icon: TablerFlag,
                 title: "Capstone facilitation",
                 text: "Group coaching: EPOCH awareness and AI foundation and ethics.",
               },
               {
-                icon: Sparkles,
+                icon: TablerUsersGroup,
                 title: "Interactive workshop",
                 text: "Leadership training: intercultural dialogues and career-readiness workshops.",
               },
               {
-                icon: Users,
+                icon: TablerCalendarCheck,
                 title: "Weekly check-in",
                 text: "Group coaching support, 1-1 mentoring.",
               },
               {
-                icon: Building2,
+                icon: TablerBuildingSkyscraper,
                 title: "Corporate visit",
                 text: "A guided site visit to an industry partner relevant to the capstone project.",
               },
               {
-                icon: Briefcase,
+                icon: TablerBriefcase,
                 title: "Micro placement",
                 text: "A short form structured placement experience lasting from a few hours up to 3 days.",
               },
@@ -267,17 +277,17 @@ function StartupLabCampPage() {
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {[
               {
-                icon: Award,
+                icon: TablerFolderStar,
                 title: "A portfolio piece",
                 text: "Our trainees walk away with a certificate and tangible evidence of their work that strengthens college, university, scholarship, or internship applications.",
               },
               {
-                icon: Briefcase,
+                icon: TablerIdBadge2,
                 title: "Workplace experience",
                 text: "Trainees are exposed to a range of career pathways, navigate real tasks and deadlines, and collaborate the way they would in an actual workplace.",
               },
               {
-                icon: Network,
+                icon: TablerCompass,
                 title: "Career readiness",
                 text: "Trainees receive coaching and mentorship from professionals in their field of interest and gain the confidence to make informed choices about what's next.",
               },

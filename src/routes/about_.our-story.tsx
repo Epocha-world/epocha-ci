@@ -3,9 +3,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Briefcase, ExternalLink, Handshake, Linkedin, Quote } from "lucide-react";
 import maevaPortrait from "@/assets/maeva-caricature.png";
 import juwonPortrait from "@/assets/juwon-caricature.png";
-import logoQualitax from "@/assets/logos/qualitax.svg";
-import logoKoreaPen from "@/assets/logos/koreapen.png";
-import logoPenWw from "@/assets/logos/pen-worldwide.png";
 import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/about_/our-story")({
@@ -26,16 +23,16 @@ function OurStoryPage() {
       {/* SECOND QUOTE — dark, with decorative quotation marks */}
       <section className="bg-ink">
         <div className="container-x py-20 md:py-28">
-          <div className="relative rounded-3xl bg-background border border-border p-10 md:p-16 overflow-hidden">
+          <div className="surface-light relative rounded-3xl bg-background border border-border p-10 md:p-16 overflow-hidden">
             <span
               aria-hidden
-              className="absolute top-8 left-8 md:top-10 md:left-12 text-foreground/80 font-serif font-bold leading-none select-none text-[120px] md:text-[180px]"
+              className="absolute top-8 left-8 md:top-10 md:left-12 text-black font-serif font-bold leading-none select-none text-[120px] md:text-[180px]"
             >
               &ldquo;
             </span>
             <span
               aria-hidden
-              className="absolute bottom-8 right-8 md:bottom-10 md:right-12 text-coral font-serif font-bold leading-none select-none text-[60px] md:text-[90px]"
+              className="absolute bottom-8 right-8 md:bottom-10 md:right-12 text-black font-serif font-bold leading-none select-none text-[60px] md:text-[90px]"
             >
               &rdquo;
             </span>
@@ -54,13 +51,13 @@ function OurStoryPage() {
         </div>
       </section>
 
-      <section className="container-x py-24">
+      <section className="surface-light container-x py-24 ">
         <div className="max-w-2xl">
-          <p className="text-xs uppercase tracking-[0.2em] text-coral font-bold">
+          <p className="text-xs uppercase tracking-[0.2em] text-black font-bold">
             {t("Our story")}
           </p>
-          <h1 className="mt-3 text-4xl md:text-5xl font-bold">
-            {t("Built on the power of")} <span className="text-lime">{t("connection")}</span>.
+          <h1 className="mt-3 text-4xl md:text-5xl font-bold text-black">
+            {t("Built on the power of")} <span className="text-black">{t("connection")}</span>.
           </h1>
           <p className="mt-4 text-foreground/70">
             {t(
@@ -108,10 +105,13 @@ function OurStoryPage() {
                     rel="noopener noreferrer"
                     aria-label={`${p.name} ${t("LinkedIn profile")}`}
                   >
-                    <Linkedin className="w-5 h-5 text-foreground/60 hover:text-lime transition" />
+                    <Linkedin
+                      style={{ color: "#000" }}
+                      className="w-5 h-5 text-black text-black transition"
+                    />
                   </a>
                 </div>
-                <p className="text-sm text-coral font-semibold mt-1">{t(p.role)}</p>
+                <p className="text-sm text-black font-semibold mt-1">{t(p.role)}</p>
                 <p className="mt-3 text-sm text-foreground/70 leading-relaxed">{t(p.bio)}</p>
               </div>
             </div>
@@ -121,8 +121,8 @@ function OurStoryPage() {
         {/* OTHER PROJECTS */}
         <div className="mt-20">
           <div className="flex items-center gap-3">
-            <Briefcase className="w-5 h-5 text-lime" />
-            <p className="text-xs uppercase tracking-[0.2em] text-foreground/60 font-bold">
+            <Briefcase style={{ color: "#000" }} className="w-5 h-5 text-black" />
+            <p className="text-xs uppercase tracking-[0.2em] text-black font-bold">
               {t("Other ventures")}
             </p>
           </div>
@@ -175,13 +175,12 @@ function OurStoryPage() {
                 >
                   <h4 className="font-bold">{t(project.name)}</h4>
                   <p className="mt-2 text-sm text-foreground/70">{t(project.desc)}</p>
-                  <span
-                    className={`mt-auto inline-flex items-center gap-2 pt-4 text-sm font-medium ${
-                      project.featured ? "text-foreground" : "text-lime"
-                    }`}
-                  >
+                  <span className="mt-auto inline-flex items-center gap-2 pt-4 text-sm font-medium text-black">
                     {t(project.cta)}
-                    <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                    <ExternalLink
+                      style={{ color: "#000" }}
+                      className="w-4 h-4 group-hover:translate-x-0.5 transition-transform"
+                    />
                   </span>
                 </a>
               ))}
@@ -192,7 +191,7 @@ function OurStoryPage() {
         {/* TESTIMONIALS */}
         <div className="mt-20">
           <div className="flex items-center gap-3">
-            <Quote className="w-5 h-5 text-lime" />
+            <Quote style={{ color: "#000" }} className="w-5 h-5 text-black" />
             <p className="text-xs uppercase tracking-[0.2em] text-foreground/60 font-bold">
               {t("Coaching testimonials")}
             </p>
@@ -258,7 +257,7 @@ function OurStoryPage() {
                       className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-foreground hover:underline"
                     >
                       {t(testimonial.cta)}
-                      <ExternalLink className="w-4 h-4" />
+                      <ExternalLink style={{ color: "#000" }} className="w-4 h-4" />
                     </a>
                   )}
                 </figure>
@@ -267,42 +266,12 @@ function OurStoryPage() {
         </div>
       </section>
 
-      {/* DUPLICATE — Who we work with partner banner */}
-      <section className="container-x py-20">
+      <section className="surface-light container-x py-20">
         <div className="flex items-center gap-3">
-          <Handshake className="w-5 h-5 text-lime" />
-          <p className="text-xs uppercase tracking-[0.2em] text-foreground/60 font-bold">
+          <Handshake aria-hidden="true" className="size-5 text-black" />
+          <p className="text-xs uppercase tracking-[0.2em] text-black font-bold">
             {t("Who we work with")}
           </p>
-        </div>
-        <div className="mt-8 relative overflow-hidden rounded-3xl border border-border bg-muted/30 py-10 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-          <div className="marquee-track gap-16 pr-16">
-            {[...Array(2)].map((_, dup) => (
-              <div key={dup} className="flex items-center gap-16 shrink-0" aria-hidden={dup === 1}>
-                {[
-                  { src: logoQualitax, alt: "QualitaX", href: "https://www.qualitax.io/" },
-                  { src: logoKoreaPen, alt: "Korea PEN", href: "https://koreapen.org/" },
-                  { src: logoPenWw, alt: "PEN Worldwide", href: "https://penworldwide.org/" },
-                ].map((l) => (
-                  <a
-                    key={l.alt + dup}
-                    href={l.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    tabIndex={dup === 1 ? -1 : undefined}
-                    className="shrink-0 grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition"
-                  >
-                    <img
-                      src={l.src}
-                      alt={l.alt}
-                      className="h-14 w-auto object-contain"
-                      loading="lazy"
-                    />
-                  </a>
-                ))}
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -322,7 +291,8 @@ function OurStoryPage() {
                 hash="choose-your-practicum"
                 className="inline-flex items-center gap-2 bg-lime text-ink font-semibold px-6 py-3.5 rounded-full hover:bg-lime/90 transition"
               >
-                {t("Find your practicum")} <ArrowRight className="w-4 h-4" />
+                {t("Find your practicum")}{" "}
+                <ArrowRight style={{ color: "#000" }} className="w-4 h-4" />
               </Link>
               <Link
                 to="/about/sparked"

@@ -1,3 +1,4 @@
+import { PartnerLogoBanner } from "@/components/PartnerLogoBanner";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -107,8 +108,8 @@ function SparkedPage() {
           <p className="text-xs uppercase tracking-[0.2em] text-lime font-bold">
             {t("Get involved")}
           </p>
-          <h1 className="mt-4 text-6xl md:text-8xl font-bold">Sparked!</h1>
-          <p className="mt-6 max-w-3xl text-xl md:text-2xl text-cream/80">
+          <h1 className="mt-4 text-6xl md:text-8xl font-bold text-[var(--lime)]">Sparked!</h1>
+          <p className="mt-6 max-w-3xl text-xl md:text-2xl text-[var(--lime)]">
             {t("Help us shape the future of work with Sparked!")}
           </p>
           <nav aria-label={t("Ways to get involved")} className="mt-8 flex flex-wrap gap-3">
@@ -116,7 +117,7 @@ function SparkedPage() {
               <a
                 key={section.id}
                 href={"#" + section.id}
-                className="rounded-full border border-cream/40 px-5 py-3 font-semibold hover:bg-lime hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lime"
+                className="rounded-full border border-lime px-5 py-3 font-semibold text-[var(--lime)] hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lime"
               >
                 {t(section.title.replace(/\.$/, ""))}
               </a>
@@ -128,7 +129,7 @@ function SparkedPage() {
         <section
           key={section.id}
           id={section.id}
-          className="scroll-mt-32 border-b border-border bg-background text-foreground"
+          className={`scroll-mt-32 border-b border-border text-foreground ${section.id === "volunteer" ? "surface-dark" : "bg-background"}`}
         >
           <div className="container-x py-20 md:py-24">
             <h2 className="text-4xl md:text-5xl font-bold">{t(section.title)}</h2>
@@ -164,15 +165,7 @@ function SparkedPage() {
           </div>
         </section>
       ))}
-      <section className="container-x py-12">
-        <Link
-          to="/news"
-          search={{ category: "sparked" }}
-          className="inline-flex items-center gap-2 font-semibold underline underline-offset-4"
-        >
-          {t("Read Sparked! news")} <ArrowRight aria-hidden="true" className="h-4 w-4" />
-        </Link>
-      </section>
+      <PartnerLogoBanner />
     </>
   );
 }

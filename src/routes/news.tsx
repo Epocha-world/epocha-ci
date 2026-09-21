@@ -66,9 +66,11 @@ function NewsPage() {
                   <span className="font-semibold">
                     {article.category === "sparked" ? "Sparked!" : t("EPOCHA news")}
                   </span>
-                  <time dateTime={article.publishedAt}>
-                    {dateFormat.format(new Date(article.publishedAt + "T00:00:00Z"))}
-                  </time>
+                  {article.publishedAt && (
+                    <time dateTime={article.publishedAt}>
+                      {dateFormat.format(new Date(article.publishedAt + "T00:00:00Z"))}
+                    </time>
+                  )}
                 </div>
                 <h2 className="mt-5 text-2xl font-bold">
                   <a href={article.href} className="hover:underline underline-offset-4">

@@ -4,7 +4,7 @@ export const programs = [
     title: "Start-up Lab Camp",
     desc: "Build confidence, find your voice, and develop cross-cultural fluency by working on capstones, launching your very own Practice Enterprise and Start-Up concept.",
     focus: "Entrepreneurship & cross-cultural collaboration",
-    status: "Winter registrations open",
+    status: "winter registration open soon",
     to: "/practicums/startup-lab-camp",
     image: "camp",
   },

@@ -1,3 +1,4 @@
+import { CapstonePartner } from "@/components/camp/CapstonePartner";
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useI18n } from "@/i18n";
@@ -38,9 +39,6 @@ function OpenCapstones() {
   return (
     <section className="bg-background text-foreground">
       <div className="container-x py-16 md:py-24">
-        <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">
-          {t("Start-up Lab Camp")}
-        </p>
         <h1 className="mt-5 text-5xl font-bold md:text-7xl">{t("Open capstones")}</h1>
         <p className="mt-7 max-w-3xl text-lg leading-relaxed text-foreground/80">
           {t(
@@ -117,14 +115,32 @@ function OpenCapstones() {
                 className="flex flex-col rounded-3xl border border-border bg-card p-7"
               >
                 <p className="text-sm text-muted-foreground">
-                  {t(item.track)} · {t(capstoneFieldLabel(item.field))}
+                  {t(item.track)} ·{" "}
+                  <span className="uppercase">
+                    {t(item.fieldLabel ?? capstoneFieldLabel(item.field))}
+                  </span>
                 </p>
                 <h2 className="mt-5 text-2xl font-bold">{t(item.title)}</h2>
-                <p className="mt-3 font-semibold">{item.partner}</p>
+                <CapstonePartner item={item} />
                 <p className="mt-4 leading-relaxed text-foreground/80">{t(item.summary)}</p>
-                <p className="mt-5 text-sm text-muted-foreground">
-                  {t(item.format)} · {item.location}
+                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                  {item.skills.map((skill) => t(skill)).join(" · ")}
                 </p>
+                <dl className="mt-6 grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm">
+                  {[
+                    ["Age", item.age],
+                    ["Location", item.location],
+                    ["Cost", item.fees],
+                    ["w/h add on", item.workshopAddon],
+                  ]
+                    .filter(([, value]) => value)
+                    .map(([label, value]) => (
+                      <div key={label} className="contents">
+                        <dt>{t(label!)}</dt>
+                        <dd className="text-right font-semibold">{t(value!)}</dd>
+                      </div>
+                    ))}
+                </dl>
                 <Link
                   to="/practicums/startup-lab-camp/capstones/$capstoneId"
                   params={{ capstoneId: item.id }}

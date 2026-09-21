@@ -107,11 +107,11 @@ function LeadershipTracksPage() {
                 style={{ color: LIGHT_ON_DARK }}
               >
                 <li className="flex items-start gap-2">
-                  <UsersRound className="w-4 h-4 mt-0.5 shrink-0" style={{ color: GOLD }} />
+                  <Calendar className="w-4 h-4 mt-0.5 shrink-0" style={{ color: GOLD }} />
                   <span>{t("September to June")}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <UsersRound className="w-4 h-4 mt-0.5 shrink-0" style={{ color: GOLD }} />
+                  <Calendar className="w-4 h-4 mt-0.5 shrink-0" style={{ color: GOLD }} />
                   <span>{t("Once a week during term time")}</span>
                 </li>
                 <li className="flex items-start gap-2">
@@ -131,20 +131,36 @@ function LeadershipTracksPage() {
                 style={{ color: LIGHT_ON_DARK }}
               >
                 <li className="flex items-start gap-2">
-                  <span className="shrink-0">👥</span>
+                  <Users
+                    className="mt-0.5 h-4 w-4 shrink-0"
+                    style={{ color: GOLD }}
+                    aria-hidden="true"
+                  />
                   <span>{t("Small cohort")}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="shrink-0">📍</span>
+                  <MapPin
+                    className="mt-0.5 h-4 w-4 shrink-0"
+                    style={{ color: GOLD }}
+                    aria-hidden="true"
+                  />
                   <span>{t("Location: online")}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="shrink-0">📝</span>
+                  <FileBadge
+                    className="mt-0.5 h-4 w-4 shrink-0"
+                    style={{ color: GOLD }}
+                    aria-hidden="true"
+                  />
                   <span>{t("Individual and institutional registrations available")}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="shrink-0">📚</span>
-                  <span>{t("Summer Track add on available")}</span>
+                  <Building2
+                    className="mt-0.5 h-4 w-4 shrink-0"
+                    style={{ color: GOLD }}
+                    aria-hidden="true"
+                  />
+                  <span>{t("Industry collaboration")}</span>
                 </li>
               </ul>
             </div>
@@ -227,11 +243,11 @@ function LeadershipTracksPage() {
                   <span>{t("Once a week during term time")}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <UsersRound
+                  <Calendar
                     className="mt-0.5 h-4 w-4 shrink-0"
                     style={{ color: "var(--foreground)" }}
                   />
-                  <span>{t("Saturdays")}</span>
+                  <span>{t("Saturdays or Sundays")}</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Clock
@@ -384,19 +400,35 @@ function LeadershipTracksPage() {
                 style={{ color: LIGHT_ON_DARK }}
               >
                 <li className="flex items-start gap-2">
-                  <span className="shrink-0">📚</span>
+                  <Calendar
+                    className="mt-0.5 h-4 w-4 shrink-0"
+                    style={{ color: GOLD }}
+                    aria-hidden="true"
+                  />
                   <span>{t("4 weeks, 20 sessions")}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="shrink-0">👥</span>
+                  <Users
+                    className="mt-0.5 h-4 w-4 shrink-0"
+                    style={{ color: GOLD }}
+                    aria-hidden="true"
+                  />
                   <span>{t("Small cohort")}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="shrink-0">📍</span>
-                  <span>{t("Location: Yongsan, Mapo, or Itaewon areas")}</span>
+                  <MapPin
+                    className="mt-0.5 h-4 w-4 shrink-0"
+                    style={{ color: GOLD }}
+                    aria-hidden="true"
+                  />
+                  <span>{t("Location: Seoul")}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="shrink-0">📝</span>
+                  <FileBadge
+                    className="mt-0.5 h-4 w-4 shrink-0"
+                    style={{ color: GOLD }}
+                    aria-hidden="true"
+                  />
                   <span>{t("Individual and institutional registrations available")}</span>
                 </li>
               </ul>
@@ -468,7 +500,7 @@ function LeadershipTracksPage() {
 
             <div className="rounded-lg border border-cream/20 bg-white/5 p-6 md:p-8">
               <div className="flex items-center gap-3">
-                <Clock className="w-5 h-5" style={{ color: GOLD_DEEP }} />
+                <Clock className="w-5 h-5" style={{ color: GOLD }} />
                 <h3 className="text-xl font-bold">{t("Typical Day")}</h3>
               </div>
               <div className="mt-6 divide-y divide-cream/20 overflow-hidden rounded-lg border border-cream/20">
@@ -482,10 +514,10 @@ function LeadershipTracksPage() {
                 ].map((item) => (
                   <div
                     key={`${item.time}-${item.label}`}
-                    className={`grid grid-cols-[8.5rem_1fr] gap-4 px-4 py-3 text-sm ${item.isBreak ? "bg-white/10" : "bg-ink"}`}
+                    className={`grid grid-cols-[8.5rem_1fr] gap-4 px-4 py-3 text-sm ${item.isBreak ? "bg-lime text-black" : "bg-black text-white"}`}
                   >
-                    <div className="font-semibold text-cream">{item.time}</div>
-                    <div className="text-cream/75">{t(item.label)}</div>
+                    <div className="font-semibold">{item.time}</div>
+                    <div>{t(item.label)}</div>
                   </div>
                 ))}
               </div>
